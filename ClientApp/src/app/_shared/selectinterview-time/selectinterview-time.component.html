@@ -1,0 +1,70 @@
+<p-blockUI [blocked]="this.blocked" style="z-index: 999999">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</p-blockUI>
+
+
+<div class="row" *ngIf="this.user.schedulingType == 'Select from calendar'">
+  <div class="col-7">
+    <!-- <p-calendar [(ngModel)]="rangeDates" selectionMode="range" (onSelect)="getTimeSlots($event)"
+      [style]="{'width':'100%','padding': '0px'}" [inline]="true" [ngModelOptions]="rangeDates"
+      (onMonthChange)="onMonthChange($event);"></p-calendar> -->
+
+      <p-calendar [(ngModel)]="rangeDates" inputId="template" [minDate]="minDate"
+      [style]="{'width':'100%','padding': '0px'}" dateFormat="YYYY/MM/dd" [inline]="true"
+      [ngModelOptions]="rangeDates" (onMonthChange)="onMonthChange($event);" #dateFilter
+      (onSelect)="getTimeSlots($event)"
+      >
+        <ng-template pTemplate="date" let-date>
+            <span  [ngClass]="(date.day >= fromDay && date.day <= toDay) && this.month ==  (date.month + 1)  ? 'redcolor' : 'default' " id="{{date.day + '-' + addMonth(date.month).toString() }}">
+              {{date.day}}
+            </span>
+        </ng-template>
+    </p-calendar>
+  </div>
+  <div class="col-5">
+    <div class="xxxvert-scroll-250 p-2" *ngIf="errorMessage">
+      <div id="divSelectedDatesTimeSlots" class="list-group"> <a href="#" class="list-group-item text-center"><i
+            class="bx bx-block"></i> There are no time slots available on this date. Please choose another date.</a>
+      </div>
+    </div>
+    <div id="divSelectedDatesTimeSlots" class="list-group" style="max-height: 380px;overflow: auto;" *ngIf="this.timsSlots.length > 0">
+      <a href="#" (click)="selectSlotTime(item,$event)"
+        [ngClass]="item.slot === 'Booked' ? 'list-group-item list-group-item-action text-center disabled' : 'list-group-item list-group-item-action text-center'"
+        *ngFor="let item of this.timsSlots">
+        {{ timeFormat(item.startTime) }}
+      </a>
+    </div>
+  </div>
+  <div class="col-12" *ngIf="this.timsSlots.length > 0">
+    <button id="btnModalInterviewAcceptCommit" (click)="createEvent()" class="btn btn-primary float-end">Schedule</button>
+    <button type="button" class="btn btn-label-secondary float-end mr-2" data-bs-dismiss="modal"
+      (click)="close()">Close</button>
+  </div>
+</div>
+
+<div class="row" *ngIf="this.user.schedulingType == 'Select from slots'">
+  <div class="row ng-star-inserted">
+    <div  class="col-4 mb-3 list-group"><label
+           for="nameBasic" class="form-label">Interview Slot 1</label>
+           <a href="#" (click)="selectInterviewRequestSlotTime(interviewRequestedSlots[0],$event)" class="list-group-item list-group-item-action text-center">
+            {{interviewRequestedSlots[0].date | date: 'YYYY/MM/dd h:mm:a'}}</a>
+    </div>
+    <div class="col-4 mb-3"><label _ngcontent-ng-cli-universal-c225=""
+         for="nameBasic" class="form-label">Interview Slot 2</label>
+         <a href="#" (click)="selectInterviewRequestSlotTime(interviewRequestedSlots[1],$event)" class="list-group-item list-group-item-action text-center">
+          {{interviewRequestedSlots[1].date | date: 'YYYY/MM/dd h:mm:a'}}
+        </a>
+    </div>
+    <div  class="col-4 mb-3"><label for="nameBasic" class="form-label">Interview Slot 3</label>
+        <a href="#" (click)="selectInterviewRequestSlotTime(interviewRequestedSlots[2],$event)" class="list-group-item list-group-item-action text-center">
+          {{interviewRequestedSlots[2].date | date: 'YYYY/MM/dd h:mm:a'}}
+        </a>
+    </div>
+
+  </div>
+  <div class="col-12" >
+    <button id="btnModalInterviewAcceptCommit" (click)="createEvent()" class="btn btn-primary float-end">Schedule</button>
+    <button type="button" class="btn btn-label-secondary float-end mr-2" data-bs-dismiss="modal"
+      (click)="close()">Close</button>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <h5 class="card-header">One-Way Interview Templates</h5>
+            <div class="card-body">
+                <div class="vert-scroll-300">
+                    <div class="list-group">
+                        <ng-container *ngFor="let template of templates">
+                            <button type="button" (click)="selectTemplate(template)" [ngClass]="{'active': template.oneWayInterviewTemplateId === selectedTemplate.oneWayInterviewTemplateId}" class="list-group-item list-group-item-action">
+                                <i class="bx bx-category"></i>
+                                {{template.title}}
+                            </button>
+                        </ng-container>
+                    </div>
+                </div>
+                <button (click)="addTemplate()" class="btn btn-sm btn-primary mt-1"><i class="la la-plus"></i> Add Template</button>
+                <span class="float-end" *ngIf="selectedTemplate.oneWayInterviewTemplateId>0">
+                    <button (click)="editTemplate()" class="btn btn-sm btn-primary mt-1 mr-1"><i class="bx bxs-pencil"></i></button>
+                    <button (click)="deleteTemplate()" class="btn btn-sm btn-primary mt-1"><i class="bx bx-x"></i></button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8" *ngIf="selectedTemplate.oneWayInterviewTemplateId>0">
+        <app-one-way-interview-questions [enableQuestionSetting]="enableQuestionSetting" [selectedTemplate]="selectedTemplate" [questions]="this.questions"></app-one-way-interview-questions>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+
+
+<div [appIsLoading]="loadingService.isLoading(this)">
+    <ng-container *ngIf="!this.requisitionRequest.editJob && this.requisitionRequest.requisitionId>0">
+        
+        
+        <div class="row">
+            <div class="col-12">
+                <div class="p-2 pt-0">
+                    <a id="aBack" class="btn btn-secondary" href="javascript:history.back(1);"><i
+                            class="fa fa-chevron-left"></i> Back</a>
+                    <div class="float-end">
+                        <ng-container *ngIf="this.requisitionRequestService.requisitionRequest.jpmStatus.displayText!='Posted'">
+                            <button class="btn btn-primary mr-1" (click)="postJob()"><i class="bx bxs-archive-out"></i> Post
+                                Job</button>
+                            <button class="btn btn-primary mr-1" (click)="editJob()"><i class="bx bxs-pencil"></i> Edit
+                                Job</button>
+                                <div class="btn-group">
+                                    <button id="btn11" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        <i class="bx bx-search-alt-2"></i>
+                                        {{this.requisitionRequestService.requisitionRequest.jpmStatus.displayText}}
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" role="button" (click)="updateJpmStatus('InProgress')" href="javascript:void(0);"><i
+                                                    class="bx bx-rotate-right"></i> In Progress</a></li>
+                                        <li><a class="dropdown-item" role="button" (click)="updateJpmStatus('UnderReview')"
+                                                href="javascript:void(0);"><i class="bx bx-search-alt-2"></i> Under Review</a></li>
+                                        <li><a class="dropdown-item" role="button" (click)="updateJpmStatus('PendingApproval')"
+                                                href="javascript:void(0);"><i class="bx bxs-hourglass-top"></i> Pending Approval</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                        </ng-container>
+                       <ng-container *ngIf="this.requisitionRequestService.requisitionRequest.jpmStatus.displayText=='Posted'"> 
+                        <button class="btn btn-primary mr-1" (click)="cancelJob()"><i class="bx bxs-archive-out"></i> Cancel
+                            Job</button>
+                        <button class="btn btn-primary mr-1" (click)="postJob()"><i class="bx bxs-pencil"></i> Extend
+                            Job</button>
+                            <button class="btn btn-primary mr-1" (click)="editJob()"><i class="bx bxs-pencil"></i> Edit
+                                Job</button>
+                            <button class="btn btn-primary">
+                                <i class="bx bx-check"></i>
+                                {{this.requisitionRequestService.requisitionRequest.jpmStatus.displayText}}</button>
+                                
+                       </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div *ngIf="companyId > 0">
+                            <app-commonclient  [companyId]="companyId"></app-commonclient>
+                        </div>
+                        <app-requisition-summary [requisitionRequest]="this.requisitionRequest">
+                        </app-requisition-summary>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </ng-container>
+    <ng-container *ngIf="this.requisitionRequest.editJob">
+    
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="p-2 pt-0">
+    
+                    <div class="float-end">
+                        <button class="btn btn-primary mr-1" (click)="updateJob()"><i class="fa fa-check"></i> Update
+                            Job</button>
+                        <button class="btn btn-secondary" (click)="cancel()"><i class="fa fa-ban"></i> Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="d-flex card pl-4 pr-4">
+            <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="false"></p-steps>
+        </div>
+    
+        <div class="row mt-4">
+            <app-requisition-details *ngIf="activeIndex==0"></app-requisition-details>
+            <app-additional-details *ngIf="activeIndex==1"></app-additional-details>
+            <app-compensation-details *ngIf="activeIndex==2"></app-compensation-details>
+            <app-screening-details *ngIf="activeIndex==3"></app-screening-details>
+            <ng-container *ngIf="showOWI">
+                <app-one-way-interview *ngIf="activeIndex==4"></app-one-way-interview>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <h3 class="card-header">{{listItems.length}} Items for
+        <span class="text-primary">{{selectedList.title}}</span>
+        <span class="small d-block text-muted">{{selectedList.description}}</span>
+      </h3>
+      <div class="card-body">
+        <div class="vert-scroll-300" pDroppable="dd" >
+
+          <table class="table table-striped table-bordered">
+            <tbody id="tbdQuestions">
+              <tr *ngFor="let listItem of listItems">
+                <td>
+                  <span class="proxy_question_text">
+                    <!-- incase of isSystemManaged yes then use can not modify item this check is removed and to be added in future -->
+                    <!-- <i *ngIf="listItem.isSystemManaged" class="bx bx bx-cog" pTooltip="{{listItem.listItemId}}" tooltipPosition="top"></i>
+                    <i *ngIf="!listItem.isSystemManaged" class="bx bxs-circle" pTooltip="{{listItem.listItemId}}" tooltipPosition="top"></i> -->
+
+                    <i  class="bx bxs-circle" pTooltip="{{listItem.listItemId}}" tooltipPosition="top"></i>
+                    <span pTooltip="{{listItem.description}}" tooltipPosition="top"> {{listItem.title}}</span>
+                  </span>
+                  <!-- *ngIf="!listItem.isSystemManaged" -->
+                  <span class="float-end"><button type="button"
+                      (click)="editQuestion(listItem)" class="btn btn-sm rounded-pill btn-icon btn-label-secondary">
+                      <span class="bx bxs-pencil"></span></button>&nbsp;
+                    <button type="button" (click)="deleteListItem(listItem)"
+                      class="btn btn-sm rounded-pill btn-icon btn-label-secondary proxy_delete_question"><span
+                        class="bx bx-x"></span></button>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- *ngIf="!selectedList.isSystemManaged" -->
+        <button  (click)="addQuestion()" class="btn btn-sm btn-primary mt-1"><i
+            class="la la-plus"></i> Add
+          List Item</button>
+      </div>
+    </div>
+  </div>
+</div>

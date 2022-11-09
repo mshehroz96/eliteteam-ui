@@ -1,0 +1,30 @@
+/* ::ng-deep .p-datepicker table td > span {
+  background-color: orange;
+}
+
+ */
+
+ .redcolor {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  transition: none;
+  border: 1px solid transparent;
+  background:#97b8d7 !important;
+  color: white !important;
+  padding: 5px;
+  text-align: center;
+}
+
+.selected-color{
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  transition: none;
+  color: white;
+  border: 1px solid transparent;
+  background:#3d75a8 !important;
+  padding: 5px;
+  text-align: center;
+}
+

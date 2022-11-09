@@ -1,0 +1,40 @@
+<a id="aBack" href="javascript:history.back(1);" class="btn btn-label-primary btn-sm">
+  <i class="bx bx-arrow-back"></i></a>
+<div class="row mb-2 mt-2">
+
+  <div class="col-md-5">
+    <app-candidate-basic-info [basicInfo]="candidateInfo"></app-candidate-basic-info>
+
+    <app-default-owi-answers [onewayInterviewAnswers]="this.onewayInterviewAnswers" (answerSelected)="showAnswerDetails($event)">
+
+    </app-default-owi-answers>
+
+    <div class="card mt-2">
+      <div class="card-body pb-1">
+        <app-chat-messages></app-chat-messages>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-7">
+  <app-default-owi-detail [answer]="this.selectedAnswer"></app-default-owi-detail>
+  <br>
+
+  <div id="divAccordianViewResume" class="card accordion-item mb-3" *ngIf="this.candidateInfo.lockedResumeFileName">
+    <h2 class="accordion-header" id="headingOne">
+      <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#divAccordian1"
+        aria-expanded="false">
+        <i class="fa fa-file-pdf"></i> &nbsp;View Resume
+      </button>
+    </h2>
+          <!-- <app-locked-resume [resumeFileName]="candidateInfo.lockedResumeFileName" ></app-locked-resume> -->
+          <div id="divAccordian1" class="accordion-collapse collapse" data-bs-parent="#divAccordian">
+            <div class="accordion-body">
+                <div class="container" style="height: 600px;">
+                  <ng2-pdfjs-viewer #pdfViewer  [viewBookmark]="false" pagemode="none" zoom="80"></ng2-pdfjs-viewer>
+                </div>
+            </div>
+          </div>
+
+  </div>
+  </div>

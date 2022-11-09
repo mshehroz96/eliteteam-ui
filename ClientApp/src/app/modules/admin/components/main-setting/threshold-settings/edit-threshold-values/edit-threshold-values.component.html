@@ -1,0 +1,81 @@
+<form #form="ngForm" (ngSubmit)="updateThresholdValues()">
+  <div class="row">
+    <div class="col-4" *ngIf="obj.thresholdInputType == 'TextBox'">
+      <div class="form-group">
+        <label class="form-label d-block">Value 1:</label>
+        <input  class="form-control"  #value1="ngModel" name="value1" [(ngModel)]="obj.value1" required/>
+        <div *ngIf="value1.invalid && (value1.dirty || value1.touched)" class="invalid-feedback">
+          <div *ngIf="value1.errors?.required">
+            Required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4" *ngIf="obj.thresholdInputType == 'Number'">
+      <div class="form-group">
+        <label class="form-label d-block">Value 1</label>
+        <input type="number" appOnlyNumber class="form-control" #value1="ngModel" name="value1" [(ngModel)]="obj.value1" required/>
+        <div *ngIf="value1.invalid && (value1.dirty || value1.touched)" class="invalid-feedback">
+          <div *ngIf="value1.errors?.required">
+            Required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="obj.thresholdInputType == 'NumberRange'">
+      <div class="col-4" >
+        <div class="form-group">
+          <label class="form-label d-block">Value 1</label>
+          <input type="number" appOnlyNumber class="form-control" #value1="ngModel" name="value1" [(ngModel)]="obj.value1" required/>
+          <div *ngIf="value1.invalid && (value1.dirty || value1.touched)" class="invalid-feedback">
+            <div *ngIf="value1.errors?.required">
+              Required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label class="form-label d-block">Value 2</label>
+          <input type="number" appOnlyNumber class="form-control" #value2="ngModel" name="value2" [(ngModel)]="obj.value2" required/>
+          <div *ngIf="value2.invalid && (value2.dirty || value2.touched)" class="invalid-feedback">
+            <div *ngIf="value2.errors?.required">
+              Required
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="obj.thresholdInputType == 'Date'">
+      <div class="col-12" >
+        <div class="form-group">
+          <label class="form-label d-block">Value 1</label>
+          <!-- <p-calendar name="value1" #value1="ngModel" dataType="date" [(ngModel)]="obj.value1" [required]="true" [inline]="true"></p-calendar> -->
+          
+          <p-calendar name="value1" [style]="{'width':'45%'}" [required]="true" #value1="ngModel" [(ngModel)]="obj.value1"
+                                dateFormat="mm/dd/yy" dataType="date">
+                            </p-calendar>
+          
+          <!-- <div *ngIf="value1.invalid && (value1.dirty || value1.touched)" class="invalid-feedback">
+            <div *ngIf="value1.errors?.required">
+              Required
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <div class="modal-footer">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!form.valid"
+    >
+      Save Changes
+    </button>
+    <button (click)="closeModal()" type="button" class="btn btn-light-primary fw-bolder mx-2">
+      Cancel
+    </button>
+  </div>
+</form>

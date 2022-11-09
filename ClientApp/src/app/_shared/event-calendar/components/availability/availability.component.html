@@ -1,0 +1,48 @@
+<p-blockUI [blocked]="this.blocked" style="z-index: 999999">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</p-blockUI>
+
+<div id="divAvailabilityCalendarSetMyAvailability" class="proxy_calendar_side_panel">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="text-success">Set My Availability
+
+        <a (click)="hideRightPanel()" style="cursor:pointer" class="float-end align-top text-black proxy_calendar_side_panel_close">
+        <i class="bx bx-x bx-md"></i></a></h4>
+      <div class="">
+        <label for="txbNewEventTimeRangeFrom" class="form-label">Time Range</label>
+        <div class="input-group" style="width: 100%">
+          <p-calendar [timeOnly]="true" [(ngModel)]="fromTime"  (onShow)="setFromTime()" [stepMinute]="stepMinute" style="width: 44%;" hourFormat="12" inputId="timeonly"></p-calendar>
+          <span class="input-group-text" style="width: 12%;">
+            <i class="bx bxs-right-arrow-alt bx-sm"></i></span>
+          <p-calendar [timeOnly]="true" [(ngModel)]="toTime" (onShow)="setToTime()" [stepMinute]="stepMinute" style="width: 44%;" hourFormat="12"  inputId="timeonly"></p-calendar>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mt-4 col-12" >
+          <label for="txbNewEventDateRange" class="form-label">Date Range</label>
+          <div class="input-group">
+            <span style="width: 100%">
+              <p-calendar [style]="{'minWidth':'100%'}"  [(ngModel)]="rangeDates" #dateFilter (onSelect)="onSelect()"  selectionMode="range"  [readonlyInput]="true" inputId="range"></p-calendar>
+          </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mt-4 col-12" >
+          <label for="txbNewEventDateRange" class="form-label">Slot</label>
+          <div class="input-group">
+            <span style="width: 100%">
+              <p-dropdown [options]="durations" [(ngModel)]="selectedDuration" (onChange)="getStepTime()" [style]="{'minWidth':'100%'}" placeholder="Select a Duration" optionLabel="name" [showClear]="true"></p-dropdown>
+          </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4">
+        <button id="btnSetAvailability" type="button" class="btn btn-primary" (click)="setAvailability()">Set Availability</button>
+        <a (click)="cancel()" class="btn btn-secondary cancel ml-1">Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>

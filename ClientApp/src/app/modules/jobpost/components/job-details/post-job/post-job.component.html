@@ -1,0 +1,23 @@
+
+<div class="mb-3"  *ngIf="this.oneWayInterviewTemplateId==0 && campaignType=='Video'">
+    <div class="alert alert-danger" role="alert">You have not defined any OWI template</div>
+</div>
+
+<form [formGroup]="postJobForm" *ngIf="!(this.oneWayInterviewTemplateId==0 && campaignType=='Video')">
+    <div class="mb-3">
+        <label for="txbBudget" class="form-label">Job Post Budget</label>
+        <input type="number" formControlName="budget" name="budget" required class="form-control" placeholder="$">
+    </div>
+    <div class="mb-3">
+        <label for="bs-rangepicker-basic" class="form-label">Job Post Date Range</label>
+        <p-calendar   dateFormat="mm/dd/yy" dataType="string" name="postDates" [showClear]="true" formControlName="postDates" [required]="true" [style]="{'width':'100%'}" appendTo="body"  selectionMode="range" [readonlyInput]="true" inputId="postDates"></p-calendar>
+    </div>
+    <div class="flex text-center">
+        <button (click)="postJob()" [disabled]="postJobForm.invalid" type="button"class="btn btn-primary">
+            Post
+        </button>
+        <button (click)="closeModal()" type="button" class="btn btn-light-primary fw-bolder mx-2">
+            Cancel
+        </button>
+    </div>
+</form>

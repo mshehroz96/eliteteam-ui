@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <h3 class="card-header">Screening Question Categories</h3>
+            <div class="card-body">
+                <div class="vert-scroll-300">
+                    <div class="list-group">
+                        <ng-container *ngFor="let category of categories">
+                            <button type="button" (click)="selectCategory(category)"
+                                [ngClass]="{'active': category.screeningQuestionCategoryId === selectedCategory.screeningQuestionCategoryId}"
+                                class="list-group-item list-group-item-action">
+                                <i class="bx bx-category"></i>
+                                {{category.title}}
+                            </button>
+                        </ng-container>
+                    </div>
+                </div>
+                <button (click)="addCategory()" class="btn btn-sm btn-primary mt-1"><i class="la la-plus"></i> Add
+                    Category</button>
+                <span class="float-end" *ngIf="selectedCategory.screeningQuestionCategoryId>0">
+                    <button (click)="editCategory()" class="btn btn-sm btn-primary mt-1 mr-1"><i
+                            class="bx bxs-pencil"></i></button>
+                    <button (click)="deleteCategory()" class="btn btn-sm btn-primary mt-1"><i
+                            class="bx bx-x"></i></button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8" *ngIf="selectedCategory.screeningQuestionCategoryId>0">
+        <app-screening-questions 
+            [selectedCategory]="selectedCategory" [questions]="this.questions"></app-screening-questions>
+    </div>
+</div>

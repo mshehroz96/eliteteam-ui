@@ -1,0 +1,18 @@
+<div class="main">
+  <ul class="nav nav-pills flex-column flex-md-row mb-3">
+    <!-- Page -->
+    <li class="nav-item ListItem" *ngFor="let menuItem of menuList"
+      (click)="loadTab(menuItem, menuItem.RouteName, $event)">
+      <a href="#" [ngClass]="isActive(menuItem)">
+        <i [ngClass]="menuItem.Icon"></i>
+        {{ menuItem.Name }}
+      </a>
+    </li>
+  </ul>
+  <app-security *ngIf="tabType == 'security'"></app-security>
+  <app-notification-manage [SelfSetting]="selfSetting" *ngIf="tabType == 'notification'" [UserData]="userDetailData"></app-notification-manage>
+  <app-screening-categories *ngIf="tabType == 'settings-screening-questions'"></app-screening-categories>
+  <settings-interview-questions *ngIf="tabType == 'settings-interview-questions'"></settings-interview-questions>
+  <settings-job-titles *ngIf="tabType == 'settings-job-titles'"></settings-job-titles>
+  <shared-settings-personal *ngIf="tabType == 'account'"></shared-settings-personal>
+</div>

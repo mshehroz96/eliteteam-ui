@@ -1,0 +1,177 @@
+<div [appIsLoading]="loadingService.isLoading(this)">
+    <p-card header="Check & Finalize">
+        <p-panel header="Basic Details" styleClass="mb-3">
+            <ng-template pTemplate="icons">
+                <button class="p-panel-header-icon text-primary" (click)="editDetails(0)">
+                    <span class="fa fa-pencil-alt"></span>
+                </button>
+            </ng-template>
+            <div class="mt-2">
+                <label class="fw-bold">
+                    What Is the job title you are hiring for?
+                </label>
+                <label>
+                    <span class="badge bg-label-primary">{{this.requisitionRequest.jobTitle.title}}</span>
+                </label>
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">
+                    Which category best describes this job?
+                </label>
+                <label>
+                    <span class="badge bg-label-primary">{{this.requisitionRequest.jobTitleCategory?.jobCategoryName}}</span>
+                </label>
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">
+                    Job Description
+                </label>
+                <div [innerHtml]="this.requisitionRequest.jobDescription | safeHtml"></div>
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">
+                    Position Requirements
+                </label>
+                <div [innerHtml]="this.requisitionRequest.positionRequirements | safeHtml"></div>
+            </div>
+            <div class="mt-2" *ngIf="this.requisitionRequest.attachmentFileName">
+                <label class="fw-bold">
+                    Attachment
+                </label>
+                <label>
+                    <i class="pi pi-paperclip mr-1"></i>
+                    <a href="{{this.requisitionRequest.attachmentFileName | jobAttachment}}" target="_blank">{{this.requisitionRequest.attachmentOriginalFileName}}</a>
+                </label>
+            </div>
+
+        </p-panel>
+        <p-panel header="Additional Details" styleClass="mb-3">
+            <ng-template pTemplate="icons">
+                <button class="p-panel-header-icon text-primary" (click)="editDetails(1)">
+                    <span class="fa fa-pencil-alt"></span>
+                </button>
+            </ng-template>
+            <div class="mt-2">
+                <label class="fw-bold">
+                    How many hires for this position?
+                </label>
+                <label>
+                    <span class="badge bg-label-primary">{{this.requisitionRequest.noOfPositions.displayText}}</span>
+                </label>
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">
+                    How urgently do you need to make a hire?
+                </label>
+                <label>
+                    <span class="badge bg-label-primary">{{this.requisitionRequest.hiringUrgency.displayText}}</span>
+                </label>
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">
+                    Can this job be performed remotely from home?
+                </label>
+                <label>
+                    <span class="badge bg-label-primary">{{this.requisitionRequest.performRemotely.displayText}}</span>
+                </label>
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">
+                    Will this job primarily be performed?
+                </label>
+                <label>
+                    <span class="badge bg-label-primary">{{this.requisitionRequest.primaryLocation.displayText}}</span>
+                </label>
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">
+                    What type of job is it?
+                </label>
+                <label>
+                    <span class="badge bg-label-primary">{{this.requisitionRequest.jobType.displayText}}</span>
+                </label>
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">
+                    What is the schedule for this job?
+                </label>
+                <label>
+                    <ng-container *ngFor="let schedule of this.requisitionRequest.jobSchedule">
+                        <span class="badge bg-label-primary mr-1">{{schedule.displayText}}</span>
+                    </ng-container>
+                </label>
+            </div>
+
+        </p-panel>
+        <p-panel header="Compensation Details" styleClass="mb-3">
+            <ng-template pTemplate="icons">
+                <button class="p-panel-header-icon text-primary" (click)="editDetails(2)">
+                    <span class="fa fa-pencil-alt"></span>
+                </button>
+            </ng-template>
+            <div class="mt-2">
+                <label class="fw-bold">
+                    Pay
+                </label>
+                <label>
+                    <span class="badge bg-label-primary mr-1">${{this.requisitionRequest.salaryMinimum}} -
+                        ${{this.requisitionRequest.salaryMaximum}}
+                        ({{this.requisitionRequest.payFrequency.displayText}})</span>
+                </label>
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">
+                    Are there any forms of supplemental pay offered?
+                </label>
+                <label>
+                    <ng-container *ngFor="let supplement of this.requisitionRequest.supplementPay">
+                        <span class="badge bg-label-primary mr-1">{{supplement.displayText}}</span>
+                    </ng-container>
+                </label>
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">
+                    What benefits do you offer?
+                </label>
+                <label>
+                    <ng-container *ngFor="let benefit of this.requisitionRequest.benefits">
+                        <span class="badge bg-label-primary mr-1">{{benefit.displayText}}</span>
+                    </ng-container>
+                </label>
+            </div>
+            <div class="mt-2">
+                <label class="fw-bold">
+                    What's the grace period to qualify for benefits?
+                </label>
+                <label>
+                    <span class="badge bg-label-primary mr-1">{{this.requisitionRequest.gracePeriod.displayText}}</span>
+                </label>
+            </div>
+        </p-panel>
+        <p-panel header="Screening Questions" styleClass="mb-3">
+            <ng-template pTemplate="icons">
+                <button class="p-panel-header-icon text-primary" (click)="editDetails(3)">
+                    <span class="fa fa-pencil-alt"></span>
+                </button>
+            </ng-template>
+            <ng-container *ngFor="let question of requisitionRequest.screeningQuestions">
+                <div class="mt-2">
+                    <label class="fw-bold">
+                        {{question.title}}
+                    </label>
+                </div>
+            </ng-container>
+        </p-panel>
+        <ng-template pTemplate="footer">
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-primary btn-prev" (click)="prevPage()">
+                    <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
+                    <span class="d-none d-sm-inline-block align-middle">Previous</span>
+                </button>
+                <button class="btn btn-primary btn-next" (click)="finish()">
+                    <span class="d-none d-sm-inline-block align-middle me-sm-1">Finish</span>
+                </button>
+            </div>
+        </ng-template>
+    </p-card>
+</div>

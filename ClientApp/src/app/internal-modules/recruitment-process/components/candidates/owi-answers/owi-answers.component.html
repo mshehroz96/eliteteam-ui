@@ -1,0 +1,14 @@
+<div class="mb-3" *ngIf="answers && answers.length>0">
+  <h5>One Way Interview Questions</h5>
+  <div class="list-group">
+    <ng-container *ngFor="let answer of answers">
+      <a href="javascript:void(0)" [ngClass]="{'active': answer.oneWayInterviewAnswerId==selected.oneWayInterviewAnswerId}" role="button" (click)="selectAnswer(answer)" class="list-group-item list-group-item-action">
+        {{answer.questionText}}<span class="float-end"><i class="bx bx-play-circle bx-burst-hover"></i></span></a>
+    </ng-container>
+  </div>
+</div>
+<div *ngIf="answers && answers.length==0 && source=='Showcase'">
+  <div class="alert alert-danger">
+      <label>One way interview not available because this candidate came from Showcase</label>
+  </div>
+</div>

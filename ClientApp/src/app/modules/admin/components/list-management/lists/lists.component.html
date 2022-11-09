@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-4">
+    <div class="p-inputgroup">
+        
+        <p-autoComplete 
+          [style]="{'width':'100%'}"
+          [inputStyle]="{'width':'100%'}" 
+          [suggestions]="autoCompleteResults" 
+          (completeMethod)="searchList($event)"
+          [forceSelection]="true"
+          (onSelect)="getLists()"
+          (onClear)="getLists()"
+          field="title"
+          [(ngModel)]="selected"
+          placeholder="Search List/List Items"
+          [minLength]="3"></p-autoComplete>
+        <button type="button" (click)="clearSearch()" class="btn btn-secondary admin-list-search"> <i class="pi pi-times"></i> </button>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <h3 class="card-header">Lists</h3>
+      <div class="card-body">
+        <div class="vert-scroll-300">
+          <div class="list-group">
+            <ng-container *ngFor="let list of lists">
+              <button type="button" (click)="selectList(list)"
+                [ngClass]="{'active': list.listId === selectedList.listId && isClicked}"
+                class="list-group-item list-group-item-action">
+                <!-- incase of isSystemManaged yes then use can not modify item this check is removed and to be added in future -->
+                <!-- *ngIf="list.isSystemManaged" -->
+                <!-- <i class="bx bx-cog" pTooltip="{{list.listId}}" tooltipPosition="top"></i> -->
+                <!-- *ngIf="!list.isSystemManaged" -->
+                <i class="bx bx-list-ul" pTooltip="{{list.listId}}" tooltipPosition="top"></i>
+                <span pTooltip="{{list.description}}" tooltipPosition="top"> {{list.title}}</span>
+              </button>
+            </ng-container>
+          </div>
+        </div>
+        <button (click)="addNewList()" class="btn btn-sm btn-primary mt-1"><i class="la la-plus"></i>Add List</button>
+        <span class="float-end" *ngIf="selectedList.listId>0 && isClicked">
+            <button (click)="editList()" class="btn btn-sm btn-primary mt-1 mr-1"><i
+                    class="bx bxs-pencil"></i></button>
+            <button (click)="deleteList()" class="btn btn-sm btn-primary mt-1"><i
+                    class="bx bx-x"></i></button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8" *ngIf="selectedList.listId>0">
+    <list-items [selectedList]="selectedList" [listItems]="listItems">
+    </list-items>
+  </div>
+</div>

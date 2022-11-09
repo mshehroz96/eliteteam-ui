@@ -1,0 +1,179 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "category_name": "Availability",
+      "questions": [
+        {
+          "answer_options": [
+            "Yes",
+            "No"
+          ],
+          "question_text": "We must fill this position urgently. Can you start immediately?"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "category_name": "Education",
+      "questions": [
+        {
+          "answer_options": [
+            "Diploma",
+            "Bachelors",
+            "Masters",
+            "Doctrate"
+          ],
+          "question_text": "What is your highest educational degree?"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "category_name": "Employment authorization",
+      "questions": [
+        {
+          "answer_options": [
+            "Yes",
+            "No"
+          ],
+          "question_text": "Are you willing to undergo a background check, in accordance with local law/regulations?"
+        },
+        {
+          "answer_options": [
+            "Yes",
+            "No"
+          ],
+          "question_text": "Are you willing to take a drug test, in accordance with local law/regulations?"
+        },
+        {
+          "answer_options": [
+            "Yes",
+            "No"
+          ],
+          "question_text": "Will you now or in the future require sponsorship for employment visa status?"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "category_name": "Licenses & certifications",
+      "questions": [
+        {
+          "answer_options": [
+            "Yes",
+            "No"
+          ],
+          "question_text": "Do you have a valid driver's license?"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "category_name": "Sales",
+      "questions": [
+        {
+          "answer_options": [
+            "Below USD 10000 / month",
+            "Above USD 10000 / month"
+          ],
+          "question_text": "What is your average deal size?"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "category_name": "Skills & knowledge",
+      "questions": [
+        {
+          "answer_options": [
+            "Less than 5 years",
+            "Less than 10 years",
+            "Less than 15 years",
+            "More than 15 years"
+          ],
+          "question_text": "How many years of work experience do you have in this field?"
+        },
+        {
+          "answer_options": [
+            "Excellent",
+            "Average",
+            "Below Average"
+          ],
+          "question_text": "What is your level of proficiency in English?"
+        },
+        {
+          "answer_options": [
+            "Yes",
+            "No"
+          ],
+          "question_text": "Are you able to lift up to 10 kilos without assistance?"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "category_name": "Workplace type",
+      "questions": [
+        {
+          "answer_options": [
+            "Yes",
+            "No"
+          ],
+          "question_text": "Are you comfortable working in a hybrid setting?"
+        },
+        {
+          "answer_options": [
+            "Yes",
+            "No"
+          ],
+          "question_text": "Are you comfortable commuting to this job's location?"
+        },
+        {
+          "answer_options": [
+            "Yes",
+            "No"
+          ],
+          "question_text": "Are you comfortable working in an onsite setting?"
+        },
+        {
+          "answer_options": [
+            "Yes",
+            "No"
+          ],
+          "question_text": "Are you comfortable working in a remote setting?"
+        },
+        {
+          "answer_options": [
+            "Yes",
+            "No"
+          ],
+          "question_text": "Are you comfortable take periodic nasal COVID-19 tests?"
+        },
+        {
+          "answer_options": [
+            "Yes",
+            "No"
+          ],
+          "question_text": "Are you comfortable take periodic oral COVID-19 tests?"
+        },
+        {
+          "answer_options": [
+            "Yes",
+            "No"
+          ],
+          "question_text": "Are you ok if you are offered a rotating desk position in the office?"
+        }
+      ]
+    },
+    {
+      "id": 1000,
+      "category_name": "Custom Question",
+      "questions": [
+        {
+          "question_text": "[CUSTOM]"
+        }
+      ]
+    }
+  ]
+}

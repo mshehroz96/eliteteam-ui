@@ -1,0 +1,20 @@
+
+<p-toast></p-toast>
+<p-toast key="msg" styleClass="mt-5" position="top-right" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message" >
+        <div class="row">
+            <div class="col-1">
+                <img class="h-auto rounded-circle w-px-40" src="{{message.data.avatar | avatar}}" />
+            </div>
+            <div class="col-11">
+                <div class="row ml-4">
+                    <div class="col-12">
+                            <strong>{{message.summary}}</strong>
+                            <p>{{message.detail}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>
+<router-outlet></router-outlet>

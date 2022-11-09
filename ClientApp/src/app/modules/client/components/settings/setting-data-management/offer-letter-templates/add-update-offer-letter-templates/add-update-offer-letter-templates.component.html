@@ -1,0 +1,36 @@
+<form #form="ngForm" (ngSubmit)="saveUpdateTemplate()">
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+          <label class="form-label d-block">Title:</label>
+          <input [ngModelOptions]="{ standalone: true }" class="form-control" #title="ngModel" name="title" [(ngModel)]="obj.title" />
+          <div *ngIf="title.invalid && (title.dirty || title.touched)"
+              class="invalid-feedback">
+              <div *ngIf="title.errors?.required">
+                  Required
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-6">
+    <div class="form-group">
+        <label class="form-label d-block">
+            Status:
+        </label>
+        <p-dropdown [ngModelOptions]="{ standalone: true }"  placeholder="--Select--" [options]="recordStatus" [style]="{'width':'100%'}" name="selectedType"
+         [(ngModel)]="obj.recordStatusLIID" optionValue="value" name="recordStatusLIID"
+            optionLabel="displayText" [virtualScroll]="true" virtualScrollItemSize="30" ></p-dropdown>
+    </div>
+</div>
+  <p-editor [ngModelOptions]="{ standalone: true }" [style]="{'height':'120px'}" [(ngModel)]="obj.body"></p-editor>
+  </div>
+  <br>
+  <div class="flex text-center">
+      <button type="submit" [disabled]="!form.valid" class="btn btn-primary">
+          Save
+      </button>
+      <button (click)="closeModal()" type="button" class="btn btn-light-primary fw-bolder mx-2">
+          Cancel
+      </button>
+  </div>
+</form>

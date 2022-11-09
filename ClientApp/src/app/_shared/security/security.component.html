@@ -1,0 +1,226 @@
+
+<div class="card mb-4">
+  <h5 class="card-header">Change Password</h5>
+  <div class="card-body">
+    <form
+      [formGroup]="UserForm"
+      (ngSubmit)="saveData()"
+      class="fv-plugins-bootstrap5 fv-plugins-framework"
+    >
+      <div class="alert alert-warning" role="alert">
+        <h6 class="alert-heading fw-bold mb-1">
+          Ensure that these requirements are met
+        </h6>
+        <span>Minimum 8 characters long, uppercase &amp; symbol</span>
+      </div>
+      <div class="row">
+        <div
+          class="form-password-toggle col-md-6 mb-3 fv-plugins-icon-container fv-plugins-bootstrap5-row-valid"
+        >
+          <label class="form-label" for="currentPassword"
+            >Current Password</label
+          >
+          <div class="input-group input-group-merge has-validation">
+            <input
+              class="form-control"
+              type="password"
+              name="currentPassword"
+              placeholder="············"
+              formControlName="currentPassword"
+            />
+            <span class="input-group-text cursor-pointer"
+              ><i class="bx bx-hide"></i
+            ></span>
+          </div>
+          <div
+            class="fv-plugins-message-container invalid-feedback"
+          ></div>
+        </div>
+      </div>
+      <div class="row">
+        <div
+          class="form-password-toggle col-md-6 mb-3 fv-plugins-icon-container fv-plugins-bootstrap5-row-valid"
+        >
+          <label class="form-label" for="newPassword">New Password</label>
+          <div class="input-group input-group-merge has-validation">
+            <input
+              class="form-control"
+              type="password"
+              name="password"
+              placeholder="············"
+              formControlName="password"
+            />
+            <span class="input-group-text cursor-pointer"
+              ><i class="bx bx-hide"></i
+            ></span>
+            <div
+              *ngIf="PasswordValidator.password.errors"
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="PasswordValidator.password.errors != null"
+              >
+                Minimum 8 characters are required.
+              </div>
+            </div>
+          </div>
+          <div
+            class="fv-plugins-message-container invalid-feedback"
+          ></div>
+        </div>
+
+        <div
+          class="form-password-toggle col-md-6 mb-3 fv-plugins-icon-container fv-plugins-bootstrap5-row-valid"
+        >
+          <label class="form-label" for="confirmPassword"
+            >Confirm New Password</label
+          >
+          <div class="input-group input-group-merge has-validation">
+            <input
+              class="form-control"
+              type="password"
+              name="confirmPassword"
+              placeholder="············"
+              formControlName="confirmPassword"
+            />
+            <span class="input-group-text cursor-pointer"
+              ><i class="bx bx-hide"></i
+            ></span>
+            <div
+              *ngIf="passwordMatchError"
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="PasswordValidator.confirmPassword.errors?.required"
+              >
+                Confirm Password is required
+              </div>
+              <div *ngIf="passwordMatchError">
+                Password and confirm Password not match
+              </div>
+            </div>
+          </div>
+          <div
+            class="fv-plugins-message-container invalid-feedback"
+          ></div>
+        </div>
+        <div class="col-12 mb-4">
+          <p class="fw-semibold mt-2">Password Requirements:</p>
+          <ul class="ps-3 mb-0">
+            <li class="mb-1">
+              Minimum 8 characters long - the more, the better
+            </li>
+            <li class="mb-1">At least one lowercase character</li>
+            <li>At least one number, symbol, or whitespace character</li>
+          </ul>
+        </div>
+        <div class="col-12 mt-1">
+          <button type="submit" class="btn btn-primary me-2">
+            Save changes
+          </button>
+          <button type="reset" class="btn btn-label-secondary">
+            Cancel
+          </button>
+        </div>
+      </div>
+      <div></div>
+      <input type="hidden" />
+    </form>
+  </div>
+</div>
+<!--/ Change Password -->
+
+<!-- Two-steps verification -->
+<div class="card mb-4">
+  <h5 class="card-header">Two-steps verification</h5>
+  <div class="card-body">
+    <p class="fw-semibold mb-3">
+      Two factor authentication is not enabled yet.
+    </p>
+    <p class="w-75">
+      Two-factor authentication adds an additional layer of security to
+      your account by requiring more than just a password to log in.
+      <a href="javascript:void(0);">Learn more.</a>
+    </p>
+    <button
+      class="btn btn-primary mt-2"
+      data-bs-toggle="modal"
+      data-bs-target="#enableOTP"
+    >
+      Enable two-factor authentication
+    </button>
+  </div>
+</div>
+
+<div class="card mb-4">
+  <h5 class="card-header">Recent Devices</h5>
+  <app-user-recent-login-activity [userId]="userId"></app-user-recent-login-activity>
+</div>
+
+<!-- Modal -->
+<!-- Enable OTP Modal -->
+<div class="modal fade" id="enableOTP" tabindex="-1" aria-hidden="true">
+  <div
+    class="modal-dialog modal-simple modal-enable-otp modal-dialog-centered"
+  >
+    <div class="modal-content p-3 p-md-5">
+      <div class="modal-body">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+        <div class="text-center mb-4">
+          <h3 class="mb-5">Enable One Time Password</h3>
+        </div>
+        <h6>Verify Your Mobile Number for SMS</h6>
+        <p>
+          Enter your mobile phone number with country code and we will
+          send you a verification code.
+        </p>
+        <form
+          id="enableOTPForm"
+          class="row g-3 fv-plugins-bootstrap5 fv-plugins-framework"
+          onsubmit="return false"
+          novalidate="novalidate"
+        >
+          <div class="col-12 fv-plugins-icon-container">
+            <label class="form-label" for="modalEnableOTPPhone"
+              >Phone Number</label
+            >
+            <div class="input-group input-group-merge has-validation">
+              <span class="input-group-text">+1</span>
+              <input
+                type="text"
+                id="modalEnableOTPPhone"
+                name="modalEnableOTPPhone"
+                class="form-control phone-number-otp-mask"
+                placeholder="202 555 0111"
+              />
+            </div>
+            <div
+              class="fv-plugins-message-container invalid-feedback"
+            ></div>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary me-1 me-sm-3">
+              Submit
+            </button>
+            <button
+              type="reset"
+              class="btn btn-label-secondary"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              Cancel
+            </button>
+          </div>
+          <div></div>
+          <input type="hidden" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/ Enable OTP Modal -->

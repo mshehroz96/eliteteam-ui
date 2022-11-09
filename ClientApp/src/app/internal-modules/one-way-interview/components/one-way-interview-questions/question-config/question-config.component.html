@@ -1,0 +1,28 @@
+<div>
+    <label class="form-label">Time Limit</label>
+    <select class="form-select form-select-sm" [(ngModel)]="question.timeAllowed">
+        <option value="00:01:00">1 min.</option>
+        <option value="00:02:00">2 mins.</option>
+        <option value="00:03:00">3 mins.</option>
+    </select>
+</div>
+<div>
+    <label class="form-label">Allowed Retakes</label>
+    <select class="form-select form-select-sm"  [(ngModel)]="question.retakesAllowed">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+</div>
+<div>
+    <label class="form-label">Think Time</label>
+    <select class="form-select form-select-sm" [(ngModel)]="question.thinkTimeAllowed">
+        <option value="00:01:00">1 min.</option>
+        <option value="00:02:00">2 mins.</option>
+        <option value="00:03:00">3 mins.</option>
+    </select>
+</div>
+<div class="d-flex justify-content-between mt-2">
+    <button (click)="saveConfig(false)" type="button" class="btn btn-sm btn-primary">Apply</button>
+    <button (click)="saveConfig(true)" type="button" class="btn btn-sm btn-label-secondary">Apply All</button>
+</div>

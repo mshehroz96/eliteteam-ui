@@ -1,0 +1,85 @@
+<p-card header="Screening Questions" 
+subheader="Ask questions from candidates to screen & filter the right ones">
+    <p-panel header="Questions Library">
+        <div class="question-caterogies">
+            <ng-container *ngFor="let category of questionCategories">
+                <button type="button" (click)="getQuestionsByCategoryId(category)"
+                    class="btn btn-label-secondary mt-2 ml-1">{{category.title}}</button>
+            </ng-container>
+        </div>
+
+        <div class="questions-list mt-2" *ngIf="questions.length>0">
+            <ul class="list-group" *ngFor="let question of questions">
+                <li class="list-group-item mt-1 d-flex justify-content-between align-items-center">
+                    
+                    <input  *ngIf="question.screeningQuestionId<0" type="text" style="width: 90% !important;" [(ngModel)]="question.title" class="form-control" placeholder="Enter your custom question here" />
+                    <span *ngIf="question.screeningQuestionId>0">{{question.title}}</span>
+                    <span *ngIf="!isAdded(question)">
+                        <button (click)="addQuestion(question)"
+                            class="btn btn-primary btn-sm proxy_add_screening_question">
+                            <i class="fa fa-plus"></i> Add Question
+                        </button>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </p-panel>
+    <p-panel *ngIf="requisitionRequest.screeningQuestions && requisitionRequest.screeningQuestions.length>0"  styleClass="mt-3">
+        <ng-template pTemplate="header">
+            Selected Questions <span class="ml-2 badge bg-primary">{{requisitionRequest.screeningQuestions.length}}</span>
+        </ng-template>
+        <div class="row g-2">
+            <div class="col-6" *ngFor="let question of requisitionRequest.screeningQuestions">
+                <div class="card shadow-none bg-transparent border border-primary">
+                    <div class="card-body">
+                        <span class="d-flex flex-column">
+                            <span class="d-flex flex-row justify-content-between">
+                                <h5 class="text-wrap">{{question.title}}</h5>
+                                <button (click)="removeQuestion(question)" class="btn rounded-pill btn-icon btn-xs btn-outline-secondary"><i class="bx bx-x"></i></button>
+                            </span>
+                            <span *ngIf="question.options.length>0">
+                                <ul class="list-group list-group-sm">
+                                    <li class="list-group-item" *ngFor="let option of question.options">
+                                        <div class="d-flex flex-row justify-content-between" *ngIf="option.screeningQuestionOptionId>0">
+                                            <span>{{option.title}}</span>
+                                            <span class="d-flex flex-row justify-content-between">
+                                                <span class="form-check form-check-success me-3"> <input name="default{{option.screeningQuestionOptionId}}"
+                                                        [(ngModel)]="option.autoEvaluationResult" class="form-check-input" type="radio" value="Preferred">
+                                                    <label class="form-check-label" for="default{{option.screeningQuestionOptionId}}">
+                                                        Preferred
+                                                    </label> </span> <span class="form-check form-check-secondary me-3">
+                                                    <input name="default{{option.screeningQuestionOptionId}}" [(ngModel)]="option.autoEvaluationResult"
+                                                        class="form-check-input" type="radio" value="Neutral" checked="">
+                                                    <label class="form-check-label" for="default{{option.screeningQuestionOptionId}}">
+                                                        Neutral
+                                                    </label> </span> <span class="form-check form-check-danger"> <input
+                                                        name="default{{option.screeningQuestionOptionId}}" [(ngModel)]="option.autoEvaluationResult"
+                                                        class="form-check-input" type="radio" value="Breaker">
+                                                    <label class="form-check-label" for="default{{option.screeningQuestionOptionId}}"> Deal
+                                                        Breaker </label>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-panel>
+
+    <ng-template pTemplate="footer">
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-primary btn-prev" (click)="prevPage()">
+                <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
+                <span class="d-none d-sm-inline-block align-middle">Previous</span>
+            </button>
+            <button class="btn btn-primary btn-next" (click)="nextPage()">
+                <span class="d-none d-sm-inline-block align-middle me-sm-1">Next</span>
+                <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
+            </button>
+        </div>
+    </ng-template>
+</p-card>

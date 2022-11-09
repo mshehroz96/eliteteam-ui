@@ -1,0 +1,51 @@
+<p-table #dtJob [value]="requisitions" [lazy]="true"
+              (onLazyLoad)="getJobDetails($event)" responsiveLayout="scroll" dataKey="requisitionId"
+              styleClass="p-datatable-strip"
+              [loading]="loading" 
+              [globalFilterFields]="['requisitionId']">
+
+              <ng-template pTemplate="header">
+                <tr>
+                  <th></th>
+                  <th>Job Title</th>
+                  <th class="">Recruiters (Assigned Jobs)</th>
+                </tr>
+              </ng-template>
+
+
+              <ng-template pTemplate="body" let-requisition>
+                <tr>
+                  <td>
+                    <input type="checkbox" [disabled]="true" name="selected" [(ngModel)]="requisition.selected" />
+                  </td>
+                  <td>
+                    <div class="d-flex flex-row gap-2">
+                    <i class="bx bxs-video" *ngIf="requisition.campaignType=='Video'"></i>
+                    <i class="bx bxs-calendar" *ngIf="requisition.campaignType=='Interview'"></i>
+                    <i class="bx bxs-detail" *ngIf="requisition.campaignType=='Resume'"></i>
+                      <div class="d-flex flex-column">
+                        <a href="javascript:void(0)">{{requisition.title}}</a>
+                        <span class="small text-muted">{{requisition.jobCategoryName}} | <span class="text-warning"><i
+                              class='pi pi-user bx-xs'></i> x {{requisition.profilesRequired}}</span> </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p-multiSelect display="chip" [style]="{'minWidth': '18rem' , 'height':' 2.8rem'}" name="recruiters" 
+                      placeholder="Not Selected Yet" appendTo="body" (onChange)="setRecruiters($event,requisition)" [(ngModel)]="requisition.recruiters" [options]="recruiters"
+                      optionLabel="recruiter"></p-multiSelect>
+                  </td>
+                </tr>
+
+              </ng-template>
+              <ng-template pTemplate="footer">
+                <tr>
+                  <th colspan="10">
+                      <div class="float-right mt-3">
+                        <p-button (onClick)="saveReq(requisitions)" type="button">Save Changes</p-button>
+                      </div>
+                  </th>
+                </tr>
+              </ng-template>
+
+            </p-table>

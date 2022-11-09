@@ -1,0 +1,61 @@
+<div [appIsLoading]="loadingService.isLoading(this)">
+  <form [appFocusInvalid]="UserForm" [formGroup]="UserForm" (ngSubmit)="saveData()">
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label class="form-label">Degree:</label>
+        <input autofocus class="form-control" [(ngModel)]="obj.degree"
+        formControlName="degree" name="degree"   required />
+    </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label class="form-label">School:</label>
+        <input  class="form-control" [(ngModel)]="obj.school"
+        formControlName="school" name="school"   required />
+    </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label class="form-label">Location:</label>
+        <input  class="form-control" [(ngModel)]="obj.location"
+        formControlName="location" name="location"   required />
+    </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label class="form-label">From Date:</label> 
+        <!-- <p-calendar appendTo="body" name="fromDate" [style]="{'width':'100%'}" [required]="true"  [(ngModel)]="obj.fromDate"
+        formControlName="fromDate"      dateFormat="mm/dd/yy" dataType="date">
+        </p-calendar> -->
+        <input  class="form-control" [(ngModel)]="obj.fromDate"
+        formControlName="fromDate" name="fromDate"   required />
+    </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+          <label class="form-label">To Date:</label> 
+          <!-- <p-calendar appendTo="body" name="toDate" [style]="{'width':'100%'}" [required]="true" [(ngModel)]="obj.toDate"
+              formControlName="toDate"  dateFormat="mm/dd/yy" dataType="date">
+          </p-calendar> -->
+          <input  class="form-control" [(ngModel)]="obj.toDate"
+          formControlName="toDate" name="toDate"   required />
+      </div>
+    </div>
+  </div>
+    <div class="row mt-3">
+      <div class="col-sm-12 text-center">
+        <button type="submit"   [disabled]="UserForm.invalid"   class="btn btn-primary">Save</button>
+        &nbsp;&nbsp;
+        <a role="button"  class="btn btn-label-secondary" (click)="Cancel()">Cancel</a>
+      </div>
+    </div>
+    
+  </form>
+</div>
+
+

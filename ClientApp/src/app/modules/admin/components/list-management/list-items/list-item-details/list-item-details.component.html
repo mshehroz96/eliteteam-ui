@@ -1,0 +1,34 @@
+<form #form="ngForm" (ngSubmit)="saveListItem()">
+    <div class="mb-3">
+        <div class="form-group">
+          <label class="form-label d-block">Title:</label>
+          <input class="form-control"  #title="ngModel" name="title" [(ngModel)]="listItem.title" required/>
+          <div *ngIf="title.invalid && (title.dirty || title.touched)" class="invalid-feedback">
+            <div *ngIf="title.errors?.required">
+              Required
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label d-block">Description:</label>
+          <input class="form-control" name="description" [(ngModel)]="listItem.description" />
+        </div>
+        <div class="form-group">
+          <label class="form-label d-block">Order No:</label>
+          <input class="form-control" #orderNo="ngModel" name="orderNo" [(ngModel)]="listItem.orderNo" required/>
+          <div *ngIf="orderNo.invalid && (orderNo.dirty || orderNo.touched)" class="invalid-feedback">
+            <div *ngIf="orderNo.errors?.required">
+              Required
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="flex text-center">
+      <button type="submit" [disabled]="!form.valid" class="btn btn-primary">
+        Save
+      </button>
+      <button (click)="closeModal()" type="button" class="btn btn-light-primary fw-bolder mx-2">
+        Cancel
+      </button>
+    </div>
+  </form>

@@ -1,0 +1,361 @@
+{
+  "data": [
+    {
+      "id": 1,      
+      "showcase_name": "Default Showcase",
+      "Number_of_Candidate": "2",
+      "Expiry_Date": "11-Jan-2022 12:11:15",
+      "Showcased_by": "Joe Due",     
+      "last_activity": "1 day ago"  ,
+      "status": 1,
+      "Candidates": [
+        {
+          "id": 11,
+          "job_name": "Network Engineer",
+          "candidate_name": "Chelsea Dina",
+          "candidate_internal_status": "Locked",
+          "candidate_status": "New",
+          "candidate_sort": 1,
+          "candidate_result": "Undecided",
+          "showcase_name": "Default Showcase",
+          "profile_expiry": "71 Hours Left",
+          "candidate_picture": "12.png",
+          "resume": "resume123332.pdf",
+          "interviews": [
+            {
+              "interview_type": "Online",
+              "interview_due_date": "12-Jan-2022 12:11:15",
+              "interview_scheduled_date": "11-Jan-2022 12:11:15",
+              "interview_completed_date": "15-Jan-2022 12:11:15",
+              "interview_status": "Completed",
+              "interview_link": "http://mylink.com/sjaj231",
+              "interview_rating_team": 3,
+              "interview_rating_my": 2,
+              "interview_commments": [
+                {
+                  "comment_by": "John Doe",
+                  "commented_on": "12-Jan-2022 12:11:15",
+                  "comment_text": "I think this guy is good"
+                },
+                {
+                  "comment_by": "Jane Finnicky",
+                  "commented_on": "13-Jan-2022 12:11:15",
+                  "comment_text": "Nice interview!"
+                }
+              ],
+              "interview_questions": [
+                {
+                  "question_id": 11,
+                  "order_no": 1,
+                  "question_text": "Where do you see yourself in next 5 years?",
+                  "response_video_link": "Response34782121.webm",
+                  "rating_my": 4
+                },
+                {
+                  "question_id": 12,
+                  "order_no": 2,
+                  "question_text": "What is your motivation?",
+                  "response_video_link": "Response34782122.webm",
+                  "rating_my": "3.5"
+                },
+                {
+                  "question_id": 13,
+                  "order_no": 3,
+                  "question_text": "What is your education?",
+                  "response_video_link": "Response34782123.webm",
+                  "rating_my": "3"
+                },
+                {
+                  "question_id": 14,
+                  "order_no": 4,
+                  "question_text": "What is your experience?",
+                  "response_video_link": "Response34782124.webm",
+                  "rating_my": "5"
+                }
+              ]
+            }
+          ]
+        },    
+        {
+          "id": 12,
+          "job_name": "Network Engineer",
+          "candidate_name": "Mark Obama",
+          "candidate_internal_status": "Locked",
+          "candidate_status": "New",
+          "candidate_sort": 1,
+          "candidate_result": "Undecided",
+          "showcase_name": "Default Showcase",
+          "profile_expiry": "71 Hours Left",
+          "candidate_picture": "17.png",
+          "resume": "resume123332.pdf",
+          "interviews": [
+            {
+              "interview_type": "Online",
+              "interview_due_date": "12-Jan-2022 12:11:15",
+              "interview_scheduled_date": "11-Jan-2022 12:11:15",
+              "interview_completed_date": "15-Jan-2022 12:11:15",
+              "interview_status": "Completed",
+              "interview_link": "http://mylink.com/sjaj231",
+              "interview_rating_team": 3,
+              "interview_rating_my": 2,
+              "interview_commments": [
+                {
+                  "comment_by": "John Doe",
+                  "commented_on": "12-Jan-2022 12:11:15",
+                  "comment_text": "I think this guy is good"
+                },
+                {
+                  "comment_by": "Jane Finnicky",
+                  "commented_on": "13-Jan-2022 12:11:15",
+                  "comment_text": "Nice interview!"
+                }
+              ],
+              "interview_questions": [
+                {
+                  "question_id": 11,
+                  "order_no": 1,
+                  "question_text": "Where do you see yourself in next 5 years?",
+                  "response_video_link": "Response34782121.webm",
+                  "rating_my": 4
+                },
+                {
+                  "question_id": 12,
+                  "order_no": 2,
+                  "question_text": "What is your motivation?",
+                  "response_video_link": "Response34782122.webm",
+                  "rating_my": "3.5"
+                },
+                {
+                  "question_id": 13,
+                  "order_no": 3,
+                  "question_text": "What is your education?",
+                  "response_video_link": "Response34782123.webm",
+                  "rating_my": "3"
+                },
+                {
+                  "question_id": 14,
+                  "order_no": 4,
+                  "question_text": "What is your experience?",
+                  "response_video_link": "Response34782124.webm",
+                  "rating_my": "5"
+                }
+              ]
+            }
+          ]
+        }   
+      ]
+    },
+    {
+        "id": 2,      
+        "showcase_name": "Recommended Registered Nurses",
+        "Number_of_Candidate": "3",
+        "Expiry_Date": "11-Jan-2022 12:11:15",
+        "Showcased_by": "Joe Due",     
+        "last_activity": "1 day ago"  ,
+        "status": 1,
+        "Candidates": [
+          {
+            "id": 8,
+            "job_name": "Registered Nurse",
+            "candidate_name": "Bryan Adams",
+            "candidate_internal_status": "Locked",
+            "candidate_status": "New",
+            "candidate_sort": 1,
+            "candidate_result": "Undecided",
+            "showcase_name": "XXX",
+            "profile_expiry": "24 Hours Left",
+            "candidate_picture": "19.png",
+            "resume": "resume123334.pdf",
+            "interviews": [
+              {
+                "interview_type": "Zoom",
+                "interview_due_date": "12-Jan-2022 12:11:15",
+                "interview_scheduled_date": "-",
+                "interview_completed_date": "-",
+                "interview_status": "",
+                "interview_link": "http://mylink.com/sjaj231",
+                "interview_rating_team": -1,
+                "interview_rating_my": 4,
+                "interview_commments": [
+                  {
+                    "comment_by": "John Doe",
+                    "commented_on": "12-Jan-2022 12:11:15",
+                    "comment_text": "I think this guy is good"
+                  },
+                  {
+                    "comment_by": "Jane Finnicky",
+                    "commented_on": "13-Jan-2022 12:11:15",
+                    "comment_text": "Nice interview!"
+                  }
+                ],
+                "interview_questions": [
+                  {
+                    "question_id": 11,
+                    "order_no": 1,
+                    "question_text": "Where do you see yourself in next 5 years?",
+                    "response_video_link": "Response34782121.webm",
+                    "rating_my": 4
+                  },
+                  {
+                    "question_id": 12,
+                    "order_no": 2,
+                    "question_text": "What is your motivation?",
+                    "response_video_link": "Response34782122.webm",
+                    "rating_my": "3.5"
+                  },
+                  {
+                    "question_id": 13,
+                    "order_no": 3,
+                    "question_text": "What is your education?",
+                    "response_video_link": "Response34782123.webm",
+                    "rating_my": "3"
+                  },
+                  {
+                    "question_id": 14,
+                    "order_no": 4,
+                    "question_text": "What is your experience?",
+                    "response_video_link": "Response34782124.webm",
+                    "rating_my": "5"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": 9,
+            "job_name": "Registered Nurse",
+            "candidate_name": "Dorothy Dunkin",
+            "candidate_internal_status": "Locked",
+            "candidate_status": "New",
+            "candidate_sort": 1,
+            "candidate_result": "Undecided",
+            "showcase_name": "XXX",
+            "profile_expiry": "22 Hours Left",
+            "candidate_picture": "16.png",
+            "resume": "resume123334.pdf",
+            "interviews": [
+              {
+                "interview_type": "Zoom",
+                "interview_due_date": "12-Jan-2022 12:11:15",
+                "interview_scheduled_date": "-",
+                "interview_completed_date": "-",
+                "interview_status": "",
+                "interview_link": "http://mylink.com/sjaj231",
+                "interview_rating_team": -1,
+                "interview_rating_my": 4,
+                "interview_commments": [
+                  {
+                    "comment_by": "John Doe",
+                    "commented_on": "12-Jan-2022 12:11:15",
+                    "comment_text": "I think this guy is good"
+                  },
+                  {
+                    "comment_by": "Jane Finnicky",
+                    "commented_on": "13-Jan-2022 12:11:15",
+                    "comment_text": "Nice interview!"
+                  }
+                ],
+                "interview_questions": [
+                  {
+                    "question_id": 11,
+                    "order_no": 1,
+                    "question_text": "Where do you see yourself in next 5 years?",
+                    "response_video_link": "Response34782121.webm",
+                    "rating_my": 4
+                  },
+                  {
+                    "question_id": 12,
+                    "order_no": 2,
+                    "question_text": "What is your motivation?",
+                    "response_video_link": "Response34782122.webm",
+                    "rating_my": "3.5"
+                  },
+                  {
+                    "question_id": 13,
+                    "order_no": 3,
+                    "question_text": "What is your education?",
+                    "response_video_link": "Response34782123.webm",
+                    "rating_my": "3"
+                  },
+                  {
+                    "question_id": 14,
+                    "order_no": 4,
+                    "question_text": "What is your experience?",
+                    "response_video_link": "Response34782124.webm",
+                    "rating_my": "5"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": 10,
+            "job_name": "Registered Nurse",
+            "candidate_name": "Richard Campbell",
+            "candidate_internal_status": "Locked",
+            "candidate_status": "New",
+            "candidate_sort": 1,
+            "candidate_result": "Undecided",
+            "showcase_name": "XXX",
+            "profile_expiry": "24 Hours Left",
+            "candidate_picture": "13.png",
+            "resume": "resume123334.pdf",
+            "interviews": [
+              {
+                "interview_type": "Zoom",
+                "interview_due_date": "12-Jan-2022 12:11:15",
+                "interview_scheduled_date": "-",
+                "interview_completed_date": "-",
+                "interview_status": "",
+                "interview_link": "http://mylink.com/sjaj231",
+                "interview_rating_team": -1,
+                "interview_rating_my": 4,
+                "interview_commments": [
+                  {
+                    "comment_by": "John Doe",
+                    "commented_on": "12-Jan-2022 12:11:15",
+                    "comment_text": "I think this guy is good"
+                  },
+                  {
+                    "comment_by": "Jane Finnicky",
+                    "commented_on": "13-Jan-2022 12:11:15",
+                    "comment_text": "Nice interview!"
+                  }
+                ],
+                "interview_questions": [
+                  {
+                    "question_id": 11,
+                    "order_no": 1,
+                    "question_text": "Where do you see yourself in next 5 years?",
+                    "response_video_link": "Response34782121.webm",
+                    "rating_my": 4
+                  },
+                  {
+                    "question_id": 12,
+                    "order_no": 2,
+                    "question_text": "What is your motivation?",
+                    "response_video_link": "Response34782122.webm",
+                    "rating_my": "3.5"
+                  },
+                  {
+                    "question_id": 13,
+                    "order_no": 3,
+                    "question_text": "What is your education?",
+                    "response_video_link": "Response34782123.webm",
+                    "rating_my": "3"
+                  },
+                  {
+                    "question_id": 14,
+                    "order_no": 4,
+                    "question_text": "What is your experience?",
+                    "response_video_link": "Response34782124.webm",
+                    "rating_my": "5"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+  ]
+}

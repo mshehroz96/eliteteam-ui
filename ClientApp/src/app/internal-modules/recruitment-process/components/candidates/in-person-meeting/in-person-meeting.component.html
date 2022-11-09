@@ -1,0 +1,151 @@
+<div [appIsLoading]="loadingService.isLoading(this)">
+  <div class="row mb-2" *ngIf="interview && interview.interviewStatus=='Scheduled'">
+    <button (click)="updateInterviewStatus('Complete-In-Person')" class="btn btn-primary mr-1 float-end"><i
+        class="fa fa-calendar"></i>
+      Complete Interview</button>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="mx-auto" style="vertical-align:middle;"> <img src="{{candidate.avatarFileName|avatar}}"
+                  alt="Candidate Picture" class="w-px-100 rounded-circle"> <span
+                  style="display:inline-block;padding-left:10px;vertical-align:middle;"> <span
+                    style="font-size:25px;display:inline-block;"><span>{{candidate.firstName}}
+                      {{candidate.lastName}}</span></span>
+                  <span
+                    style="font-size:15px;display:block;">{{this.applicantProfileData.requisitionDetails.jobTitle.title}}</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item card mt-3">
+        <h2 class="accordion-header d-flex align-items-center">
+          <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionWithIcon-2"
+            aria-expanded="false">
+            <i class="bx bx-calendar me-2"></i>
+            Interview Details
+          </button>
+        </h2>
+        <div id="accordionWithIcon-2" class="accordion-collapse collapse">
+          <div class="accordion-body">
+            <table class="table" *ngIf="interview">
+              <tbody>
+                <tr>
+                  <th style="background-color: #eeeeee;">Interview Type</th>
+                  <td>
+                    {{interview.interviewType}} Interview
+                  </td>
+                </tr>
+                <tr>
+                  <th style="background-color: #eeeeee;">
+                    Interview Date/Time
+                  </th>
+                  <td>
+                    {{interview.interviewDateTime | customDateTime}}
+                  </td>
+                </tr>
+                <tr>
+                  <th style="background-color: #eeeeee;">
+                    Interview Status
+                  </th>
+                  <td>
+                    {{interview.interviewStatus}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="col-7">
+      <div id="divMyInterviewRatingAndFeedback" class="card accordion-item mb-3">
+        <h2 class="accordion-header d-flex">
+          <button type="button" class="accordion-button" data-bs-toggle="collapse"
+            data-bs-target="#divTargetInterviewRatingAndFeedback" aria-expanded="true">
+            <i class="fa fa-star"></i> &nbsp;My Rating
+          </button>
+        </h2>
+        <div id="divTargetInterviewRatingAndFeedback" class="accordion-collapse collapse show"
+          data-bs-parent="#divAccordian">
+          <div class="accordion-body">
+            <table id="divRatingsDetail" class="table table-bordered">
+              <thead>
+                <tr>
+                  <th style="background-color: #eeeeee;" width="60%">Competency</th>
+                  <th style="background-color: #eeeeee;" width="40%">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let competency of interviewFeedBack.competencyRating">
+                  <ng-container>
+                    <td>{{competency.title}}</td>
+                    <td>
+                      <p-rating [cancel]="false" [readonly]="submitted" [(ngModel)]="competency.rating"></p-rating>
+                    </td>
+                  </ng-container>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="2" *ngIf="!submitted">
+                    <textarea class="form-control" [(ngModel)]="interviewFeedBack.comment" rows="3"
+                      placeholder="Interviewer's Feedback"></textarea>
+                  </td>
+                  <td colspan="2" *ngIf="submitted">
+                    <p>{{interviewFeedBack.comment}}</p>
+                  </td>
+                </tr>
+                <tr *ngIf="!submitted">
+                  <td colspan="2">
+                    <button type="button" (click)="saveInterviewFeedback()"
+                      [disabled]="interviewFeedBack.comment.length==0" class="btn btn-primary"><i class="la la-check"></i>
+                      Submit</button>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div id="divAccordianViewResume" class="card accordion-item mb-3">
+        <h2 class="accordion-header d-flex" id="headingOne">
+          <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+            data-bs-target="#divAccordian1" aria-expanded="false">
+            <i class="fa fa-file-pdf"></i> &nbsp;Resume
+          </button>
+        </h2>
+        <div id="divAccordian1" class="accordion-collapse collapse" data-bs-parent="#divAccordian">
+          <div class="accordion-body">
+            <a href="javascript:void(0)" target="_blank" class="btn btn-sm btn-outline-secondary">
+              <i class="fa fa-window-restore"></i> Open in New Window</a>
+              <embed #embResume class="p-1" type="application/pdf" width="100%" height="375">
+          </div>
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="card accordion-item mb-3">
+          <h2 class="accordion-header" id="headingOne">
+            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+              data-bs-target="#divAccordian2" aria-expanded="false">
+              <i class="fa fa-briefcase"></i> &nbsp;Job Details
+            </button>
+          </h2>
+          <div id="divAccordian2" class="accordion-collapse collapse" data-bs-parent="#divAccordian" style="">
+            <div class="accordion-body">
+              <app-requisition-summary [requisitionRequest]="this.applicantProfileData.requisitionDetails">
+              </app-requisition-summary>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

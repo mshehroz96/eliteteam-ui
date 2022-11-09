@@ -1,0 +1,377 @@
+<p-blockUI [blocked]="this.blocked">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</p-blockUI>
+
+<div id="divSubStatusFilter" class="row">
+  <div class="col-md-3">
+
+    <h5 class="mb-3">Filters</h5>
+
+    <div class="d-none">
+      <div class="accordion mb-2" id="divAccordianFilter1">
+        <div class="card accordion-item">
+          <h2 class="accordion-header">
+            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+              data-bs-target="#divAccordianFilter1Content">
+              Job Title
+            </button>
+          </h2>
+          <div id="divAccordianFilter1Content" class="accordion-collapse collapse"
+            data-bs-parent="#divAccordianFilter1">
+            <div class="accordion-body">
+              vvvvvvv
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion mb-2" id="divAccordianFilter2">
+        <div class="card accordion-item">
+          <h2 class="accordion-header">
+            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+              data-bs-target="#divAccordianFilter2Content">
+              Distance
+            </button>
+          </h2>
+          <div id="divAccordianFilter2Content" class="accordion-collapse collapse"
+            data-bs-parent="#divAccordianFilter2">
+            <div class="accordion-body">
+              vvvvvvv
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion mb-2" id="divAccordianFilter3">
+        <div class="card accordion-item">
+          <h2 class="accordion-header">
+            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+              data-bs-target="#divAccordianFilter3Content">
+              Work Mode
+            </button>
+          </h2>
+          <div id="divAccordianFilter3Content" class="accordion-collapse collapse"
+            data-bs-parent="#divAccordianFilter3">
+            <div class="accordion-body">
+              vvvvvvv
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion mb-2" id="divAccordianFilter4">
+        <div class="card accordion-item">
+          <h2 class="accordion-header">
+            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+              data-bs-target="#divAccordianFilter4Content">
+              Work Schedule
+            </button>
+          </h2>
+          <div id="divAccordianFilter4Content" class="accordion-collapse collapse"
+            data-bs-parent="#divAccordianFilter4">
+            <div class="accordion-body">
+              vvvvvvv
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion mb-2" id="divAccordianFilter5">
+        <div class="card accordion-item">
+          <h2 class="accordion-header">
+            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+              data-bs-target="#divAccordianFilter5Content">
+              Last Activity
+            </button>
+          </h2>
+          <div id="divAccordianFilter5Content" class="accordion-collapse collapse"
+            data-bs-parent="#divAccordianFilter5">
+            <div class="accordion-body">
+              vvvvvvv
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion mb-2" id="divAccordianFilter6">
+        <div class="card accordion-item">
+          <h2 class="accordion-header">
+            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+              data-bs-target="#divAccordianFilter6Content">
+              Status
+            </button>
+          </h2>
+          <div id="divAccordianFilter6Content" class="accordion-collapse collapse"
+            data-bs-parent="#divAccordianFilter6">
+            <div class="accordion-body">
+              vvvvvvv
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion mb-2" id="divAccordianFilter7">
+        <div class="card accordion-item">
+          <h2 class="accordion-header">
+            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+              data-bs-target="#divAccordianFilter7Content">
+              Rating
+            </button>
+          </h2>
+          <div id="divAccordianFilter7Content" class="accordion-collapse collapse"
+            data-bs-parent="#divAccordianFilter7">
+            <div class="accordion-body">
+              vvvvvvv
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <select class="form-select text-capitalize mb-1" [(ngModel)]="filterField" (change)="getFilterOperator()"
+      name="filterId">
+      <option value="0">Select Filter</option>
+      <option *ngFor="let item of filters" [value]="item.displayText">
+        {{ item.displayText }}
+      </option>
+    </select>
+    <select id="ddlFilterOperators" class="form-select mb-1" (change)="operatorSelectChange()"  [(ngModel)]="operatorDisplay">
+      <option value="-- Select --">-- Select --</option>
+      <option *ngFor="let item of filterOperators" [value]="item.displayText">
+        {{ item.displayText }}
+      </option>
+    </select>
+
+
+
+
+     <div class="row">
+      <div class="col-12">
+        <p-multiSelect [options]="allMultiSelectedItems" [style]="{'width':'100%','padding': '0px'}" *ngIf="isMultiSelect" [(ngModel)]="multiSelectedItems" optionLabel="displayText" optionValue="value"
+
+      ></p-multiSelect>
+
+      <!-- *ngIf="isAutoComplete" -->
+      <p-autoComplete  (onSelect)="setJobTitle($event)" *ngIf="isAutoComplete" [style]="{'width':'100%','display': 'flow-root','padding': '0px'}"
+                    [inputStyle]="{'width':'100%','display': 'flow-root','padding': '0px'}" [(ngModel)]="multiSelectedItems" [suggestions]="allMultiSelectedItems"
+                    (completeMethod)="searchFilterForCandidate($event)" (onClear)="clearJobTitle($event)"
+                    field="displayText" [minLength]="3" [multiple]="true"></p-autoComplete>
+
+      </div>
+        <div class="col-12">
+          <p-calendar [(ngModel)]="inputDate" *ngIf="isInputDate" [style]="{'width':'100%','padding': '0px'}"></p-calendar>
+          <p-calendar [(ngModel)]="rangeDates" *ngIf="isDateRange" selectionMode="range" [readonlyInput]="true" inputId="range" [style]="{'width':'100%','padding': '0px'}"></p-calendar>
+
+          <input type="text" *ngIf="isInputText" class="form-control" [(ngModel)]="inputTextString"/>
+          <input type="text" *ngIf="isInputText1" class="form-control" [(ngModel)]="inputTextString1"/>
+        </div>
+     </div>
+
+    <button id="btnAddFilter" type="button" class="btn btn-primary mt-1" (click)="addFilter()">Add Filter</button>
+
+    <ul id="ulSelectedFilters" class="list-group mt-4 mb-1" *ngIf="addFilters.length == 0">
+      <li class="list-group-item bg-white">No filters added yet</li>
+    </ul>
+    <ul id="ulSelectedFilters" class="list-group mt-4 mb-1" >
+      <li class="list-group-item bg-white small" *ngFor="let item of addFilters">
+        <i class="bx bx-filter-alt"></i> {{item.conditionTitle}} <b> {{item.conditionValue}}</b> <span class="float-end">
+          <a  (click)="removeFilterItem(item.key)" class="proxy_delete_filter cursor-pointer"><i
+              class="bx bx-x-circle"></i></a></span></li>
+    </ul>
+    <button id="btnApply" type="button" class="btn btn-primary  mb-2 mt-2" (click)="applyFitler()" [disabled]="isDisabled"><i class="bx bx-filter-alt"></i>Apply</button>
+    <button id="btnApply" type="button" class="btn btn-primary  mb-2 mt-2 ml-2" (click)="clearFilters()"><i class="bx bx-refresh-alt"></i>Clear Filters</button>
+
+    <hr>
+
+    <h5 class="mt-4 mb-2">Sorting</h5>
+    <select id="defaultSelect"  class="form-select" (change)="getCandidateData({})" [(ngModel)]="this.sotColumn">
+      <option value="Order By last_activity_at DESC">Last Activity - Recent first</option>
+      <option value="Order By last_activity_at ASC" >Last Activity - Recent last</option>
+      <option value="Order By interview.RecruiterRating DESC">Recruiter Rating - Highest first</option>
+      <option value="Order By interview.RecruiterRating ASC">Recruiter Rating - Lowest first</option>
+      <option value="Order By ClientRating DESC">Client Rating - Highest first</option>
+      <option value="Order By ClientRating ASC">Client Rating - Lowest first</option>
+      <option value="Order By RequisitionCandidate.CreatedOn DESC">Application Date - Recent first</option>
+      <option value="Order By RequisitionCandidate.CreatedOn DESC">Application Date - Recent last</option>
+    </select>
+
+
+
+  </div>
+  <div class="col-md-9">
+    <div class="row mb-2">
+      <div class="col-md-6">
+        Display {{ candidateList.length }} matching candidates
+      </div>
+
+      <div class="col-md-6 text-end" *ngIf="this.candidateList.length > 0">
+        <button id="btnSelectAll" type="button" class="btn btn-outline-secondary btn-sm mr-1"
+          (click)="selectAll()">Select All</button>
+        <button id="btnSelectNone" type="button" class="btn btn-outline-secondary btn-sm mr-1"
+          (click)="unSelectAll()">Select None</button>
+        <button id="btnShare" type="button" class="btn btn-primary btn-sm" (click)="showDialog()">Share</button>
+      </div>
+    </div>
+
+
+    <div id="divPeople" class="row g-2" >
+
+      <div class="col-md-12" *ngIf="this.candidateList.length == 0">
+        <h2>{{this.recordNotFoundMessage}}</h2>
+      </div>
+      <div class="col-md-6 col-lg-6 col-xl-6" *ngFor="let item of candidateList">
+        <div class="card">
+          <div class="card-body">
+            <div style="vertical-align:middle;"> <img [src]="item.avatarFileName | avatar" alt="Candidate Picture"
+                class="w-px-100 rounded-circle"> <span
+                style="display:inline-block;padding-left:10px;vertical-align:middle;"> <span
+                  style="font-size:18px;display:inline-block;">
+                  <a routerLink="/recruiter/candidates/candidate-profile/{{item.candidateUserID}}/{{item.candidateCVId}}">{{item.fullName}}</a> </span> <span
+                  style="font-size:15px;display:block;">{{item.jobTitle}}</span>
+                  <span style="display:block;">
+                    <span class="small"><i class="bx bxs-circle text-success small"></i> Available</span></span>
+                    <span class="small" *ngIf="item.candidateOneWayInterview > 0"><i id="iPostType"><i class="bx bxs-video"></i></i> One Way Interview</span></span>
+
+                    <span class="float-end">
+                <input class="form-check-input proxy_select_candidate_share"
+                  [(ngModel)]="item.isSelected" type="checkbox" ></span>
+            </div>
+            <div class="pt-2">
+              <div class="row p-0 m-0">
+                <div class="col-md-3 ps-1 py-0 text-left small">Last Activity:</div>
+                <div *ngIf="item.lastActivityAt != null" class="col-md-9 ps-1 py-0 text-left small"><i class="bx bxs-circle text-success small"></i> {{item.lastActivityAt}} ago</div>
+              </div>
+              <div class="row p-0 m-0">
+                <div class="col-md-3 ps-1 py-0   mt-2  text-left small">Interviews:</div>
+                <div class="col-md-9 ps-1 py-0  mt-2 text-left small">{{item.interviewCount}}</div>
+              </div>
+              <div class="row p-0 m-0">
+                <div class="col-md-3 ps-1 py-0 mt-2 text-left small">Rec. Rating:</div>
+                <div class="col-md-6 ps-0 py-0 text-left small">
+                  <p-rating [(ngModel)]="item.recruiterRating"   [readonly]="true"  [cancel]="false"></p-rating>
+                </div>
+              </div>
+              <div class="row p-0 m-0">
+                <div class="col-md-3 ps-1 py-0 mt-2 text-left small">Client Rating:</div>
+                <div class="col-md-9 ps-0 py-0 text-left small">
+                  <p-rating [(ngModel)]="item.clientRating"  [readonly]="true"  [cancel]="false"></p-rating>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p-paginator [rows]="rows" *ngIf="this.candidateList.length > 0" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
+  </div>
+
+</div>
+<p-dialog header="Send {{getSelectedClient()}} Candidate to Client" [(visible)]="display" [breakpoints]="{'960px': '75vw'}"
+  [style]="{width: '50vw'}">
+
+  <!--Share-->
+ <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="form-check">
+        <input class="form-check-input" checked (change)="selectClientOnChange()" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Select Clients
+        </label>
+      </div>
+
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="form-check">
+        <input class="form-check-input" type="radio" (change)="selectAnonymousOnChange()" name="flexRadioDefault" id="flexRadioDefault2" >
+        <label class="form-check-label" for="flexRadioDefault2">
+          Anonymous
+        </label>
+      </div>
+    </div>
+ </div>
+
+  <div class="row mb-2 mb-md-0">
+    <div class="col-md-8 mb-4">
+      <label for="txaShareText" class="form-label d-block">Showcase Name:</label>
+      <input type="text" class="form-control" id="txbShowcaseName"  [disabled]="isDefaultShowCaseDisable" [(ngModel)]="this.showCase.title" />
+    </div>
+    <div class="col-md-4 mt-4">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" (change)="makeDefault($event)" [(ngModel)]="this.showCase.isDefaultShowcase" value="" id="defaultShowCase">
+        <label class="form-check-label" for="defaultShowCase">
+          Default ShowCase
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-2 mb-md-0">
+    <div class="col-md-12 mb-4">
+      <label class="form-label d-block">Candidate(s):</label>
+      <div >
+      <ul class="list-unstyled avatar-group d-flex align-items-center mb-0"  >
+        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" title="{{item.fullName}}"
+        *ngFor="let item of findCandidates(candidateList) "  class="avatar avatar-sm pull-up">
+          <img class="rounded-circle" [src]="item.avatarFileName | avatar" alt="Avatar" >
+        </li>
+
+      </ul>
+    </div>
+
+    </div>
+  </div>
+  <div class="row mb-2 mb-md-0" *ngIf="showCase.isSelectClient">
+    <div class="col-md-12 mb-4">
+      <label class="form-label d-block">Client(s):</label>
+      <!-- <p-autoComplete  (onSelect)="setCompany($event)"  [style]="{'width':'100%','display': 'flow-root','padding': '0px'}"
+      [inputStyle]="{'width':'100%','display': 'flow-root','padding': '0px'}" [(ngModel)]="selectedClients" [suggestions]="allCompanies"
+      (completeMethod)="searchCompanies($event)"
+      field="name" [minLength]="3" [multiple]="true">
+      <ng-template let-user pTemplate="item">
+        <div class="ui-helper-clearfix">
+          <div id="carbonads " >
+           <table>
+            <tr>
+              <td style="vertical-align:top;">
+                <img class="rounded-circle" width="30px" height="30px" [src]="user.logoProfile | companyLogo" alt="Avatar" />
+              </td>
+              <td style="vertical-align:top;" class="pl-1">
+                <b> {{user.name}}</b>
+               <p>{{user.email}}</p>
+              </td>
+            </tr>
+           </table>
+          </div>
+        </div>
+    </ng-template>
+      </p-autoComplete> -->
+
+        <p-treeSelect layout="horizontal" class="p-fluid" display="chip" (onNodeUnselect)="unSelectedNode($event)" (onNodeSelect)="selectedNode($event)" [(ngModel)]="selectedClients" appendTo="body" [style]="{'width':'100%'}" [options]="nodes"  selectionMode="checkbox" placeholder="Select Client" [filter]="true" [filterInputAutoFocus]="true">
+        </p-treeSelect>
+        <br>
+        <p-chips [(ngModel)]="emailAddresses" *ngIf="isOthers" [style]="{'width':'100%'}" class="p-fluid"></p-chips>
+        <!-- <textarea class="form-control" id="txaShareText" *ngIf="isOthers" rows="3" [(ngModel)]="emailAddresses" placeholder="Enter Email Address"></textarea>
+        <label class="text-danger" *ngIf="isOthers"><b>Note:</b> Email Addresses should be comma separated.</label> -->
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <label for="txaShareText" class="form-label d-block">Expiry Date:</label>
+      <p-calendar [(ngModel)]="this.showCase.showcaseExpiryDate" appendTo="body" [style]="{'width':'100%','padding': '0px'}" id="basic"></p-calendar>
+    </div>
+  </div>
+  <div class="row mb-2 mb-md-0">
+    <div class="col-md-12 mb-4">
+      <label for="txaShareText" class="form-label d-block">Message:</label>
+      <textarea class="form-control" id="txaShareText" rows="3" [(ngModel)]="this.showCase.remarks" placeholder="Remarks for client"></textarea>
+    </div>
+  </div>
+  <ng-template pTemplate="footer">
+    <button id="btnDoShare" class="btn btn-primary"  (click)="Send()">Send</button>
+    <button type="button" class="btn btn-label-secondary" (click)="hideDialog()" data-bs-dismiss="modal">Close</button>
+  </ng-template>
+
+</p-dialog>

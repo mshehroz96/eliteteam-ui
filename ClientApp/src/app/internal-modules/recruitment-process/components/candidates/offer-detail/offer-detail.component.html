@@ -1,0 +1,77 @@
+<div class="card mb-2">
+  <div class="card-content">
+    <div class="card-body">
+      <h5>Offer</h5>
+      <div id="cccc">
+        <div *ngIf="offerDetail.offerId==0">
+          <div class="alert round alert-secondary alert-icon-left alert-dismissible mb-2" role="alert">
+            <span class="alert-icon">
+              <i class="la la-briefcase"></i>
+            </span>
+            There is no offer sent yet to this
+            candidate. Click the <b>Create Offer</b>
+            button to
+            get started.
+          </div>
+        </div>
+      </div>
+  
+      <div *ngIf="offerDetail.offerId>0">
+  
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th>Status</th>
+              <td>
+                <span id="spOfferSent" class="badge bg-primary ">Offer
+                  Sent</span>
+                <span id="spOfferAccepted" class="badge bg-success d-none">Offer
+                  Accepted</span>
+              </td>
+            </tr>
+            <tr>
+              <th>Sent On</th>
+              <td>
+                {{offerDetail.offerSent | customDateTime}}
+              </td>
+            </tr>
+            <tr>
+              <th>Expiry Date</th>
+              <td>
+                {{offerDetail.offerExpiryDate | customDateTime}}
+              </td>
+            </tr>
+            <tr id="trOfferCandidateResponse" class="d-none">
+              <th>Candidate's Response</th>
+              <td>
+                03/22/2022<br>
+                "I can't join
+                immediately as my notice period is 2
+                months. Kindly send offer with
+                new/extended joining date of upto
+                05/01/2022, Thanks."
+              </td>
+            </tr>
+            <tr id="trOfferCandidateResponseAccepted" class="d-none">
+              <th>Candidate's Response</th>
+              <td>
+                03/22/2022<br>
+                "Thanks, accepted and looking forward to joining you soon."
+              </td>
+            </tr>
+            <tr>
+              <th>Offer</th>
+              <td>
+                <a href="javascript:void(0)" target="_blank" id="btnViewOfferPDF" class="btn btn-primary btn-sm"><i
+                    class="fa fa-file-pdf"></i>
+                  View Offer</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  
+      </div>
+  
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="mb-1">
+    <label for="ddlOfferTemplate" class="form-label">Choose Offer Template</label>
+    <p-dropdown [options]="offerTemplates" name="clientOfferLetterTemplateId"
+      [(ngModel)]="offer.clientOfferLetterTemplateId" [autoDisplayFirst]="false" [style]="{'width':'100%'}" (onChange)="offerTemplateChange()"
+      appendTo="body" optionLabel="displayText" optionValue="value">
+    </p-dropdown>
+  </div>
+  <div class="mb-1">
+    <h5>Template Inputs</h5>
+    <div class="ml-3">
+      <input type="checkbox" [checked]="offer.workMode=='Remote Working'" id="chkJobTypeMonthly" name="workMode"
+        [(ngModel)]="workMode" (change)="setWorkMode()" value="Remote Working" class="form-check-input">
+      <label for="chkJobTypeMonthly" class="">Remote Working</label>
+    </div>
+  </div>
+  <div class="mb-1">
+    <label for="txbNetSalary" class="">Net Salary</label>
+    <input name="netSalary" type="number" [(ngModel)]="offer.netSalary" class="form-control">
+    <label for="txbOfferExpiryDate" class="">Offer Expiry Date</label>
+    <p-calendar appendTo="body" [minDate]="minDate" [defaultDate]="minDate" [stepMinute]="5" [showClear]="true"
+      [(ngModel)]="offer.offerExpiryDate" dataType="string" [showTime]="true" hourFormat="12" [readonlyInput]="true">
+    </p-calendar>
+  </div>
+  <div class="mb-1">
+    <h5>Preview</h5>
+    <p-editor [style]="{'height':'100px'}" [(ngModel)]="templatePreview"></p-editor>
+  </div>
+</div>
+<div class="float-right">
+  <button (click)="sendOffer()" class="btn btn-primary">Send Offer</button>
+  <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
+</div>

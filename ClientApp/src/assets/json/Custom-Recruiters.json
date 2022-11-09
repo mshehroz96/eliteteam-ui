@@ -1,0 +1,58 @@
+{
+  "recruiters": [
+    {
+      "id": 1,
+      "name": "Charles Wicker",
+      "sort": 1,
+      "picture": "13.png",
+      "clients": 2,
+      "jobs": 8,
+      "sales": "$1,500",
+      "hires": 3,
+      "online_status": "online",
+      "attendance_status": "Present",
+      "attendance_css": "success",
+      "activity_status": "25",
+      "activity_css": "warning",
+      "activity_icon": "bxs-down-arrow",
+      "activity_actions": "Actions: 14",
+      "activity_since": "Logged In: 8:40 AM"
+    },
+    {
+      "id": 2,
+      "name": "Tyrone Lemings",
+      "sort": 1,
+      "picture": "14.png",
+      "clients": 3,
+      "jobs": 7,
+      "sales": "$5,200",
+      "hires": 2,
+      "online_status": "offline",
+      "attendance_status": "Absent",
+      "attendance_css": "warning",
+      "activity_status": "0",
+      "activity_css": "danger",
+      "activity_icon": "bxs-down-arrow",
+      "activity_actions": "Actions: 0",
+      "activity_since": ""
+    },
+    {
+      "id": 3,
+      "name": "Mike Chikowski",
+      "sort": 1,
+      "picture": "17.png",
+      "clients": 5,
+      "jobs": 11,
+      "sales": "$8,500",
+      "hires": 13,
+      "online_status": "online",
+      "attendance_status": "Day Off",
+      "attendance_css": "secondary",
+      "activity_status": "15",
+      "activity_css": "secondary",
+      "activity_icon": "bxs-down-arrow",
+      "activity_actions": "Actions: 5",
+      "activity_since": "Logged In: 10:31 AM"
+    }
+  ]
+}

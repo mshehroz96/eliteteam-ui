@@ -1,0 +1,70 @@
+<div class="mb-3">
+    <div class="row">
+        <div class="col-12">
+            <h5>{{requisitionRequest.jobTitle.title}}</h5>
+            <h6>Job Description </h6>
+            <div [innerHtml]="requisitionRequest.jobDescription | safeHtml">
+            </div>
+            <h6>Position Requirements </h6>
+            <div [innerHtml]="requisitionRequest.positionRequirements | safeHtml">
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-bordered doc-table mt-3">
+        <tbody>
+            <tr>
+                <td>No. of Hires</td>
+                <td>{{requisitionRequest.noOfPositions.displayText}}</td>
+                <td>Hire Urgency</td>
+                <td>{{requisitionRequest.hiringUrgency.displayText}}</td>
+            </tr>
+            <tr>
+                <td>Performed Remotely</td>
+                <td>{{requisitionRequest.performRemotely.displayText}}</td>
+                <td>Job Location</td>
+                <td>{{requisitionRequest.primaryLocation.displayText}}</td>
+            </tr>
+            <tr>
+                <td>Job Type</td>
+                <td>{{requisitionRequest.jobType.displayText}}</td>
+                <td>Job Schedule Type</td>
+                <td>
+                    <span class="badge bg-secondary m-1"
+                        *ngFor="let schedule of requisitionRequest.jobSchedule">{{schedule.displayText}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Pay</td>
+                <td>${{requisitionRequest.salaryMinimum}} -
+                    ${{requisitionRequest.salaryMaximum}}
+                    {{requisitionRequest.payFrequency.displayText}}</td>
+                <td>Supplemental Pay</td>
+                <td>
+                    <span class="badge bg-secondary m-1"
+                        *ngFor="let supplement of requisitionRequest.supplementPay">{{supplement.displayText}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Benefits</td>
+                <td>
+                    <span class="badge bg-secondary m-1"
+                        *ngFor="let benefit of requisitionRequest.benefits">{{benefit.displayText}}</span>
+                </td>
+                <td>Grace Period to Qualify for Benefits</td>
+                <td>{{requisitionRequest.gracePeriod.displayText}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="approvedScreeningQuestions && approvedScreeningQuestions.length>0">
+        <h3 class="pt-3">Screening Questions </h3>
+        <ul class="list-group" data-count="2">
+            <li class="list-group-item d-flex justify-content-between align-items-center"
+                *ngFor="let question of approvedScreeningQuestions">
+                {{question.title}}
+            </li>
+
+        </ul>
+    </div>
+
+</div>

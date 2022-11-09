@@ -1,0 +1,149 @@
+
+<form class="form-wrap" [formGroup]="searchForm" (ngSubmit)="getRecruiters()">
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <div class="input-group input-group-merge ">
+        <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-calendar"></i></span>
+        <p-calendar formControlName="dateRange" selectionMode="range" [readonlyInput]="true" inputId="range"></p-calendar>
+      </div>
+  
+    </div>
+    <div class="col-md-3">
+      <div class="col-12 md:col-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <p-autoComplete 
+                     [style]="{'width':'100%'}"
+                    [inputStyle]="{'width':'100%'}" [suggestions]="autoCompleteResults" 
+                    formControlName="recruiterName"
+                    (completeMethod)="searchRecruiters($event)"
+                    field="firstName" [minLength]="3"></p-autoComplete>
+            <button type="submit" pButton pRipple icon="pi pi-search" styleClass="p-button-warn"></button>
+        </div>
+    </div>
+    </div>
+  </div>
+</form>
+
+
+<div id="divPeople" class="row g-2">
+
+  <div class="col-md-12" *ngIf="noRecord">
+    <h2>Record Not Found! Try Again.</h2>
+  </div>
+  <div class="col-md-4 col-lg-4 col-xl-4" *ngFor="let item of recruiters">
+    <div class="card d-none">
+      <div class='col-xl-4 col-lg-6 col-md-6'>
+        <div class='card position-relative'>
+          <div class='card-body pb-1'>
+            <div class='d-flex flex-row align-items-center'>
+              <a 
+                [routerLink]="['/recruitment/recruiters/recruiter-profile/' + item.userid]"
+								>
+                <div class='avatar avatar-xl avatar-" hiredCount "'>
+                  <img
+                    src='"{{item.strAvatar}}"' class='rounded-circle'></div>
+              </a>
+              <!-- <a href='RecruiterProfile.php?id={{item.userid}}'>
+                <div class='avatar avatar-xl avatar-" hiredCount "'>
+                  <img
+                    src='"{{item.strAvatar}}"' class='rounded-circle'></div>
+              </a> -->
+              <div class=''>
+                <div class='ps-2' style='font-size:19px;'><a
+                  [routerLink]="['/recruitment/recruiters/recruiter-profile/' + item.userid]">{{item.firstName}} {{item.lastName}}</a></div>
+                <div class='ps-2'><span class='badge bg-" + as[i].attendance_css + "'><i
+                      class='bx bx-time small'></i>{{item.clientsCount}}</span></div>
+              </div>
+            </div>
+            <div class='d-flex align-items-center justify-content-around mt-4 '>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="card position-relative">
+      <div class="card-body pb-1">
+        <div class="d-flex flex-row align-items-center"> <a [routerLink]="['/recruitment/recruiters/recruiter-profile/' + item.userid]">
+            <div class="avatar avatar-xl" [ngClass]="item.status == 'Present' ? 'avatar-online' : 'avatar-offline'" ><img src="{{item.strAvatar}}" class="rounded-circle">
+            </div>
+          </a>
+          <div class="">
+            <div class="ps-2" style="font-size:19px;"><a [routerLink]="['/recruitment/recruiters/recruiter-profile/' + item.userid]">{{item.firstname}} {{item.lastName}}</a></div>
+            <div class="ps-2"><span 
+              class="badge"
+              [ngClass]="{'bg-success': item.status === 'Present', 
+                          'bg-secondary' : item.status === 'Day off' || item.status === 'Un-Available',
+                          'bg-warning' : item.status === 'Absent'}"
+              ><i class="bx bx-time small"></i> {{item.status}}</span></div>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-around mt-4 ">
+          <div class="text-center">
+            <h4 class="mb-1">{{item.clientsCount}}</h4> <span>Clients</span>
+          </div>
+          <div class="text-center">
+            <h4 class="mb-1">{{item.jobCount}}</h4> <span>Jobs</span>
+          </div>
+          <div class="text-center">
+            <h4 class="mb-1">${{item.purchase}}</h4> <span>Sales</span>
+          </div>
+          <div class="text-center">
+            <h4 class="mb-1">{{item.hiredcount}}</h4> <span>Hires</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="horz-scroll-200">
+          <table class="table table-sm table-bordered">
+            <tbody >
+              <tr>
+                <!-- class="text-center small py-1 px-1 bg-success-light" -->
+                <!-- bx bxs-circle bx-xs text-danger -->
+                <td *ngFor="let aa of item.activityFrequencies" [ngClass]="getActivityClass(aa)" >
+                  {{  tConvert(aa.baselineStartTime.split(':')[0])}}
+                  <br>
+                  <i [ngClass]="getActivityClassText(aa)" tooltipPosition="top" pTooltip="{{getActivityToolTip(aa)}}" ></i>
+                </td>
+                
+                
+                <!-- <td class="text-center small py-1 px-1 bg-success-light" data-bs-toggle="tooltip"
+                  data-bs-original-title="Working - High Activity">10<br><i
+                    class="bx bxs-circle bx-xs text-success"></i></td>
+                <td class="text-center small py-1 px-1 bg-success-light" data-bs-toggle="tooltip"
+                  data-bs-original-title="Working - Medium Activity">11<br><i
+                    class="bx bxs-circle bx-xs text-warning"></i></td>
+                <td class="text-center small py-1 px-1 bg-success-light" data-bs-toggle="tooltip"
+                  data-bs-original-title="Working - High Activity">12<br><i
+                    class="bx bxs-circle bx-xs text-success"></i></td>
+                <td class="text-center small py-1 px-1 bg-success-light" data-bs-toggle="tooltip"
+                  data-bs-original-title="Working - Medium Activity">1<br><i
+                    class="bx bxs-circle bx-xs text-warning"></i></td>
+                <td class="text-center small py-1 px-1 bg-success-light" data-bs-toggle="tooltip"
+                  data-bs-original-title="Working - Future">2<br><i class="bx bxs-circle bx-xs text-secondary"></i></td>
+                <td class="text-center small py-1 px-1 bg-success-light" data-bs-toggle="tooltip"
+                  data-bs-original-title="Working - Future">3<br><i class="bx bxs-circle bx-xs text-secondary"></i></td>
+                <td class="text-center small py-1 px-1 bg-success-light"
+                  data-bs-original-title="Working - Future">4<br><i class="bx bxs-circle bx-xs text-secondary"></i></td>
+                <td class="text-center small py-1 px-1">5<br><i class="bx bx-circle bx-xs text-secondary"
+                    data-bs-toggle="tooltip" data-bs-original-title="Not Working"></i></td>
+                <td class="text-center small py-1 px-1">6<br><i class="bx bx-circle bx-xs text-secondary"
+                    data-bs-toggle="tooltip" data-bs-original-title="Not Working"></i></td>
+                <td class="text-center small py-1 px-1">7<br><i class="bx bx-circle bx-xs text-secondary"
+                    data-bs-toggle="tooltip" data-bs-original-title="Not Working"></i></td>
+                <td class="text-center small py-1 px-1">8<br><i class="bx bx-circle bx-xs text-secondary"
+                    data-bs-toggle="tooltip" data-bs-original-title="Not Working"></i></td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

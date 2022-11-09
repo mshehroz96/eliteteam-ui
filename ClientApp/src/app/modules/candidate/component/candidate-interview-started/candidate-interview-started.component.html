@@ -1,0 +1,89 @@
+
+<p-blockUI [blocked]="this.blocked">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</p-blockUI>
+
+<div class="row" >
+  <div class="col-sm-12 col-md-6 offset-md-3">
+
+    <h2 class="text-center" >{{this.oneWayInterviewQuestion.questionText }}</h2>
+    <h2 class="text-center" *ngIf="this.oneWayInterviewQuestionList.length == 0">Record Not Found!</h2>
+    <div class="card" >
+      <div class="card-body p-2">
+        <div class="d-flex justify-content-start ">
+          <i class='bx bxs-brain bx-lg text-start'></i>
+          <div class="d-flex flex-column justify-content-center w-100 px-2">
+            <div class="d-flex flex-row justify-content-between">
+              <span>Think Time</span>
+              <span id="spnThinkTimeRemaining"></span>
+            </div>
+            <div>
+              <div class="progress">
+                <div id="divProgressThinkTime" class="progress-bar" role="progressbar" style="width: 0%">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card my-2">
+      <div class="card-body p-2">
+        <div class="d-flex justify-content-start ">
+          <i class='bx bxs-stopwatch bx-lg text-start'></i>
+          <div class="d-flex flex-column justify-content-center w-100 px-2">
+            <div class="d-flex flex-row justify-content-between">
+              <span>Time Limit</span>
+              <span id="spnTimeLimitRemaining"></span>
+            </div>
+            <div>
+              <div class="progress">
+                <div id="divProgressTimeLimit" class="progress-bar bg-primary" role="progressbar" style="width: 0%">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="divRecording" class="alert alert-danger my-2 d-none" role="alert"><i class='bx bxs-circle bx-flashing'></i>
+        Recording
+      <button class="float-end btn btn-sm btn-primary"  (click)="stopVideoRecording()">
+        <i class='bx bxs-square'></i> Stop</button></div>
+      <div *ngIf="reTakeAllowed != reTakeCount" id="divRecordingStopped" class="alert alert-secondary my-2 d-none" role="alert"><i class='bx bxs-square'></i>
+        Recording Stopped <button class="float-end btn btn-sm btn-primary" (click)="reTakeQuestion()"><i class='bx bxs-circle'></i> Re-Take</button>
+      </div>
+
+      <div  id="divRecordingStart" class="alert alert-secondary my-2 d-none" role="alert"><i class='bx bxs-square'></i>
+        Not recording yet <button class="float-end btn btn-sm btn-primary" (click)="startRecording()"><i class='bx bxs-circle'></i> Start Recording</button>
+      </div>
+
+    <div class="card">
+      <div class="card-body p-2 text-center">
+        <!-- <video #video width="100%" height="100%" autoplay style="border-radius: 8px;"> </video> -->
+        <video #videoElement width="100%" height="100%" autoplay style="border-radius: 8px;">
+          <source *ngIf="!isVideoRecording && videoBlobUrl" [src]="videoBlobUrl">
+        </video>
+        <div id="videoTimer" *ngIf="isVideoRecording && !videoBlobUrl"> {{ videoRecordedTime }} </div>
+        <div *ngIf="reTakeAllowed > 0">
+          Retakes:
+          <span *ngFor="let item of reTakeList">
+            <i  class='{{item}}'></i>
+          </span>
+          <!-- <i class='bx bxs-square'></i> -->
+          <!-- <i class='bx bx-square'></i> -->
+        </div>
+      </div>
+    </div>
+
+
+    <a id="aStart" [ngClass]="nextButtonDisabled  ? 'btn btn-primary w-100 mt-4 white' : 'btn btn-primary w-100 mt-4 white disabled'"  *ngIf="this.oneWayInterviewQuestionList.length > 0" disabled="true" (click)="nextQuestion()">
+      Next Question <i class='bx bxs-chevron-right'></i></a>
+      <a id="aBack" routerLink="/candidate/dashboard" *ngIf="this.oneWayInterviewQuestionList.length == 0" class="btn btn-secondary w-100 mt-2"><i class="bx bx-chevron-left"></i> Go
+        Back</a>
+
+  </div>
+</div>

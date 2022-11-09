@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-10">
+    <ul class="nav nav-pills mb-3" role="tablist">
+      <li class="nav-item">
+        <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" (click)="activeAccount()" >
+          <i class="bx bx-lock-alt me-1"></i> Account
+        </button>
+    </li>
+      <li class="nav-item">
+          <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" (click)="activeSecurity()" >
+            <i class="bx bx-lock-alt me-1"></i> Security
+          </button>
+      </li>
+      <li class="nav-item">
+          <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" (click)="activeNotification()">
+            Notifications
+          </button>
+      </li>
+
+  </ul>
+</div>
+    <shared-settings-personal *ngIf="isAccount"></shared-settings-personal>
+    <app-security *ngIf="isSecurity"></app-security>
+    <app-notification-manage *ngIf="isNotification" ></app-notification-manage>
+</div>

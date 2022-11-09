@@ -1,0 +1,32 @@
+<div class="card mb-3" *ngIf="answer.oneWayInterviewAnswerId>0">
+  <div class="card-body">
+    <h5>{{answer.questionText}}</h5>
+    <ng-container *ngIf="videoUrl">
+      <video style="width:100%;"  id="source" controls="">
+        <source src="{{videoUrl}}" type="video/webm;codecs=&quot;vp8, vorbis&quot;">
+      </video>
+    </ng-container>
+    <div *ngIf="answer.source=='Indeed'">
+      <hr class="mx-n4 my-4">
+      <h5>Rate Answer</h5>
+      <p-rating [cancel]="false" [(ngModel)]="answer.userRating" (onRate)="setAnswerRating($event)"></p-rating>
+      <ng-container>
+        <hr class="mx-n4 my-4">
+        <h5>Comments</h5>
+        <ng-container *ngIf="answer.answerComments">
+          <div class="alert alert-secondary alert-dismissible" role="alert"
+            *ngFor="let comment of answer.answerComments">
+            <h6 class="alert-heading d-flex align-items-center fw-bold mb-1">{{comment.commentedBy}}</h6>
+            <p class="mb-0">{{comment.commentText}}</p>
+          </div>
+        </ng-container>
+
+        <div class="input-group">
+          <input type="text" class="form-control" [(ngModel)]="comment" placeholder="Enter your comment here">
+          <button class="btn btn-outline-secondary" (click)="addComment()" type="button"
+            id="button-addon2">Save</button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

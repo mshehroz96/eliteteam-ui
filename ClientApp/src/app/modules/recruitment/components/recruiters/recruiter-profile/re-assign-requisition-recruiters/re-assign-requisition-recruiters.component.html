@@ -1,0 +1,13 @@
+<ul class="nav nav-pills flex-column flex-md-row mb-3">
+  <!-- Page -->
+  <li class="nav-item ListItem" *ngFor="let menuItem of menuList"
+    (click)="loadTab(menuItem, menuItem.RouteName, $event)">
+    <a href="#" [ngClass]="isActive(menuItem)">
+      <i [ngClass]="menuItem.Icon"></i>
+      {{ menuItem.Name }}
+    </a>
+  </li>
+</ul>
+
+<app-re-assign-requisition-recruiters-clients *ngIf="tabType == 'reassign-clients'"></app-re-assign-requisition-recruiters-clients>
+<app-re-assign-requisition-recruiters-jobs *ngIf="tabType == 'reassign-jobs'"></app-re-assign-requisition-recruiters-jobs>

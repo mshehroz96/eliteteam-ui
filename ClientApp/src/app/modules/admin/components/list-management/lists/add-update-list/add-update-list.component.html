@@ -1,0 +1,55 @@
+
+  <div class="row">
+    <div class="col-12">
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" name="isSystemManaged" id="isSystemManaged" [(ngModel)]="selectedList.isSystemManaged" >
+        <label class="form-check-label" for="isSystemManaged">System Managed</label>
+        <div class="fv-plugins-message-container invalid-feedback"></div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label class="form-label d-block">OrderNo:</label>
+        <input type="number" class="form-control"  #orderNo="ngModel" name="orderNo" [(ngModel)]="selectedList.orderNo"/>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label class="form-label d-block">Title:</label>
+        <input class="form-control"  #title="ngModel" name="title" [(ngModel)]="selectedList.title"/>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label class="form-label d-block">Key Code:</label>
+        <input class="form-control"  #keyCode="ngModel" name="keyCode" [(ngModel)]="selectedList.keyCode"/>
+      </div>
+    </div>
+    <!-- <div class="col-6">
+      <div class="form-group">
+          <label class="form-label">
+              Record Status:
+          </label>
+          <p-dropdown   placeholder="--Select--" [options]="recordStatuses" [style]="{'width':'100%'}" name="recordStatusLIID"
+           [(ngModel)]="selectedList.recordStatusLIID" optionValue="value"
+              optionLabel="displayText" [virtualScroll]="true" virtualScrollItemSize="30" ></p-dropdown>
+      </div>
+  </div> -->
+    <div class="col-12">
+       <div class="form-group">
+        <label class="form-label">Description:</label>
+        <textarea class="custom-textarea" pInputTextarea autoResize="autoResize" [(ngModel)]="selectedList.description"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button (click)="saveUpdateList()" class="btn btn-primary">
+      Save Changes
+    </button>
+    <button (click)="closeModal()" type="button" class="btn btn-light-secondary">
+      Cancel
+    </button>
+  </div>
+
+
+

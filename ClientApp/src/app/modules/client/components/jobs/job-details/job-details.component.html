@@ -1,0 +1,93 @@
+<div [appIsLoading]="loadingService.isLoading(this)">
+    <div class="row border-bottom border-light pb-1 mb-3">
+        <div class="col-md-6">
+            <div class="btn-group mb-2 gap-1" role="group">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    data-bs-auto-close="true" aria-expanded="false">
+                    <span>
+                        <i class="bx bxs-video" *ngIf="currentRequisitionStats.campaignType=='Video'"></i>
+                        <i class="bx bxs-calendar" *ngIf="currentRequisitionStats.campaignType=='Interview'"></i>
+                        <i class="bx bxs-detail" *ngIf="currentRequisitionStats.campaignType=='Resume'"></i>
+                        {{currentRequisitionStats.jobTitle}}</span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                    <li *ngFor="let requisition of requisitionsStats">
+                        <a class="dropdown-item" href="javascript:void(0)"
+                            (click)="redirectTo('/client/jobs/job-details/'+requisition.uuid)">
+                            <i class="bx bxs-video" *ngIf="requisition.campaignType=='Video'"></i>
+                            <i class="bx bxs-calendar" *ngIf="requisition.campaignType=='Interview'"></i>
+                            <i class="bx bxs-detail" *ngIf="requisition.campaignType=='Resume'"></i>
+                            <span class="ml-2 mr-1">{{requisition.jobTitle}}</span>
+                            <span class="badge bg-primary float-end">{{requisition.applicants}}</span>
+                        </a>
+                    </li>
+                </ul>
+                <button id="btnJobDetails" class="btn bg-label-secondary bg-white proxy_show_supplementary_data"
+                    (click)="viewRequisitionSummary()" type="button">
+                    <i class="bx bx-detail"></i> Job Details
+                </button>
+                <button id="btnSharing" class="btn bg-label-secondary bg-white" (click)="shareJob()">
+                    <i class="bx bxs-group"></i> Sharing
+                </button>
+                <a href="javascript:void(0)" routerLink="/client/jobs" class="btn bg-label-secondary bg-white"><i
+                        class="bx bx-arrow-back"></i> Back</a>
+            </div>
+        </div>
+        <div class="col-md-6 text-end">
+        </div>
+    </div>
+    <div class="nav-align-top">
+        <ul class="nav nav-pills mb-3" role="tablist">
+            <li class="nav-item">
+                <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                    (click)="setStatus('All')">
+                    All <span class="badge badge-center bg-secondary ml-1">{{candidateStats.all_Candidates}}</span>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" (click)="setStatus('New_Candidates')">
+                    New <span class="badge badge-center bg-secondary ml-1">{{candidateStats.new_Candidates}}</span>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                    (click)="setStatus('Interview_Candidates')">
+                    Interview <span
+                        class="badge badge-center bg-secondary ml-1">{{candidateStats.interview_Candidates}}</span>
+                </button>
+            </li>
+
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                    (click)="setStatus('Offer_Candidates')">
+                    Offer <span class="badge badge-center bg-secondary ml-1">{{candidateStats.offer_Candidates}}</span>
+                </button>
+            </li>
+
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                    (click)="setStatus('Hired_Candidates')">
+                    Hired<span class="badge badge-center bg-secondary ml-1">{{candidateStats.hired_Candidates}}</span>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                    (click)="setStatus('Rejected_Candidates')">
+                    Rejected Candidates<span
+                        class="badge badge-center bg-secondary ml-1">{{candidateStats.rejected_Candidates}}</span>
+                </button>
+            </li>
+        </ul>
+        <div class="mb-3" *ngIf="filters.length>1 && totalRecords>0">
+            <p-multiSelect [options]="filters" placeholder="Filter" [style]="{'width':'25%'}" optionLabel="displayText"
+                optionValue="value" (onChange)="filterChange()" [(ngModel)]="this.request.filters">
+            </p-multiSelect>
+        </div>
+        <div class="mb-3">
+            <app-candidates [candidates]="candidates"></app-candidates>
+        </div>
+        <div class="d-flex justify-content-center" *ngIf="totalRecords>this.request.rows">
+            <button class="btn btn-primary" (click)="pageChange(9)">Show more</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,291 @@
+
+<p-blockUI [blocked]="this.blocked">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</p-blockUI>
+
+<div class="layout-wrapper layout-navbar-full layout-horizontal layout-without-menu">
+  <div class="layout-container">
+    <!-- Navbar -->
+    <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
+      <div class="container-xxl">
+        <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">
+          <a href="" class="app-brand-link gap-2">
+            <span class="app-brand-logo demo">
+              <img src="../assets/img/branding/logo.png" style="height:50px; width:auto;">
+            </span>
+            <span class="app-brand-text demo menu-text fw-bolder"></span>
+          </a>
+
+          <a href="javascript:void(0);" class="layout-menu-toggle menu-link d-xl-none text-large ms-auto">
+            <i class="bx bx-chevron-left bx-sm align-middle"></i>
+          </a>
+        </div>
+
+        <div class="layout-menu-toggle navbar-nav d-xl-none align-items-xl-center me-3 me-xl-0">
+          <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+            <i class="bx bx-menu bx-sm"></i>
+          </a>
+        </div>
+
+        <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+          <ul class="navbar-nav flex-row align-items-center ms-auto">
+
+            <!-- Style Switcher -->
+            <li class="nav-item me-2 me-xl-0">
+              <a class="btn btn-sm btn-outline-secondary" href="#">
+                Login
+              </a>
+            </li>
+            <!--/ Style Switcher -->
+
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+    <!-- / Navbar -->
+
+    <!-- Layout container -->
+    <div class="layout-page">
+      <!-- Content wrapper -->
+      <div class="content-wrapper">
+        <!-- Content -->
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <div id="divMyRequests" class="row d-none">
+            <div class="col-12 mb-4">
+              <div class="card">
+                <div class="card-datatable table-responsive">
+                  <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                    <div class="card-header flex-column flex-md-row">
+                      <div class="head-label text-center">
+                        <h5 class="card-title mb-0">My Showcase</h5>
+                      </div>
+                      <div class="dt-action-buttons text-end pt-3 pt-md-0">
+                        <div class="dt-buttons"><button
+                            class="dt-button buttons-collection btn btn-label-primary dropdown-toggle me-2" tabindex="0"
+                            aria-controls="DataTables_Table_0" type="button" aria-haspopup="true"
+                            aria-expanded="false"><span><i class="bx bx-export me-sm-2"></i> <span
+                                class="d-none d-sm-inline-block">Export</span></span></button> </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12 col-md-6">
+                        <div class="dataTables_length" id="DataTables_Table_0_length"><label>Show <select
+                              name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select">
+                              <option value="5">5</option>
+                              <option value="10">10</option>
+                              <option value="15">15</option>
+                              <option value="20">20</option>
+                            </select> entries</label></div>
+                      </div>
+                      <div class="col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end">
+                        <div id="DataTables_Table_0_filter" class="dataTables_filter"><label>Search:<input type="search"
+                              class="form-control" placeholder="" aria-controls="DataTables_Table_0"></label></div>
+                      </div>
+                    </div>
+                    <table class="datatables-ShowCase table border-top dataTable no-footer dtr-column"
+                      id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info"
+                      style="width: 0px;">
+                      <thead>
+                        <tr role="row">
+                          <th class="control sorting_disabled" rowspan="1" colspan="1" style="width: 0px;"
+                            aria-label=""></th>
+                          <th class="sorting_disabled dt-checkboxes-cell dt-checkboxes-select-all" rowspan="1"
+                            colspan="1" style="width: 0px;" data-col="1" aria-label=""><input type="checkbox"
+                              class="form-check-input"></th>
+                          <th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                            colspan="1" style="width: 0px;"
+                            aria-label="Showcase Title: activate to sort column descending" aria-sort="ascending">
+                            Showcase Title</th>
+                          <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                            style="width: 0px;" aria-label="No. Of Candidates: activate to sort column ascending">No. Of
+                            Candidates</th>
+                          <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                            style="width: 0px;" aria-label="Expiry Date: activate to sort column ascending">Expiry Date
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                            style="width: 0px;" aria-label="Last Activity: activate to sort column ascending">Last
+                            Activity</th>
+                          <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 0px;" aria-label="Actions">
+                            Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="odd">
+                          <td class=" control" tabindex="0"></td>
+                          <td class=" dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes form-check-input">
+                          </td>
+                          <td class="sorting_1">
+                            <div class="d-flex justify-content-start align-items-center">
+                              <div class="d-flex flex-column"><span class="emp_name text-truncate"><a
+                                    href="Showcase-View.php?sc=Default Showcase">Default Showcase</a></span></div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-wrap align-items-center">
+                              <div class="d-flex align-items-center">
+                                <ul class="list-unstyled avatar-group d-flex align-items-center mb-0">
+                                  <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                    title="Chelsea Dina" class="avatar avatar-sm pull-up"> <a
+                                      href="CandidateProfile-External.php?id=11"> <img class="rounded-circle"
+                                        src="../assets/img/avatars/12.png" alt="Avatar"></a> </li>
+                                  <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                    title="Mark Obama" class="avatar avatar-sm pull-up"> <a
+                                      href="CandidateProfile-External.php?id=12"> <img class="rounded-circle"
+                                        src="../assets/img/avatars/17.png" alt="Avatar"></a> </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex justify-content-start align-items-center">
+                              <div class="d-flex flex-column"><span class="emp_name text-truncate">11-Jan-2022
+                                  12:11:15</span></div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex justify-content-start align-items-center">
+                              <div class="d-flex flex-column"><span class="emp_name text-truncate">1 day ago</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-inline-block"><a href="javascript:;"
+                                class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i
+                                  class="bx bx-dots-vertical-rounded"></i></a>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a href="javascript:;" class="dropdown-item">Details</a></li>
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr class="even">
+                          <td class=" control" tabindex="0"></td>
+                          <td class=" dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes form-check-input">
+                          </td>
+                          <td class="sorting_1">
+                            <div class="d-flex justify-content-start align-items-center">
+                              <div class="d-flex flex-column"><span class="emp_name text-truncate"><a
+                                    href="Showcase-View.php?sc=Recommended Registered Nurses">Recommended Registered
+                                    Nurses</a></span></div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-wrap align-items-center">
+                              <div class="d-flex align-items-center">
+                                <ul class="list-unstyled avatar-group d-flex align-items-center mb-0">
+                                  <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                    title="Bryan Adams" class="avatar avatar-sm pull-up"> <a
+                                      href="CandidateProfile-External.php?id=8"> <img class="rounded-circle"
+                                        src="../assets/img/avatars/19.png" alt="Avatar"></a> </li>
+                                  <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                    title="Dorothy Dunkin" class="avatar avatar-sm pull-up"> <a
+                                      href="CandidateProfile-External.php?id=9"> <img class="rounded-circle"
+                                        src="../assets/img/avatars/16.png" alt="Avatar"></a> </li>
+                                  <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                    title="Richard Campbell" class="avatar avatar-sm pull-up"> <a
+                                      href="CandidateProfile-External.php?id=10"> <img class="rounded-circle"
+                                        src="../assets/img/avatars/13.png" alt="Avatar"></a> </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex justify-content-start align-items-center">
+                              <div class="d-flex flex-column"><span class="emp_name text-truncate">11-Jan-2022
+                                  12:11:15</span></div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex justify-content-start align-items-center">
+                              <div class="d-flex flex-column"><span class="emp_name text-truncate">1 day ago</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-inline-block"><a href="javascript:;"
+                                class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i
+                                  class="bx bx-dots-vertical-rounded"></i></a>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a href="javascript:;" class="dropdown-item">Details</a></li>
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="row">
+                      <div class="col-sm-12 col-md-6">
+                        <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">
+                          Showing 1 to 2 of 2 entries</div>
+                      </div>
+                      <div class="col-sm-12 col-md-6">
+                        <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                          <ul class="pagination">
+                            <li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a
+                                href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0"
+                                class="page-link">Previous</a></li>
+                            <li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0"
+                                data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                            <li class="paginate_button page-item next disabled" id="DataTables_Table_0_next"><a href="#"
+                                aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0"
+                                class="page-link">Next</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h4><span class="fw-light ">My Showcase</span></h4>
+          <div id="divMyRequestsBox" class="row pt2 ">
+            <div class="col-md-6 col-lg-6 col-xl-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="h5 text-body me-2 mb-0"><i class="fa fa-id-card"></i> {{this.showCase.title}}</div>
+                  </div>
+                  <p>{{this.showCase.remarks}}</p>
+                  <div class="d-flex flex-wrap align-items-center">
+                    <div class="d-flex align-items-center">
+                      <ul class="list-unstyled avatar-group d-flex align-items-center mb-0"  >
+                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" title="{{item.name}}"
+                        *ngFor="let item of this.showCase.showCaseCandidates"  class="avatar avatar-sm pull-up">
+                          <a routerLink="/visitor/candidate-external-profile/{{item.candidateUserId}}/{{this.showCase.title}}" >
+                            <img class="rounded-circle" [src]="item.avatarFileName | avatar" alt="item.name" >
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <!--/ Content -->
+        <footer class="content-footer footer bg-footer-theme">
+          <div class="container-xxl d-flex flex-column flex-md-row flex-wrap justify-content-between py-2">
+            <div class="mb-2 mb-md-0">
+              ©
+              <script>
+                document.write(new Date().getFullYear());
+              </script>2022
+              <a href="https://theeliteteam.com/" target="_blank" class="footer-link fw-bolder">Elite Team</a>. All
+              rights reserved
+            </div>
+          </div>
+        </footer>
+        <div class="content-backdrop fade"></div>
+      </div>
+      <!--/ Content wrapper -->
+
+    </div>
+
+    <!--/ Layout container -->
+  </div>
+</div>

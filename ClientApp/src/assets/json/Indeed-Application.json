@@ -1,0 +1,1243 @@
+{
+  "id": "32a5a7710ac78a02a2df71d72b8e35677ee58b21685c8d8b0cace3277f6b99df",
+  "job": {
+    "jobId": "123456",
+    "jobTitle": "Professional Basket Weaver (apply by email)",
+    "jobCompany": "My Favorite Company",
+    "jobLocation": "Austin TX",
+    "jobUrl": "http:\u002F\u002Fwww.indeed.com",
+    "jobMeta": "job-meta-button top"
+  },
+  "applicant": {
+    "fullName": "Example Name",
+    "email": "example@mycompany.com",
+    "emailAlias": "example_5ts@qa.indeed.tech",
+    "phoneNumber": "08886485454",
+    "resume": {
+      "file": {
+        "id": "d81d54c3b046c5cafc91805847a2dd92266b868e4a9b16b8237cff1f3e709e0d",
+        "fileName": "example_resume.pdf",
+        "contentType": "application\u002Fpdf",
+        "data": "...",
+        "fileTypes": ["resume"]
+      },
+      "textId": "20c7af85dc32250c920e33ae0a94d7069dc7d43d898f59184cb6fd811d6b39b4",
+      "html": "<html><head><\u002Fhead><body><div class=\"rdp-html-container\" style=\"padding:30px;background:white;font-size:16px;\"><style>\n      @page {\n        size: 8.5in 11in;\n        margin: 1in 1in 1.25in 1in;\n      }\n\n      .rdp-html-container #basic_info_row {\n        margin-top: -1em;\n      }\n\n      .rdp-resume-container {\n        font-size: 9pt;\n        line-height: 13pt;\n        font-family: Deja Vu Sans, Nanum Gothic, HanaA, HanaB, Noto Sans, TH Sarabun New, Unifont, sans-serif;\n        text-align: left;\n        direction: ltr;\n      }\n\n      .rdp-resume-container:lang(ar) {\n        font-family: Lateef, serif;\n        direction: rtl;\n      }\n\n      .rdp-resume-container:lang(ja) {\n        font-family: TakaoMincho, HanaA, HanaB, Unifont, serif;\n      }\n\n      .rdp-resume-container:lang(th) {\n        font-family: Kanit, Noto Sans Thai, Noto Sans, TH Sarabun New, Unifont, sans-serif;\n      }\n\n      .rdp-resume-link {\n        color: #00c;\n        text-decoration: underline;\n      }\n\n      .adr, .adr p, #resume_url {\n        display: inline;\n      }\n\n      #contact_info_container {\n        display: block;\n        margin-bottom: 1em;\n      }\n\n      \u002F* As mentioned earlier, I don't believe this will be treated any differently than simply\n         display:inline;\n       *\u002F\n      .work_company, .inline-block {\n        display: inline-block;\n      }\n\n      .work_company *, .work_dates, .section_header_title, span.license-address, .award_date, .edu_dates, .military_date, .certification_date, .group_date, .patent_date, .publication_date, p#employment_eligibility, .assessment_date {\n        color: #666;\n      }\n\n      .work_title, .title, .military_branch {\n        font-weight: bold;\n      }\n\n      .edu_title,\n      .work_title,\n      .publication_title,\n      .award_title,\n      .certification_title,\n      .license_title,\n      .group_title,\n      .patent_title,\n      .assessment_title {\n        font-weight: bold;\n        font-size: 10.5pt;\n      }\n\n      .assessment_description {\n        word-break: normal;\n      }\n\n      .assessment_disclaimer {\n        word-break: normal;\n        color: #666;\n        margin-top: 16pt;\n      }\n\n      .military_commendations_title {\n        margin-top: 0.5em;\n        font-size: 9pt;\n        display: inline-block;\n      }\n\n      \u002F* Single space between each semantic chunk of a resume *\u002F\n      .data_display {\n        margin-top: 1em;\n      }\n\n      \u002F* Half spacing after the date elements *\u002F\n      div.work_dates, div.award_date, div.edu_dates, div.military_date, div.military_description, div.certification_date, div.group_date, div.patent_date, div.publication_date, div.assessment_date {\n        margin-bottom: 0.5em;\n      }\n\n      div#resume #headline {\n        word-wrap: break-word;\n        color: #000;\n        font-weight: bold;\n      }\n\n      #resume-contact {\n        font-size: 17pt;\n        line-height: 28px;\n      }\n\n      .section_header_title {\n        padding-top: 5px;\n        padding-bottom: 4px;\n        font-size: 12pt;\n        border-bottom: 1px solid #ccc;\n        margin-top: 17pt;\n        font-weight: normal;\n      }\n\n      div.email {\n        color: #00c;\n        text-decoration: none;\n      }\n\n      \u002F* for properly displaying rich text markup from react-quill: *\u002F\n      .rdp-richtext ul {\n        list-style-type: none;\n      }\n\n      .rdp-richtext ul li {\n        margin-left: 2em;\n      }\n\n      .rdp-richtext ul li:before {\n        content: \"\\2022\" \" \";\n        display: marker;\n        marker-offset: 0.5em;\n        text-align: right;\n        width: 2em;\n      }\n\n      .rdp-richtext ol {\n        counter-reset: list-counter;\n      }\n\n      .rdp-richtext ol li {\n        margin-left: 2em;\n      }\n\n      .rdp-richtext ol li:before {\n        content: counter(list-counter, decimal) \".\";\n        counter-increment: list-counter;\n        display: marker;\n        marker-offset: 0.5em;\n        text-align: right;\n        width: 2em;\n      }\n\n      \u002F* For highlighted text that is added via RezSearchService.\n       * See SPAN style in HighlightStyle.java in resume\u002Fupdog-common-search3 *\u002F\n      .hl {\n        background-color: #fff5cc;\n      }\n\n      \u002F* reset for semantic tags without changing appearance *\u002F\n      h1, h2, h3, h4, h5, p {\n        margin: 0;\n        font-size: inherit;\n        font-weight: inherit;\n      }\n\n      <\u002Fstyle><style>\n            @font-face {\n                font-family: 'Liberation Sans';\n                src: url('https:\u002F\u002Fmy.indeed.com\u002Fstatic\u002Flib\u002Findeed--rezwebapp-common--rezwebapp-common\u002Fweb\u002Fstatic\u002Fprofile-fonts\u002Fliberation-sans\u002FLiberationSans-Regular-webfont.eot'); \u002F* IE9 Compat Modes *\u002F\n                src: url('https:\u002F\u002Fmy.indeed.com\u002Fstatic\u002Flib\u002Findeed--rezwebapp-common--rezwebapp-common\u002Fweb\u002Fstatic\u002Fprofile-fonts\u002Fliberation-sans\u002FLiberationSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),\u002F* IE6-IE8 *\u002F\n                url('https:\u002F\u002Fmy.indeed.com\u002Fstatic\u002Flib\u002Findeed--rezwebapp-common--rezwebapp-common\u002Fweb\u002Fstatic\u002Fprofile-fonts\u002Fliberation-sans\u002FLiberationSans-Regular-webfont.woff') format('woff'), \u002F* Pretty Modern Browsers *\u002F\n                url('https:\u002F\u002Fmy.indeed.com\u002Fstatic\u002Flib\u002Findeed--rezwebapp-common--rezwebapp-common\u002Fweb\u002Fstatic\u002Fprofile-fonts\u002Fliberation-sans\u002FLiberationSans-Regular-webfont.ttf') format('truetype'), \u002F* Safari, Android, iOS *\u002F\n                url('https:\u002F\u002Fmy.indeed.com\u002Fstatic\u002Flib\u002Findeed--rezwebapp-common--rezwebapp-common\u002Fweb\u002Fstatic\u002Fprofile-fonts\u002Fliberation-sans\u002FLiberationSans-Regular-webfont.svg#svgFontName') format('svg'); \u002F* Legacy iOS *\u002F\n            }\n            @font-face {\n                font-family: 'Arvo';\n                src: url('https:\u002F\u002Fmy.indeed.com\u002Fstatic\u002Flib\u002Findeed--rezwebapp-common--rezwebapp-common\u002Fweb\u002Fstatic\u002Fprofile-fonts\u002Farvo\u002FArvo-Regular.woff') format('woff'),\n                url('https:\u002F\u002Fmy.indeed.com\u002Fstatic\u002Flib\u002Findeed--rezwebapp-common--rezwebapp-common\u002Fweb\u002Fstatic\u002Fprofile-fonts\u002Farvo\u002FArvo-Bold.woff') format('woff'),\n                url('https:\u002F\u002Fmy.indeed.com\u002Fstatic\u002Flib\u002Findeed--rezwebapp-common--rezwebapp-common\u002Fweb\u002Fstatic\u002Fprofile-fonts\u002Farvo\u002FArvo-Italic.woff') format('woff'),\n                url('https:\u002F\u002Fmy.indeed.com\u002Fstatic\u002Flib\u002Findeed--rezwebapp-common--rezwebapp-common\u002Fweb\u002Fstatic\u002Fprofile-fonts\u002Farvo\u002FArvo-BoldItalic.woff') format('woff'),\n                url('https:\u002F\u002Fmy.indeed.com\u002Fstatic\u002Flib\u002Findeed--rezwebapp-common--rezwebapp-common\u002Fweb\u002Fstatic\u002Fprofile-fonts\u002Farvo\u002FArvo-Regular.ttf') format('ttf'),\n                url('https:\u002F\u002Fmy.indeed.com\u002Fstatic\u002Flib\u002Findeed--rezwebapp-common--rezwebapp-common\u002Fweb\u002Fstatic\u002Fprofile-fonts\u002Farvo\u002FArvo-Bold.ttf') format('ttf'),\n                url('https:\u002F\u002Fmy.indeed.com\u002Fstatic\u002Flib\u002Findeed--rezwebapp-common--rezwebapp-common\u002Fweb\u002Fstatic\u002Fprofile-fonts\u002Farvo\u002FArvo-Italic.ttf') format('ttf'),\n                url('https:\u002F\u002Fmy.indeed.com\u002Fstatic\u002Flib\u002Findeed--rezwebapp-common--rezwebapp-common\u002Fweb\u002Fstatic\u002Fprofile-fonts\u002Farvo\u002FArvo-BoldItalic.ttf') format('ttf');\n            }\n        <\u002Fstyle><div class=\"rdp-resume-container\" style=\"font-size: 9pt;line-height: 13pt;text-align: left;\"><div id=\"resume\" class=\"hresume\" data-shield-id=\"resume\"><div id=\"resume_head\" data-shield-id=\"resume_head\"><\u002Fdiv><div id=\"resume_body\" class=\"vcard single_form-content\" data-shield-id=\"resume_body\"><div id=\"basic_info_row\" class=\"last basicInfo-content\" style=\"margin-top: -1em;\" data-shield-id=\"basic_info_row\"><div id=\"basic_info_cell\" class=\"data_display\" style=\"margin-top: 1em;\" data-shield-id=\"basic_info_cell\"><h1 id=\"resume-contact\" class=\"fn \" style=\"font-size: 17pt;line-height: 28px;font-weight: 400;\" data-shield-id=\"resume-contact\">John Smith<span style=\"display: none;\" data-shield-id=\"firstname\">himanshu1<\u002Fspan><span style=\"display: none;\" data-shield-id=\"lastname\">mismatch1<\u002Fspan><\u002Fh1><div id=\"contact_info_container\" style=\"display: block;margin-bottom: 1em;\" data-shield-id=\"contact_info_container\"><div id=\"res_address\" class=\"adr\" style=\"display: inline;\" data-shield-id=\"res_address\"><span class=\"locality\" data-shield-id=\"locality\">Austintown, OH<\u002Fspan><\u002Fdiv><div id=\"email_phone\" class=\"inspectlet-sensitive\" data-shield-id=\"email_phone\"><div class=\"email\" style=\"color: #00c;text-decoration: none;\" data-shield-id=\"email\">Jsmith82@live.com<\u002Fdiv><div class=\"tel\" data-shield-id=\"phone\">08886485454<\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fdiv><div class=\"section-item workExperience-content\" data-shield-id=\"workExperience-content\"><div><div class=\"section_title\" data-shield-id=\"section_work_experience\"><h2 class=\"section_header_title\" style=\"padding-top: 5px;padding-bottom: 4px;font-size: 12pt;border-bottom: 1px solid #ccc;margin-top: 17pt;font-weight: normal;\" data-shield-id=\"section_work_experience-title\">Work Experience<\u002Fh2><\u002Fdiv><\u002Fdiv><div id=\"work-experience-items\" class=\"items-container\" data-shield-id=\"work-experience-items\"><div id=\"workExperience-Eel9GZ2tOFyaO_hgvVhb_A\" data-shield-id=\"workExperience-item-0\" class=\"work-experience-section section-entry \"><div class=\"data_display\" style=\"margin-top: 1em;\" data-shield-id=\"workExperience_data_display\"><h3 class=\"work_title title\" style=\"font-weight: bold; font-size: 10.5pt;\" data-shield-id=\"workExperience_work_title\">Nurse<\u002Fh3><div class=\"work_company\" style=\"display: inline-block;color: #666;\" data-shield-id=\"workExperience_work_company\"><span data-shield-id=\"workExperience_work_experience_company\" class=\"bold\">HOSPITAL AUXILIO MUTUO<\u002Fspan> <span class=\"separator-hyphen inline-block\" style=\"display: inline-block;padding-left: 5px;padding-right: 5px;\" data-shield-id=\"separator-hyphen\">-<\u002Fspan> <div class=\"inline-block\" style=\"display: inline-block;\" data-shield-id=\"workExperience_location\"><span data-shield-id=\"workExperience_location_span\">New York, NY<\u002Fspan><\u002Fdiv><\u002Fdiv><div class=\"work_dates\" style=\"color: #666;margin-bottom:0.5em;\" data-shield-id=\"workExperience_work_dates\">January 2019 to November 2019<\u002Fdiv><p class=\"work_description rdp-richtext\" style=\"font-size: 9pt;\" data-shield-id=\"workExperience_work_description\">Typical duties of the job include:&#xa0;<br \u002F>    • assessing and planning nursing care requirements&#xa0;<br \u002F>    • providing pre- and post-operation care&#xa0;<br \u002F>    • monitoring and administering medication and intravenous infusions&#xa0;<br \u002F>    • taking patient samples, pulses, temperatures and blood pressures&#xa0;<br \u002F>    • writing records&#xa0;<br \u002F>    • supervising junior staff&#xa0;<br \u002F>    • organising workloads&#xa0;<br \u002F>    • providing emotional support to patients and relatives&#xa0;<br \u002F>    • tutoring student nurses 7 days week&#xa0;<br \u002F>24-hour shift work can be a requirement of the job.<\u002Fp><\u002Fdiv><\u002Fdiv><div id=\"workExperience-Eel9GbIDq-u0XQUnKiTXjQ\" data-shield-id=\"workExperience-item-1\" class=\"work-experience-section section-entry last\"><div class=\"data_display\" style=\"margin-top: 1em;\" data-shield-id=\"workExperience_data_display\"><h3 class=\"work_title title\" style=\"font-weight: bold; font-size: 10.5pt;\" data-shield-id=\"workExperience_work_title\">Nurse Practitioner<\u002Fh3><div class=\"work_company\" style=\"display: inline-block;color: #666;\" data-shield-id=\"workExperience_work_company\"><span data-shield-id=\"workExperience_work_experience_company\" class=\"bold\">JPMorgan Chase<\u002Fspan> <span class=\"separator-hyphen inline-block\" style=\"display: inline-block;padding-left: 5px;padding-right: 5px;\" data-shield-id=\"separator-hyphen\">-<\u002Fspan> <div class=\"inline-block\" style=\"display: inline-block;\" data-shield-id=\"workExperience_location\"><span data-shield-id=\"workExperience_location_span\">New York, NY<\u002Fspan><\u002Fdiv><\u002Fdiv><div class=\"work_dates\" style=\"color: #666;margin-bottom:0.5em;\" data-shield-id=\"workExperience_work_dates\">October 2018 to December 2018<\u002Fdiv><p class=\"work_description rdp-richtext\" style=\"font-size: 9pt;\" data-shield-id=\"workExperience_work_description\">Typical duties of the job include:&#xa0;<br \u002F>• assessing and planning nursing care requirements&#xa0;<br \u002F>• providing pre- and post-operation care&#xa0;<br \u002F>• monitoring and administering medication and intravenous infusions&#xa0;<br \u002F>• taking patient samples, pulses, temperatures and blood pressures&#xa0;<br \u002F>• writing records&#xa0;<br \u002F>• supervising junior staff&#xa0;<br \u002F>• organising workloads&#xa0;<br \u002F>• providing emotional support to patients and relatives&#xa0;<br \u002F>• tutoring student nurses&#xa0;<br \u002F>24-hour shift work can be a requirement of the job.<\u002Fp><\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fdiv><div class=\"section-item education-content\" data-shield-id=\"education-content\"><div><div class=\"section_title\" data-shield-id=\"section_education\"><h2 class=\"section_header_title\" style=\"padding-top: 5px;padding-bottom: 4px;font-size: 12pt;border-bottom: 1px solid #ccc;margin-top: 17pt;font-weight: normal;\" data-shield-id=\"section_education-title\">Education<\u002Fh2><\u002Fdiv><\u002Fdiv><div id=\"education-items\" class=\"items-container\" data-shield-id=\"education-items\"><div id=\"education-Eel9GYz9hauaO_hgvVhb_A\" data-shield-id=\"education-item-0\" class=\"education-section section-entry last\"><div class=\"data_display\" style=\"margin-top: 1em;\" data-shield-id=\"education_data_display\"><h3 class=\"edu_title\" style=\"font-weight: bold; font-size: 10.5pt;\" data-shield-id=\"education_edu_title\">BA in Nursing<\u002Fh3><div class=\"edu_school\" data-shield-id=\"education_edu_school\"><span class=\"bold\" data-shield-id=\"education_edu_school_span\">Indiana State<\u002Fspan> <span class=\"separator-hyphen inline-block\" style=\"display: inline-block;padding-left: 5px;padding-right: 5px;\" data-shield-id=\"separator-hyphen\">-<\u002Fspan> <div class=\"inline-block\" style=\"display: inline-block;\" data-shield-id=\"education_edu_location\"><span data-shield-id=\"education_edu_location_span\">New York, NY<\u002Fspan><\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fdiv><div class=\"section-item nursing-license-content\" data-shield-id=\"nursing-license-content\"><div><div class=\"section_title\" data-shield-id=\"section_license\"><h2 class=\"section_header_title\" style=\"padding-top: 5px;padding-bottom: 4px;font-size: 12pt;border-bottom: 1px solid #ccc;margin-top: 17pt;font-weight: normal;\" data-shield-id=\"section_license-title\">Nursing Licenses<\u002Fh2><\u002Fdiv><\u002Fdiv><div id=\"license-items-NURSES_LICENSE\" class=\"items-container\" data-shield-id=\"license-items-NURSES_LICENSE\"><div id=\"license-Eel9GbzbPsy0XQUnKiTXjQ\" data-shield-id=\"license-item-0\" class=\"license-section section-entry last\"><div class=\"data_display\" style=\"margin-top: 1em;\" data-shield-id=\"license-data-display\"><div class=\"license_title\" data-shield-id=\"license-title\" style=\"font-weight: bold; font-size: 10.5pt;\">PN<\u002Fdiv><div class=\"inline-block\" style=\"display: inline-block;\" data-shield-id=\"license-location\"><span class=\"license-address\" style=\"color: #666;\" data-shield-id=\"license-location-span\">State: AL<\u002Fspan><\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fdiv><div class=\"section-item skills-content\" data-shield-id=\"skills-content\"><div><div class=\"section_title\" data-shield-id=\"section_skills\"><h2 class=\"section_header_title\" style=\"padding-top: 5px;padding-bottom: 4px;font-size: 12pt;border-bottom: 1px solid #ccc;margin-top: 17pt;font-weight: normal;\" data-shield-id=\"section_skills-title\">Skills \u002F IT Skills<\u002Fh2><\u002Fdiv><\u002Fdiv><div id=\"skills-items\" class=\"items-container\" data-shield-id=\"skills-items\"><div class=\"data_display\" style=\"margin-top: 1em;\" data-shield-id=\"skill-container-data-display\"><div class=\"skill-container resume-element\" data-shield-id=\"skill-container-data-display-element\"><ul style=\"padding-inline-start: 0;\"><li style=\"display: block;\"><table class=\"rdp-resume-container\"><tbody><tr style=\"line-height: 8.5pt;\"><td style=\"width: 9pt;\" aria-hidden=\"true\">•<\u002Ftd><td><span class=\"skill-text\" data-shield-id=\"skill-text\">Nurse (Less than 1 year)<\u002Fspan><\u002Ftd><\u002Ftr><\u002Ftbody><\u002Ftable><\u002Fli><\u002Ful><\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fdiv><div class=\"section-item links-content\" data-shield-id=\"links-content\"><div><div class=\"section_title\" data-shield-id=\"section_link\"><h2 class=\"section_header_title\" style=\"padding-top: 5px;padding-bottom: 4px;font-size: 12pt;border-bottom: 1px solid #ccc;margin-top: 17pt;font-weight: normal;\" data-shield-id=\"section_link-title\">Online Profile<\u002Fh2><\u002Fdiv><\u002Fdiv><div id=\"link-items\" class=\"items-container\" data-shield-id=\"link-items\"><div id=\"link-EenYce-tzvO4vRdymj15Cw\" data-shield-id=\"link-item-0\" class=\"link-section last\"><div class=\"data_display\" data-shield-id=\"link-data-display\"><div class=\"link_url\" data-shield-id=\"link-link-url\"><a style=\"color: #00c; text-decoration: underline; overflow-wrap: break-word; word-wrap: break-word; -ms-word-break: break-all; word-break: break-word;\" data-shield-id=\"link-link-url-link\" rel=\"nofollow\" target=\"_blank\" href=\"https:\u002F\u002Fgo.indeed.com\u002FGLYF9XHYN\">https:\u002F\u002Fgo.indeed.com\u002FGLYF9XHYN<\u002Fa><\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fdiv><\u002Fbody><\u002Fhtml>",
+      "json": {
+        "firstName": "John",
+        "lastName": "Smith",
+        "email": "Jsmith82@live.com",
+        "headline": "",
+        "summary": "",
+        "additionalInfo": "",
+        "phoneNumber": "08886485454",
+        "location": {
+          "country": "US",
+          "city": "Austintown, OH",
+          "postalcode": ""
+        },
+        "skills": "Nurse (Less than 1 year)",
+        "positions": {
+          "_total": 2,
+          "values": [
+            {
+              "startDateMonth": "01",
+              "startDateYear": "2019",
+              "endDateMonth": "11",
+              "endDateYear": "2019",
+              "endCurrent": false,
+              "title": "Nurse",
+              "company": "HOSPITAL AUXILIO MUTUO",
+              "location": "New York, NY",
+              "description": "Typical duties of the job include:\n\t• assessing and planning nursing care requirements\n\t• providing pre- and post-operation care\n\t• monitoring and administering medication and intravenous infusions\n\t• taking patient samples, pulses, temperatures and blood pressures\n\t• writing records\n\t• supervising junior staff\n\t• organising workloads\n\t• providing emotional support to patients and relatives\n\t• tutoring student nurses 7 days week\n24-hour shift work can be a requirement of the job."
+            },
+            {
+              "startDateMonth": "10",
+              "startDateYear": "2018",
+              "endDateMonth": "12",
+              "endDateYear": "2018",
+              "endCurrent": false,
+              "title": "Nurse Practitioner",
+              "company": "JPMorgan Chase",
+              "location": "New York, NY",
+              "description": "Typical duties of the job include:\n• assessing and planning nursing care requirements\n• providing pre- and post-operation care\n• monitoring and administering medication and intravenous infusions\n• taking patient samples, pulses, temperatures and blood pressures\n• writing records\n• supervising junior staff\n• organising workloads\n• providing emotional support to patients and relatives\n• tutoring student nurses\n24-hour shift work can be a requirement of the job."
+            }
+          ]
+        },
+        "educations": {
+          "_total": 1,
+          "values": [
+            {
+              "degree": "BA",
+              "field": "Nursing",
+              "school": "Indiana State",
+              "location": "New York, NY",
+              "endCurrent": false
+            }
+          ]
+        },
+        "links": {
+          "_total": 1,
+          "values": [
+            {
+              "url": "https:\u002F\u002Fgo.indeed.com\u002FGLYF9XHYN"
+            }
+          ]
+        },
+        "awards": {
+          "_total": 0,
+          "values": []
+        },
+        "certifications": {
+          "_total": 0,
+          "values": []
+        },
+        "associations": {
+          "_total": 0,
+          "values": []
+        },
+        "patents": {
+          "_total": 0,
+          "values": []
+        },
+        "publications": {
+          "_total": 0,
+          "values": []
+        },
+        "militaryServices": {
+          "_total": 0,
+          "values": []
+        },
+        "publicProfileUrl": "http:\u002F\u002Fwww.qa.indeed.net\u002Fr\u002Fhimanshu1-mismatch1\u002Fce6198f56484606a"
+      },
+      "text": "resume text",
+      "hrXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<Resume xmlns=\"http:\u002F\u002Fns.hr-xml.org\u002F2006-02-28\" xmlns:sov=\"http:\u002F\u002Fsovren.com\u002Fhr-xml\u002F2006-02-28\" xmlns:xsi=\"http:\u002F\u002Fwww.w3.org\u002F2001\u002FXMLSchema-instance\" xml:lang=\"en\" xsi:schemaLocation=\"http:\u002F\u002Fns.hr-xml.org\u002F2006-02-28 Resume.xsd http:\u002F\u002Fsovren.com\u002Fhr-xml\u002F2006-02-28 SovrenResumeExtensions.xsd\">\n  <ResumeId idOwner=\"SomeOwnerId\">\n    <IdValue>SomeId1<\u002FIdValue>\n    <IdValue>SomeId2<\u002FIdValue>\n  <\u002FResumeId>\n  <StructuredXMLResume>\n    <ContactInfo>\n      <PersonName>\n        <FormattedName>himanshu1 mismatch1<\u002FFormattedName>        <GivenName>himanshu1<\u002FGivenName>        <FamilyName>mismatch1<\u002FFamilyName>      <\u002FPersonName>\n      <ContactMethod>\n        <PostalAddress type=\"undefined\">\n          <CountryCode>US<\u002FCountryCode>\n          <Region>OH<\u002FRegion>\n          <Municipality>Austintown<\u002FMunicipality>\n        <\u002FPostalAddress>\n      <\u002FContactMethod>\n    <\u002FContactInfo>\n    <EmploymentHistory>\n      <EmployerOrg>\n        <EmployerOrgName>HOSPITAL AUXILIO MUTUO<\u002FEmployerOrgName>        <PositionHistory currentEmployer=\"false\" >\n          <Title>Nurse<\u002FTitle>          <OrgName>\n            <OrganizationName>HOSPITAL AUXILIO MUTUO<\u002FOrganizationName>          <\u002FOrgName>\n          <Description>Typical duties of the job include:\n\t&#8226; assessing and planning nursing care requirements\n\t&#8226; providing pre- and post-operation care\n\t&#8226; monitoring and administering medication and intravenous infusions\n\t&#8226; taking patient samples, pulses, temperatures and blood pressures\n\t&#8226; writing records\n\t&#8226; supervising junior staff\n\t&#8226; organising workloads\n\t&#8226; providing emotional support to patients and relatives\n\t&#8226; tutoring student nurses 7 days week\n24-hour shift work can be a requirement of the job.<\u002FDescription>          <OrgInfo>\n            <PositionLocation type=\"undefined\">\n              <CountryCode>US<\u002FCountryCode>\n              <Region>NY<\u002FRegion>\n              <Municipality>New York<\u002FMunicipality>\n            <\u002FPositionLocation>\n          <\u002FOrgInfo>\n        <StartDate>\n          <StringDate>2019-01<\u002FStringDate>\n        <\u002FStartDate>\n        <EndDate>\n          <StringDate>2019-11<\u002FStringDate>\n        <\u002FEndDate>\n        <\u002FPositionHistory>\n      <\u002FEmployerOrg>\n      <EmployerOrg>\n        <EmployerOrgName>JPMorgan Chase<\u002FEmployerOrgName>        <PositionHistory currentEmployer=\"false\" >\n          <Title>Nurse Practitioner<\u002FTitle>          <OrgName>\n            <OrganizationName>JPMorgan Chase<\u002FOrganizationName>          <\u002FOrgName>\n          <Description>Typical duties of the job include:\n&#8226; assessing and planning nursing care requirements\n&#8226; providing pre- and post-operation care\n&#8226; monitoring and administering medication and intravenous infusions\n&#8226; taking patient samples, pulses, temperatures and blood pressures\n&#8226; writing records\n&#8226; supervising junior staff\n&#8226; organising workloads\n&#8226; providing emotional support to patients and relatives\n&#8226; tutoring student nurses\n24-hour shift work can be a requirement of the job.<\u002FDescription>          <OrgInfo>\n            <PositionLocation type=\"undefined\">\n              <CountryCode>US<\u002FCountryCode>\n              <Region>NY<\u002FRegion>\n              <Municipality>New York<\u002FMunicipality>\n            <\u002FPositionLocation>\n          <\u002FOrgInfo>\n        <StartDate>\n          <StringDate>2018-10<\u002FStringDate>\n        <\u002FStartDate>\n        <EndDate>\n          <StringDate>2018-12<\u002FStringDate>\n        <\u002FEndDate>\n        <\u002FPositionHistory>\n      <\u002FEmployerOrg>\n    <\u002FEmploymentHistory>\n      <EducationHistory>\n        <SchoolOrInstitution>\n          <School> \n            <SchoolName>Indiana State<\u002FSchoolName>\n          <\u002FSchool>\n          <LocationSummary>\n            <CountryCode>US<\u002FCountryCode>\n            <Region>NY<\u002FRegion>\n            <Municipality>New York<\u002FMunicipality>\n          <\u002FLocationSummary>\n          <PostalAddress>\n            <CountryCode>US<\u002FCountryCode>\n            <Region>NY<\u002FRegion>\n            <Municipality>New York<\u002FMunicipality>\n          <\u002FPostalAddress>\n          <Degree>\n            <DegreeName>BA<\u002FDegreeName>\n            <DegreeMajor>\n              <Name>Nursing<\u002FName>\n            <\u002FDegreeMajor>\n          <\u002FDegree>\n        <\u002FSchoolOrInstitution>\n      <\u002FEducationHistory>\n  <\u002FStructuredXMLResume>\n<\u002FResume>\n"
+    },
+    "verified": true,
+    "accountKey": "ce6198f56484606a"
+  },
+  "questions": {
+    "url": "https:\u002F\u002Fpaste.sandbox.qa.indeed.net\u002Fsnippet\u002FAAHVwe5mQykwSofX\u002Fraw",
+    "retrievedOnMillis": 1617611301861,
+    "questions": [
+      {
+        "id": "first_header_req",
+        "question": "",
+        "type": "information",
+        "required": false,
+        "text": "The following set of questions are examples of Indeed Apply screener questions. This is an <b>information<\u002Fb> question type. <br>Links can be added in the text of this question type.<br> Example: <a href=\"http:\u002F\u002Fdeveloper.indeed.com\u002Fdocs\u002Findeed-apply\u002Fdirect-employer\u002F#screener_questions\">visit documentation<\u002Fa> page.",
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "number_req",
+        "question": "What is your favorite number?",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "country_bas_req",
+        "question": "Country of residence",
+        "type": "select",
+        "required": true,
+        "options": [
+          {
+            "label": "Afghanistan",
+            "value": "AF"
+          },
+          {
+            "label": "Aland Islands",
+            "value": "AX"
+          },
+          {
+            "label": "Albania",
+            "value": "AL"
+          }
+        ],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "notification_about_page_break_req",
+        "question": "",
+        "type": "information",
+        "required": false,
+        "text": "After this question should be page break.",
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "pagebreak1_req",
+        "question": "",
+        "type": "pagebreak",
+        "required": false,
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "profile-atLeast18_req",
+        "question": "Are you at least 18 years of age?",
+        "type": "select",
+        "required": true,
+        "options": [
+          {
+            "label": "Yes",
+            "value": "1"
+          },
+          {
+            "label": "No",
+            "value": "0"
+          }
+        ],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "profile-permit_req",
+        "question": "Can you provide a work permit?",
+        "type": "select",
+        "required": true,
+        "options": [
+          {
+            "label": "Yes",
+            "value": "1"
+          },
+          {
+            "label": "No",
+            "value": "0"
+          }
+        ],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "experience_req",
+        "question": "Describe your most favourite ice cream flavor",
+        "type": "textarea",
+        "required": true,
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "favoritecolors_req",
+        "question": "Select your two favorite colors:",
+        "type": "multiselect",
+        "required": true,
+        "options": [
+          {
+            "label": "Maize",
+            "value": "0"
+          },
+          {
+            "label": "Blue",
+            "value": "1"
+          },
+          {
+            "label": "Green",
+            "value": "2"
+          }
+        ],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "pagebreak2_req",
+        "question": "",
+        "type": "pagebreak",
+        "required": false,
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "date_q_req",
+        "question": "When you can start working?",
+        "type": "date",
+        "required": true,
+        "format": "MM\u002Fdd\u002Fyyyy",
+        "min": "01\u002F01\u002F2018",
+        "max": "01\u002F01\u002F2025",
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "any_additional_documents_req",
+        "question": "Please provide any additional documents for your application (Accepted file types are pdf, txt, docx, doc, html, htm, rtf, jpg, jpeg, jpe, jif, jfif, gif, png, tif and tiff.).",
+        "type": "file",
+        "required": true,
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "first_header",
+        "question": "",
+        "type": "information",
+        "required": false,
+        "text": "The following optional set of questions are examples of Indeed Apply screener questions. This is an <b>information<\u002Fb> question type. <br>Links can be added in the text of this question type.<br> Example: <a href=\"http:\u002F\u002Fdeveloper.indeed.com\u002Fdocs\u002Findeed-apply\u002Fdirect-employer\u002F#screener_questions\">visit documentation<\u002Fa> page.",
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "number_integer",
+        "question": "What is your favorite integer number?",
+        "type": "text",
+        "required": false,
+        "format": "integer",
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "number_decimal",
+        "question": "What is your favorite decimal number?",
+        "type": "text",
+        "required": false,
+        "format": "decimal",
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "country_bas",
+        "question": "Country of residence",
+        "type": "select",
+        "required": false,
+        "options": [
+          {
+            "label": "Afghanistan",
+            "value": "AF"
+          },
+          {
+            "label": "Aland Islands",
+            "value": "AX"
+          },
+          {
+            "label": "Albania",
+            "value": "AL"
+          }
+        ],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "notification_about_page_break",
+        "question": "",
+        "type": "information",
+        "required": false,
+        "text": "After this question should be page break.",
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "pagebreak1",
+        "question": "",
+        "type": "pagebreak",
+        "required": false,
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "profile-atLeast18",
+        "question": "Are you at least 18 years of age?",
+        "type": "select",
+        "required": false,
+        "options": [
+          {
+            "label": "Yes",
+            "value": "1"
+          },
+          {
+            "label": "No",
+            "value": "0"
+          }
+        ],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "profile-permit",
+        "question": "Can you provide a work permit?",
+        "type": "select",
+        "required": false,
+        "options": [
+          {
+            "label": "Yes",
+            "value": "1"
+          },
+          {
+            "label": "No",
+            "value": "0"
+          }
+        ],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "experience",
+        "question": "Describe your most favourite ice cream flavor",
+        "type": "textarea",
+        "required": false,
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "favoritecolors",
+        "question": "Select your two favorite colors:",
+        "type": "multiselect",
+        "required": false,
+        "options": [
+          {
+            "label": "Maize",
+            "value": "0"
+          },
+          {
+            "label": "Blue",
+            "value": "1"
+          },
+          {
+            "label": "Green",
+            "value": "2"
+          }
+        ],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "pagebreak2",
+        "question": "",
+        "type": "pagebreak",
+        "required": false,
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "date_q",
+        "question": "When you can start working?",
+        "type": "date",
+        "required": false,
+        "format": "MM\u002Fdd\u002Fyyyy",
+        "min": "01\u002F01\u002F2018",
+        "max": "01\u002F01\u002F2025",
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "any_additional_documents",
+        "question": "Please provide any additional documents for your application (Accepted file types are pdf, txt, docx, doc, html, htm, rtf, jpg, jpeg, jpe, jif, jfif, gif, png, tif and tiff.).",
+        "type": "file",
+        "required": false,
+        "max": "5",
+        "options": [],
+        "hierarchicalOptions": []
+      },
+      {
+        "id": "hierarchical_req",
+        "question": "State",
+        "type": "hierarchical",
+        "required": true,
+        "options": [
+          {
+            "label": "California",
+            "value": "0"
+          },
+          {
+            "label": "Texas",
+            "value": "1"
+          },
+          {
+            "label": "New York",
+            "value": "2"
+          }
+        ],
+        "hierarchicalOptions": [
+          {
+            "id": "cali_cities_req",
+            "options": [
+              {
+                "label": "San Francisco",
+                "value": "0"
+              },
+              {
+                "label": "Los Angeles",
+                "value": "1"
+              }
+            ],
+            "condition": {
+              "id": "hierarchical_req",
+              "values": ["0"],
+              "exclude": false
+            }
+          },
+          {
+            "id": "texas_cities_req",
+            "options": [
+              {
+                "label": "San Antonio",
+                "value": "0"
+              },
+              {
+                "label": "Austin",
+                "value": "1"
+              }
+            ],
+            "condition": {
+              "id": "hierarchical_req",
+              "values": ["1"],
+              "exclude": false
+            }
+          },
+          {
+            "id": "sa_zipcodes_req",
+            "options": [
+              {
+                "label": "78212",
+                "value": "0"
+              },
+              {
+                "label": "78209",
+                "value": "1"
+              }
+            ],
+            "condition": {
+              "id": "texas_cities_req",
+              "values": ["0"],
+              "exclude": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "hierarchical",
+        "question": "State",
+        "type": "hierarchical",
+        "required": false,
+        "options": [
+          {
+            "label": "California",
+            "value": "0"
+          },
+          {
+            "label": "Texas",
+            "value": "1"
+          },
+          {
+            "label": "New York",
+            "value": "2"
+          }
+        ],
+        "hierarchicalOptions": [
+          {
+            "id": "cali_cities",
+            "options": [
+              {
+                "label": "San Francisco",
+                "value": "0"
+              },
+              {
+                "label": "Los Angeles",
+                "value": "1"
+              }
+            ],
+            "condition": {
+              "id": "hierarchical",
+              "values": ["0"],
+              "exclude": false
+            }
+          },
+          {
+            "id": "texas_cities",
+            "options": [
+              {
+                "label": "San Antonio",
+                "value": "0"
+              },
+              {
+                "label": "Austin",
+                "value": "1"
+              }
+            ],
+            "condition": {
+              "id": "hierarchical",
+              "values": ["1"],
+              "exclude": false
+            }
+          },
+          {
+            "id": "sa_zipcodes",
+            "options": [
+              {
+                "label": "78212",
+                "value": "0"
+              },
+              {
+                "label": "78209",
+                "value": "1"
+              }
+            ],
+            "condition": {
+              "id": "texas_cities",
+              "values": ["0"],
+              "exclude": false
+            }
+          }
+        ]
+      }
+    ],
+    "answers": [
+      {
+        "id": "first_header_req",
+        "value": ""
+      },
+      {
+        "id": "number_req",
+        "value": "19"
+      },
+      {
+        "id": "country_bas_req",
+        "value": "AL"
+      },
+      {
+        "id": "notification_about_page_break_req",
+        "value": ""
+      },
+      {
+        "id": "pagebreak1_req",
+        "value": ""
+      },
+      {
+        "id": "profile-atLeast18_req",
+        "value": "1"
+      },
+      {
+        "id": "profile-permit_req",
+        "value": ""
+      },
+      {
+        "id": "experience_req",
+        "value": "Test ICE Cream flavor"
+      },
+      {
+        "id": "favoritecolors_req",
+        "values": ["0", "1"]
+      },
+      {
+        "id": "pagebreak2_req",
+        "value": ""
+      },
+      {
+        "id": "date_q_req",
+        "value": "12\u002F15\u002F2020"
+      },
+      {
+        "id": "any_additional_documents_req",
+        "files": [
+          {
+            "id": "16cea655def2f559c5b4886f52fc54ad206065121f38d4d0c425746e5909a5f8",
+            "fileName": "sample_resume.pdf",
+            "contentType": "application\u002Fpdf",
+            "data": "...",
+            "fileTypes": ["other"]
+          }
+        ],
+        "values": ["sample_resume.pdf"]
+      },
+      {
+        "id": "first_header",
+        "value": ""
+      },
+      {
+        "id": "number_integer",
+        "value": ""
+      },
+      {
+        "id": "number_decimal",
+        "value": ""
+      },
+      {
+        "id": "country_bas",
+        "value": ""
+      },
+      {
+        "id": "notification_about_page_break",
+        "value": ""
+      },
+      {
+        "id": "pagebreak1",
+        "value": ""
+      },
+      {
+        "id": "profile-atLeast18",
+        "value": ""
+      },
+      {
+        "id": "profile-permit",
+        "value": ""
+      },
+      {
+        "id": "experience",
+        "value": ""
+      },
+      {
+        "id": "favoritecolors",
+        "values": []
+      },
+      {
+        "id": "pagebreak2",
+        "value": ""
+      },
+      {
+        "id": "date_q",
+        "value": ""
+      },
+      {
+        "id": "any_additional_documents",
+        "values": []
+      },
+      {
+        "id": "hierarchical_req",
+        "values": ["1", "0", "0"],
+        "hierarchicalAnswers": [
+          {
+            "id": "hierarchical_req",
+            "value": "1"
+          },
+          {
+            "id": "texas_cities_req",
+            "value": "0"
+          },
+          {
+            "id": "sa_zipcodes_req",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "id": "hierarchical",
+        "values": [],
+        "hierarchicalAnswers": []
+      }
+    ]
+  },
+  "questionsAndAnswers": {
+    "url": "https:\u002F\u002Fpaste.sandbox.qa.indeed.net\u002Fsnippet\u002FAAHVwe5mQykwSofX\u002Fraw",
+    "retrievedOnMillis": 1617611301861,
+    "questionsAndAnswers": [
+      {
+        "question": {
+          "id": "first_header_req",
+          "question": "",
+          "type": "information",
+          "required": false,
+          "text": "The following set of questions are examples of Indeed Apply screener questions. This is an <b>information<\u002Fb> question type. <br>Links can be added in the text of this question type.<br> Example: <a href=\"http:\u002F\u002Fdeveloper.indeed.com\u002Fdocs\u002Findeed-apply\u002Fdirect-employer\u002F#screener_questions\">visit documentation<\u002Fa> page.",
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": ""
+      },
+      {
+        "question": {
+          "id": "number_req",
+          "question": "What is your age?",
+          "type": "text",
+          "required": true,
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": "17"
+      },
+      {
+        "question": {
+          "id": "country_bas_req",
+          "question": "Country of residence",
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "label": "Afghanistan",
+              "value": "AF"
+            },
+            {
+              "label": "Aland Islands",
+              "value": "AX"
+            },
+            {
+              "label": "Albania",
+              "value": "AL"
+            }
+          ],
+          "hierarchicalOptions": []
+        },
+        "answer": {
+          "label": "USA",
+          "value": "AL"
+        }
+      },
+      {
+        "question": {
+          "id": "notification_about_page_break_req",
+          "question": "",
+          "type": "information",
+          "required": false,
+          "text": "After this question should be page break.",
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": ""
+      },
+      {
+        "question": {
+          "id": "pagebreak1_req",
+          "question": "",
+          "type": "pagebreak",
+          "required": false,
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": ""
+      },
+      {
+        "question": {
+          "id": "profile-permit_req",
+          "question": "Can you provide a work permit?",
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "label": "Yes",
+              "value": "1"
+            },
+            {
+              "label": "No",
+              "value": "0"
+            }
+          ],
+          "hierarchicalOptions": []
+        },
+        "answer": {}
+      },
+      {
+        "question": {
+          "id": "experience_req",
+          "question": "Why should we hire you?",
+          "type": "textarea",
+          "required": true,
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": "I have gained extensive experience in this field for the past few years."
+      },      
+      {
+        "question": {
+          "id": "pagebreak2_req",
+          "question": "",
+          "type": "pagebreak",
+          "required": false,
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": ""
+      },
+      {
+        "question": {
+          "id": "date_q_req",
+          "question": "When you can start working?",
+          "type": "date",
+          "required": true,
+          "format": "MM\u002Fdd\u002Fyyyy",
+          "min": "01\u002F01\u002F2018",
+          "max": "01\u002F01\u002F2025",
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": "12\u002F15\u002F2020"
+      },
+      {
+        "question": {
+          "id": "any_additional_documents_req",
+          "question": "Please provide any additional documents for your application",
+          "type": "file",
+          "required": true,
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": [
+          {
+            "id": "16cea655def2f559c5b4886f52fc54ad206065121f38d4d0c425746e5909a5f8",
+            "fileName": "sample_resume.pdf",
+            "contentType": "application\u002Fpdf",
+            "data": "...",
+            "fileTypes": ["other"]
+          }
+        ]
+      },
+      {
+        "question": {
+          "id": "first_header",
+          "question": "",
+          "type": "information",
+          "required": false,
+          "text": "The following optional set of questions are examples of Indeed Apply screener questions. This is an <b>information<\u002Fb> question type. <br>Links can be added in the text of this question type.<br> Example: <a href=\"http:\u002F\u002Fdeveloper.indeed.com\u002Fdocs\u002Findeed-apply\u002Fdirect-employer\u002F#screener_questions\">visit documentation<\u002Fa> page.",
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": ""
+      },
+      {
+        "question": {
+          "id": "number_integer",
+          "question": "What is your favorite integer number?",
+          "type": "text",
+          "required": false,
+          "format": "integer",
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": ""
+      },
+      {
+        "question": {
+          "id": "number_decimal",
+          "question": "What is your favorite decimal number?",
+          "type": "text",
+          "required": false,
+          "format": "decimal",
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": ""
+      },
+      {
+        "question": {
+          "id": "country_bas",
+          "question": "Country of residence",
+          "type": "select",
+          "required": false,
+          "options": [
+            {
+              "label": "Afghanistan",
+              "value": "AF"
+            },
+            {
+              "label": "Aland Islands",
+              "value": "AX"
+            },
+            {
+              "label": "Albania",
+              "value": "AL"
+            }
+          ],
+          "hierarchicalOptions": []
+        },
+        "answer": {}
+      },
+      {
+        "question": {
+          "id": "notification_about_page_break",
+          "question": "",
+          "type": "information",
+          "required": false,
+          "text": "After this question should be page break.",
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": ""
+      },
+      {
+        "question": {
+          "id": "pagebreak1",
+          "question": "",
+          "type": "pagebreak",
+          "required": false,
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": ""
+      },
+      {
+        "question": {
+          "id": "profile-atLeast18",
+          "question": "Are you at least 18 years of age?",
+          "type": "select",
+          "required": false,
+          "options": [
+            {
+              "label": "Yes",
+              "value": "1"
+            },
+            {
+              "label": "No",
+              "value": "0"
+            }
+          ],
+          "hierarchicalOptions": []
+        },
+        "answer": {}
+      },
+      {
+        "question": {
+          "id": "profile-permit",
+          "question": "Can you provide a work permit?",
+          "type": "select",
+          "required": false,
+          "options": [
+            {
+              "label": "Yes",
+              "value": "1"
+            },
+            {
+              "label": "No",
+              "value": "0"
+            }
+          ],
+          "hierarchicalOptions": []
+        },
+        "answer": {}
+      },
+      {
+        "question": {
+          "id": "experience",
+          "question": "Describe your most favourite ice cream flavor",
+          "type": "textarea",
+          "required": false,
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": ""
+      },
+      {
+        "question": {
+          "id": "favoritecolors",
+          "question": "Select your two favorite colors:",
+          "type": "multiselect",
+          "required": false,
+          "options": [
+            {
+              "label": "Maize",
+              "value": "0"
+            },
+            {
+              "label": "Blue",
+              "value": "1"
+            },
+            {
+              "label": "Green",
+              "value": "2"
+            }
+          ],
+          "hierarchicalOptions": []
+        },
+        "answer": []
+      },
+      {
+        "question": {
+          "id": "pagebreak2",
+          "question": "",
+          "type": "pagebreak",
+          "required": false,
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": ""
+      },
+      {
+        "question": {
+          "id": "date_q",
+          "question": "When you can start working?",
+          "type": "date",
+          "required": false,
+          "format": "MM\u002Fdd\u002Fyyyy",
+          "min": "01\u002F01\u002F2018",
+          "max": "01\u002F01\u002F2025",
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": ""
+      },
+      {
+        "question": {
+          "id": "any_additional_documents",
+          "question": "Please provide any additional documents for your application (Accepted file types are pdf, txt, docx, doc, html, htm, rtf, jpg, jpeg, jpe, jif, jfif, gif, png, tif and tiff.).",
+          "type": "file",
+          "required": false,
+          "max": "5",
+          "options": [],
+          "hierarchicalOptions": []
+        },
+        "answer": []
+      },
+      {
+        "question": {
+          "id": "hierarchical_req",
+          "question": "State",
+          "type": "hierarchical",
+          "required": true,
+          "options": [
+            {
+              "label": "California",
+              "value": "0"
+            },
+            {
+              "label": "Texas",
+              "value": "1"
+            },
+            {
+              "label": "New York",
+              "value": "2"
+            }
+          ],
+          "hierarchicalOptions": [
+            {
+              "id": "cali_cities_req",
+              "options": [
+                {
+                  "label": "San Francisco",
+                  "value": "0"
+                },
+                {
+                  "label": "Los Angeles",
+                  "value": "1"
+                }
+              ],
+              "condition": {
+                "id": "hierarchical_req",
+                "values": ["0"],
+                "exclude": false
+              }
+            },
+            {
+              "id": "texas_cities_req",
+              "options": [
+                {
+                  "label": "San Antonio",
+                  "value": "0"
+                },
+                {
+                  "label": "Austin",
+                  "value": "1"
+                }
+              ],
+              "condition": {
+                "id": "hierarchical_req",
+                "values": ["1"],
+                "exclude": false
+              }
+            },
+            {
+              "id": "sa_zipcodes_req",
+              "options": [
+                {
+                  "label": "78212",
+                  "value": "0"
+                },
+                {
+                  "label": "78209",
+                  "value": "1"
+                }
+              ],
+              "condition": {
+                "id": "texas_cities_req",
+                "values": ["0"],
+                "exclude": false
+              }
+            }
+          ]
+        },
+        "answer": [
+          {
+            "id": "hierarchical_req",
+            "label": "Texas",
+            "value": "1"
+          },
+          {
+            "id": "texas_cities_req",
+            "label": "San Antonio",
+            "value": "0"
+          },
+          {
+            "id": "sa_zipcodes_req",
+            "label": "78212",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "question": {
+          "id": "hierarchical",
+          "question": "State",
+          "type": "hierarchical",
+          "required": false,
+          "options": [
+            {
+              "label": "California",
+              "value": "0"
+            },
+            {
+              "label": "Texas",
+              "value": "1"
+            },
+            {
+              "label": "New York",
+              "value": "2"
+            }
+          ],
+          "hierarchicalOptions": [
+            {
+              "id": "cali_cities",
+              "options": [
+                {
+                  "label": "San Francisco",
+                  "value": "0"
+                },
+                {
+                  "label": "Los Angeles",
+                  "value": "1"
+                }
+              ],
+              "condition": {
+                "id": "hierarchical",
+                "values": ["0"],
+                "exclude": false
+              }
+            },
+            {
+              "id": "texas_cities",
+              "options": [
+                {
+                  "label": "San Antonio",
+                  "value": "0"
+                },
+                {
+                  "label": "Austin",
+                  "value": "1"
+                }
+              ],
+              "condition": {
+                "id": "hierarchical",
+                "values": ["1"],
+                "exclude": false
+              }
+            },
+            {
+              "id": "sa_zipcodes",
+              "options": [
+                {
+                  "label": "78212",
+                  "value": "0"
+                },
+                {
+                  "label": "78209",
+                  "value": "1"
+                }
+              ],
+              "condition": {
+                "id": "texas_cities",
+                "values": ["0"],
+                "exclude": false
+              }
+            }
+          ]
+        },
+        "answer": []
+      }
+    ]
+  },
+  "analytics": {
+    "referer": "https:\u002F\u002Fapply.qa.indeed.net",
+    "ip": "172.19.215.216",
+    "userAgent": "Mozilla\u002F5.0 (Macintosh; Intel Mac OS X 11_2_3) AppleWebKit\u002F537.36 (KHTML, like Gecko) Chrome\u002F89.0.4389.90 Safari\u002F537.36",
+    "device": "desktop"
+  },
+  "appliedOnMillis": 1617611379562,
+  "locale": "en"
+}

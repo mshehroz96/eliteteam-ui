@@ -1,0 +1,18 @@
+<div class="main">
+  <ul class="nav nav-pills flex-column flex-md-row mb-3">
+    <!-- Page -->
+    <li class="nav-item ListItem" *ngFor="let menuItem of menuList"
+      (click)="loadTab(menuItem, menuItem.RouteName, $event)">
+      <a href="#" [ngClass]="isActive(menuItem)">
+        <i [ngClass]="menuItem.Icon"></i>
+        {{ menuItem.Name }}
+      </a>
+    </li>
+  </ul>
+
+  <clients-unassigned  *ngIf="tabType == 'clients-unassigned'"></clients-unassigned>
+  <clients-assigned  *ngIf="tabType == 'clients-assigned'"></clients-assigned>
+
+
+
+</div>

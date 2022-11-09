@@ -1,0 +1,80 @@
+<!-- User Card -->
+<div class="card mb-4">
+  <div class="card-body">
+    <div class="user-avatar-section">
+      <div class="d-flex flex-column align-items-center">
+        <img id="imgUser" class="img-fluid rounded my-4" height="110" width="110" alt="User avatar"
+          [src]="UserData.avatarFileName | avatar" />
+        <div class="user-info text-center">
+          <h4 id="h4Name" class="mb-2">
+            {{ UserData.firstName + " " + UserData.lastName }}
+          </h4>
+          <h4 class="mb-2" *ngIf="UserData.userType == 5 || UserData.userType == 6">
+            {{ UserData.companyName }}
+          </h4>
+          <span id="spnRole" class="badge bg-label-secondary">{{
+            UserData.userType | userRole
+            }}</span>&nbsp;
+          <div id="spnStatus" class="badge bg-label-success">
+            {{ UserData.userStatus | userStatus }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center m-4">
+      <a href="javascript:;" class="btn btn-primary" (click)="editUser()">Edit</a>
+      <a href="#" (click)="BlockUser($event)" class="btn btn-label-danger suspend-user ml-2">Block</a>
+      <a href="#" *ngIf="enableUserApproval" (click)="ApprovekUser($event)"
+        class="btn btn-primary suspend-user ml-2">Approve</a>
+    </div>
+  </div>
+</div>
+<!-- /User Card -->
+
+<!-- Super User Access Card -->
+<div id="divSuperUserAccess" class="card d-none">
+  <div class="d-flex align-items-end row">
+    <div class="col-4 pt-3 text-center">
+      <img src="../assets/img/illustrations/superman-flying-light.png" width="100" height="140" class="rounded-start"
+        alt="upgrade account" data-app-dark-img="illustrations/superman-flying-dark.png"
+        data-app-light-img="illustrations/superman-flying-light.png" />
+    </div>
+    <div class="col-8 text-center">
+      <div class="card-body">
+        <h6 class="card-title mb-1">Super User Access</h6>
+        <small id="smlSuperUserMessage" class="d-block mb-3"></small>
+
+        <a id="aSuperUserAccess" href="javascript:;" class="btn btn-info">Sign In As</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Super User Access Card -->
+
+<!-- Modal Popup to Edit User -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <div class="col-12">
+      <h4 class="modal-title" id="modal-basic-title" class="text-center">
+        Edit User
+      </h4>
+      <button type="button" class="close AddUserClose" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+  <div class="modal-body">
+    <!-- <app-create-update [EditMode]="editMode"></app-create-update> -->
+  </div>
+  <div class="modal-footer">
+    <!-- <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Save
+    </button> -->
+  </div>
+</ng-template>
+
+<!-- Modal Popup to Edit User -->

@@ -1,0 +1,82 @@
+<p-card>
+    <ng-template pTemplate="body" class="ml-4 mr-4">
+        <div class="mb-3">
+            <div class="form-group">
+                <label for="txbJobTitle">
+                    What Is the job title you are hiring for?
+
+                </label>
+                <p-autoComplete (onSelect)="setJobTitle($event)" [(ngModel)]="requisitionRequest.jobTitle"
+                     [style]="{'width':'100%'}"
+                    [inputStyle]="{'width':'100%'}" [suggestions]="jobTitles" 
+                    (completeMethod)="searchJobTitles($event)"(onClear)="clearJobTitle($event)"
+                    field="title" [minLength]="3"></p-autoComplete>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>
+                Which category best describes this job?
+            </label>
+            <ng-container *ngFor="let category of jobTitleCategories">
+                <div class="row">
+                    <div class="col-md mb-2 mb-md-0">
+                        <div class="form-check custom-option custom-option-basic"> 
+                            <label
+                                class="form-check-label custom-option-content"> 
+                                <input
+                                     [checked]="this.requisitionRequest.jobTitleCategory.jobTitleCategoryId==category.jobTitleCategoryId" (change)="setJobTitleCategory(category)" class="form-check-input" type="radio"
+                                    value="Route Sales Representatives"> <span
+                                    class="custom-option-header"> <span class="h6 mb-0">{{category.jobCategoryName}}</span>
+                                </span> 
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </ng-template>
+</p-card>
+<p-card header="Job Description" subheader="Provide the details for your job"
+    styleClass="mt-2">
+    <ng-template pTemplate="body">
+        <div class="mb-3">
+            <label class="switch switch-square">
+                <input id="chkUsePredefined" type="checkbox" [(ngModel)]="requisitionRequest.predefinedJobDescription" (change)="setPreDefinedJobDes()" class="switch-input" />
+                <span class="switch-toggle-slider">
+                    <span class="switch-on"><i class="bx bx-check"></i></span>
+                    <span class="switch-off"><i class="bx bx-x"></i></span>
+                </span>
+                <span class="switch-label">Use predefined Job Description</span>
+            </label>
+            <div class="mb-3 mt-3">
+                <div class="form-group">
+                    <p-editor [(ngModel)]="requisitionRequest.jobDescription" [style]="{'height':'120px'}"></p-editor>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+</p-card>
+<p-card header="Position Requirements" subheader="Specify any additional position requirements"
+    styleClass="mt-2">
+
+    <div class="mb-3">
+        <div class="form-group">
+            <p-editor [(ngModel)]="requisitionRequest.positionRequirements" [style]="{'height':'120px'}"></p-editor>
+        </div>
+    </div>
+</p-card>
+<p-card  header="Attachment" subheader="Attach any additional document for this job"
+    styleClass="mt-2">
+    <div class="mb-3">
+        <a *ngIf="this.requisitionRequest.attachmentFileName" href="{{this.requisitionRequest.attachmentFileName | jobAttachment}}"
+            role="button">{{this.requisitionRequest.attachmentFileName}}</a>
+    </div>
+    <div class="mb-3">
+        <p-fileUpload name="attachment" #attachment   chooseLabel="Attach a file" chooseIcon="pi pi-paperclip"
+            [showUploadButton]="false" [showCancelButton]="false"
+            [maxFileSize]="100000000" accept="image/*,.csv,.xml,.xls,.xlsx,.doc,.docx,.pdf">
+        </p-fileUpload>
+        
+    </div>
+</p-card>

@@ -1,0 +1,42 @@
+<div [appIsLoading]="loadingService.isLoading(this)">
+  <form [appFocusInvalid]="UserForm" [formGroup]="UserForm" (ngSubmit)="saveData()">
+    <div class="mb-3">
+      <div class="form-group">
+          <label class="form-label">Full Name:</label>
+          <input autofocus class="form-control" [(ngModel)]="obj.fullName"
+          formControlName="fullName" name="fullName"   required />
+      </div>
+  </div>
+  <div class="mb-3">
+      <div class="form-group">
+          <label class="form-label">Gender:</label>
+          <p-dropdown [options]="gendersList" appendTo="body"  styleClass="p-fluid" [autoDisplayFirst]="false"
+             [(ngModel)]="obj.gender"
+             name="gender"
+             optionLabel="name" optionValue="value"
+             formControlName="gender"
+             dateFormat="mm/dd/yy"
+             dataType="date"
+              [required]="true"></p-dropdown>
+          
+      </div>
+  </div>
+  <div class="mb-3">
+      <div class="form-group">
+          <label class="form-label">Date of Birth:</label> 
+          <p-calendar  appendTo="body"  [(ngModel)]="obj.birthDate"
+          formControlName="birthDate" name="birthDate"  [required]="true" ></p-calendar>
+          
+          
+      </div>
+  </div>
+    <div class="row mt-3">
+      <div class="col-sm-12 text-center">
+        <button type="submit"   [disabled]="UserForm.invalid"  class="btn btn-primary">Save</button>
+        &nbsp;&nbsp;
+        <a role="button"  class="btn btn-label-secondary" (click)="Cancel()">Cancel</a>
+      </div>
+    </div>
+  </form>
+</div>
+

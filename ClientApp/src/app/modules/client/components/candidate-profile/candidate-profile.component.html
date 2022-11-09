@@ -1,0 +1,212 @@
+<!-- <div class="row mb-2">
+  <div class="col-md-4">
+    <h3><span class="fw-light">
+      <span>{{this.applicantProfileData.requisitionDetails.jobTitle.title}}</span></span>
+      <a href="javascript:void(0)"
+        routerLink="/client/jobs/job-details/{{applicantProfileData.requisitionDetails.uuid}}"
+        class="btn btn-label-primary btn-sm ml-2"><i class="bx bx-arrow-back"></i></a>
+    </h3>
+  </div>
+  <div class="col-md-8 text-end">
+    <button id="btnScheduleInterview" class="btn btn-primary d-none" data-bs-toggle="modal"
+      data-bs-target="#divModalScheduleInterview"><i class="fa fa-calendar"></i> Schedule
+      Interview</button>
+    <button id="btnInviteInterviewer" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target=""><i
+        class="fa fa-unlock"></i> Invite
+      Interviewer(s)</button>
+    <button id="btnRescheduleInterview" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target=""><i
+        class="fa fa-calendar"></i> Reschedule
+      Interview</button>
+    <button id="btnCancelInterview" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target=""><i
+        class="fa fa-ban"></i> Cancel Interview</button>
+    <button id="btnSendOffer" class="btn btn-primary d-none" data-bs-toggle="modal"
+      data-bs-target="#divModalSendOffer"><i class="fa fa-money-bill"></i> Send Offer</button>
+    <button id="btnDiscardoffer" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=""><i
+        class="fa fa-ban"></i> Retract Offer</button>
+    <button id="btnChangeoffer" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=""><i
+        class="bx bx-credit-card"></i> Change Offer</button>
+    <button id="btnHire" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target=""><i
+        class="fa fa-user"></i> Hire</button>
+  </div>
+</div> -->
+
+<div [appIsLoading]="loadingService.isLoading(this)">
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <h3>
+          <span class="fw-light">
+          <i class="bx bxs-video bx-md" *ngIf="candidate.campaignType=='Video'"></i>
+          <i class="bx bxs-calendar bx-md" *ngIf="candidate.campaignType=='Interview'"></i>
+          <i class="bx bxs-detail bx-md" *ngIf="candidate.campaignType=='Resume'"></i>
+          <span class="ml-1">{{this.applicantProfileData.requisitionDetails.jobTitle.title}}</span>
+        </span>
+
+        <a href="javascript:void(0)"
+          routerLink="/client/jobs/job-details/{{applicantProfileData.requisitionDetails.uuid}}"
+          class="btn btn-label-primary btn-sm ml-2"><i class="bx bx-arrow-back"></i></a>
+      </h3>
+    </div>
+    <div class="col-md-6 text-end">
+      <ng-template appConfig selector="app-candidate-profile" [status]="candidate.status"
+        template="btn-invite-for-interview" [campaignType]="candidate.campaignType">
+        <button type="button" (click)="interviewInvite()" class="btn btn-primary mr-1">
+          <i class="bx bxs-video" *ngIf="candidate.campaignType=='Video'"></i>
+          <i class="bx bxs-calendar" *ngIf="candidate.campaignType=='Interview'"></i>
+          <i class="bx bxs-detail" *ngIf="candidate.campaignType=='Resume'"></i>
+          Invite for Interview</button>
+      </ng-template>
+      <ng-template appConfig selector="app-candidate-profile" [status]="candidate.status"
+        template="btn-reschedule-interview" [campaignType]="candidate.campaignType">
+        <button (click)="interviewInvite()" class="btn btn-primary mr-1">
+          <i class="bx bxs-video" *ngIf="candidate.campaignType=='Video'"></i>
+          <i class="bx bxs-calendar" *ngIf="candidate.campaignType=='Interview'"></i>
+          <i class="bx bxs-detail" *ngIf="candidate.campaignType=='Resume'"></i>
+          Reschedule
+          Interview</button>
+      </ng-template>
+      <ng-template appConfig selector="app-candidate-profile" [status]="candidate.status"
+        template="btn-reschedule-interview" [campaignType]="candidate.campaignType">
+        <button (click)="makepayment()" class="btn btn-primary mr-1"><i class="fa fa-calendar"></i>Make Payment</button>
+      </ng-template>
+      <ng-template appConfig selector="app-candidate-profile" [status]="candidate.status"
+        template="btn-cancel-interview" [campaignType]="candidate.campaignType">
+        <button (click)="cancelInterView()" class="btn btn-primary mr-1"><i class="fa fa-ban"></i> Cancel
+          Interview</button>
+      </ng-template>
+      <ng-template appConfig selector="app-candidate-profile" [status]="candidate.status"
+        template="btn-send-offer" [campaignType]="candidate.campaignType">
+        <button id="btnSendOffer" (click)="sendOffer()" class="btn btn-primary mr-1"><i
+            class="fa fa-money-bill"></i> Send Offer</button>
+      </ng-template>
+      <ng-template  appConfig selector="app-candidate-profile" [status]="candidate.status"
+        template="btn-retract-offer" [campaignType]="candidate.campaignType">
+        <button class="btn btn-primary mr-1" (click)="sendOffer()"><i class="fa fa-ban"></i>
+          Retract Offer</button>
+      </ng-template>
+      <ng-template appConfig selector="app-candidate-profile" [status]="candidate.status"
+        template="btn-change-offer" [campaignType]="candidate.campaignType">
+        <button (click)="sendOffer()" class="btn btn-primary mr-1" ><i
+            class="bx bx-credit-card"></i> Change Offer</button>
+
+      </ng-template>
+      <ng-template appConfig selector="app-candidate-profile" [status]="candidate.status"
+        template="btn-hire" [campaignType]="candidate.campaignType">
+        <button (click)="hireApplicant()" class="btn btn-primary mr-1"><i class="fa fa-user"></i>
+          Hire</button>
+      </ng-template>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <div class="row">
+        <div class="col-12">
+          <app-candidate-pageview [first]="first" [candidate]="candidate" [rows]="1" [totalRecords]="totalRecords"
+            (candidateChanged)="onCandidateChange($event)">
+          </app-candidate-pageview>
+        </div>
+      </div>
+      <ng-template appConfig selector="app-candidate-profile" template="app-owi-answers"
+      [status]="candidate.status"
+        [campaignType]="candidate.campaignType">
+        <div class="card mt-2">
+          <div class="card-body">
+            <app-owi-answers [applicantId]="this.request.applicantId" [source]="candidate.source"
+             (answerSelected)="showAnswerDetails($event)">
+            </app-owi-answers>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template appConfig selector="app-candidate-profile" template="app-owi-rating" [status]="candidate.status"
+        [campaignType]="candidate.campaignType">
+        <app-owi-rating [applicantId]="this.request.applicantId">
+        </app-owi-rating>
+      </ng-template>
+
+      <ng-template appConfig selector="app-candidate-profile" template="app-chat-messages" [status]="candidate.status"
+        [campaignType]="candidate.campaignType">
+        <div class="accordion mt-2">
+          <div id="divApplicantChatAccordian" class="card accordion-item active">
+            <h2 class="accordion-header d-flex align-items-center">
+              <button id="btnApplicantChatAccordian" type="button" class="accordion-button" data-bs-toggle="collapse"
+                data-bs-target="#accApplicantChat">
+                <i class="bx bxs-chat me-2"></i>
+                Messages
+              </button>
+            </h2>
+            <div id="accApplicantChat" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+                <app-chat-messages>
+                </app-chat-messages>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template appConfig selector="app-candidate-profile" template="app-interview-comments" [status]="candidate.status"
+        [campaignType]="candidate.campaignType">
+          <app-interview-comments></app-interview-comments>
+      </ng-template>
+    </div>
+    <div class="col-7">
+      <ng-template appConfig selector="app-candidate-profile" template="app-owi-answer-details"
+        [status]="candidate.status" [campaignType]="candidate.campaignType">
+        <app-owi-answer-details [answer]="selectedAnswer"></app-owi-answer-details>
+      </ng-template>
+      <ng-template appConfig selector="app-candidate-profile" template="app-client-interview-details"
+        [status]="candidate.status" [campaignType]="candidate.campaignType">
+          <app-client-interview-details [applicantId]="this.request.applicantId"></app-client-interview-details>
+      </ng-template>
+      <ng-template appConfig selector="app-candidate-profile" template="app-offer-detail"
+        [status]="candidate.status" [campaignType]="candidate.campaignType">
+        <app-offer-detail [applicantId]="this.request.applicantId"></app-offer-detail>
+      </ng-template>
+      <ng-template appConfig selector="app-candidate-profile" template="app-resume-details"
+        [status]="candidate.status" [campaignType]="candidate.campaignType">
+        <div id="divAccordianViewResume" class="card accordion-item mb-3">
+          <h2 class="accordion-header" id="headingOne">
+            <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#divAccordian1"
+              aria-expanded="false">
+              <i class="fa fa-file-pdf"></i> &nbsp;View Resume
+            </button>
+          </h2>
+
+          <div id="divAccordian1" class="accordion-collapse collapse" data-bs-parent="#divAccordian">
+            <div class="accordion-body">
+              <div style="height: 600px">
+                <ng2-pdfjs-viewer #pdfViewer  [viewBookmark]="false" pagemode="none" zoom="80"></ng2-pdfjs-viewer>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template appConfig selector="app-candidate-profile" template="app-requisition-summary"
+        [status]="candidate.status" [campaignType]="candidate.campaignType">
+        <div class="accordion">
+
+          <div class="card accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                data-bs-target="#divAccordian2" aria-expanded="false">
+                <i class="fa fa-briefcase"></i> &nbsp;Job Details
+              </button>
+            </h2>
+            <div id="divAccordian2" class="accordion-collapse collapse" data-bs-parent="#divAccordian" style="">
+              <div class="accordion-body">
+                <app-requisition-summary [requisitionRequest]="this.applicantProfileData.requisitionDetails">
+                </app-requisition-summary>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<!-- <p-dialog header="Unlock Profile"  [(visible)]="isPayment" [style]="{width: '50vw', height:'600px;'}">
+  <app-payment >
+
+  </app-payment>
+</p-dialog> -->
+

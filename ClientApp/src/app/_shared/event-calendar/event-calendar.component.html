@@ -1,0 +1,55 @@
+
+ <p-blockUI [blocked]="this.blocked" style="z-index: 999999">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</p-blockUI>
+
+<div class="layout-wrapper layout-navbar-full layout-horizontal layout-without-menu">
+  <div class="layout-container">
+
+    <div class="layout-page">
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col-8 ">
+            <div class="card card-action mb-4" >
+              <div class="card-body">
+                <div class="row mb-4">
+                  <div class="col-7 mb-4">
+                     <p-multiSelect [options]="requisitions" [style]="{'width':'100%','padding': '0px'}"  placeholder="Select Job" [(ngModel)]="selectedRequisition"  optionValue="requisitionId" optionLabel="jobTitle"></p-multiSelect>
+                  </div>
+                  <div class="col-2 mb-4">
+                    <button type="button" class="btn btn-outline-dark" (click)="getEvents()">Filter</button>
+                  </div>
+                  <div class="col-3  mb-4" *ngIf="userType == 3">
+                    <div class="form-check" style="margin-top: 10px;">
+                       <input class="form-check-input" (change)="getEvents()" type="checkbox" name="Schedules" id="Schedules" [(ngModel)]="searchEventInput.withSchedules" >
+                      <label class="form-check-label" for="Schedules">My Schedules</label>
+                      <div class="fv-plugins-message-container invalid-feedback"></div>
+                    </div>
+                  </div>
+                  <full-calendar id="fullCalendar" class="event-calendar" [options]="calendarOptions">
+
+                  </full-calendar>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="col-4 ">
+             <app-schedules-view *ngIf="mySchedules" (hdieRighPanel)="hdieRighPanel(eventType)" [eventData]="this.eventData"></app-schedules-view>
+              <app-recruiter-schedules id="Schedules" (hdieRighPanel)="hdieRighPanel(eventType)" (hidePanelWithoutRefresh)="hidePanelWithoutRefresh({})" [eventStartDate]="eventStartDate" [eventEndDate]="eventEndDate" [item]="this.eventType" *ngIf="schedules"></app-recruiter-schedules>
+              <app-availability id="Availablity" (hdieRighPanel)="hdieRighPanel(eventType)" (hidePanelWithoutRefresh)="hidePanelWithoutRefresh({})" [eventStartDate]="eventStartDate" [eventEndDate]="eventEndDate" [item]="this.eventType" *ngIf="availablity"></app-availability>
+              <app-clientmeeting [eventDate]="eventStartDate" (hdieRighPanel)="hdieRighPanel(eventType)"  [item]="this.eventType" *ngIf="clientMeeting"></app-clientmeeting>
+              <app-availability-view *ngIf="myAvailablity" (hdieRighPanel)="hdieRighPanel(eventType)" [eventData]="this.eventData"></app-availability-view>
+              <app-clientmeeting-view [eventData]="this.eventData" (hdieRighPanel)="hdieRighPanel(eventType)"  *ngIf="clientMeetingView" ></app-clientmeeting-view>
+              <app-candidate-interview-view [eventData]="this.eventData" (hdieRighPanel)="hdieRighPanel(eventType)"  *ngIf="candidateInterview" ></app-candidate-interview-view>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p-dialog header="Event Types" [(visible)]="dialog">
+    <div *ngFor="let item of eventTypes">
+      <a class="dropdown-item"  style="cursor:pointer" (click)="showRighPanel(item)"><i
+        class="{{item.icon}}"></i> {{item.title}}</a>
+    </div>
+  </p-dialog>

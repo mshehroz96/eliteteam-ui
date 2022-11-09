@@ -1,0 +1,58 @@
+<p-table #dtClient [value]="clients" [lazy]="true" (onLazyLoad)="getClients($event)" responsiveLayout="scroll"
+  dataKey="companyId" styleClass="p-datatable-strip" [paginator]="true" [rows]="10" [totalRecords]="totalRecords"
+  [loading]="loading" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50,100]"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [globalFilterFields]="['industryId']">
+  <ng-template pTemplate="caption">
+    <div class="row">
+      <form action="#">
+        <span style="float: left">
+          <label>Unassigned Clients</label>
+        </span>
+        <div style="float: right" class="dt-buttons ml-4">
+          <select class="form-select text-capitalize" name="industryid" [(ngModel)]="industryid" (change)="getClients({})">
+            <option value="0">Select Status</option>
+            <option *ngFor="let item of clientIndustries" [value]="item.value">
+                {{ item.displayText }}
+            </option>
+          </select>
+        </div>
+        <label class="rightSpacing" style="float: right">
+          <input pInputText type="text" name="globalFilter" class="form-control" [(ngModel)]="searchFilter"
+            (ngModelChange)="getClients({})" placeholder="Search keyword" />
+        </label>
+      </form>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="JobTitle">Client Name<p-sortIcon field="jobTitle"></p-sortIcon>
+      </th>
+      <th pSortableColumn="CompanyName">Industry<p-sortIcon field="companyName"></p-sortIcon>
+      </th>
+      <th pSortableColumn="DateSubmitted">Via Showcase <p-sortIcon field="submittedOn"></p-sortIcon>
+      </th>
+      <th pSortableColumn="SubmittedHoursAgo">Client Jobs <p-sortIcon field="submittedHoursAgo"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-client>
+    <tr>
+      <td>
+        <a href="javascript:void(0)" routerLink="recruiter-assignment-details/{{client.companyId}}" class="menu-link">
+          &nbsp; {{client.companyName }}
+        </a>
+      </td>
+      <td>
+        {{client.industry }}
+      </td>
+      <td>
+        {{client.viaShowcase }}
+      </td>
+      <td >
+        {{client.clientJobs }}
+      </td>
+    </tr>
+  </ng-template>
+
+</p-table>

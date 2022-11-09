@@ -1,0 +1,153 @@
+<table cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+      <p style="margin:0px"><input type="checkbox" (change)="redactChange($event,'PersonalDetails','FullName')" [checked]="isRedacted('PersonalDetails','FullName')"  /> &nbsp;
+      <strong>{{resumeDetails.fullName}}</strong></p>
+      <p style="margin:0px">
+        <input type="checkbox" [checked]="isRedacted('PersonalDetails','Email')" (change)="redactChange($event,'PersonalDetails','Email')"  /> &nbsp; <a href="mailto:{{resumeDetails.email}}">{{resumeDetails.email}}</a></p>
+      <p style="margin:0px" *ngIf="resumeDetails.mobile">
+        <input type="checkbox" [checked]="isRedacted('PersonalDetails','MobileNo')" (change)="redactChange($event,'PersonalDetails','MobileNo')"  /> &nbsp;{{resumeDetails.mobile}}</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <ng-container *ngIf="resumeDetails.workExperiences.length>0">
+    <tr>
+      <td>
+        <strong style="margin:0px">Work Experience</strong>
+        <hr>
+      </td>
+    </tr>
+
+    <tr *ngFor="let we of resumeDetails.workExperiences">
+      <td>
+        <strong style="margin:0px"><input type="checkbox" [checked]="isRedacted('WorkExperiences','Title')" (change)="redactChange($event,'WorkExperiences','Title')" />&nbsp;{{we.title}}</strong>
+        <p style="margin:0px"> <input type="checkbox" [checked]="isRedacted('WorkExperiences','Company')" (change)="redactChange($event,'WorkExperiences','Company')"  />&nbsp;{{we.company}}</p>
+        <p style="margin:0px"> <input type="checkbox" [checked]="isRedacted('WorkExperiences','Location')" (change)="redactChange($event,'WorkExperiences','Location')"  />&nbsp;{{we.location}}</p>
+        <p style="margin:0px"><input type="checkbox" [checked]="isRedacted('WorkExperiences','Dates')" (change)="redactChange($event,'WorkExperiences','Dates')" />&nbsp;{{we.fromDate}} to {{we.toDate}}</p>
+        <p style="text-align:justify;margin:0px">
+          <input type="checkbox" [checked]="isRedacted('WorkExperiences','Description')" (change)="redactChange($event,'WorkExperiences','Description')" />&nbsp;{{we.description}}
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+  </ng-container>
+
+  <ng-container *ngIf="resumeDetails.educations.length>0">
+    <tr>
+      <td>
+        <strong style="margin:0px">Eduction</strong>
+        <hr>
+      </td>
+    </tr>
+
+    <tr *ngFor="let we of resumeDetails.educations">
+      <td>
+        <strong style="margin:0px"><input type="checkbox" [checked]="isRedacted('Educations','Degree')" (change)="redactChange($event,'Educations','Degree')" /> &nbsp; {{we.degree}} in {{we.field}}</strong>
+        <p style="margin:0px"><input type="checkbox" [checked]="isRedacted('Educations','School')" (change)="redactChange($event,'Educations','School')" /> &nbsp;{{we.school}}</p>
+        <p style="margin:0px"><input type="checkbox" [checked]="isRedacted('Educations','Location')" (change)="redactChange($event,'Educations','Location')" /> &nbsp;{{we.location}}</p>
+        <p style="margin:0px"><input type="checkbox" [checked]="isRedacted('Educations','Dates')" (change)="redactChange($event,'Educations','Dates')" /> &nbsp;{{we.fromDate}} to {{we.toDate}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+  </ng-container>
+
+  <ng-container *ngIf="resumeDetails.certifications.length>0">
+    <tr>
+      <td>
+        <strong style="margin:0px">Certifications</strong>
+        <hr>
+      </td>
+    </tr>
+
+    <tr *ngFor="let we of resumeDetails.certifications">
+      <td>
+        <strong style="margin:0px"><input type="checkbox" [checked]="isRedacted('Certifications','Title')" (change)="redactChange($event,'Certifications','Title')" /> &nbsp;{{we.title}} in {{we.field}}</strong>
+        <p style="margin:0px"><input type="checkbox" [checked]="isRedacted('Certifications','Company')" (change)="redactChange($event,'Certifications','Company')" /> &nbsp;<input type="checkbox"  /> &nbsp;{{we.company}}</p>
+        <p style="margin:0px"><input type="checkbox" [checked]="isRedacted('Certifications','Dates')" (change)="redactChange($event,'Certifications','Dates')" /> &nbsp;{{we.fromDate}} to {{we.toDate}}</p>
+        <p style="text-align:justify">
+          <input type="checkbox" [checked]="isRedacted('Certifications','Description')" (change)="redactChange($event,'Certifications','Description')" /> &nbsp; {{we.description}}
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+  </ng-container>
+
+  <ng-container *ngIf="resumeDetails.awards.length>0">
+    <tr>
+      <td style="margin:0px">
+        <strong style="margin:0px">Awards</strong>
+        <hr>
+      </td>
+    </tr>
+
+    <tr *ngFor="let we of resumeDetails.awards">
+      <td>
+        <strong style="margin:0px"><input type="checkbox" [checked]="isRedacted('Awards','Title')" (change)="redactChange($event,'Awards','Title')" /> &nbsp;{{we.title}} {{we.dateAwarded}}</strong>
+        <p style="margin:0px"><input type="checkbox" [checked]="isRedacted('Awards','Description')" (change)="redactChange($event,'Awards','Description')" /> &nbsp;{{we.description}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+  </ng-container>
+
+
+  <ng-container *ngIf="resumeDetails.publications.length>0">
+    <tr>
+      <td style="margin:0px">
+        <strong style="margin:0px">Publications</strong>
+        <hr>
+      </td>
+    </tr>
+
+    <tr *ngFor="let we of resumeDetails.publications">
+      <td>
+        <strong style="margin:0px"><input type="checkbox" [checked]="isRedacted('Publications','Title')" (change)="redactChange($event,'Publications','Title')" /> &nbsp;{{we.title}} {{we.datePublished}}</strong>
+        <p style="margin:0px"><input type="checkbox" [checked]="isRedacted('Publications','Description')" (change)="redactChange($event,'Publication','Description')" /> &nbsp;{{we.description}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+  </ng-container>
+
+  <ng-container *ngIf="resumeDetails.links.length>0">
+    <tr>
+      <td>
+        <strong style="margin:0px">Links</strong>
+        <hr>
+      </td>
+    </tr>
+
+    <tr *ngFor="let we of resumeDetails.links">
+      <td>
+        <p style="margin:0px"><input type="checkbox" [checked]="isRedacted('Links','URL')" (change)="redactChange($event,'Links','URL')" /> &nbsp; <a href="javascript:void(0)">{{we.url}}</a></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+  </ng-container>
+</table>

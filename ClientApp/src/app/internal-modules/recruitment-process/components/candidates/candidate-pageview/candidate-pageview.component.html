@@ -1,0 +1,97 @@
+<div class=" card" *ngIf="candidate">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-12 text-end">
+                <ng-container *ngIf="candidate.result=='Passed'">
+                        <span class="badge bg-success">{{candidate.result}}</span>
+                        <a href="javascript:void(0)" class="proxy_candidate_rating proxy_candidate_rating_success text-success"><i
+                                class="bx bx-happy text-muted bx-sm text-success"></i></a>
+                        <a href="javascript:void(0)" class="proxy_candidate_rating proxy_candidate_rating_danger"><i class="bx bx-sad text-muted bx-sm"></i></a>
+                        <a href="javascript:void(0)" class="proxy_candidate_rating proxy_candidate_rating_warning"><i
+                                class="bx bx-face bx-sm"></i></a>
+                </ng-container>
+                <ng-container *ngIf="candidate.result=='Failed'">
+                    <span class="badge bg-danger">{{candidate.result}}</span>
+                    <a href="javascript:void(0)" class="proxy_candidate_rating proxy_candidate_rating_success"><i
+                            class="bx bx-happy text-muted bx-sm"></i></a>
+                    <a href="javascript:void(0)" class="proxy_candidate_rating proxy_candidate_rating_danger"><i
+                            class="bx bx-sad text-muted bx-sm"></i></a>
+                    <a href="javascript:void(0)" class="proxy_candidate_rating proxy_candidate_rating_warning">
+                        <i class="bx bx-face bx-sm text-danger"></i></a>
+                </ng-container>
+
+                <ng-container *ngIf="candidate.result=='Undecided'">
+                    <span class="badge bg-warning">Undecided</span>
+                    <a href="javascript:void(0)" class="proxy_candidate_rating proxy_candidate_rating_success"><i
+                            class="bx bx-happy text-muted bx-sm"></i></a>
+                    <a href="javascript:void(0)" class="proxy_candidate_rating proxy_candidate_rating_danger"><i
+                            class="bx bx-sad text-muted bx-sm"></i></a>
+                    <a href="javascript:void(0)" class="proxy_candidate_rating proxy_candidate_rating_warning">
+                        <i class="bx bx-face bx-sm text-warning"></i></a>
+                </ng-container>
+                <ng-container *ngIf="candidate.result=='N/A'">
+                    <a href="javascript:void(0)" class="proxy_candidate_rating proxy_candidate_rating_success"><i
+                            class="bx bx-happy bx-sm text-muted"></i></a>
+                    <a href="javascript:void(0)" class="proxy_candidate_rating proxy_candidate_rating_danger"><i
+                            class="bx bx-sad bx-sm text-muted"></i></a>
+                    <a href="javascript:void(0)" class="proxy_candidate_rating proxy_candidate_rating_warning"><i class="bx bx-face bx-sm text-muted"></i></a>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <div class="card-body position-relative">
+        <div class="row">
+            <div class="col-1 p-0">
+                <br>
+                <a href="javascript:void(0)" *ngIf="showPrevious()" role="button" (click)="gotoPreviousCandidate()" class="proxy_candidate_navigate_minus"><i class="bx bx-lg bx-chevron-left"></i></a>
+            </div>
+            <div class="col-10">
+                <div class="mx-auto" style="vertical-align:middle;"> <img src="{{candidate.avatarFileName|avatar}}"
+                        alt="Candidate Picture" class="w-px-100 rounded-circle">
+                    <span style="display:inline-block;padding-left:10px;vertical-align:middle;">
+                        <span style="font-size:18px;display:inline-block;">{{candidate.firstName}}
+                            {{candidate.lastName}}
+                        </span>
+                        <span style="font-size:15px;display:block;">
+                            <a id="aEmail" class="btn btn-sm btn-label-secondary mr-1"
+                                href="mailto:example@mycompany.com"><i class="fa fa-envelope"></i></a>
+                            <a class="btn btn-sm btn-label-secondary mr-1"><i class="fa fa-phone"></i></a>
+                            <a class="btn btn-sm btn-label-secondary mr-1"><i class="bx bx-message"></i></a>
+                            <a class="btn btn-sm btn-label-secondary mr-1"><i class="bx bxl-whatsapp"></i></a>
+                        </span>
+                    </span>
+
+                </div>
+                <div class="pt-2 mb-3">
+
+                    <div class="row p-0 m-0">
+                        <div class="col-md-3 pl-2 py-0 text-right"  style="text-align: right; font-size:13px;">Status:
+                        </div>
+                        <div class="col-md-9 pl-2 py-0 text-left" [ngClass]="{'text-danger':candidate.status=='Disqualified'}" style="text-align: left; font-size:13px;">
+                            {{candidate.status}} </div>
+                    </div>
+                    <div class="row p-0 m-0">
+                        <div class="col-md-3 pl-2 py-0 text-right" style="text-align: right; font-size:13px;">Rating:
+                        </div>
+                        <div class="col-md-6 pl-2 py-0 text-left" style="text-align: left; font-size:13px;">
+                        <p-rating [cancel]="false" [readonly]="allowRating()" (onRate)="setRating($event)" [(ngModel)]="candidate.recruiterRating">
+                        </p-rating>    
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center text-primary mt-4">
+                    <span class="">
+                        <span class="badge bg-secondary">{{candidate.status}}</span> 
+                        <span *ngIf="totalRecords>1" class="ml-2">{{first+1}} of {{totalRecords}}</span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-1 p-0">
+                <div class="mx-auto" style="vertical-align:middle;">
+                    <br>
+                    <a href="javascript:void(0)" *ngIf="showNext()"  role="button" (click)="gotoNextCandidate()" class="proxy_candidate_navigate_plus"><i class="bx bx-lg bx-chevron-right "></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

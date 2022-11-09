@@ -1,0 +1,75 @@
+<p-table #dt  [value]="data" [lazy]="true" (onLazyLoad)="getData($event)" responsiveLayout="scroll" dataKey="userId"
+styleClass="p-datatable-strip" [paginator]="true" [rows]="10" [totalRecords]="totalRecords" [loading]="loading"
+[showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50,100]"
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+[globalFilterFields]="['userId,firstName,lastName']">
+<ng-template pTemplate="caption">
+  <div class="row mx-2">
+    <form action="#">
+      <div class="float-right ml-2">
+        <a role="button" href="javascript:void(0)" (click)="addUser()" class="dt-button create-new btn btn-primary" type="button">
+          <span><i class="bx bx-plus me-sm-2"></i>
+            <span class="d-none d-sm-inline-block">Add New User</span>
+          </span>
+        </a>
+      </div>
+      <label class="rightSpacing" style="float: right">
+        <input pInputText type="text" name="globalFilter" class="form-control" [(ngModel)]="searchFilter"
+          (ngModelChange)="getData({})" placeholder="Search keyword" />
+      </label>
+    </form>
+  </div>
+</ng-template>
+<ng-template pTemplate="header">
+  <tr>
+    <th pSortableColumn="FirstName">User<p-sortIcon field="firstName"></p-sortIcon>
+    </th>
+    <th pSortableColumn="UserType">Position <p-sortIcon field="userType"></p-sortIcon>
+    </th>
+    <th pSortableColumn="UserStatus">Status <p-sortIcon field="userStatus"></p-sortIcon>
+    </th>
+   
+  </tr>
+</ng-template>
+<ng-template pTemplate="body" let-user>
+  <tr>
+    <td>
+      <div class="d-flex justify-content-left align-items-center">
+        <div class="avatar-wrapper">
+          <div class="avatar avatar-sm me-3">
+            <a href="#" [routerLink]="'/client/userDetail/'+user.userId"><img [src]="user.avatarFileName | avatar" alt="Avatar"
+                class="rounded-circle" /></a>
+          </div>
+        </div>
+        <div class="d-flex flex-column">
+          <a href="#" [routerLink]="'/client/userDetail/'+user.userId" class="text-body text-truncate"><span class="fw-semibold">{{
+              user.firstName + " " + user.lastName
+              }}</span></a><small class="text-muted">{{ user.email }}</small>
+        </div>
+      </div>
+    </td>
+    <td>
+      <span class="text-truncate d-flex align-items-center"><span
+          class="badge badge-center rounded-pill bg-label-secondary w-px-30 h-px-30 me-2"><i
+            class="bx bxs-user-circle bx-xs"></i></span>{{ user.userType | userRole }}</span>
+    </td>
+
+    <td>
+      <span *ngIf="user.userStatus == 1" class="badge bg-label-success">{{
+        user.userStatus | userStatus
+        }}</span>
+      <span *ngIf="user.userStatus != 1" class="badge bg-label-danger">{{
+        user.userStatus | userStatus
+        }}</span>
+    </td>
+  </tr>
+</ng-template>
+<ng-template pTemplate="emptymessage" let-columns>
+  <tr>
+      <td [attr.colspan]="columns.length">
+          No records found
+      </td>
+  </tr>
+</ng-template>
+</p-table>
+

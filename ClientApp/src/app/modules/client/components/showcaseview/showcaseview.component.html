@@ -1,0 +1,127 @@
+<p-blockUI [blocked]="this.blocked">
+    <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</p-blockUI>
+
+<div class="row mb-2">
+  <div class="col-6">
+    <div  class="col-md-12">
+
+        <h4>
+          <a routerLink="/client/showcase" class="btn btn-primary"><i _ngcontent-ng-cli-universal-c381=""
+            class="bx bx-arrow-back"></i>
+          </a>
+          <span class="fw-light ml-2" id="spnShowCaseName">
+            <i class="fa fa-id-card"></i>  {{this.showcaseTitle}}</span></h4>
+      </div>
+
+  </div>
+    <div class="col-6 text-end">
+
+        <div class="btn-group">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="ddlAddAsJobCandidate"
+                data-bs-toggle="dropdown" data-bs-auto-close="true">
+                Add as Job Candidate
+            </button>
+            <ul class="dropdown-menu min-height" >
+                <li *ngFor="let item of candidateJobs">
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="addCandidateJob(item)">
+                        <i class="fa fa-briefcase"></i> {{item.jobTitle}}  </a>
+                </li>
+                <!-- <span class="badge bg-primary ">  {{item.jobCount}}</span> -->
+            </ul>
+        </div>
+        <button id="btnShare" type="button" class="btn btn-primary ml-2" (click)="showDialog()">Share</button>
+    </div>
+</div>
+<div id="divCandidates" class="row g-4">
+    <div class="col-md-4" *ngFor="let item of candidateList">
+        <div class="card">
+            <div class="card-header text-end">
+                <input class="form-check-input proxy_select_candidate_share"  [(ngModel)]="item.isSelected"
+                    type="checkbox" value="" data-thumbnail="20.png"  data-name="Chelsea Dina"> </div>
+            <div class="card-body position-relative">
+                <div class="dropdown btn-pinned"> </div>
+                <div class="Xmx-auto" style="vertical-align:middle;">
+                    <img [src]="item.avatarFileName | avatar" alt="{{item.fullName}}" class="w-px-100 rounded-circle"> <span
+                        style="display:inline-block;padding-left:10px;vertical-align:middle;"> <span
+                            style="font-size:25px;display:inline-block;">
+                            <a routerLink="/client/showcaseview/candidate-profile/{{item.candidateUserID}}">
+                            {{ item.fullName }}  </a></span> <span style="font-size:15px;display:block;">
+                            <a routerLink="/client/candidateprofile/0" class="btn btn-primary btn-sm ml-1">
+                                <i class="fa fa-video"></i> Watch
+                            </a>
+
+                            <a href="javascript:;" routerLink="/client/candidate-profile/0" data-candidate-id="11"
+                                class="btn btn-label-secondary btn-icon btn-sm proxy_view_resume ml-2"><i
+                                    class="fa fa-file-pdf"></i>
+                            </a>
+                            <span class="badge bg-label-danger ml-1">
+                                <i class="bx bx-time bx-spin"></i>
+                                {{ item.expireDays }} Days Left</span>
+                            </span>
+                        </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p-paginator [rows]="rows" *ngIf="this.candidateList.length > 10" [totalRecords]="totalRecords"
+        (onPageChange)="paginate($event)"></p-paginator>
+</div>
+<p-dialog header="Share {{getSelectedClient()}} Candidate Profile" [(visible)]="display" [breakpoints]="{'960px': '75vw'}"
+  [style]="{width: '50vw'}">
+
+  <div class="row mb-2 mb-md-0">
+    <div class="col-md-12 mb-4">
+      <label class="form-label d-block">Candidate(s):</label>
+      <div >
+      <ul class="list-unstyled avatar-group d-flex align-items-center mb-0"  >
+        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" title="Mark Obama"
+        *ngFor="let item of findCandidates(candidateList) "  class="avatar avatar-sm pull-up">
+          <img class="rounded-circle" [src]="item.avatarFileName | avatar" alt="Avatar" >
+        </li>
+
+      </ul>
+    </div>
+
+    </div>
+  </div>
+  <div class="row mb-2 mb-md-0">
+    <div class="col-md-12 mb-4">
+      <label class="form-label d-block">USERS:</label>
+      <p-autoComplete  (onSelect)="setCompany($event)"  [style]="{'width':'100%','display': 'flow-root','padding': '0px'}"
+      [inputStyle]="{'width':'100%','display': 'flow-root','padding': '0px'}" [(ngModel)]="selectedClientUser" [suggestions]="allClientUsers"
+      (completeMethod)="searchClientUsers($event)"
+      field="email" [minLength]="3" [multiple]="true">
+      <ng-template let-user pTemplate="item">
+        <div class="ui-helper-clearfix">
+          <div id="carbonads " >
+           <table>
+            <tr>
+              <td style="vertical-align:top;">
+                <img class="rounded-circle" width="30px" height="30px"  [src]="user.avatarFileName | avatar" alt="Avatar" />
+              </td>
+              <td style="vertical-align:top;" class="pl-1">
+                <b> {{user.firstName}}</b>
+                <p>{{user.email}}</p>
+              </td>
+            </tr>
+           </table>
+          </div>
+        </div>
+    </ng-template>
+      </p-autoComplete>
+    </div>
+  </div>
+
+  <div class="row mb-2 mb-md-0">
+    <div class="col-md-12 mb-4">
+      <label for="txaShareText" class="form-label d-block">Message:</label>
+      <textarea class="form-control" id="txaShareText" rows="3" [(ngModel)]="this.shareCandidates.message"  placeholder="Remarks for client"></textarea>
+    </div>
+  </div>
+  <ng-template pTemplate="footer">
+    <button id="btnDoShare" class="btn btn-primary"  (click)="Send()">Send</button>
+    <button type="button" class="btn btn-label-secondary" (click)="hideDialog()" data-bs-dismiss="modal">Close</button>
+  </ng-template>
+
+</p-dialog>

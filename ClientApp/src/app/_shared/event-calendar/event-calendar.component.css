@@ -1,0 +1,10 @@
+.p-dialog-header-padding-remove{
+  padding : 0px !important;
+}
+.fc-dayGridWeek-button .fc-button-primary{
+  color: blue !important;
+}
+.fc.fc-theme-standard .fc-toolbar .fc-button.fc-dayGridMonth-button.fc-button-active{
+  color: white !important;
+}
+

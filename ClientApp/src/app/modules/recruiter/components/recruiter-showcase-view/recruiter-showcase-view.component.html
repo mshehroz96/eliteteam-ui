@@ -1,0 +1,53 @@
+<p-blockUI [blocked]="this.blocked">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</p-blockUI>
+
+<div class="row mb-2">
+  <div class="col-12">
+    <div  class="col-md-12">
+        <h4>
+          <a routerLink="/recruiter/recruiter-showcase" class="btn btn-primary"><i _ngcontent-ng-cli-universal-c381=""
+            class="bx bx-arrow-back"></i>
+          </a>
+          <span class="fw-light ml-2" id="spnShowCaseName" *ngIf="candidateList.length > 0">
+            <i class="fa fa-id-card"></i> {{this.showcaseTitle}}</span></h4>
+      </div>
+
+  </div>
+</div>
+<div id="divCandidates" class="row g-4">
+  <h5 *ngIf="candidateList.length == 0">{{noCandidateAdded}}</h5>
+  <div class="col-md-4" *ngFor="let item of candidateList ">
+    <div class="card" *ngIf="item.fullName != null">
+      <div class="card-header text-end float:right" style="padding: 10px 5px 0px 0px ;">
+        <label class="badge bg-label-primary">Profile Views : {{item.profileViewCount}}</label> &nbsp;
+        <label class="badge bg-label-primary  ">Profile Shared: {{item.profileShareCount}}</label>
+      </div>
+      <div class="card-body position-relative">
+        <div class="dropdown btn-pinned"> </div>
+        <div class="Xmx-auto" style="vertical-align:middle;">
+          <img [src]="item.avatarFileName | avatar" alt="{{item.fullName}}" class="w-px-100 rounded-circle">
+          <span style="display:inline-block;padding-left:10px;vertical-align:middle;"> <span
+              style="font-size:25px;display:inline-block;">{{ item.fullName }}</span> <span
+              style="font-size:15px;display:block;">
+              <a routerLink="/client/candidate-profile/0" class="btn btn-primary btn-sm ml-1">
+                <i class="fa fa-video"></i> Watch
+              </a>
+
+              <a href="javascript:;" routerLink="/client/candidate-profile/0" data-candidate-id="11"
+                class="btn btn-label-secondary btn-icon btn-sm proxy_view_resume ml-2"><i class="fa fa-file-pdf"></i>
+              </a>
+              <span class="badge bg-label-danger ml-1">
+                <i class="bx bx-time bx-spin"></i>
+                {{ item.expireDays }} Days Left</span>
+            </span>
+          </span>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <p-paginator [rows]="rows" *ngIf="this.candidateList.length > 10" [totalRecords]="totalRecords"
+    (onPageChange)="paginate($event)"></p-paginator>
+</div>

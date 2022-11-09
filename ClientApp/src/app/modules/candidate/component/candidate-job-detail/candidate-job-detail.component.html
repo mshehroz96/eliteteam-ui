@@ -1,0 +1,127 @@
+
+<p-blockUI [blocked]="this.blocked">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</p-blockUI>
+
+<div class="row pb-2">
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-1">
+        <a routerLink="/candidate/dashboard" class="btn btn-primary">
+          <i class="bx bx-arrow-back"></i></a>
+      </div>
+      <div class="col-md-6">
+        <div class="ml-2">
+          <a routerLink="/candidate/one-way-interview/{{this.candidiateRequisition.requisitionUUID}}/{{this.candidiateRequisition.requisitionCandidateID}}" *ngIf="hideAndShowOneWayInterView(candidiateRequisition)" style="height: 37px;line-height: 25px;" class="btn btn-warning btn-sm">
+            <i style="line-height: 25px;" class='bx bxs-video align-top'></i> Start One-Way Interview</a>
+
+          <a id="aAcceptInvite" data-id="1" *ngIf="hideAndShowScheduleButton(this.candidiateRequisition)" class="btn btn-warning btn-sm text-white" (click)="selectInterViewDateTime(candidiateRequisition)"><i
+            class='bx bxs-calendar-check align-top text-white'></i> Select Interview Time</a>
+
+
+             <div class="proxy_div2B" *ngIf="this.hideAndShowZoomOneWayInterView(this.candidiateRequisition)">
+               <a style="height: 37px;line-height: 25px;" routerLink="/client/join-meeting/{{candidiateRequisition.eventId}}" target="_blank" data-id="2" id="btnJoinNow" class="btn btn-primary btn-sm"><i style="line-height: 25px;" class="bx bxs-video align-top"></i> Join Now</a>
+               <a  style="height: 37px;line-height: 25px;" (click)="cancelInterviewPopup(candidiateRequisition)" id="btnInterveiwCancel" data-id="2" class="btn btn-outline-primary btn-sm ml-1"><i style="line-height: 25px;" class="bx bxs-calendar-x align-top"></i> Cancel</a>
+               <a style="height: 37px;line-height: 25px;" id="btnInterveiwReSechedule" (click)="selectInterViewDateTime(candidiateRequisition)" data-id="2" class="btn btn-outline-primary btn-sm ml-1"><i style="line-height: 25px;" class="bx bxs-calendar-event align-top"></i> Reschedule</a>
+             </div>
+       </div>
+      </div>
+    </div>
+      <!-- <a routerLink="/candidate/one-way-interview/{{requisitionUUID}}/{{requisitionCandidateID}}" class="btn btn-warning ml-1"><i class="bx bxs-video align-middle"></i> Start One-Way Interview</a> -->
+
+
+  </div>
+  <div class="col-md-6 ">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <i class='bx bxs-error'></i> Your action is due in {{this.candidiateRequisition.dueOn}} days
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="mb-2">{{this.candidiateRequisition.jobTitle}}
+              <a href="#" class="proxy_show_supplementary_data" data-index="7"><i class="bx bx-info-circle"></i></a></h5>
+            <span class="badge bg-primary">{{this.candidiateRequisition.candidateStatus}}</span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="divCandidate" class="card mt-2">
+      <div class="card-body position-relative">
+        <div class="" style="vertical-align:middle;">
+          <img [src]="candidiateRequisition.userLogo | avatar" alt="Candidate Picture" class="w-px-100 rounded-circle proxy_applicant_picture">
+          <span style="display:inline-block;padding-left:10px;vertical-align:middle;">
+            <span style="font-size:20px;display:inline-block;" class="proxy_applicant_name small">{{this.candidiateRequisition.firstName}} {{this.candidiateRequisition.lastName}}</span>
+            <span style="font-size:14px;display:block;" class="proxy_applicant_type">{{this.candidiateRequisition.type}}</span>
+            <span style="font-size:14px;display:block;"><span class="badge proxy_application_status"></span></span>
+          </span>
+          <a id="aCandidate" href="javascript: void(0);" class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+
+    <div id="divClient" class="card mt-2">
+      <div class="card-body position-relative">
+        <div class="" style="vertical-align:middle;">
+          <img [src]="candidiateRequisition.logoFileName | companyLogo" alt="Client Logo" class="w-px-50 rounded-circle">
+          <span style="display:inline-block;padding-left:10px;vertical-align:middle;">
+            <span style="font-size:20px;display:inline-block;" class="small">{{this.candidiateRequisition.companyName}}</span>
+            <span style="font-size:14px;display:block;" class="">{{this.candidiateRequisition.companyAddress}}</span>
+            <span style="font-size:14px;display:block;"><span class="badge proxy_application_status"></span></span>
+          </span>
+          <!-- <a href="CompanyProfile.php" target="_blank" class="stretched-link"></a> -->
+          <a href="#" target="_blank" class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+
+    <div id="divHistory" class="card mt-2">
+      <app-user-activity-timeline  [userId]="userId"></app-user-activity-timeline>
+
+    </div>
+
+  </div>
+  <div class="col-md-6">
+
+    <div class="nav-align-top mb-4">
+
+    <div class="card">
+        <div class="card-body">
+        <app-chat-messages></app-chat-messages>
+      </div>
+    </div>
+
+    </div>
+
+  </div>
+</div>
+
+<p-dialog header="Select Interview Date/Time" [(visible)]="isselectInterviewTime" [style]="{width: '50vw'}">
+  <app-selectinterview-time *ngIf="isselectInterviewTime" [user]="user" (hideCalendar)="hideCalendar(null)"></app-selectinterview-time>
+</p-dialog>
+
+<p-dialog header="Video Interview"  [(visible)]="isVideoInterview" [style]="{width: '50vw', height:'600px;'}">
+  <app-video-interview></app-video-interview>
+</p-dialog>
+
+<p-dialog header="Cancel Interview"  [(visible)]="isCancelInterview"  [style]="{width: '50vw', height:'600px;'}">
+  <div class="row mb-2 mb-md-0 gap-2">
+    <div class="col-12">
+      <label for="txbBudget" class="form-label">Reason for Cancellation</label>
+      <input type="text" id="txbBudget" class="form-control" [(ngModel)]="cancelationReason" placeholder="Write here">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button id="btnCancelInterviewCommit" class="btn btn-primary" (click)="updateCancelInterviewStatus()">Cancel Interview</button>
+    <button type="button" class="btn btn-label-secondary" (click)="cancelInterviewPopup(null)" data-bs-dismiss="modal">Close</button>
+  </div>
+</p-dialog>

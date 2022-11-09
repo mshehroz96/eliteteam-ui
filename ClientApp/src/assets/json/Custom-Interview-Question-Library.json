@@ -1,0 +1,88 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "category_name": "HR Related",
+      "questions": [
+        {
+          "question_text": "How soon can you join us?"
+        },
+        {
+          "question_text": "What is your notice period?"
+        },
+        {
+          "question_text": "How did you hear about this position?"
+        },
+        {
+          "question_text": "What do you know about our orgnanization?"
+        },
+        {
+          "question_text": "Why are you leaving your job?"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "category_name": "Personality",
+      "questions": [
+        {
+          "question_text": "How do you handle stress and pressure?"
+        },
+        {
+          "question_text": "How do you handle conflicts within a team?"
+        },
+        {
+          "question_text": "What are you passionate about?"
+        },
+        {
+          "question_text": "What makes you unique?"
+        },
+        {
+          "question_text": "What motivates you?"
+        },
+        {
+          "question_text": "When was the last time you were angry at work?"
+        },
+        {
+          "question_text": "What is your greatest strength?"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "category_name": "Leadership",
+      "questions": [
+        {
+          "question_text": "How do you handle conflicts within a team?"
+        },
+        {
+          "question_text": "Can you tell us about a time when you demonstrated your leadership skills?"
+        },
+        {
+          "question_text": "What can you do to motivate a team?"
+        },
+        {
+          "question_text": "Are you able to delegate responsibilities efficiently?"
+        },
+        {
+          "question_text": "Are you open to new ideas?"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "category_name": "IT Related",
+      "questions": [
+        {
+          "question_text": "What certifications do you hold?"
+        },
+        {
+          "question_text": "What language(s) can you program in?"
+        },
+        {
+          "question_text": "How efficient are you in using productivity tools such as office?"
+        }
+      ]
+    }    
+  ]
+}

@@ -1,0 +1,30 @@
+<a class="btn btn-secondary mb-2" href="javascript:void(0)" routerLink="../../settings" [queryParams]="{tab: 'users'}"
+  ><i class="fa fa-chevron-left"></i> Back</a
+>
+<div class="row">
+  <div class="col-md-5 col-lg-5 col-xl-4 order-1 order-md-0">
+    <app-user-overview-detail (refresh)="loadData('test')" [enableUserApproval]="userDetailData.userStatus == 4" [UserData]="userDetailData"></app-user-overview-detail>
+  </div>
+  <div class="col-md-7 col-lg-7 col-xl-8 order-0 order-md-1">
+    <!-- User Pills -->
+    <ul class="nav nav-pills flex-column flex-md-row mb-3">
+      <li class="nav-item" (click)="select('Account')">
+        <a [ngClass]="isActive('Account')" href="javascript:void(0);"
+          ><i class="bx bx-user me-1"></i>Account</a
+        >
+      </li>
+      <li class="nav-item" (click)="select('Security')">
+        <a [ngClass]="isActive('Security')" href="javascript:void(0);"
+          ><i class="bx bx-lock-alt me-1"></i>Security</a
+        >
+      </li>
+      <li class="nav-item" (click)="select('Notifications')">
+        <a [ngClass]="isActive('Notifications')" href="javascript:void(0);"
+          ><i class="bx bx-bell me-1"></i>Notifications</a
+        >
+      </li>
+    </ul>
+    <app-security *ngIf="selected == 'Security'"></app-security>
+    <app-notification-manage *ngIf="selected == 'Notifications'" [SelfSetting]="selfSetting" [UserData]="userDetailData"></app-notification-manage>
+  </div>
+</div>

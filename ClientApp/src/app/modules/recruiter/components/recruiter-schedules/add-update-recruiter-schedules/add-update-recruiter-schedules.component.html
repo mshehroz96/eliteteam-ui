@@ -1,0 +1,81 @@
+<!-- 
+<table class="table">
+    <thead>
+      <tr>
+        <th class="text-nowrap">
+          From Date
+        </th>
+        <th class="text-nowrap">
+          To Date
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="text-nowrap">
+            
+        </td>
+        <td class="text-nowrap">
+            <p-calendar name="value1"  [style]="{'width':'100%'}"   dateFormat="mm/dd/yy" dataType="date"></p-calendar>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+  <div class="row">
+    <div class="col-4">
+       <div class="form-group">
+           <label class="form-label d-block">From Date:</label>
+             <p-calendar  
+                     [required]="true"
+                     [style]="{'width':'100%'}"   
+                     dateFormat="mm/dd/yy" 
+                     dataType="date"
+                     #scheduleFromDate="ngModel"
+                     [(ngModel)]="schedule.scheduleFromDate"
+                     name="scheduleFromDate"
+                     appendTo="body" 
+                     [ngModelOptions]="{ standalone: true }"
+                     >
+                 </p-calendar>
+ 
+                 <div *ngIf="scheduleFromDate.invalid && (scheduleFromDate.dirty || scheduleFromDate.touched)" class="invalid-feedback">
+                     <div *ngIf="scheduleFromDate.errors?.required">
+                         Required
+                     </div>
+                 </div>
+                 
+         </div>
+    </div>
+    <div class="col-4">
+       <div class="form-group">
+           <label class="form-label d-block">To Date:</label>
+             <p-calendar  
+                     [required]="true"
+                     [style]="{'width':'100%'}"   
+                     dateFormat="mm/dd/yy" 
+                     dataType="date"
+                     #scheduleToDate="ngModel"
+                     [(ngModel)]="schedule.scheduleToDate"
+                     name="scheduleToDate"
+                     appendTo="body" 
+                     [ngModelOptions]="{ standalone: true }"
+                     >
+                 </p-calendar>
+ 
+                 <div *ngIf="scheduleToDate.invalid && (scheduleToDate.dirty || scheduleToDate.touched)" class="invalid-feedback">
+                     <div *ngIf="scheduleToDate.errors?.required">
+                         Required
+                     </div>
+                 </div>
+                 
+         </div>
+    </div>
+</div>
+<div class="modal-footer">
+   <button
+     type="submit"
+     class="btn btn-primary"
+   >
+     Save Changes
+   </button>
+ </div>

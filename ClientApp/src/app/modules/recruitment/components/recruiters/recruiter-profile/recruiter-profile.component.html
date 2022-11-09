@@ -1,0 +1,670 @@
+
+<div class="row" >
+    <div class="col-12">
+        <a routerLink="/recruitment/recruiters" class="btn btn-secondary mb-2">Back</a>
+        <div class="card mb-4">
+            <div class="user-profile-header-banner">
+                <img src="../assets/img/pages/profile-banner.png" alt="Banner image" class="rounded-top">
+            </div>
+            <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
+                <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
+                    <img src="{{strImage}}" alt="user image"
+                        class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
+                </div>
+                <div class="flex-grow-1 mt-3 mt-sm-5">
+                    <div
+                        class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
+                        <div class="user-profile-info">
+                            <h4>{{recruiterProfileDetail?.firstName}} {{recruiterProfileDetail?.lastName}}</h4>
+                            <ul
+                                class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
+                                <li class="list-inline-item fw-semibold">
+                                    <i class="bx bx-envelope"></i> <a
+                                        href="mailto:ready1980@live.com">{{recruiterProfileDetail?.email}}</a>
+                                </li>
+                                <li class="list-inline-item fw-semibold">
+                                    <i class="bx bx-phone"></i> {{recruiterProfileDetail?.mobileNo}}
+                                </li>
+                                <li class="list-inline-item fw-semibold">
+                                    <i class="bx bx-calendar-alt"></i> Joined {{recruiterProfileDetail?.createdOn | date : 'MMMM y'}}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center">
+                            <a href="javascript:void(0)" class="btn btn-primary text-nowrap">
+                                <i class="bx bx-message"></i> Message
+                            </a>
+                            <div class="dropdown">
+                                <button class="btn p-0" type="button" id="orederStatistics" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="bx bx-dots-vertical-rounded bx-md"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
+                                    <a class="dropdown-item" (click)="getRecruiterProfileDetails(0,'All')">Today</a>
+                                    <a class="dropdown-item" (click)="getRecruiterProfileDetails(-1,'All')">Yesterday</a>
+                                    <a class="dropdown-item" (click)="getRecruiterProfileDetails(-7,'All')">Last 7 Days</a>
+                                    <a class="dropdown-item" (click)="getRecruiterProfileDetails(-30,'All')">Last 30 Days</a>
+                                    <!-- <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="javascript:void(0);">Custom Date Range</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-2 mb-4">
+        <div class="card">
+            <div class="card-body pb-2" style="position: relative;">
+                <span class="d-block fw-semibold mb-1">
+                    Daily Avg. Activity
+                </span>
+                <h3 class="card-title mb-1">{{recruiterProfileDetail?.dailyAvgActivity}}<small>Hrs/Day</small></h3>
+                <div id="revenueChart" style="min-height: 95px;">
+                    <div id="apexcharts0hdail76j" class="apexcharts-canvas apexcharts0hdail76j apexcharts-theme-light"
+                        style="width: 147px; height: 80px;"><svg id="SvgjsSvg1213" width="147" height="80"
+                            xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS"
+                            transform="translate(0, 0)" style="background: transparent none repeat scroll 0% 0%;">
+                            <g id="SvgjsG1215" class="apexcharts-inner apexcharts-graphical"
+                                transform="translate(0, 10)">
+                                <defs id="SvgjsDefs1214">
+                                    <linearGradient id="SvgjsLinearGradient1218" x1="0" y1="0" x2="0" y2="1">
+                                        <stop id="SvgjsStop1219" stop-opacity="0.4" stop-color="rgba(216,227,240,0.4)"
+                                            offset="0"></stop>
+                                        <stop id="SvgjsStop1220" stop-opacity="0.5" stop-color="rgba(190,209,230,0.5)"
+                                            offset="1"></stop>
+                                        <stop id="SvgjsStop1221" stop-opacity="0.5" stop-color="rgba(190,209,230,0.5)"
+                                            offset="1"></stop>
+                                    </linearGradient>
+                                    <clipPath id="gridRectMask0hdail76j">
+                                        <rect id="SvgjsRect1223" width="151" height="42.73" x="-2" y="0" rx="0" ry="0"
+                                            opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff">
+                                        </rect>
+                                    </clipPath>
+                                    <clipPath id="forecastMask0hdail76j"></clipPath>
+                                    <clipPath id="nonForecastMask0hdail76j"></clipPath>
+                                    <clipPath id="gridRectMarkerMask0hdail76j">
+                                        <rect id="SvgjsRect1224" width="151" height="46.73" x="-2" y="-2" rx="0" ry="0"
+                                            opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff">
+                                        </rect>
+                                    </clipPath>
+                                </defs>
+                                <rect id="SvgjsRect1222" width="15.75" height="42.73" x="0" y="0" rx="0" ry="0"
+                                    opacity="1" stroke-width="0" stroke-dasharray="3"
+                                    fill="url(#SvgjsLinearGradient1218)" class="apexcharts-xcrosshairs" y2="42.73"
+                                    filter="none" fill-opacity="0.9"></rect>
+                                <g id="SvgjsG1243" class="apexcharts-xaxis" transform="translate(0, 0)">
+                                    <g id="SvgjsG1244" class="apexcharts-xaxis-texts-g" transform="translate(0, -4)">
+                                        <text id="SvgjsText1246" font-family="Helvetica, Arial, sans-serif" x="10.5"
+                                            y="71.72999999999999" text-anchor="middle" dominant-baseline="auto"
+                                            font-size="13px" font-weight="400" fill="#8592a3"
+                                            class="apexcharts-text apexcharts-xaxis-label "
+                                            style="font-family: Helvetica, Arial, sans-serif;">
+                                            <tspan id="SvgjsTspan1247">M</tspan>
+                                            <title>M</title>
+                                        </text><text id="SvgjsText1249" font-family="Helvetica, Arial, sans-serif"
+                                            x="31.5" y="71.72999999999999" text-anchor="middle" dominant-baseline="auto"
+                                            font-size="13px" font-weight="400" fill="#8592a3"
+                                            class="apexcharts-text apexcharts-xaxis-label "
+                                            style="font-family: Helvetica, Arial, sans-serif;">
+                                            <tspan id="SvgjsTspan1250">T</tspan>
+                                            <title>T</title>
+                                        </text><text id="SvgjsText1252" font-family="Helvetica, Arial, sans-serif"
+                                            x="52.5" y="71.72999999999999" text-anchor="middle" dominant-baseline="auto"
+                                            font-size="13px" font-weight="400" fill="#8592a3"
+                                            class="apexcharts-text apexcharts-xaxis-label "
+                                            style="font-family: Helvetica, Arial, sans-serif;">
+                                            <tspan id="SvgjsTspan1253">W</tspan>
+                                            <title>W</title>
+                                        </text><text id="SvgjsText1255" font-family="Helvetica, Arial, sans-serif"
+                                            x="73.5" y="71.72999999999999" text-anchor="middle" dominant-baseline="auto"
+                                            font-size="13px" font-weight="400" fill="#8592a3"
+                                            class="apexcharts-text apexcharts-xaxis-label "
+                                            style="font-family: Helvetica, Arial, sans-serif;">
+                                            <tspan id="SvgjsTspan1256">T</tspan>
+                                            <title>T</title>
+                                        </text><text id="SvgjsText1258" font-family="Helvetica, Arial, sans-serif"
+                                            x="94.5" y="71.72999999999999" text-anchor="middle" dominant-baseline="auto"
+                                            font-size="13px" font-weight="400" fill="#8592a3"
+                                            class="apexcharts-text apexcharts-xaxis-label "
+                                            style="font-family: Helvetica, Arial, sans-serif;">
+                                            <tspan id="SvgjsTspan1259">F</tspan>
+                                            <title>F</title>
+                                        </text><text id="SvgjsText1261" font-family="Helvetica, Arial, sans-serif"
+                                            x="115.5" y="71.72999999999999" text-anchor="middle"
+                                            dominant-baseline="auto" font-size="13px" font-weight="400" fill="#8592a3"
+                                            class="apexcharts-text apexcharts-xaxis-label "
+                                            style="font-family: Helvetica, Arial, sans-serif;">
+                                            <tspan id="SvgjsTspan1262">S</tspan>
+                                            <title>S</title>
+                                        </text><text id="SvgjsText1264" font-family="Helvetica, Arial, sans-serif"
+                                            x="136.5" y="71.72999999999999" text-anchor="middle"
+                                            dominant-baseline="auto" font-size="13px" font-weight="400" fill="#8592a3"
+                                            class="apexcharts-text apexcharts-xaxis-label "
+                                            style="font-family: Helvetica, Arial, sans-serif;">
+                                            <tspan id="SvgjsTspan1265">S</tspan>
+                                            <title>S</title>
+                                        </text>
+                                    </g>
+                                </g>
+                                <g id="SvgjsG1268" class="apexcharts-grid">
+                                    <g id="SvgjsG1269" class="apexcharts-gridlines-horizontal" style="display: none;">
+                                        <line id="SvgjsLine1271" x1="0" y1="0" x2="147" y2="0" stroke="#e0e0e0"
+                                            stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline">
+                                        </line>
+                                        <line id="SvgjsLine1272" x1="0" y1="14.243333333333332" x2="147"
+                                            y2="14.243333333333332" stroke="#e0e0e0" stroke-dasharray="0"
+                                            stroke-linecap="butt" class="apexcharts-gridline"></line>
+                                        <line id="SvgjsLine1273" x1="0" y1="28.486666666666665" x2="147"
+                                            y2="28.486666666666665" stroke="#e0e0e0" stroke-dasharray="0"
+                                            stroke-linecap="butt" class="apexcharts-gridline"></line>
+                                        <line id="SvgjsLine1274" x1="0" y1="42.73" x2="147" y2="42.73" stroke="#e0e0e0"
+                                            stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline">
+                                        </line>
+                                    </g>
+                                    <g id="SvgjsG1270" class="apexcharts-gridlines-vertical" style="display: none;">
+                                    </g>
+                                    <line id="SvgjsLine1276" x1="0" y1="42.73" x2="147" y2="42.73" stroke="transparent"
+                                        stroke-dasharray="0" stroke-linecap="butt"></line>
+                                    <line id="SvgjsLine1275" x1="0" y1="1" x2="0" y2="42.73" stroke="transparent"
+                                        stroke-dasharray="0" stroke-linecap="butt"></line>
+                                </g>
+                                <g id="SvgjsG1225" class="apexcharts-bar-series apexcharts-plot-series">
+                                    <g id="SvgjsG1226" class="apexcharts-series" rel="1" seriesName="HoursxSpent"
+                                        data:realIndex="0">
+                                        <path id="SvgjsPath1230"
+                                            d="M 2.625 40.73L 2.625 30.486666666666665Q 2.625 28.486666666666665 4.625 28.486666666666665L 16.375 28.486666666666665Q 18.375 28.486666666666665 18.375 30.486666666666665L 18.375 30.486666666666665L 18.375 40.73Q 18.375 42.73 16.375 42.73L 4.625 42.73Q 2.625 42.73 2.625 40.73z"
+                                            fill="rgba(61,117,168,0.85)" fill-opacity="1" stroke-opacity="1"
+                                            stroke-linecap="round" stroke-width="0" stroke-dasharray="0"
+                                            class="apexcharts-bar-area" index="0"
+                                            clip-path="url(#gridRectMask0hdail76j)"
+                                            pathTo="M 2.625 40.73L 2.625 30.486666666666665Q 2.625 28.486666666666665 4.625 28.486666666666665L 16.375 28.486666666666665Q 18.375 28.486666666666665 18.375 30.486666666666665L 18.375 30.486666666666665L 18.375 40.73Q 18.375 42.73 16.375 42.73L 4.625 42.73Q 2.625 42.73 2.625 40.73z"
+                                            pathFrom="M 2.625 40.73L 2.625 40.73L 18.375 40.73L 18.375 40.73L 18.375 40.73L 18.375 40.73L 18.375 40.73L 2.625 40.73"
+                                            cy="28.486666666666665" cx="23.625" j="0" val="1"
+                                            barHeight="14.243333333333332" barWidth="15.75"></path>
+                                        <path id="SvgjsPath1232"
+                                            d="M 23.625 40.73L 23.625 16.243333333333332Q 23.625 14.243333333333332 25.625 14.243333333333332L 37.375 14.243333333333332Q 39.375 14.243333333333332 39.375 16.243333333333332L 39.375 16.243333333333332L 39.375 40.73Q 39.375 42.73 37.375 42.73L 25.625 42.73Q 23.625 42.73 23.625 40.73z"
+                                            fill="rgba(61,117,168,0.85)" fill-opacity="1" stroke-opacity="1"
+                                            stroke-linecap="round" stroke-width="0" stroke-dasharray="0"
+                                            class="apexcharts-bar-area" index="0"
+                                            clip-path="url(#gridRectMask0hdail76j)"
+                                            pathTo="M 23.625 40.73L 23.625 16.243333333333332Q 23.625 14.243333333333332 25.625 14.243333333333332L 37.375 14.243333333333332Q 39.375 14.243333333333332 39.375 16.243333333333332L 39.375 16.243333333333332L 39.375 40.73Q 39.375 42.73 37.375 42.73L 25.625 42.73Q 23.625 42.73 23.625 40.73z"
+                                            pathFrom="M 23.625 40.73L 23.625 40.73L 39.375 40.73L 39.375 40.73L 39.375 40.73L 39.375 40.73L 39.375 40.73L 23.625 40.73"
+                                            cy="14.243333333333332" cx="44.625" j="1" val="2"
+                                            barHeight="28.486666666666665" barWidth="15.75"></path>
+                                        <path id="SvgjsPath1234"
+                                            d="M 44.625 42.73L 44.625 42.73Q 44.625 42.73 44.625 42.73L 44.625 42.73Q 44.625 42.73 44.625 42.73L 44.625 42.73L 44.625 42.73Q 44.625 42.73 44.625 42.73L 44.625 42.73Q 44.625 42.73 44.625 42.73z"
+                                            fill="rgba(61,117,168,0.85)" fill-opacity="1" stroke-opacity="1"
+                                            stroke-linecap="round" stroke-width="0" stroke-dasharray="0"
+                                            class="apexcharts-bar-area" index="0"
+                                            clip-path="url(#gridRectMask0hdail76j)"
+                                            pathTo="M 44.625 42.73L 44.625 42.73Q 44.625 42.73 44.625 42.73L 44.625 42.73Q 44.625 42.73 44.625 42.73L 44.625 42.73L 44.625 42.73Q 44.625 42.73 44.625 42.73L 44.625 42.73Q 44.625 42.73 44.625 42.73z"
+                                            pathFrom="M 44.625 42.73L 44.625 42.73L 44.625 42.73L 44.625 42.73L 44.625 42.73L 44.625 42.73L 44.625 42.73L 44.625 42.73"
+                                            cy="42.73" cx="65.625" j="2" val="0" barHeight="0" barWidth="15.75">
+                                        </path>
+                                        <path id="SvgjsPath1236"
+                                            d="M 65.625 40.73L 65.625 2Q 65.625 0 67.625 0L 79.375 0Q 81.375 0 81.375 2L 81.375 2L 81.375 40.73Q 81.375 42.73 79.375 42.73L 67.625 42.73Q 65.625 42.73 65.625 40.73z"
+                                            fill="rgba(61,117,168,0.85)" fill-opacity="1" stroke-opacity="1"
+                                            stroke-linecap="round" stroke-width="0" stroke-dasharray="0"
+                                            class="apexcharts-bar-area" index="0"
+                                            clip-path="url(#gridRectMask0hdail76j)"
+                                            pathTo="M 65.625 40.73L 65.625 2Q 65.625 0 67.625 0L 79.375 0Q 81.375 0 81.375 2L 81.375 2L 81.375 40.73Q 81.375 42.73 79.375 42.73L 67.625 42.73Q 65.625 42.73 65.625 40.73z"
+                                            pathFrom="M 65.625 40.73L 65.625 40.73L 81.375 40.73L 81.375 40.73L 81.375 40.73L 81.375 40.73L 81.375 40.73L 65.625 40.73"
+                                            cy="0" cx="86.625" j="3" val="3" barHeight="42.73" barWidth="15.75">
+                                        </path>
+                                        <path id="SvgjsPath1238"
+                                            d="M 86.625 40.73L 86.625 30.486666666666665Q 86.625 28.486666666666665 88.625 28.486666666666665L 100.375 28.486666666666665Q 102.375 28.486666666666665 102.375 30.486666666666665L 102.375 30.486666666666665L 102.375 40.73Q 102.375 42.73 100.375 42.73L 88.625 42.73Q 86.625 42.73 86.625 40.73z"
+                                            fill="rgba(61,117,168,0.85)" fill-opacity="1" stroke-opacity="1"
+                                            stroke-linecap="round" stroke-width="0" stroke-dasharray="0"
+                                            class="apexcharts-bar-area" index="0"
+                                            clip-path="url(#gridRectMask0hdail76j)"
+                                            pathTo="M 86.625 40.73L 86.625 30.486666666666665Q 86.625 28.486666666666665 88.625 28.486666666666665L 100.375 28.486666666666665Q 102.375 28.486666666666665 102.375 30.486666666666665L 102.375 30.486666666666665L 102.375 40.73Q 102.375 42.73 100.375 42.73L 88.625 42.73Q 86.625 42.73 86.625 40.73z"
+                                            pathFrom="M 86.625 40.73L 86.625 40.73L 102.375 40.73L 102.375 40.73L 102.375 40.73L 102.375 40.73L 102.375 40.73L 86.625 40.73"
+                                            cy="28.486666666666665" cx="107.625" j="4" val="1"
+                                            barHeight="14.243333333333332" barWidth="15.75"></path>
+                                        <path id="SvgjsPath1240"
+                                            d="M 107.625 40.73L 107.625 16.243333333333332Q 107.625 14.243333333333332 109.625 14.243333333333332L 121.375 14.243333333333332Q 123.375 14.243333333333332 123.375 16.243333333333332L 123.375 16.243333333333332L 123.375 40.73Q 123.375 42.73 121.375 42.73L 109.625 42.73Q 107.625 42.73 107.625 40.73z"
+                                            fill="rgba(61,117,168,0.85)" fill-opacity="1" stroke-opacity="1"
+                                            stroke-linecap="round" stroke-width="0" stroke-dasharray="0"
+                                            class="apexcharts-bar-area" index="0"
+                                            clip-path="url(#gridRectMask0hdail76j)"
+                                            pathTo="M 107.625 40.73L 107.625 16.243333333333332Q 107.625 14.243333333333332 109.625 14.243333333333332L 121.375 14.243333333333332Q 123.375 14.243333333333332 123.375 16.243333333333332L 123.375 16.243333333333332L 123.375 40.73Q 123.375 42.73 121.375 42.73L 109.625 42.73Q 107.625 42.73 107.625 40.73z"
+                                            pathFrom="M 107.625 40.73L 107.625 40.73L 123.375 40.73L 123.375 40.73L 123.375 40.73L 123.375 40.73L 123.375 40.73L 107.625 40.73"
+                                            cy="14.243333333333332" cx="128.625" j="5" val="2"
+                                            barHeight="28.486666666666665" barWidth="15.75"></path>
+                                        <path id="SvgjsPath1242"
+                                            d="M 128.625 40.73L 128.625 30.486666666666665Q 128.625 28.486666666666665 130.625 28.486666666666665L 142.375 28.486666666666665Q 144.375 28.486666666666665 144.375 30.486666666666665L 144.375 30.486666666666665L 144.375 40.73Q 144.375 42.73 142.375 42.73L 130.625 42.73Q 128.625 42.73 128.625 40.73z"
+                                            fill="rgba(61,117,168,0.85)" fill-opacity="1" stroke-opacity="1"
+                                            stroke-linecap="round" stroke-width="0" stroke-dasharray="0"
+                                            class="apexcharts-bar-area" index="0"
+                                            clip-path="url(#gridRectMask0hdail76j)"
+                                            pathTo="M 128.625 40.73L 128.625 30.486666666666665Q 128.625 28.486666666666665 130.625 28.486666666666665L 142.375 28.486666666666665Q 144.375 28.486666666666665 144.375 30.486666666666665L 144.375 30.486666666666665L 144.375 40.73Q 144.375 42.73 142.375 42.73L 130.625 42.73Q 128.625 42.73 128.625 40.73z"
+                                            pathFrom="M 128.625 40.73L 128.625 40.73L 144.375 40.73L 144.375 40.73L 144.375 40.73L 144.375 40.73L 144.375 40.73L 128.625 40.73"
+                                            cy="28.486666666666665" cx="149.625" j="6" val="1"
+                                            barHeight="14.243333333333332" barWidth="15.75"></path>
+                                        <g id="SvgjsG1228" class="apexcharts-bar-goals-markers"
+                                            style="pointer-events: none">
+                                            <g id="SvgjsG1229" className="apexcharts-bar-goals-groups"></g>
+                                            <g id="SvgjsG1231" className="apexcharts-bar-goals-groups"></g>
+                                            <g id="SvgjsG1233" className="apexcharts-bar-goals-groups"></g>
+                                            <g id="SvgjsG1235" className="apexcharts-bar-goals-groups"></g>
+                                            <g id="SvgjsG1237" className="apexcharts-bar-goals-groups"></g>
+                                            <g id="SvgjsG1239" className="apexcharts-bar-goals-groups"></g>
+                                            <g id="SvgjsG1241" className="apexcharts-bar-goals-groups"></g>
+                                        </g>
+                                    </g>
+                                    <g id="SvgjsG1227" class="apexcharts-datalabels" data:realIndex="0"></g>
+                                </g>
+                                <line id="SvgjsLine1277" x1="0" y1="0" x2="147" y2="0" stroke="#b6b6b6"
+                                    stroke-dasharray="0" stroke-width="1" stroke-linecap="butt"
+                                    class="apexcharts-ycrosshairs"></line>
+                                <line id="SvgjsLine1278" x1="0" y1="0" x2="147" y2="0" stroke-dasharray="0"
+                                    stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden">
+                                </line>
+                                <g id="SvgjsG1279" class="apexcharts-yaxis-annotations"></g>
+                                <g id="SvgjsG1280" class="apexcharts-xaxis-annotations"></g>
+                                <g id="SvgjsG1281" class="apexcharts-point-annotations"></g>
+                            </g>
+                            <g id="SvgjsG1266" class="apexcharts-yaxis" rel="0" transform="translate(-8, 0)">
+                                <g id="SvgjsG1267" class="apexcharts-yaxis-texts-g"></g>
+                            </g>
+                            <g id="SvgjsG1216" class="apexcharts-annotations"></g>
+                        </svg>
+                        <div class="apexcharts-legend" style="max-height: 40px;"></div>
+                        <div class="apexcharts-tooltip apexcharts-theme-light">
+                            <div class="apexcharts-tooltip-title"
+                                style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"></div>
+                            <div class="apexcharts-tooltip-series-group" style="order: 1;"><span
+                                    class="apexcharts-tooltip-marker"
+                                    style="background-color: rgb(61, 117, 168);"></span>
+                                <div class="apexcharts-tooltip-text"
+                                    style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;">
+                                    <div class="apexcharts-tooltip-y-group"><span
+                                            class="apexcharts-tooltip-text-y-label"></span><span
+                                            class="apexcharts-tooltip-text-y-value"></span></div>
+                                    <div class="apexcharts-tooltip-goals-group"><span
+                                            class="apexcharts-tooltip-text-goals-label"></span><span
+                                            class="apexcharts-tooltip-text-goals-value"></span></div>
+                                    <div class="apexcharts-tooltip-z-group"><span
+                                            class="apexcharts-tooltip-text-z-label"></span><span
+                                            class="apexcharts-tooltip-text-z-value"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-light">
+                            <div class="apexcharts-yaxistooltip-text"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="resize-triggers">
+                    <div class="expand-trigger">
+                        <div style="width: 196px; height: 188px;"></div>
+                    </div>
+                    <div class="contract-trigger"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-2 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <i class="bx bxs-briefcase bx-md"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(0,'Jobs')">Today</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-1,'Jobs')">Yesterday</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-7,'Jobs')">Last 7 Days</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-30,'Jobs')">Last 30 Days</a>
+                            <!-- <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0);">Custom Date Range</a> -->
+                        </div>
+                    </div>
+                </div>
+                <span class="d-block mb-1">Active Jobs</span>
+                <h3 class="card-title text-nowrap mb-2">{{recruiterProfileDetail?.activeJobs}}</h3>
+                <small class="text-muted fw-semibold">{{recruiterProfileDetail?.inActiveJobs}} Inactive Jobs</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-2 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <i class="bx bxs-user-rectangle bx-md"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(0,'AssignedClients')">Today</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-1,'AssignedClients')">Yesterday</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-7,'AssignedClients')">Last 7 Days</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-30,'AssignedClients')">Last 30 Days</a>
+                            <!-- <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0);">Custom Date Range</a> -->
+                        </div>
+                    </div>
+
+                </div>
+                <span class="d-block mb-1">Assigned Clients</span>
+                <h3 class="card-title text-nowrap mb-2">{{recruiterProfileDetail?.assignedClients}}</h3>
+                <small class="text-muted fw-semibold">All time</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-2 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <i class="bx bxs-timer bx-md"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(0,'AvgResponseTime')">Today</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-1,'AvgResponseTime')">Yesterday</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-7,'AvgResponseTime')">Last 7 Days</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-30,'AvgResponseTime')">Last 30 Days</a>
+                            <!-- <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0);">Custom Date Range</a> -->
+                        </div>
+                    </div>
+                </div>
+                <span class="d-block mb-1">Avg. Response Time</span>
+                <h3 class="card-title text-nowrap mb-2">2.2 Hours</h3>
+                <small class="text-muted fw-semibold">Last 7 days</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-2 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <i class="bx bxs-paper-plane bx-md"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(0,'MsgSent')">Today</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-1,'MsgSent')">Yesterday</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-7,'MsgSent')">Last 7 Days</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-30,'MsgSent')">Last 30 Days</a>
+                            <!-- <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0);">Custom Date Range</a> -->
+                        </div>
+                    </div>
+                </div>
+                <span class="d-block mb-1">Messages Sent</span>
+                <h3 class="card-title text-nowrap mb-2">{{recruiterProfileDetail?.sentMessages}}</h3>
+                <small class="text-muted fw-semibold">Last 7 days</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-2 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <i class="bx bx-envelope bx-md"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(0,'MsgUnread')">Today</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-1,'MsgUnread')">Yesterday</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-7,'MsgUnread')">Last 7 Days</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-30,'MsgUnread')">Last 30 Days</a>
+                            <!-- <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0);">Custom Date Range</a> -->
+                        </div>
+                    </div>
+                </div>
+                <span class="d-block mb-1">Unread Messages</span>
+                <h3 class="card-title text-nowrap mb-2">{{recruiterProfileDetail?.unreadMessages}}</h3>
+                <small class="text-muted fw-semibold">All time</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-2 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <i class="bx bx-money bx-md"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(0,'Earnings')">Today</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-1,'Earnings')">Yesterday</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-7,'Earnings')">Last 7 Days</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-30,'Earnings')">Last 30 Days</a>
+                            <!-- <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0);">Custom Date Range</a> -->
+                        </div>
+                    </div>
+                </div>
+                <span class="d-block mb-1">Earnings</span>
+                <h3 class="card-title text-nowrap mb-2">{{recruiterProfileDetail?.earnings}}</h3>
+                <small class="text-muted fw-semibold">+$300 incoming</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-2 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <i class="bx bx-money bx-md"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(0,'AvgSales')">Today</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-1,'AvgSales')">Yesterday</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-7,'AvgSales')">Last 7 Days</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-30,'AvgSales')">Last 30 Days</a>
+                            <!-- <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0);">Custom Date Range</a> -->
+                        </div>
+                    </div>
+                </div>
+                <span class="d-block mb-1">Avg. Sales / Client</span>
+                <h3 class="card-title text-nowrap mb-2">$ 450</h3>
+                <small class="text-muted fw-semibold">All time</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-2 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <i class="bx bxl-zoom bx-md"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(0,'ZoomInterviews')">Today</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-1,'ZoomInterviews')">Yesterday</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-7,'ZoomInterviews')">Last 7 Days</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-30,'ZoomInterviews')">Last 30 Days</a>
+                            <!-- <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0);">Custom Date Range</a> -->
+                        </div>
+                    </div>
+                </div>
+                <span class="d-block mb-1">Zoom Interviews</span>
+                <h3 class="card-title text-nowrap mb-2">{{recruiterProfileDetail?.zoomInterviews}}</h3>
+                <small class="text-muted fw-semibold">3 pending</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-2 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <i class="bx bx-user bx-md"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(0,'InpersonInterview')">Today</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-1,'InpersonInterview')">Yesterday</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-7,'InpersonInterview')">Last 7 Days</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-30,'InpersonInterview')">Last 30 Days</a>
+                            <!-- <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0);">Custom Date Range</a> -->
+                        </div>
+                    </div>
+                </div>
+                <span class="d-block mb-1">In Person Interviews</span>
+                <h3 class="card-title text-nowrap mb-2">3</h3>
+                <small class="text-muted fw-semibold">0 pending</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-2 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <i class="bx bxs-video bx-md"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(0,'OneWayInterview')">Today</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-1,'OneWayInterview')">Yesterday</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-7,'OneWayInterview')">Last 7 Days</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-30,'OneWayInterview')">Last 30 Days</a>
+                            <!-- <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0);">Custom Date Range</a> -->
+                        </div>
+                    </div>
+                </div>
+                <span class="d-block mb-1">One-Way Interviews</span>
+                <h3 class="card-title text-nowrap mb-2">{{recruiterProfileDetail?.onewayInterview}}</h3>
+                <small class="text-muted fw-semibold">11 pending</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-2 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <i class="bx bxs-award bx-md"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(0,'Hired')">Today</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-1,'Hired')">Yesterday</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-7,'Hired')">Last 7 Days</a>
+                            <a class="dropdown-item" (click)="getRecruiterProfileDetails(-30,'Hired')">Last 30 Days</a>
+                        </div>
+                    </div>
+                </div>
+                <span class="d-block mb-1">Hired</span>
+                <h3 class="card-title text-nowrap mb-2">{{recruiterProfileDetail?.hiredcount}}</h3>
+                <small class="text-muted fw-semibold">All time</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="row">
+    <div class="col-xl-4 col-lg-5 col-md-5">
+        <app-user-activity-summary [summaries]="summaries" ></app-user-activity-summary>
+        <div class="card mt-2">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Schedule</h5>
+            </div>
+            <div class="card-body">
+                <div class="row recruiter-calendar">
+                    <div > 
+                        <full-calendar #fullCalendar id="fullCalendar" [options]="calendarOptions"></full-calendar>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="card-header d-flex justify-content-between align-items-center pb-0">
+              <div class="card-title mb-0">
+                <h5 class="m-0 me-2">Specializations</h5>
+                <small class="text-muted">Areas of Expertise</small>
+              </div>
+            </div>
+            <div class="card-body pt-2">
+              <div id="divTemplates" class="list-group" *ngFor="let item of recruiterExperties">
+                <button type="button" class="list-group-item list-group-item-action"><i class="bx bx-street-view"></i> {{item.title}} 
+                    <span class="float-end"> 
+                        <a (click)="editExperties(item)"><i class="bx bxs-pencil text-secondary"></i></a>
+                        <a (click)="deleteExperties(item)"><i class="bx bxs-trash text-secondary"></i></a>
+                    </span>
+                </button>
+              </div>
+              <button class="btn btn-outline-secondary btn-sm mt-1" (click)="open()">Add</button>
+            </div>
+        
+          </div>
+    </div>
+    <div class="col-xl-8 col-lg-8 col-md-8">
+        <app-recruiter-jobs></app-recruiter-jobs>
+       <app-user-activity-timeline [userId]="id"></app-user-activity-timeline>
+    </div>
+
+</div>

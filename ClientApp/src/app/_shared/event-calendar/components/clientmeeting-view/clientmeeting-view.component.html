@@ -1,0 +1,64 @@
+<p-blockUI [blocked]="this.blocked" style="z-index: 999999">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</p-blockUI>
+<div id="divAvailabilityCalendarEventDetailsContainer" class="">
+  <div class="card">
+    <div class="card-body">
+      <div id="divAvailabilityCalendarEventDetails">
+        <div style="padding-top:1px;">
+          <div class="divider text-start mt-0">
+            <div class="divider-text">{{this.label}}</div>
+          </div>
+          <div class="ps-2"> <span id="spnInterviewDetails_Candidate">
+              <div class="mx-auto" style="vertical-align:middle;"> <a
+                  href="CandidateProfile.php?id=4&amp;pt=Video&amp;jn=Registered%20Nurse&amp;f=Interview%20Scheduled"
+                  target="_blank"><img class="w-px-75 rounded-circle proxy_applicant_picture"
+                  [src]="this.eventData.client.avatarFileName | avatar "></a> <span
+                  style="display:inline-block;padding-left:10px;vertical-align:middle;"> <span
+                    style="font-size:20px;display:inline-block;"><span class="proxy_applicant_name">{{this.candidate.fullName}}</span></span> <span
+                    style="font-size:15px;display:block;">
+                    <div class="input-group"> <button class="btn btn-sm btn-outline-secondary dropdown-toggle"
+                        type="button" data-bs-toggle="dropdown" aria-expanded="false">Contacts</button>
+                      <ul class="dropdown-menu dropdown-menu-end" >
+                        <li><a class="dropdown-item" routerLink="/client/messages" target="_blank"><i class="bx bxs-chat"></i>
+                            Open Chat</a></li>
+                      </ul>
+                    </div>
+                  </span> </span></div>
+            </span></div>
+        </div>
+
+        <div class="ps-2 mt-5">
+          <table class="table table-sm table-bordered">
+            <tbody>
+              <tr>
+                <td class="small"><b>Start</b></td>
+                <td class="small">{{this.eventData.fromTimeToString }}</td>
+              </tr>
+              <tr>
+                <td class="small"><b>Duration</b></td>
+                <td class="small">{{this.eventData.duration}}</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="text-left"> <button
+                    class="btn btn-xs btn-outline-secondary float-exnd">Reschedule</button> <button
+                    class="btn btn-xs btn-outline-danger proxy_delete_interview me-1 ml-1" data-eventid="2" (click)="onRemoveEvent()">Cancel</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="list-group d-none ">
+          <li class="list-group-item d-flex align-items-center justify-content-between"> <span>Start</span><span>9:30
+              AM</span> </li>
+          <li class="list-group-item d-flex align-items-center justify-content-between"> <span>Duration</span><span>30
+              min</span> </li>
+          <li class="list-group-item d-flex align-items-center justify-content-between"> <span>Type</span><span>Zoom
+              Interview</span> </li>
+          <li class="list-group-item d-flex align-items-center justify-content-between"> <span>Link</span><span><a
+                href="">Join Zoom Meeting</a></span> </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

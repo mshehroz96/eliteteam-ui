@@ -1,0 +1,81 @@
+<form [appFocusInvalid]="UserForm" [formGroup]="UserForm" (ngSubmit)="saveData()">
+  <div class="row mb-1">
+    <label class="col-form-label col-sm-6">FIRST NAME</label>
+    <label class="col-form-label col-sm-6">LAST NAME</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" name="firstName" placeholder="First Name" formControlName="firstName" />
+    </div>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" name="lastName" placeholder="Last Name" formControlName="lastName" />
+    </div>
+  </div>
+  <div class="row mb-1">
+    <label class="col-form-label col-sm-6">EMAIL</label>
+    <label class="col-form-label col-sm-6">STATUS</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" name="email" placeholder="Email" formControlName="email" />
+    </div>
+    <div class="col-sm-6">
+      <select class="form-select" name="userStatus" placeholder="Status" formControlName="userStatus">
+        <option value="1">Active</option>
+        <option value="2">Inactive</option>
+        <option value="3">Suspended</option>
+        <option value="0">Blocked</option>
+      </select>
+    </div>
+  </div>
+  <div class="row mb-1">
+    <label *ngIf="defaultUserType == -1" class="col-form-label col-sm-6">USER TYPE</label>
+    <label class="col-form-label"
+      [ngClass]="{'col-sm-12': defaultUserType != -1,'col-sm-6': defaultUserType == -1}">LANGUAGE </label>
+    <div class="col-sm-6" *ngIf="defaultUserType == -1">
+      <select class="form-select" name="userType" placeholder="User Type" formControlName="userType">
+        <option *ngFor="let item of UserTypeList" [value]="item.listItemID">
+          {{ item.title }}
+        </option>
+      </select>
+    </div>
+    <div class="col-sm-6" *ngIf="LanguageList.length">
+      <!-- <p-dropdown name="language" formControlName="language" placeholder="--Select--" 
+        [style]="{'width':'100%'}" [options]="LanguageList" optionLabel="item_text" optionValue="item_id" ></p-dropdown> -->
+      <p-multiSelect name="language" appendTo="body" [style]="{'width':'100%'}" formControlName="language" [options]="LanguageList" optionLabel="item_text"
+        optionValue="item_id"></p-multiSelect>
+    </div>
+  </div>
+  <div class="row mb-1">
+    <label class="col-form-label col-sm-6">PHONE NUMBER</label>
+    <div class="input-group mb-1">
+      <div class="input-group-prepend">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" id="CountryCode">
+          {{ CountryCode }}
+        </button>
+        <div class="dropdown-menu" style="height: 300px; overflow-y: scroll;">
+          <a *ngFor="let phone of CountryCodeList" class="dropdown-item" href="#" [name]="phone.CountryCode"
+            (click)="SetCode($event)">{{ phone.CountryCode }}</a>
+        </div>
+      </div>
+      <input type="text" class="form-control" aria-label="Text input with dropdown button" name="mobileNo"
+        formControlName="mobileNo" appAllownumbersonly />
+    </div>
+  </div>
+  <div class="row mb-1" *ngIf="user.userId == 0">
+    <label class="col-form-label col-sm-6">Password</label>
+    <label class="col-form-label col-sm-6">Confirm Password</label>
+    <div class="col-sm-6">
+      <input type="password" class="form-control" name="password" placeholder="password" formControlName="password" />
+    </div>
+
+    <div class="col-sm-6">
+      <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password"
+        formControlName="confirmPassword" />
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-sm-12 text-center">
+      <button type="submit" class="btn btn-primary">Save</button>
+      &nbsp;&nbsp;
+      <a role="button" class="btn btn-warning mr-2" (click)="Cancel()">Cancel</a>
+    </div>
+  </div>
+</form>

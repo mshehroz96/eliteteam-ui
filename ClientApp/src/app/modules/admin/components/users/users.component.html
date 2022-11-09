@@ -1,0 +1,108 @@
+<div class="row g-4">
+  <div class="col-md-6 col-lg-6 col-xl-4" *ngFor="let overview of usersOverview">
+    <app-layout-card [UserOverView]="overview"></app-layout-card>
+  </div>
+</div>
+
+
+<div class="card mt-4">
+  <p-table #dtUser [value]="users" [lazy]="true" (onLazyLoad)="getUsers($event)" responsiveLayout="scroll"
+    dataKey="userId" styleClass="p-datatable-strip" [paginator]="true" [rows]="10" [totalRecords]="totalRecords"
+    [loading]="loading" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,25,50,100]"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['userId','companyId','firstName','lastName','email']">
+    <ng-template pTemplate="caption">
+      <div class="row mx-2">
+        <form action="#">
+          <div style="float: right" class="dt-buttons mt-4">
+            <button class="dt-button add-new btn btn-primary" type="button" (click)="openAddUser()">
+              <span><i class="bx bx-plus me-0 me-sm-2"></i><span class="">Add New User</span></span>
+            </button>
+          </div>
+          <label style="float: right" class="mt-4 rightSpacing">
+            <select  class="form-select text-capitalize" name="userType" [(ngModel)]="userType"
+              (change)="getUsers({})">
+              <option value="0">Select Role</option>
+              <option *ngFor="let item of userTypes" [value]="item.value">
+                {{ item.displayText }}
+              </option>
+            </select>
+          </label>
+          <label style="float: right" class="mt-4 rightSpacing">
+            <select id="SearchByRole" class="form-select text-capitalize" name="SearchByRole" [(ngModel)]="userStatus"
+              (change)="getUsers({})">
+              <option value="0">Select Status</option>
+              <option *ngFor="let item of userStatusList" [value]="item.value">
+                {{ item.displayText }}
+              </option>
+            </select>
+          </label>
+
+          <label class="rightSpacing mt-4" style="float: right">
+            <input type="text" class="form-control" name="searchFilter" [(ngModel)]="searchFilter"
+              (ngModelChange)="getUsers({})" />
+          </label>
+          <label class="SearchLabel rightSpacing" style="float: right">
+            Search
+          </label>
+        </form>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="FirstName">User<p-sortIcon field="firstName"></p-sortIcon>
+        </th>
+        <th pSortableColumn="UserType">Role <p-sortIcon field="userTypeStr"></p-sortIcon>
+        </th>
+        <th pSortableColumn="UserStatus">Status <p-sortIcon field="userStatus"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>
+          <div class="d-flex justify-content-left align-items-center">
+            <div class="avatar-wrapper">
+              <div class="avatar avatar-sm me-3">
+                <a routerLink="/admin/userDetail/{{user.userId}}" ><img [src]="user.avatarFileName | avatar" alt="Avatar"
+                    class="rounded-circle" /></a>
+              </div>
+            </div>
+            <div class="d-flex flex-column">
+              <a routerLink="/admin/userDetail/{{user.userId}}" class="text-body text-truncate"><span class="fw-semibold">{{
+                  user.firstName + " " + user.lastName
+                  }}</span></a><small class="text-muted">{{ user.email }}</small>
+            </div>
+          </div>
+        </td>
+        <td>{{ user.userType | userRole }}</td>
+        <td><span *ngIf="user.userStatus == 1" class="badge bg-label-success">{{
+            user.userStatus | userStatus
+            }}</span>
+          <span *ngIf="user.userStatus != 1" class="badge bg-label-danger">{{
+            user.userStatus | userStatus
+            }}</span>
+        </td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+</div>
+
+<!-- <ng-template #content let-modal>
+  <div class="modal-header">
+    <div class="col-12">
+      <h4 class="modal-title" id="modal-basic-title" class="text-center">
+        Add User
+      </h4>
+      <button type="button" class="close AddUserClose" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+  <div class="modal-body">
+    <app-create-update [EditMode]="editMode"></app-create-update>
+  </div>
+  <div class="modal-footer">
+  </div>
+</ng-template> -->

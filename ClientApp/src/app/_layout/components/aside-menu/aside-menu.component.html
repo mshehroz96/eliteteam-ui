@@ -1,0 +1,25 @@
+<aside
+  id="layout-menu"
+  class="layout-menu-horizontal menu-horizontal menu flex-grow-0 bg-menu-theme"
+>
+  <div class="container-xxl d-flex h-100">
+    <a href="#" class="menu-horizontal-prev d-none"></a>
+    <div class="menu-horizontal-wrapper">
+      <ul class="menu-inner py-1">
+        <!-- Page -->
+        <li
+          class="menu-item"
+          *ngFor="let menuItem of menuList"
+          (click)="select(menuItem)"
+          [ngClass]="isActive(menuItem)"
+        >
+          <a href="#" [routerLink]="menuItem.RouteName" class="menu-link">
+            <i class="menu-icon tf-icons {{ menuItem.Icon }}"></i>
+            <div> <span [innerHTML]="menuItem.Name"></span>  </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <a href="#" class="menu-horizontal-next d-none"></a>
+  </div>
+</aside>

@@ -1,0 +1,45 @@
+<div [appIsLoading]="loadingService.isLoading(this)">
+<app-get-started
+    *ngIf="this.requisitionRequest.requisitionId==0 && this.requisitionRequest.campaignType.length==0">
+</app-get-started>
+
+<ng-container *ngIf="this.requisitionRequest.campaignType.length>0">
+
+    <div class="row mb-3" *ngIf="this.requisitionRequest.requisitionId==0">
+        <div class="col-12">
+            <div class="p-2 pt-0">
+
+                <div class="float-end">
+                    <button class="btn btn-primary mr-1" (click)="saveDraftJob()"><i class="fa fa-save"></i> Save &
+                        Continue Later</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3" *ngIf="this.requisitionRequest.requisitionId>0">
+        <div class="col-12">
+            <div class="p-2 pt-0">
+
+                <div class="float-end">
+                    <button class="btn btn-primary mr-1" (click)="saveDraftJob()"><i class="fa fa-check"></i> Update
+                        Job</button>
+                    <button class="btn btn-secondary" (click)="cancel()"><i class="fa fa-ban"></i> Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex card pl-4 pr-4">
+        <p-toast></p-toast>
+        <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="this.readonly"></p-steps>
+    </div>
+
+    <div class="row mt-4">
+        <app-requisition-details *ngIf="activeIndex==0"></app-requisition-details>
+        <app-additional-details *ngIf="activeIndex==1"></app-additional-details>
+        <app-compensation-details *ngIf="activeIndex==2"></app-compensation-details>
+        <app-screening-details *ngIf="activeIndex==3"></app-screening-details>
+        <app-review-details *ngIf="activeIndex==4"></app-review-details>
+    </div>
+</ng-container>
+</div>

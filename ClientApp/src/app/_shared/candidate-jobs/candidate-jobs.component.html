@@ -1,0 +1,45 @@
+<p-blockUI [blocked]="this.blocked">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</p-blockUI>
+<ul  role="tablist" class="nav nav-pills mb-3" *ngIf="this.jobs.length > 0 || this.jobs.length != null">
+  <li  class="nav-item"><button  type="button"
+      role="tab" data-bs-toggle="tab" class="nav-link active"> My Jobs &nbsp;<span
+        class="badge bg-secondary float-end">{{ this.jobs.length }}</span></button></li>
+</ul>
+<p-table [value]="jobs" #dtJob responsiveLayout="scroll">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Job Title</th>
+      <th >Company</th>
+      <th>Applied On</th>
+      <th>Last Activity</th>
+      <th>Status</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-job>
+    <tr>
+      <td>
+        <a routerLink="/candidate/candidate-job-detail/{{job.requisitionUUID}}/{{job.requisitionCandidateID}}">
+          <i [ngClass]="getClassName(job)"></i> {{job.jobTitle}}</a>
+      </td>
+      <td>
+        <div  class="d-flex flex-columns">
+          <div  class="flex-shriznk-1 me-3">
+            <div  class="avatar avatar-sm">
+              <img [src]="job.logoFileName | companyLogo" alt="{{job.companyName}}" class="shadow m-1 mt-0" style="border-radius: 20%;"/>
+            </div>
+          </div>
+          <div class="flex-grow-0 mt-1" >
+            <span class="d-block fw-semibold">{{job.companyName}}</span>
+          </div>
+        </div>
+        </td>
+
+      <td>{{job.appliedOn | date: "MM/dd/yyyy"}}</td>
+      <td>{{job.lastActivity | date: "MM/dd/yyyy"}}</td>
+      <td>
+        <span [ngClass]="getStatusClassName(job)">{{job.candidateStatus}}</span>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

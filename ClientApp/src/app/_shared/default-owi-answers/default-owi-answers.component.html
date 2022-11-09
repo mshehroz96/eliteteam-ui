@@ -1,0 +1,8 @@
+<div id="divQuestionMain" class="card mt-2">
+  <div class="card-body">
+    <h5>One Way Interview Questions</h5>
+    <div id="divQuestions" class="list-group" *ngFor="let item of onewayInterviewAnswers">
+      <a  style="cursor: pointer;" class="list-group-item list-group-item-action" (click)="showVideo(item)">
+        {{item.questionText}}</a>
+  </div>
+</div>

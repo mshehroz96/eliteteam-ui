@@ -1,0 +1,133 @@
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-pills flex-column flex-md-row mb-3">
+            <li class="nav-item">
+                <a role="button" class="nav-link" [ngClass]="{'active': jobStatus=='Active'}" (click)="setJobStatus('Active')" href="javascript:void(0);">Open Jobs
+                    <!-- <span class="badge bg-secondary">3</span> -->
+                </a>
+            </li>
+            <li class="nav-item">
+                <a role="button" class="nav-link" [ngClass]="{'active': jobStatus=='Closed'}"
+                (click)="setJobStatus('Closed')"  href="javascript:void(0);">Closed Jobs
+                <!-- <span class="badge bg-primary">4</span> -->
+            </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<p-table #dtJob [value]="jobs" [lazy]="true" (onLazyLoad)="getJobs($event)" responsiveLayout="scroll"
+    dataKey="requisitionId" styleClass="p-datatable-strip" [paginator]="true" [rows]="10" [totalRecords]="totalRecords"
+    [loading]="loading" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50,100]"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['requisitionId','companyId','campaignTypeLiid']">
+    <ng-template pTemplate="caption">
+        <div class="row">
+            <form action="#">
+                <div class="float-left">
+
+                    <h4 *ngIf="this.jobStatus=='Active'">Open Jobs</h4>
+                    <h4 *ngIf="this.jobStatus=='Closed'">Closed Jobs</h4>
+                </div>
+                <div class="float-right mx-2">
+                    <a role="button" href="javascript:void(0)" class="dt-button create-new btn btn-primary" tabindex="0"
+                        routerLink="job-request/0" aria-controls="tabPendingJobs" type="button">
+                        <span><i class="bx bx-plus me-sm-2"></i>
+                            <span class="d-none d-sm-inline-block">New Request</span>
+                        </span>
+                    </a>
+                </div>
+
+                <div style="float: right" class="dt-buttons ml-4">
+                    <select class="form-select text-capitalize" name="campaignType" [(ngModel)]="campaignType"
+                        (change)="getJobs({})">
+                        <option value="0">Select Campaign</option>
+                        <option *ngFor="let item of campaignTypes" [value]="item.value">
+                            {{ item.displayText }}
+                        </option>
+                    </select>
+                </div>
+                <label class="rightSpacing" style="float: right">
+                    <input pInputText type="text" name="globalFilter" class="form-control" [(ngModel)]="searchFilter"
+                        (ngModelChange)="getJobs({})" placeholder="Search keyword" />
+                </label>
+            </form>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="JobTitle">Job Title<p-sortIcon field="jobTitle"></p-sortIcon>
+            </th>
+            <th pSortableColumn="Submission">New <p-sortIcon field="submission"></p-sortIcon>
+            </th>
+            <th pSortableColumn="Interview">Interview <p-sortIcon field="interview"></p-sortIcon>
+            </th>
+            <th pSortableColumn="Offer">Offer <p-sortIcon field="offer"></p-sortIcon>
+            </th>
+            <th pSortableColumn="Hire">Hired <p-sortIcon field="hire"></p-sortIcon>
+            </th>
+            <th pSortableColumn="LastActivity">Last Activity <p-sortIcon field="lastActivity"></p-sortIcon>
+            </th>
+            <th pSortableColumn="JobStatus">Status <p-sortIcon field="jobStatus"></p-sortIcon>
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-job>
+        <tr>
+            <td>
+            <ng-container *ngIf="job.jobStatus=='Active' || job.jobStatus=='Pending'">
+                <a href="javascript:void(0)" routerLink="job-details/{{job.uuid}}">
+                    <span class="text-primary">
+                        <i *ngIf="job.campaignType=='Video'" class="bx bxs-video"></i>
+                        <i *ngIf="job.campaignType=='Resume'" class="bx bxs-detail"></i>
+                        <i *ngIf="job.campaignType=='Interview'" class="bx bxs-calendar"></i>
+                        {{job.jobTitle}}
+                    </span>
+                </a>
+            </ng-container>
+
+
+            <ng-container *ngIf="job.jobStatus=='Draft'">
+                <a href="javascript:void(0)" routerLink="job-request/{{job.uuid}}/edit">
+                    <span class="text-primary">
+                        <i *ngIf="job.campaignType=='Video'" class="bx bxs-video"></i>
+                        <i *ngIf="job.campaignType=='Resume'" class="bx bxs-detail"></i>
+                        <i *ngIf="job.campaignType=='Interview'" class="bx bxs-calendar"></i>
+                        {{job.jobTitle}}
+                    </span>
+                </a>
+            </ng-container>
+            </td>
+            <td>{{job.submission}}</td>
+            <td>{{job.interview}}</td>
+            <td>{{job.offer}}</td>
+            <td>{{job.hire}}</td>
+            <td>{{job.lastActivity | customDateTime}}</td>
+            <td>{{job.jobStatus}}</td>
+            <td>
+                <div class="d-inline-block"><a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
+                        data-bs-toggle="dropdown" aria-expanded="false"><i class="bx bx-dots-vertical-rounded"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li *ngIf="job.jobStatus=='Draft'"><a href="javascript:;" routerLink="job-request/{{job.uuid}}/edit"
+                                class="dropdown-item">Edit</a></li>
+                        <li *ngIf="job.jobStatus=='Active'"><a href="javascript:;" (click)="closeJob(job.requisitionId)" class="dropdown-item">Close</a></li>
+                        <li><a href="javascript:;" routerLink="job-request/{{job.uuid}}/clone" class="dropdown-item">Clone</a></li>
+                        <li *ngIf="job.jobStatus=='Active'"><a href="javascript:;" (click)="cancelJob(job.requisitionId)" class="dropdown-item">Cancel</a></li>
+                        <li *ngIf="job.jobStatus=='Closed' || job.jobStatus=='Cancelled'"><a href="javascript:;" (click)="archiveJob(job.requisitionId)" class="dropdown-item">Archive</a></li>
+                        <li  *ngIf="job.jobStatus=='Draft' || job.jobStatus=='Pending'"><a href="javascript:;" (click)="deleteJob(job.requisitionId)" class="dropdown-item text-danger delete-record">Delete</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+   <ng-template pTemplate="emptymessage">
+        <tr>
+            <td [attr.colspan]="100">
+                No jobs yet open
+            </td>
+        </tr>
+    </ng-template>
+
+</p-table>

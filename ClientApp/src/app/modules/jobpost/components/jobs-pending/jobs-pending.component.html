@@ -1,0 +1,95 @@
+<p-table #dtJob [value]="jobs" [lazy]="true" (onLazyLoad)="getJobs($event)" responsiveLayout="scroll"
+  dataKey="requisitionId" styleClass="p-datatable-strip" [paginator]="true" [rows]="10" [totalRecords]="totalRecords"
+  [loading]="loading" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50,100]"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [globalFilterFields]="['requisitionId','companyId','campaignTypeLiid']">
+  <ng-template pTemplate="caption">
+    <div class="row">
+      <form action="#">
+        <span style="float: left">
+          <label>Pending Jobs</label>
+        </span>
+        <div style="float: right" class="dt-buttons ml-4">
+          <select class="form-select text-capitalize" name="jpmStatus" [(ngModel)]="jpmStatus" (change)="getJobs({})">
+            <option value="0">Select Status</option>
+            <option *ngFor="let item of jpmStatuses" [value]="item.value">
+                {{ item.displayText }}
+            </option>
+          </select>
+        </div>
+        <label class="rightSpacing" style="float: right">
+          <input pInputText type="text" name="globalFilter" class="form-control" [(ngModel)]="searchFilter"
+            (ngModelChange)="getJobs({})" placeholder="Search keyword" />
+        </label>
+      </form>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="JobTitle">Job Title<p-sortIcon field="jobTitle"></p-sortIcon>
+      </th>
+      <th pSortableColumn="CompanyName">Client Name <p-sortIcon field="companyName"></p-sortIcon>
+      </th>
+      <th pSortableColumn="DateSubmitted">Date Submitted <p-sortIcon field="submittedOn"></p-sortIcon>
+      </th>
+      <th pSortableColumn="SubmittedHoursAgo">Elapsed Time <p-sortIcon field="submittedHoursAgo"></p-sortIcon>
+      </th>
+      <th pSortableColumn="JobsSubmittedByClient">Profiles <p-sortIcon field="jobsSubmittedByClient"></p-sortIcon>
+      </th>
+      <th pSortableColumn="CandidatesPurchasedByClient" style="word-wrap: normal;">Recruiter(s) <p-sortIcon field="candidatesPurchasedByClient"></p-sortIcon>
+      </th>
+      <th pSortableColumn="JPMStatus">Status <p-sortIcon field="jpmStatus"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-job>
+    <tr>
+      <td>
+        <span class="text-primary">
+          <a routerLink="/jobpost/job-details/{{job.uuid}}" class="menu-link">
+            <i *ngIf="job.campaignType=='Video'" class="bx bxs-video"></i>
+            <i *ngIf="job.campaignType=='Resume'" class="bx bxs-detail"></i>
+            <i *ngIf="job.campaignType=='Interview'" class="bx bxs-calendar"></i>
+            &nbsp;{{job.jobTitle}}
+          </a>
+        </span>
+
+      </td>
+      <td>
+        <div class="d-flex align-items-center">
+          <div class="">
+            <div class="avatar avatar-sm">
+              <img src="{{job.logoFileName | companyLogo}} " alt="" class="h-px-20 w-px-20 rounded-circle">
+            </div>
+          </div>
+          <div class="d-flex flex-column">
+            <div>
+              {{job.companyName}}
+              <i *ngIf="job.planName=='Platinum'" class="bx bx-crown text-warning align-middle" title="Platinum Plan"></i>
+            </div>
+            <div class="small">
+              {{job.jobsSubmittedByClient}} jobs
+            </div>
+          </div>
+        </div>
+      </td>
+      <td>
+        {{job.submittedOn | date: "MM/dd/yyyy"}}
+      </td>
+      <td [innerHTML]="job.submittedHoursAgo | elapsedTime"></td>
+      <td class="small">
+        Purchased: {{job.candidatesPurchasedByClient}}<br>
+        Presented: {{job.candidatesPresentedToClient}}
+      </td>
+      <td><ul class='list-unstyled avatar-group d-flex align-items-center mb-0'>
+        <li *ngFor="let recruiter of job.recruiters" data-bs-toggle='tooltip' data-popup='tooltip-custom'
+          data-bs-placement='top' title='{{recruiter.Name}}' class='avatar avatar-sm pull-up'> <a
+            href='UserDetailsTODO/{{recruiter.UserId}}'><img class='rounded-circle' src='{{recruiter.Avatar | avatar}}'
+              alt='Avatar'></a>
+        </li>
+      </ul></td>
+      <td [innerHTML]="job.jpmStatus | jobStatus"></td>
+    </tr>
+  </ng-template>
+
+</p-table>

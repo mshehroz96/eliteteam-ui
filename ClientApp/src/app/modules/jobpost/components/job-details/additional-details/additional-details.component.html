@@ -1,0 +1,100 @@
+<p-card>
+    <div class="mb-3">
+        <label for="ddlHireCount">How many hires for this position? </label>
+        <p-dropdown [options]="noOfPositions" [(ngModel)]="requisitionRequest.noOfPositions" [style]="{'width':'100%'}"
+            optionLabel="displayText">
+        </p-dropdown>
+    </div>
+    <div class="mb-3">
+        <label>How urgently do you need to make a hire? </label>
+        <p-dropdown [options]="hiringUrgencies" [(ngModel)]="requisitionRequest.hiringUrgency"
+            [style]="{'width':'100%'}" optionLabel="displayText"></p-dropdown>
+    </div>
+    <div class="mb-3">
+        <label for="ddlPerformedRemotely">Can this job be performed remotely from home?
+        </label>
+        <p-dropdown [options]="performRemotely" [(ngModel)]="requisitionRequest.performRemotely"
+            [style]="{'width':'100%'}" optionLabel="displayText"></p-dropdown>
+    </div>
+    <div class="mb-3"><label>Will this job primarily be performed? </label>
+        <p-dropdown [options]="primaryLocations" [(ngModel)]="requisitionRequest.primaryLocation"
+            [style]="{'width':'100%'}" optionLabel="displayText"></p-dropdown>
+    </div>
+</p-card>
+<p-card  header="Schedule"
+    subheader="Provide details about the job schedule" styleClass="card mt-2">
+
+    <div class="mb-3">
+        <label for="ddlJobType">
+            What type of job is it?
+        </label>
+        <p-dropdown [options]="jobTypes" [(ngModel)]="requisitionRequest.jobType" [style]="{'width':'100%'}"
+            optionLabel="displayText">
+        </p-dropdown>
+    </div>
+
+    <div class="mb-3">
+        <label for="ddlSchedule">
+            What is the schedule for this job?
+        </label>
+        <p-multiSelect [options]="jobSchedules" [(ngModel)]="requisitionRequest.jobSchedule" display="chip"
+            [style]="{'width':'100%'}" (onChange)="jobScheduleChange()" optionLabel="displayText"></p-multiSelect>
+    </div>
+    <div *ngIf="isCustomSchedule()" class="mb-3">
+        <label for="">
+            Custom Schedule
+        </label>
+        <table class="table table-bordered table-hover">
+            <thead class="">
+                <tr>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Hours</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customSchedule of this.requisitionRequest.customJobSchedule">
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input proxy-schedule" type="checkbox"
+                                (change)="clearSelection(customSchedule)" [(ngModel)]="customSchedule.selected">
+                            <label class="form-check-label"> {{customSchedule.day}} </label>
+                        </div>
+                    </td>
+                    <td>
+                        <p-calendar [disabled]="!customSchedule.selected" [(ngModel)]="customSchedule.startTime"
+                            dataType="string" [timeOnly]="true" hourFormat="12"></p-calendar>
+                    </td>
+                    <td>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p-calendar [disabled]="!customSchedule.selected" [(ngModel)]="customSchedule.endTime"
+                                    dataType="string" [timeOnly]="true" hourFormat="12"></p-calendar>
+                            </div>
+                            <div class="col-md-2" *ngIf="customSchedule.day=='Mon' && customSchedule.endTime">
+                                <div class="form-control form-control-label" data-bs-toggle="tooltip"
+                                    data-bs-offset="0,4" data-bs-placement="right" data-bs-html="true" title=""
+                                    data-bs-original-title="Apply this timing to all days">
+                                    <a role="button" href="javascript:void(0)" (click)="applyToAll(customSchedule)"
+                                        class="proxy-schedule-apply-all"><i class="fa fa-paste"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="form-control form-control-label">{{getTimeDifference(customSchedule) |
+                            number:'1.0-1' }} Hours</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">&nbsp;</td>
+                    <td class="">
+                        <span id="spnScheduleHoursSummary" class="form-control form-control-label">{{getWeeklyHours() |
+                            number:'1.0-1'}} Hours/Week</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</p-card>

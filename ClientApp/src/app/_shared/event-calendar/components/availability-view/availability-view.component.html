@@ -1,0 +1,66 @@
+<p-blockUI [blocked]="this.blocked" style="z-index: 999999">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</p-blockUI>
+
+
+<div id="divAvailabilityCalendarEventDetailsContainer" class="">
+  <div class="card">
+    <div class="card-body">
+      <div id="divAvailabilityCalendarEventDetails">
+        <div style="padding-top:1px;">
+          <div class="ps-2">
+            <h4 class="text-success">My Availability</h4><br>
+            <table class="table table-sm table-bordered rounded-corners">
+              <tbody>
+                <tr>
+                  <td class="small"><b>Selected Date</b></td>
+                  <td class="small">{{this.eventData.eventSelectedDate}}</td>
+                </tr>
+                <tr>
+                  <td class="small"><b>Date Range</b></td>
+                  <td class="small">{{this.eventData.eventStartDate}} <i class="bx bxs-right-arrow-alt align-top"></i> {{this.eventData.eventEndDate}}</td>
+                </tr>
+                <tr>
+                  <td class="small"><b>Time Range</b></td>
+                  <td class="small">{{this.eventData.fromTimeToString}} <i class="bx bxs-right-arrow-alt align-top"></i>
+                    {{this.eventData.toTimeToString}}
+                  </td>
+                </tr>
+                <tr>
+                  <td class="small"><b>Duration</b></td>
+                  <td class="small">{{this.eventData.duration}}</td>
+                </tr>
+                <tr> </tr>
+                <tr>
+                  <td class="small"><b>Occurrence</b></td>
+                  <td class="small">
+                    <span class="badge bg-success" *ngIf="this.eventData.seriesId != null ">Series</span>
+                    <span class="badge bg-primary" *ngIf="this.eventData.seriesId == null">Single</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="text-left">
+                    <div class="btn-group"> <button type="button"
+                        class="btn btn-outline-danger btn-sm dropdown-toggle me-1"
+                        data-bs-toggle="dropdown">Delete</button>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a class="dropdown-item proxy_delete_availability" href="javascript:void(0);"
+                            data-actiontype="Series-One" data-eventid="21" data-groupid="Group21" (click)="onRemoveEvent()"
+                            data-eventtype="Series" data-currentdate="09/09/2022">Delete Only {{this.eventData.eventStartDate}}</a></li>
+
+                        <li><a class="dropdown-item proxy_delete_availability" *ngIf="this.eventData.seriesId != null" href="javascript:void(0);"
+                            data-actiontype="Series-All" data-eventid="21" data-groupid="Group21" (click)="onRemoveAllEvent()"
+                            data-eventtype="Series" data-currentdate="09/09/2022">Delete Series</a></li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

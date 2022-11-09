@@ -1,0 +1,55 @@
+<form #form="ngForm" (ngSubmit)="saveQuestion()">
+    <div class="mb-3">
+        <div class="form-group" *ngIf="customQuestion">
+            <label class="form-label d-block">Question Text:</label>
+            <input class="form-control" #questionText="ngModel" name="questionText" [(ngModel)]="question.questionText" />
+            <div *ngIf="questionText.invalid && (questionText.dirty || questionText.touched)" class="invalid-feedback">
+                <div *ngIf="questionText.errors?.required">
+                    Required
+                </div>
+            </div>
+            <span *ngIf="question.oneWayInterviewQuestionId==0" class="float-end"><a href="javascript:void(0)" (click)="setCustomQuestion(false)" class="proxy_add_question_from_bank">Or select from our Question Bank</a></span>
+        </div>
+        <div class="form-group" *ngIf="!customQuestion">
+            <label class="form-label d-block">Question Text:</label>
+            <p-dropdown [options]="questionsBank" appendTo="body"  styleClass="p-fluid" [autoDisplayFirst]="false"
+             #questionText="ngModel" name="questionText" 
+             optionLabel="questionText" optionValue="questionText"
+              [(ngModel)]="question.questionText"></p-dropdown>
+            <div *ngIf="questionText.invalid && (questionText.dirty || questionText.touched)" class="invalid-feedback">
+                <div *ngIf="questionText.errors?.required">
+                    Required
+                </div>
+            </div>
+            <span *ngIf="question.oneWayInterviewQuestionId==0" class="float-end"><a href="javascript:void(0)" (click)="setCustomQuestion(true)" class="proxy_add_question_from_bank">Or add your own</a></span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="form-group">
+            <label class="form-label d-block">
+                Interview Templates:
+            </label>
+            <ng-container *ngIf="question.oneWayInterviewQuestionId==0">
+                    <p-multiSelect appendTo="body" name="interviewTemplates" #interviewTemplates="ngModel"
+                        [(ngModel)]="question.interviewTemplates" [style]="{'width':'100%'}" [options]="templates"
+                        optionLabel="title">
+                    </p-multiSelect>
+            </ng-container>
+
+            <ng-container *ngIf="question.oneWayInterviewQuestionId>0">
+                <p-dropdown appendTo="body" name="oneWayInterviewTemplateId" #oneWayInterviewTemplateId="ngModel"
+                    [(ngModel)]="question.oneWayInterviewTemplateId" [style]="{'width':'100%'}" [options]="templates"
+                    optionValue="oneWayInterviewTemplateId" optionLabel="title">
+                </p-dropdown>
+            </ng-container>
+        </div>
+    </div>
+    <div class="flex text-center">
+        <button type="submit" [disabled]="!form.valid" class="btn btn-primary">
+            Save
+        </button>
+        <button (click)="closeModal()" type="button" class="btn btn-light-primary fw-bolder mx-2">
+            Cancel
+        </button>
+    </div>
+</form>

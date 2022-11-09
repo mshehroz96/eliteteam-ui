@@ -1,0 +1,23 @@
+<div class="main">
+  <ul class="nav nav-pills flex-column flex-md-row mb-3">
+    <!-- Page -->
+    <li
+      class="nav-item ListItem"
+      *ngFor="let menuItem of menuList"
+      (click)="loadTab(menuItem, menuItem.RouteName, $event)"
+    >
+      <a href="#" [ngClass]="isActive(menuItem)">
+        <i [ngClass]="menuItem.Icon"></i>
+        {{ menuItem.Name }}
+      </a>
+    </li>
+  </ul>
+</div>
+<div>
+  <setting-account-management *ngIf="tabType == 'setting-account-management'"></setting-account-management>
+  <app-security *ngIf="tabType == 'security'"></app-security>
+  <setting-billing-details *ngIf="tabType == 'setting-billing-details'"></setting-billing-details>
+  <app-notification-manage *ngIf="tabType == 'notification'"></app-notification-manage>
+  <setting-data-management *ngIf="tabType == 'setting-data-management'  && userType == 5"></setting-data-management>
+  <app-client-user-management *ngIf="tabType == 'users'"></app-client-user-management>
+</div>

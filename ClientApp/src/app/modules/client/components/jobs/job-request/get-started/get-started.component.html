@@ -1,0 +1,245 @@
+<form #form="ngForm">
+    <h3 class="text-center">Please select a campaign type</h3>
+    <div class="row gy-3 mx-0">
+        <div class="col-md-4" *ngIf="showVideo">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center fw-bold text-uppercase mt-3"><i
+                            class='bx bxs-video bx-sm align-middle'></i> Video Interviews</h5>
+                    <h5 class="text-center">Send me candidates with video interviews & resumes</h5>
+                    <div class="text-center py-2 my-4">
+                        <video controls="" style="width:100%;">
+                            <source src="../assets/videos/explainer.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <ul class="list-unstyled pt-4 pb-2 ps-3">
+                        <li class="mb-2">
+                            <span class="badge badge-center w-px-20 h-px-20 rounded-pill bg-label-primary me-2"><i
+                                    class="bx bx-check bx-xs"></i></span>
+                            We find, filter & recommend candidates
+                        </li>
+                        <li class="mb-2">
+                            <span class="badge badge-center w-px-20 h-px-20 rounded-pill bg-label-primary me-2"><i
+                                    class="bx bx-check bx-xs"></i></span>
+                            You can review & interview candidates
+                        </li>
+                        <li class="mb-2">
+                            <span class="badge badge-center w-px-20 h-px-20 rounded-pill bg-label-primary me-2"><i
+                                    class="bx bx-check bx-xs"></i></span>
+                            You can hire the ones you & your team vote for
+                        </li>
+                    </ul>
+
+                    <button (click)="getStarted('Video')" *ngIf="selectedCampaignType!='Video'"
+                        class="btn btn-primary d-grid w-100 proxy_start_video">Get started</button>
+                    <div *ngIf="selectedCampaignType=='Video'">
+                        <div class="alert alert-secondary my-2 " role="alert">
+                            <span><i class="bx bxs-info-circle"></i> You will need to pay USD 200 before posting the
+                                job.
+                            </span>
+                        </div>
+                        <button (click)="getContinue('Video')" [disabled]="!form.valid" class="btn btn-primary d-grid w-100 mt-2">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" *ngIf="showResume">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center fw-bold text-uppercase mt-3"><i
+                            class='bx bxs-detail bx-sm align-middle'></i> Vetted pre-screened Resumes</h5>
+                    <h5 class="text-center">Send me candidates with resumes<br><br></h5>
+                    <div class="text-center py-2 my-4">
+                        <video controls="" style="width:100%;">
+                            <source src="../assets/videos/explainer.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <ul class="list-unstyled pt-4 pb-2 ps-3">
+                        <li class="mb-2">
+                            <span class="badge badge-center w-px-20 h-px-20 rounded-pill bg-label-primary me-2"><i
+                                    class="bx bx-check bx-xs"></i></span>
+                            We find, filter & recommend candidates
+                        </li>
+                        <li class="mb-2">
+                            <span class="badge badge-center w-px-20 h-px-20 rounded-pill bg-label-primary me-2"><i
+                                    class="bx bx-check bx-xs"></i></span>
+                            You can review & interview candidates
+                        </li>
+                        <li class="mb-2">
+                            <span class="badge badge-center w-px-20 h-px-20 rounded-pill bg-label-primary me-2"><i
+                                    class="bx bx-check bx-xs"></i></span>
+                            You can hire the ones you & your team vote for
+                        </li>
+                    </ul>
+
+                    <button (click)="getStarted('Resume')" *ngIf="selectedCampaignType!='Resume'"
+                        class="btn btn-primary d-grid w-100 proxy_start_resume">Get started</button>
+                    <div *ngIf="selectedCampaignType=='Resume'">
+                        <div class="alert alert-secondary my-2 " role="alert">
+                            <span><i class="bx bxs-info-circle"></i> You will need to pay USD 200 before posting the
+                                job.
+                            </span>
+                        </div>
+
+                        <button (click)="getContinue('Resume')" [disabled]="!form.valid" class="btn btn-primary d-grid w-100 mt-2">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" *ngIf="showInterview">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center fw-bold text-uppercase mt-3"><i
+                            class='bx bxs-calendar bx-sm align-middle'></i> Interviews</h5>
+                    <h5 class="text-center">Filter candidates & arrange interviews for me<br><br></h5>
+                    <div class="text-center py-2 my-4">
+                        <video controls="" style="width:100%;">
+                            <source src="../assets/videos/explainer.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <ul class="list-unstyled pt-4 pb-2 ps-3">
+                        <li class="mb-2">
+                            <span class="badge badge-center w-px-20 h-px-20 rounded-pill bg-label-primary me-2"><i
+                                    class="bx bx-check bx-xs"></i></span>
+                            We find, filter & vet the candidates
+                        </li>
+                        <li class="mb-2">
+                            <span class="badge badge-center w-px-20 h-px-20 rounded-pill bg-label-primary me-2"><i
+                                    class="bx bx-check bx-xs"></i></span>
+                            We schedule meetings as per your schedule
+                        </li>
+                        <li class="mb-2">
+                            <span class="badge badge-center w-px-20 h-px-20 rounded-pill bg-label-primary me-2"><i
+                                    class="bx bx-check bx-xs"></i></span>
+                            Meet candidates and send hiring offers instantly
+                        </li>
+                    </ul>
+
+                    <button (click)="getStarted('Interview')" *ngIf="selectedCampaignType!='Interview'"
+                        class="btn btn-primary d-grid w-100 proxy_start_interview">Get started</button>
+                    <div *ngIf="selectedCampaignType=='Interview'">
+                        <label>
+                            How many candidates do you want to interview?
+                        </label>
+                        <p-dropdown [options]="ProfileRequired" [required]="true"  #profilesRequired="ngModel" [style]="{'width':'100%'}"  [(ngModel)]="requisitionRequest.profilesRequired"  optionLabel="displayText"
+                        ></p-dropdown>
+                        <div *ngIf="profilesRequired.invalid && (profilesRequired.dirty || profilesRequired.touched)"
+                            class="invalid-feedback">
+                            <div *ngIf="profilesRequired.errors?.required">
+                                Required
+                            </div>
+                        </div>
+                        <label for="bs-rangepicker-basic" class="mt-2">
+                            During which dates are you available for attending these interviews?
+                        </label>
+                        <div class="mt-2">
+                            <p-calendar name="availabilityDateFrom" [style]="{'width':'45%'}" [required]="true" #availabilityDateFrom="ngModel" [(ngModel)]="requisitionRequest.availabilityDateFrom"
+                                dateFormat="mm/dd/yy" dataType="string">
+                            </p-calendar>
+                            <div *ngIf="availabilityDateFrom.invalid && (availabilityDateFrom.dirty || availabilityDateFrom.touched)"
+                                class="invalid-feedback">
+                                <div *ngIf="availabilityDateFrom.errors?.required">
+                                    Required
+                                </div>
+                            </div>
+                            to
+                            <p-calendar name="availabilityDateTo" [style]="{'width':'45%'}" [required]="true"  #availabilityDateTo="ngModel" [(ngModel)]="requisitionRequest.availabilityDateTo"
+                                dateFormat="mm/dd/yy" dataType="string">
+                            </p-calendar>
+                            <div *ngIf="availabilityDateTo.invalid && (availabilityDateTo.dirty || availabilityDateTo.touched)"
+                                class="invalid-feedback">
+                                <div *ngIf="availabilityDateTo.errors?.required">
+                                    Required
+                                </div>
+                            </div>
+                        </div>
+
+                        <label class="mt-2">
+                            During what times are you available for attending these interviews?
+                        </label>
+                        <div class="mb-1">
+                            <p-calendar [style]="{'width':'45%'}" [minDate]="minDate" [stepMinute]="5" [(ngModel)]="requisitionRequest.availabilityTimeFrom"
+                                [timeOnly]="true" [required]="true" name="availabilityTimeFrom" #availabilityTimeFrom="ngModel" [showTime]="true" dataType="string" hourFormat="12">
+                            </p-calendar>
+                            <div *ngIf="availabilityTimeFrom.invalid && (availabilityTimeFrom.dirty || availabilityTimeFrom.touched)"
+                                class="invalid-feedback">
+                                <div *ngIf="availabilityTimeFrom.errors?.required">
+                                    Required
+                                </div>
+                            </div>
+                            to
+                            <p-calendar [style]="{'width':'45%'}" name="availabilityTimeTo" [minDate]="minDate" [stepMinute]="5" #availabilityTimeTo="ngModel" [(ngModel)]="requisitionRequest.availabilityTimeTo"
+                                hourFormat="12" [timeOnly]="true" [required]="true" [showTime]="true" dataType="string">
+                            </p-calendar>
+                            <div *ngIf="availabilityTimeTo.invalid && (availabilityTimeTo.dirty || availabilityTimeTo.touched)"
+                                class="invalid-feedback">
+                                <div *ngIf="availabilityTimeTo.errors?.required">
+                                    Required
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <label for="ddlInterviewLength" class="mt-2">
+                            How long will be each interview?
+                        </label>
+                        <select class="form-select"  name="interviewDurationMinutes" [(ngModel)]="requisitionRequest.interviewDurationMinutes">
+
+                            <option value="30">30 minutes</option>
+
+                        </select>
+
+                        <label for="ddlInterviewsPerDay" class="mt-2">
+                            How many interviews will you be able to attend everyday?
+                        </label>
+
+                        <select class="form-select" name="interviewSlotsPerDay" [(ngModel)]="requisitionRequest.interviewSlotsPerDay">
+                            <option value="1" selected>1 interview</option>
+                            <option value="2">2 interviews</option>
+                            <option value="3">3 interviews</option>
+                            <option value="4">4 interviews</option>
+                            <option value="5">5 interviews</option>
+                            <option value="10">10 interviews</option>
+                            <option value="15">15 interviews</option>
+                            <option value="20">20 interviews</option>
+                        </select>
+
+                        <label for="ddlInterviewBreakTime" class="mt-2">
+                            How much break should be there in between consecutive interviews?
+                        </label>
+                        <select class="form-select"  name="breakMinutes" [(ngModel)]="requisitionRequest.breakMinutes">
+                            <option value="0" selected>No breaks</option>
+                            <option value="5">5 minutes</option>
+                            <option value="10">10 minutes</option>
+                            <option value="15">15 minutes</option>
+                            <option value="20">20 minutes</option>
+                            <option value="25">25 minutes</option>
+                            <option value="30">30 minutes</option>
+                            <option value="45">45 minutes</option>
+                            <option value="60">60 minutes</option>
+                        </select>
+
+
+                        <div class="form-check mb-2 mt-2">
+                            <input class="form-check-input" type="checkbox" id="chkConfirmAvailabilityForInterviews">
+                            <label class="form-check-label" for="chkConfirmAvailabilityForInterviews">I confirm, that I
+                                will
+                                be available on the dates/times specified above. Elite Hire system will create
+                                appointments
+                                in your <b>Interview Calendar</b> as per schedule described above. You can change this
+                                schedule later.</label>
+                        </div>
+
+                        <button (click)="getContinue('Interview')" [disabled]="!form.valid" class="btn btn-primary d-grid w-100 mt-2">Continue</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

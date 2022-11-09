@@ -1,0 +1,37 @@
+<form #form="ngForm" (ngSubmit)="save()">
+  <div>
+
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+          <label class="form-label d-block">Title:</label>
+          <input [ngModelOptions]="{ standalone: true }" class="form-control" #title="ngModel" name="title" [(ngModel)]="obj.title" />
+          <div *ngIf="title.invalid && (title.dirty || title.touched)"
+              class="invalid-feedback">
+              <div *ngIf="title.errors?.required">
+                  Required
+              </div>
+          </div>
+      </div> 
+  </div>
+  
+  <div class="col-6">
+    <div class="form-group">
+        <label class="form-label d-block">Copy Variables:</label>
+        <p-listbox [ngModelOptions]="{ standalone: true }" (onClick)="getCopyVar()" [options]="copyList" [(ngModel)]="selectedListItem" optionLabel="displayText" [style]="{'width':'20rem'}"></p-listbox>
+    </div> 
+  </div>
+  <p-editor [ngModelOptions]="{ standalone: true }" [style]="{'height':'120px'}" [(ngModel)]="obj.body"></p-editor>
+  </div>
+  <br>
+  <div class="flex text-center">
+      <button type="submit" [disabled]="!form.valid" class="btn btn-primary">
+          Save
+      </button>
+      &nbsp;
+      <button (click)="closeModal()" type="button" class="btn btn-label-secondary">
+          Cancel
+      </button>
+  </div>
+</form>

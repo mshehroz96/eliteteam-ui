@@ -1,0 +1,28 @@
+<div class="table-responsive">
+  <table class="table border-top">
+    <thead>
+      <tr>
+        <th class="text-truncate">Browser</th>
+        <th class="text-truncate">Device</th>
+        <th class="text-truncate">IP Address</th>
+        <th class="text-truncate">Recent Activities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let activity of activityList">
+        <td class="text-truncate">
+          <span class="fw-semibold">{{activity.field3}}</span>
+        </td>
+        <td class="text-truncate">{{activity.field2}}</td>
+        <td class="text-truncate">{{activity.field1}}</td>
+        <td class="text-truncate">{{activity.activityDateTime | customDateTime}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+     <th colspan="100">
+        <p-paginator [first]="first" [rows]="rows" [totalRecords]="totalRecords" (onPageChange)="pageChange($event)"
+          [showJumpToPageDropdown]="false" [alwaysShow]="false"></p-paginator>
+     </th>
+    </tfoot>
+  </table>
+</div>

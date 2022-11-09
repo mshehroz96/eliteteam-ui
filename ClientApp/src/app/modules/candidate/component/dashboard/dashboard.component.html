@@ -1,0 +1,222 @@
+<p-blockUI [blocked]="this.blocked">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</p-blockUI>
+
+<div class="row">
+
+
+    <div class="alert alert-danger d-none" id="CandidateDefaultInterview">
+      Your default interview is pending. Please <a routerLink="/candidate/one-way-interview">click here</a> to complete your default interview.
+    </div>
+
+
+  <div class="alert alert-danger d-none" role="alert" id="defaultImage">
+    Your profile picture is not available. Providing your recent picture improves your chances of getting noticed first by clients!
+    Please <a routerLink="/candidate/setting-account">click here</a> to update your profile picture.
+
+  </div>
+  <div class="col-md-12">
+    <ul class="nav nav-pills mb-3" role="tablist">
+      <li class="nav-item">
+          <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" (click)="activeAwaiting()">
+            Awaiting My Action  &nbsp;<span class="badge bg-secondary float-end">{{this.awaitingMyActions.length}}</span>
+          </button>
+      </li>
+      <li class="nav-item">
+          <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" (click)="activePending()">
+            Pending with Recruiter/Client  &nbsp;<span class="badge bg-secondary float-end">{{this.pendings.length}}</span>
+          </button>
+      </li>
+  </ul>
+
+  <div id="divPillContent" *ngIf="isAwaiting">
+    <div id="divPillContent_Me" class="">
+      <div class="row">
+        <div *ngIf="awaitingMyActions.length == 0">
+          <h4>
+              {{ this.awaitingmyactionMessage }}
+          </h4>
+        </div>
+        <div id="divOneWayInterviewRequestedJob" class="col-md-6 col-sm-12 mb-4" *ngFor="let item of awaitingMyActions">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <a routerLink="/candidate/candidate-job-detail/{{item.requisitionUUID}}/{{item.requisitionCandidateID}}">
+                    <h5 class="mb-2">{{item.jobTitle}} </h5>
+                    <span class="badge bg-primary">{{item.candidateStatus}}</span>
+                  </a>
+                  <div class="mt-1" *ngIf="item.isSchedule">
+                    <i class="bx bxs-calendar"></i>
+                    <small>{{ item.fromDateTimeOffSet | date: "MM/dd/YYYY" }} {{item.fromDateTimeOffSet | date: "hh:mm a"}}
+                      <span id="spnRescheduledCount" data-id="1" class="badge bg-secondary d-none">
+                    Rescheduled x 1</span> </small>
+                  </div>
+
+                </div>
+                <div class="col-md-6">
+                  <a routerLink="/candidate/candidate-job-detail/{{item.requisitionUUID}}/{{item.requisitionCandidateID}}">
+                    <div class="d-flex flex-columns justify-content-end">
+                      <div class="flex-shriznk-1 me-3 text-right">
+                        <div class="avatar avatar-md">
+                          <img [src]="item.logoFileName | companyLogo" alt="Avatar" class="shadow m-1 mt-0" style="border-radius: 20%;"></div>
+                      </div>
+                      <div class="flex-grow-0 align-content-center">
+                        <span class="d-block fw-semibold">{{item.companyName}}</span>
+                        <small class="text-muted">{{item.companyAddress}}</small>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer border-top py-2 px-4">
+              <div class="d-flex flex-columns justify-content-between">
+                <div>
+                   <a routerLink="/candidate/one-way-interview/{{item.requisitionUUID}}/{{item.requisitionCandidateID}}" *ngIf="hideAndShowOneWayInterView(item)"  [ngClass]="item.candidateStatus == 'One-Way Interview Pending' ? 'btn btn-danger btn-sm' : 'btn btn-warning btn-sm' ">
+                    <i class='bx bxs-video align-top'></i> {{this.startOneWayInterview}}</a>
+
+                   <a id="aAcceptInvite" data-id="1" *ngIf="hideAndShowScheduleButton(item)" class="btn btn-warning btn-sm text-white" (click)="selectInterViewDateTime(item)"><i
+                     class='bx bxs-calendar-check align-top text-white'></i> Select Interview Time</a>
+
+                     <a id="aReviewOffer" (click)="reviewOffer(item)" *ngIf="hideAndShowOfferButton(item)" data-id="2" class="btn btn-outline-primary btn-sm"><i
+                      class='bx bx-check align-top'></i> Review Offer</a>
+
+                      <div class="proxy_div2B" *ngIf="this.hideAndShowZoomOneWayInterViewRejoin(item)">
+                        <a routerLink="/client/join-meeting/{{item.eventId}}" target="_blank" data-id="2" id="btnJoinNow" class="btn btn-primary btn-sm"><i class="bx bxs-video align-top"></i> Re-Join Again</a>
+                      </div>
+
+                      <div class="proxy_div2B" *ngIf="this.hideAndShowZoomOneWayInterView(item)">
+                        <a routerLink="/client/join-meeting/{{item.eventId}}" *ngIf="item.candidateStatus  =='Client Zoom Interview Scheduled'  || item.candidateStatus == 'Recruiter Zoom Interview Scheduled'
+                        || item.candidateStatus  =='Rescheduled Candidate Zoom Interview'" target="_blank" data-id="2" id="btnJoinNow" class="btn btn-primary btn-sm"><i class="bx bxs-video align-top"></i> Join Now</a>
+                        <a (click)="cancelInterviewPopup(item)" id="btnInterveiwCancel" data-id="2" class="btn btn-outline-primary btn-sm ml-1"><i class="bx bxs-calendar-x align-top"></i> Cancel</a>
+                        <a  id="btnInterveiwReSechedule" (click)="selectInterViewDateTime(item)" data-id="2" class="btn btn-outline-primary btn-sm ml-1"><i class="bx bxs-calendar-event align-top"></i> Reschedule</a>
+                      </div>
+                </div>
+                <div class="pt-1 text-warning"><i class='bx bxs-stopwatch align-middle'></i> Due in {{item.dueOn}} days</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div id="divPillContent_Others"  *ngIf="isPending">
+  <div class="row">
+    <div *ngIf="pendings.length == 0">
+      <h4>
+          {{ this.pendingWithRecruiterMessage }}
+      </h4>
+    </div>
+    <div class="col-md-6 col-sm-12 mb-4"  *ngFor="let item of pendings">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <a routerLink="/candidate/candidate-job-detail/{{item.requisitionUUID}}/{{item.requisitionCandidateID}}">
+                <h5 class="mb-2">{{item.jobTitle}}</h5>
+                <span class="badge bg-primary">{{item.candidateStatus}}</span>
+              </a>
+
+
+            </div>
+            <div class="col-md-6">
+              <a routerLink="/candidate/candidate-job-detail/{{item.requisitionUUID}}/{{item.requisitionCandidateID}}">
+                <div class="d-flex flex-columns justify-content-end">
+                  <div class="flex-shriznk-1 me-3 text-right">
+                    <div class="avatar avatar-md">
+                      <img [src]="item.logoFileName | companyLogo" alt="{{item.companyName}}" class="shadow m-1 mt-0" style="border-radius: 20%;">
+                    </div>
+                  </div>
+                  <div class="flex-grow-0 align-content-center">
+                    <span class="d-block fw-semibold">{{item.companyName}}</span>
+                    <small class="text-muted">{{item.companyAddress}}</small>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer border-top py-2 px-4">
+          <i class='bx bxs-check-circle align-middle'></i> <small>{{item.queueName}}</small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<ul class="nav nav-pills mb-3" role="tablist"  *ngIf="isCandidateJobs">
+  <li class="nav-item">
+      <a type="button" routerLink="/candidate/my-jobs" class="nav-link active" role="tab" data-bs-toggle="tab" (click)="activeAwaiting()">
+      Show All Jobs
+      </a>
+  </li>
+
+</ul>
+</div>
+<!-- <div class="col-md-2">
+  <div class="card mb-2">
+    <div class="card-body pb-2">
+      <span class="d-block fw-semibold mb-2">Profile Views</span>
+      <h3 class="card-title mb-2">54</h3>
+      <p-chart type="bar"  [data]="basicData" height="80px" [options]="chartOptions"></p-chart>
+
+      <div class="d-flex justify-content-between border-top border-light pt-2">
+        <small class="text-muted">On average your profile is viewed <b>5 times / day </b> by recruiters &
+          clients.</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-2">
+    <div class="card-body pb-2">
+      <span class="d-block fw-semibold mb-2">View Comparison</span>
+      <p-chart type="doughnut" [data]="data" [options]="doughnutChartOptions"  height="120px"></p-chart>
+      <div class="border-top border-light pt-2 ">
+        <small class="text-muted"> Your profile is getting <b>78%</b> more views as compared to other applicants that
+          have applied for the same jobs.</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-2">
+    <div class="card-body pb-2">
+      <span class="d-block fw-semibold mb-2">Jobs Available</span>
+      <p-chart type="doughnut" [data]="data" [options]="doughnutChartOptions"  height="120px"></p-chart>
+      <div class="border-top border-light pt-2 ">
+        <small class="text-muted"> There are <b>3</b> jobs available matching your preferred job title.</small>
+      </div>
+    </div>
+  </div>
+
+</div> -->
+
+</div>
+
+<p-dialog header="Select Interview Date/Time" [(visible)]="isselectInterviewTime" [style]="{width: '50vw'}">
+  <app-selectinterview-time *ngIf="isselectInterviewTime" [user]="user" (hideCalendar)="hideCalendar(null)"></app-selectinterview-time>
+</p-dialog>
+
+<p-dialog header="Review Offer"  [(visible)]="isReviewOffer" [style]="{width: '50vw', height:'600px;'}">
+  <app-review-offer  [requisitionId]="this.requisitionId" *ngIf="isReviewOffer" (hideOffer)="hideOffer()"></app-review-offer>
+</p-dialog>
+
+<p-dialog header="Video Interview"  [(visible)]="isVideoInterview" [style]="{width: '50vw', height:'600px;'}">
+  <app-video-interview></app-video-interview>
+</p-dialog>
+
+<p-dialog header="Cancel Interview"  [(visible)]="isCancelInterview"  [style]="{width: '50vw', height:'600px;'}">
+  <div class="row mb-2 mb-md-0 gap-2">
+    <div class="col-12">
+      <label for="txbBudget" class="form-label">Reason for Cancellation</label>
+      <input type="text" id="txbBudget" class="form-control" [(ngModel)]="cancelationReason" placeholder="Write here">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button id="btnCancelInterviewCommit" class="btn btn-primary" (click)="updateCancelInterviewStatus()">Cancel Interview</button>
+    <button type="button" class="btn btn-label-secondary" (click)="cancelInterviewPopup(null)" data-bs-dismiss="modal">Close</button>
+  </div>
+</p-dialog>
+

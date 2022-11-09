@@ -1,0 +1,113 @@
+<div>
+  <div class="mt-2">
+    <div class="row">
+      <div class="col-md mb-2 mb-md-0">
+        <div class="form-check custom-option custom-option-icon ">
+          <label class="form-check-label custom-option-content" for="customRadioIcon1">
+            <span class="custom-option-body">
+              <i class="bx bx-happy text-success"></i>
+              <span class="custom-option-title ">Good</span>
+              <small class=""> I like this candidate</small>
+            </span>
+            <input name="customRadioIcon" class="form-check-input" type="radio" value="" id="rdoGood">
+          </label>
+        </div>
+      </div>
+      <div class="col-md mb-2 mb-md-0">
+        <div class="form-check custom-option custom-option-icon">
+          <label class="form-check-label custom-option-content" for="customRadioIcon2">
+            <span class="custom-option-body">
+              <i class="bx bx-sad text-danger"></i>
+              <span class="custom-option-title"> Bad </span>
+              <small> I do not like this candidate </small>
+            </span>
+            <input name="customRadioIcon" class="form-check-input" type="radio" value="" id="rdoBad" checked="">
+          </label>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="form-check custom-option custom-option-icon">
+          <label class="form-check-label custom-option-content" for="customRadioIcon3">
+            <span class="custom-option-body">
+              <i class="bx bx-face text-warning"></i>
+              <span class="custom-option-title"> Undecided </span>
+              <small>I do not want to decide now</small>
+            </span>
+            <input name="customRadioIcon" class="form-check-input" type="radio" value="" id="rdoIDK">
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div id="divBadReason" class="row">
+      <div class="col-md-12 my-4">
+        <label class="form-check-label custom-option-content" for="ddlBadReason">Reason for Rejection</label>
+        <select id="ddlBadReason" multiple="multiple" class="3col active form-control jqmsLoaded ms-list-1"
+          style="display: none;">
+          <option value="Under Qualified"> Under Qualified</option>
+          <option value="Over Qualified"> Over Qualified</option>
+          <option value="Generic/Impersonal Resume"> Generic Impersonal/Resume</option>
+          <option value="Exaggerating Experience"> Exaggerating Experience</option>
+          <option value="Social Media Behavior"> Social Media Behavior</option>
+          <option value="Inappropriate or Untidy Appearance"> Inappropriate or Untidy Appearance</option>
+          <option value="Poor Body Language"> Poor Body Language</option>
+          <option value="Lacking Good Communication Skills"> Lacking Good Communication Skills</option>
+          <option value="Not a Team Player"> Not a Team Player</option>
+          <option value="Vague Responses or Avoiding Questions"> Vague Responses or Avoiding Questions</option>
+          <option value="Negative Feedback from Past References"> Negative Feedback from Past References</option>
+        </select>
+        <div id="ms-list-1" class="ms-options-wrap"><button type="button"><span></span></button>
+          <div class="ms-options" style="min-height: 200px; max-height: 281.717px;">
+            <ul style="column-count: 1; column-gap: 0px;">
+              <li data-search-term="under qualified"><label for="ms-opt-1"><input type="checkbox"
+                    title=" Under Qualified" id="ms-opt-1" value="Under Qualified" class="form-check-input"> Under
+                  Qualified</label></li>
+              <li data-search-term="over qualified"><label for="ms-opt-2"><input type="checkbox" title=" Over Qualified"
+                    id="ms-opt-2" value="Over Qualified" class="form-check-input"> Over Qualified</label></li>
+              <li data-search-term="generic impersonal/resume"><label for="ms-opt-3"><input type="checkbox"
+                    title=" Generic Impersonal/Resume" id="ms-opt-3" value="Generic/Impersonal Resume"
+                    class="form-check-input"> Generic Impersonal/Resume</label></li>
+              <li data-search-term="exaggerating experience"><label for="ms-opt-4"><input type="checkbox"
+                    title=" Exaggerating Experience" id="ms-opt-4" value="Exaggerating Experience"
+                    class="form-check-input"> Exaggerating Experience</label></li>
+              <li data-search-term="social media behavior"><label for="ms-opt-5"><input type="checkbox"
+                    title=" Social Media Behavior" id="ms-opt-5" value="Social Media Behavior" class="form-check-input">
+                  Social Media Behavior</label></li>
+              <li data-search-term="inappropriate or untidy appearance"><label for="ms-opt-6"><input type="checkbox"
+                    title=" Inappropriate or Untidy Appearance" id="ms-opt-6" value="Inappropriate or Untidy Appearance"
+                    class="form-check-input"> Inappropriate or Untidy Appearance</label></li>
+              <li data-search-term="poor body language"><label for="ms-opt-7"><input type="checkbox"
+                    title=" Poor Body Language" id="ms-opt-7" value="Poor Body Language" class="form-check-input"> Poor
+                  Body Language</label></li>
+              <li data-search-term="lacking good communication skills"><label for="ms-opt-8"><input type="checkbox"
+                    title=" Lacking Good Communication Skills" id="ms-opt-8" value="Lacking Good Communication Skills"
+                    class="form-check-input"> Lacking Good Communication Skills</label></li>
+              <li data-search-term="not a team player"><label for="ms-opt-9"><input type="checkbox"
+                    title=" Not a Team Player" id="ms-opt-9" value="Not a Team Player" class="form-check-input"> Not a
+                  Team Player</label></li>
+              <li data-search-term="vague responses or avoiding questions"><label for="ms-opt-10"><input type="checkbox"
+                    title=" Vague Responses or Avoiding Questions" id="ms-opt-10"
+                    value="Vague Responses or Avoiding Questions" class="form-check-input"> Vague Responses or Avoiding
+                  Questions</label></li>
+              <li data-search-term="negative feedback from past references"><label for="ms-opt-11"><input
+                    type="checkbox" title=" Negative Feedback from Past References" id="ms-opt-11"
+                    value="Negative Feedback from Past References" class="form-check-input"> Negative Feedback from Past
+                  References</label></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <textarea class="form-control" id="txaBadReasonRemarks" rows="3"
+          placeholder="Please help us improve &amp; learn your preferences by indicating exactly what you did not like about this candidate."></textarea>
+      </div>
+    </div>
+
+    <input class="d-none form-check-input proxy-schedule" type="checkbox" value="" id="chkDontAskAgain">
+    <label class="d-none form-check-label" for="chkScheduleMonday"> Do not ask me for feedback again </label>
+
+  </div>
+  <div class="float-right mt-2">
+    <button type="button" class="btn btn-primary">Submit</button>
+  </div>
+</div>

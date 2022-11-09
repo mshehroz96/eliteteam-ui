@@ -1,0 +1,88 @@
+<ul class="nav nav-pills mb-3" role="tablist">
+  <ng-template appConfig selector="app-chat-messages" template="btn-common-chat">
+    <li class="nav-item">
+      <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" aria-controls="navs-top-home"
+        aria-selected="true">
+        <i class="bx bx-show"></i> Common
+      </button>
+    </li>
+  </ng-template>
+  <ng-template appConfig selector="app-chat-messages" template="btn-private-candidate">
+    <li class="nav-item">
+      <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-controls="navs-top-messages"
+        aria-selected="false">
+        <i class="bx bx-low-vision"></i> Private - Candidate
+      </button>
+    </li>
+  </ng-template>
+  <ng-template appConfig selector="app-chat-messages" template="btn-private-candidate">
+    <li class="nav-item">
+      <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" aria-controls="navs-top-profile"
+        aria-selected="false">
+        <i class="bx bx-low-vision"></i> Private - Client
+      </button>
+    </li>
+  </ng-template>
+</ul>
+<div class="row pb-2">
+  <div class="col-md-12">
+    <div class="btn-group btn-group-sm" role="group" aria-label="Basic radio toggle button group">
+      <input type="radio" class="btn-check proxy_show_message_types" name="channelType" id="rdoAll"
+        [checked]="chatService.channelType==0" value="0" (click)="chatService.setChannelType(0)">
+      <label class="btn btn-outline-primary" for="rdoAll"><i class='bx bx-grid-small'></i> All</label>
+      <input type="radio" [checked]="chatService.channelType==1" class="btn-check proxy_show_message_types"
+        name="channelType" value="1" (click)="chatService.setChannelType(1)" id="rdoChat">
+      <label class="btn btn-outline-primary" for="rdoChat"><i class='bx bx-message-rounded bx-xs align-top'></i>
+        Chat</label>
+      <input type="radio" [checked]="chatService.channelType==3" class="btn-check proxy_show_message_types"
+        id="rdoEmail" name="channelType" value="3" (click)="chatService.setChannelType(3)">
+      <label class="btn btn-outline-primary" for="rdoEmail"><i class='bx bx-envelope bx-xs align-top'></i>
+        Email</label>
+      <input type="radio" [checked]="chatService.channelType==2" id="rdoSMS" class="btn-check proxy_show_message_types"
+        name="channelType" value="2" (click)="chatService.setChannelType(2)">
+      <label class="btn btn-outline-primary" for="rdoSMS"><i class='bx bx-message bx-xs align-middle'></i>
+        SMS</label>
+
+      <input type="radio" [checked]="chatService.channelType==4" class="btn-check proxy_show_message_types"
+        id="rdoWhatsapp" name="channelType" value="4" (click)="chatService.setChannelType(4)">
+      <label class="btn btn-outline-primary" for="rdoWhatsapp"><i class='bx bxl-whatsapp bx-xs align-top'></i>
+        Whatsapp</label>
+
+    </div>
+  </div>
+</div>
+<div class="vert-scroll-300 px-2 chatConversation" #chatContainer>
+  <ul class="chat pt-4 ps-2" *ngFor="let message of messages">
+    <li
+      class="chat-item chat-item-info mb-2 proxy_chat_item_chat proxy_chat_item_email proxy_chat_item_sms proxy_chat_item_whatsapp">
+      <span class="chat-indicator">
+        <div class="avatar me-2">
+          <img src="{{message.avatar | avatar}}" alt="Avatar" class="rounded-circle proxy_logged_in_picture">
+        </div>
+      </span>
+      <div class="chat-event">
+        <div class="row">
+          <div class="col-md-6 small proxy_logged_in_name">
+            <b>{{message.fromName}}</b>
+          </div>
+          <div class="col-md-6 text-end">
+            <div class="text-muted small">{{message.timestamp}}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            {{message.content}}
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<form action="#">
+  <div class="input-group">
+    <input [(ngModel)]="message.content" name="content" (keyup.enter)="sendMessage()" class="form-control"
+      placeholder="Type your message here" />
+    <button type="button" class="btn btn-outline-primary" (click)="sendMessage()">Send</button>
+  </div>
+</form>

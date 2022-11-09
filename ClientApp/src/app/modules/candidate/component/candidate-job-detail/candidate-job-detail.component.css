@@ -1,0 +1,17 @@
+.mini-timeline {
+  display: flex;
+  align-items: center;
+}
+
+.mini-timeline i {
+  padding: 0 2rem;
+}
+
+.mini-timeline .line {
+  height: 2px;
+  background-color: #ccc;
+  width: 10px;
+}
+.fw-semibold{
+  color: #3d75a8 !important;
+}

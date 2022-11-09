@@ -1,0 +1,37 @@
+<div class="card mt-2">
+  <div class="card-body pb-1">
+    <div>
+      <p *ngIf="this.answer.length == 0">
+        <b>One Way Interview Not Completed</b>
+      </p>
+      <p *ngIf="this.answer.length > 0">
+        <b>One Way Interview</b>
+        <label class="float-end" style="font-size: 12px;" *ngIf="this.answer.length > 0">Recorded {{this.answer[0].createdOn | date:'MM-dd-YYYY hh:mm a'}}</label>
+      </p>
+      <p-dropdown *ngIf="this.answer.length > 0"
+        [options]="this.answer" [style]="{'width':'100%'}" (onChange)="questionChanged()" [(ngModel)]="selectedItem" optionValue="questionText" optionLabel="questionText" [virtualScroll]="true">
+      </p-dropdown>
+      <div class="row" *ngIf="this.answer.length > 0">
+        <div class="col-7">
+          <video controls="" style="width:100%;" class="mt-2">
+            <source src="{{this.videUrl}}" type="video/webm;codecs=&quot;vp8, vorbis&quot;">
+          </video>
+        </div>
+        <div class="col-5 mt-3">
+          Answer Rating Avg:
+          <div class="row">
+            <div class="col-8">
+              <p-rating [(ngModel)]="val" [cancel]="false" [style]="{'width':'50%'}"></p-rating>
+            </div>
+            <div class="col-4">
+              {{this.val}} Ratings
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+</div>

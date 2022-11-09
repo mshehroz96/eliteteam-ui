@@ -1,0 +1,134 @@
+<div [appIsLoading]="loadingService.isLoading(this)">
+  <div class="mb-3" *ngIf="oneWayInterviewTemplateId==0 && campaignType=='Video'">
+    <div class="alert alert-warning">
+        One Way Interview Template not defined, please contact your Job Post Manager to add it.
+    </div>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" [(ngModel)]="invite.isZoomMeeting" (ngModelChange)="isZoomMeetingChange()" id="chkZoomInterviewDetails">
+    <label class="form-check-label" for="chkZoomInterviewDetails"> Invite for Zoom Interview</label>
+    <div class="row">
+      <div class="col-12">
+        <div class="mt-2" *ngIf="invite.isZoomMeeting">
+          <input [checked]="invite.zoomScheduleType=='Calendar'" [(ngModel)]="invite.zoomScheduleType" (ngModelChange)="zoomScheduleTypeChange()" class="form-check-input" type="radio"
+            value="Calendar" id="customRadioTemp4">
+          <label class="form-check-label custom-option-content" for="customRadioTemp4">Let candidate choose from my
+            available calendar  <span *ngIf="showAvailabilityNotDefined==true" class="text-danger">Your availability is not defined</span>
+          </label>
+
+            <span class="small float-end"><a (click)="cp.toggle($event)" href="javascript:void(0)"><i class="bx bx-calendar"></i>Show My Calendar</a></span>
+        </div>
+        <div class="mt-2" *ngIf="invite.isZoomMeeting">
+          <input  [checked]="invite.zoomScheduleType=='Slots'" [(ngModel)]="invite.zoomScheduleType" class="form-check-input" type="radio"
+            value="Slots" id="customRadioTemp5">
+          <label class="form-check-label custom-option-content" for="customRadioTemp5">Let applicant choose from 3 time
+            slots</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="invite.zoomScheduleType=='Slots' && invite.isZoomMeeting">
+    <div class="col-4 mb-3">
+      <label for="nameBasic" class="form-label">Interview Slot 1</label>
+      <p-calendar [minDate]="minDate" [defaultDate]="minDate"  [stepMinute]="5" [showClear]="true" appendTo="body" [(ngModel)]="invite.requesterSlot1" dataType="string" [showTime]="true"
+        hourFormat="12" [readonlyInput]="true"></p-calendar>
+    </div>
+    <div class="col-4 mb-3">
+      <label for="nameBasic" class="form-label">Interview Slot 2</label>
+      <p-calendar [minDate]="minDate" [defaultDate]="minDate"  [stepMinute]="5" [showClear]="true"  appendTo="body" [(ngModel)]="invite.requesterSlot2" dataType="string" [showTime]="true"
+        hourFormat="12" [readonlyInput]="true"></p-calendar>
+    </div>
+    <div class="col-4 mb-3">
+      <label for="nameBasic" class="form-label">Interview Slot 3</label>
+      <p-calendar [minDate]="minDate" [defaultDate]="minDate" [stepMinute]="5"   [showClear]="true" appendTo="body" [(ngModel)]="invite.requesterSlot3" dataType="string" [showTime]="true"
+        hourFormat="12" [readonlyInput]="true"></p-calendar>
+    </div>
+  </div>
+  <ng-container *ngIf="invite.isZoomMeeting">
+    <label for="nameBasic" class="form-label">Invitation Expiry</label>
+    <p-calendar appendTo="body" [minDate]="minDate" [defaultDate]="minDate" [stepMinute]="5" [showClear]="true"
+      [(ngModel)]="invite.expiryDateTime" dataType="string" [showTime]="true" hourFormat="12" [readonlyInput]="true">
+    </p-calendar>
+    <hr>
+  </ng-container>
+  <ng-container *ngIf="campaignType=='Video'" >
+
+    <span class="small float-end"><a (click)="op.toggle($event)" href="javascript:void(0)"><i
+          class="bx bx-info-circle"></i> Interview
+        Questions</a></span>
+    <div class="proxy_dynamic_post_type_Video mt-2">
+      <h6>One-Way Interview</h6>
+    </div>
+    <div *ngIf="invite.isZoomMeeting" class="alert alert-dark d-flex mb-0" role="alert">
+      <i class="bx bx-info-circle text-black"></i>
+      <span>One-Way interview will be conducted at the same time of the Zoom interview time slot selected by the
+        applicant.</span>
+    </div>
+    <div *ngIf="!invite.isZoomMeeting" class="row mb-2 mb-md-0">
+      <div class="col-md">
+        <div class="form-check custom-option custom-option-basic">
+          <label class="form-check-label custom-option-content" for="customRadioTemp2">
+            <input name="oWDeadlineType" (change)="owiChangeType()" [(ngModel)]="invite.oWDeadlineType" class="form-check-input" type="radio"
+              value="Absolute" id="customRadioTemp2">
+            <span class="custom-option-header">
+              <span class="h6 mb-0">Absolute Deadline</span>
+            </span>
+
+          </label>
+          <div class="ml-3 mb-1 mr-1">
+            <p-calendar appendTo="body" [(ngModel)]="invite.oWDeadlineAbsoluteDateTime" [style]="{'width':'100%'}"
+              dataType="string" [showTime]="true" hourFormat="12" [readonlyInput]="true"></p-calendar>
+          </div>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="form-check custom-option custom-option-basic">
+          <label class="form-check-label custom-option-content" for="customRadioTemp1">
+            <input name="oWDeadlineType" (change)="owiChangeType()" [(ngModel)]="invite.oWDeadlineType" class="form-check-input" type="radio"
+              value="Relative" id="customRadioTemp1">
+            <span class="custom-option-header">
+              <span class="h6 mb-0"> Relative Deadline</span>
+            </span>
+          </label>
+          <div class="ml-3 mb-1 mr-1">
+            <p-dropdown appendTo="body" [autoDisplayFirst]="false" [style]="{'width':'100%'}" [options]="options"
+              [(ngModel)]="invite.oWDeadlineRelativeDateTimeDaysLiid" optionLabel="displayText" optionValue="value">
+            </p-dropdown>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="float-right mt-3">
+    <button id="btnModal1WayInterviewInvite" type="button" (click)="inviteApplicant()"
+      class="btn btn-primary mr-1">Invite</button>
+    <button type="button" class="btn btn-label-secondary" (click)="closeModel()">Close</button>
+  </div>
+  <p-overlayPanel #cp [style]="{width: '500px'}" >
+    <ng-template pTemplate>
+      <full-calendar id="fullCalendar" [style]="{width: '450px'}" [options]="calendarOptions">
+      </full-calendar>
+    </ng-template>
+  </p-overlayPanel>
+  <p-overlayPanel #op [style]="{width: '350px'}">
+    <ng-template pTemplate>
+      <h6>Interview Questions</h6>
+      <div *ngIf="questions.length>0">
+        <small>
+          <p> The applicant will be required to answer the following one-way interview questions:</p>
+          <p> Template: <b class='text-primary'><i class='bx bx-category'></i>{{template.title}}</b></p>
+          <ng-container *ngFor="let question of questions">
+            <i class='fa fa-question'></i>{{question.questionText}}<br>
+          </ng-container>
+        </small>
+      </div>
+      <div *ngIf="questions.length==0">
+        <small>
+          <p>Interview questions not setup</p>
+        </small>
+      </div>
+    </ng-template>
+  </p-overlayPanel>
+</div>

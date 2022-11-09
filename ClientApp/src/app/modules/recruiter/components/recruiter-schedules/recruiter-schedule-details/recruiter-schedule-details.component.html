@@ -1,0 +1,60 @@
+
+<form #form="ngForm">
+<div class="table-responsive">
+  <table class="table">
+    <tbody>
+      <tr >
+        <td>
+          <div class="col-12">
+            <div class="form-check mb-3">
+              <input class="form-check-input" (click)="includeWeekDays()" type="checkbox" name="isSystemManaged" id="isSystemManaged" [(ngModel)]="includeWeekdays" >
+              <label class="form-check-label" for="isSystemManaged">Include Weekdays</label>
+              <div class="fv-plugins-message-container invalid-feedback"></div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr *ngFor="let item of weeklySchedules">
+        <td>
+          <div class="form-check d-flex justify-content-center">
+            {{item.dayName}}
+          </div>
+        </td>
+        <td class="text-nowrap">
+          <p-calendar appendTo="body" [ngModelOptions]="{ standalone: true }" [timeOnly]="true" [stepMinute]="5" [(ngModel)]="item.dayTimingFrom" [required]="item.required"  style="width: 44%;" hourFormat="12" inputId="timeonly"></p-calendar>
+        </td>
+        <td class="text-nowrap">
+          <p-calendar appendTo="body" [ngModelOptions]="{ standalone: true }" [timeOnly]="true" [stepMinute]="5" [(ngModel)]="item.dayTimingTo" [required]="item.required" style="width: 44%;" hourFormat="12" inputId="timeonly"></p-calendar>
+        </td>
+        <td *ngIf="item.dayNo == 1">
+          <span  class="text-center">
+            <button (click)="copySchedules(item.dayTimingFrom,item.dayTimingTo)" class="btn btn-xs btn-primary mt-1 mr-1">
+              <i  pTooltip="Copy" class="p-element bx bxs-copy">
+              </i>
+            </button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row" *ngIf="showError">
+    <div class="col-12">
+      <div class="alert alert-danger" role="alert">
+        All marked fields are required
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="modal-footer">
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="!form.valid"
+    (click)="saveUpdateWeeklySchedules()"
+  >
+    Save Changes
+  </button>
+</div>
+
+</form>

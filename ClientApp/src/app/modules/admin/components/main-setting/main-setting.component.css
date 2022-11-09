@@ -1,0 +1,262 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+::ng-deep .main > mat-dialog-container {
+  background-color: var(--background);
+}
+
+.main {
+  padding: 15px 10px 0 10px;
+  background-color: rgb(243, 243, 243);
+}
+
+.main-button-single {
+  border: none;
+  color: #8e9baa;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: transparent;
+}
+
+.main-button-single:hover {
+  background-color: #3d75a8;
+  border-radius: 4px;
+  color: white;
+  box-shadow: 0 0.125rem 0.25rem 0 rgb(84 170 247 / 40%);
+  border-width: 0;
+  box-sizing: border-box;
+}
+/* haseeb */
+/* .main-button-single:hover {
+  background-color: #3d75a8;
+  border-radius: 4px;
+  color: white;
+  box-shadow: 0 0.125rem 0.25rem 0 rgb(84 170 247 / 40%);
+  border-width: 0;
+  box-sizing: border-box;
+
+} */
+
+.main-sub {
+  background-color: rgb(243, 243, 243);
+  display: flex;
+  padding: 20px;
+}
+
+.screening-questions {
+  padding: 0 25px 25px 50px;
+  width: 30%;
+  margin: 0 20px;
+  box-shadow: 1px 1px 10px rgba(172, 172, 172, 0.6);
+  /* box-shadow: 10 10 150px 10 #ffffff; */
+  border-radius: 6px;
+  background-color: white;
+  height: min-content;
+}
+
+.screening-questions h3 {
+  padding: 15px 0;
+}
+
+.screening-questions ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.screening-questions ul li {
+  border: 1px solid #ddd;
+  margin-top: -1px;
+  /* Prevent double borders */
+  background-color: white;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+  position: relative;
+  color: #697a8d;
+}
+
+.screening-questions ul li:hover {
+  cursor: pointer;
+
+  background-color: #3d75a8;
+  border-radius: 4px;
+  color: white;
+  box-shadow: 0 0.125rem 0.25rem 0 rgb(84 170 247 / 40%);
+  border-width: 0;
+  box-sizing: border-box;
+}
+
+.screening-questions ul li:focus {
+  background-color: #697a8d;
+}
+
+.Screening-Questions-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*  Quesions for Emplyment start --------->>>
+*/
+.questions-for-employment {
+  padding: 0 50px 50px 50px;
+  margin: 0 2px;
+  width: 70%;
+  height: min-content;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 1px 1px 10px rgba(172, 172, 172, 0.6);
+
+  /* box-shadow: 0 0 5px 0 #f0eded; */
+  /* border: 1px solid rgb(219, 219, 219); */
+}
+
+.questions-for-employment h3 {
+  padding: 15px 0;
+}
+
+.questions-for-employment ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 0 5px 0 #f0eded;
+}
+
+.questions-for-employment ul li {
+  margin-top: -1px;
+  /* Prevent double borders */
+  background-color: white;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  position: relative;
+  border: 1px solid rgb(219, 219, 219);
+  color: #697a8d;
+}
+
+/* .questions-for-employment ul li:hover {
+} */
+
+.questions-for-employment .close {
+  cursor: pointer;
+  position: absolute;
+  right: 2%;
+  padding: 6px;
+  background-color: #3d75a8;
+  border-radius: 4px;
+  color: white;
+  box-shadow: 0 0.125rem 0.25rem 0 rgb(84 170 247 / 40%);
+  border-width: 0;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+
+.questions-for-employment .edit {
+  cursor: pointer;
+  position: absolute;
+  right: 9%;
+  box-shadow: 0 0.125rem 0.25rem 0 rgb(84 170 247 / 40%);
+  border-width: 0;
+  box-sizing: border-box;
+  font-size: 12px;
+  padding: 6px;
+  border-radius: 4px;
+  background-color: #3d75a8;
+  color: white;
+}
+
+.questions-for-employment .close:hover {
+  background-color: #235b8f;
+}
+
+.questions-for-employment .edit:hover {
+  background-color: #235b8f;
+  cursor: pointer;
+}
+/* .education-text {
+  color: #697a8d;
+} */
+
+.education-text :hover {
+  color: red;
+}
+
+.education-text {
+  font-size: 13px;
+  font-weight: 400;
+}
+.education-text-Headings {
+  font-size: medium;
+  font-weight: 500;
+}
+
+.icon-question {
+  font-size: 20px;
+  font-weight: 900;
+  padding: 0 7px;
+}
+
+/* button csss */
+
+/* CSS */
+.button-9 {
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: #3d75a8;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: 0 0.125rem 0.25rem 0 rgb(84 170 247 / 40%);
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    Ubuntu, sans-serif;
+  font-size: 12px;
+  height: 34px;
+  line-height: 1.15;
+  margin: 12px 0 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0 15px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all 0.2s, box-shadow 0.08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-9:disabled {
+  cursor: default;
+}
+
+.button-9:hover {
+  background-color: #235b8f;
+}
+
+.testing {
+  background-color: red;
+}
+.test {
+  background-color: green;
+}
+
+.ListItem {
+  padding: 3px;
+  width: 11%;
+  height: 53px;
+  text-align: center;
+}
+
+.fill-li {
+  padding-top: 7%;
+  display: block;
+  height: 100%;
+}

@@ -1,0 +1,95 @@
+<p-table #dtClient [value]="thresholdList" [lazy]="true" (onLazyLoad)="getAll($event)" responsiveLayout="scroll"
+  dataKey="companyId" styleClass="p-datatable-strip"
+  [loading]="loading">
+  <ng-template pTemplate="caption">
+    <div class="row">
+      <form action="#">
+        <span style="float: left">
+          <label>Threshold Settings</label>
+        </span>
+        <label class="rightSpacing" style="float: right">
+          <input pInputText type="text" name="globalFilter" class="form-control" [(ngModel)]="searchFilter"
+            (ngModelChange)="getAll({})" placeholder="Search keyword" />
+        </label>
+      </form>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th></th>
+      <th pSortableColumn="Title">Title<p-sortIcon field="Title"></p-sortIcon>
+      </th>
+      <th>
+      </th>
+      <th>Value</th>
+      <th>Action(s)</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-client>
+    <tr>
+      <td>
+        <input type="checkbox" [disabled]="true" name="selected" [(ngModel)]="client.selected" />
+      </td>
+      <td>
+        {{client.title }} &nbsp; 
+      </td>
+      <td class="text-right">
+        <button *ngIf="client.description" pTooltip="{{client.description}}" _ngcontent-ng-cli-universal-c160="" type="button" class="btn btn-sm rounded-pill btn-icon btn-label-warning text-right"><span _ngcontent-ng-cli-universal-c160="" class="bx bx-question-mark"></span></button> 
+      </td>
+      <td>
+        <div class="row">
+          <div class="col-6" *ngIf="client.thresholdInputType == 'TextBox'">
+            <input   class="form-control" [disabled]="!client.selected" value1="ngModel" name="value1" [(ngModel)]="client.value1"/>
+          </div>
+          <div class="col-6" *ngIf="client.thresholdInputType == 'Number'">
+            <input  type="number" [disabled]="!client.selected" appOnlyNumber class="form-control" #value1="ngModel" name="value1" [(ngModel)]="client.value1"/>
+          </div>
+          <div class="row" *ngIf="client.thresholdInputType == 'NumberRange'">
+            <div class="col-6">
+              <input  type="number" [disabled]="!client.selected" appOnlyNumber class="form-control" #value1="ngModel" name="value1" [(ngModel)]="client.value1"/>
+            </div>
+            <div class="col-6">
+              <input type="number" [disabled]="!client.selected" appOnlyNumber class="form-control" #value2="ngModel" name="value2" [(ngModel)]="client.value2"/>
+            </div>
+          </div>
+          <p-calendar  [style]="{'width':'100%'}" *ngIf="client.thresholdInputType == 'Date'" name="value1" [style]="{'width':'45%'}" [disabled]="!client.selected" #value1="ngModel" [(ngModel)]="client.value1"
+                                      dateFormat="mm/dd/yy" dataType="date">
+                                  </p-calendar>
+          <div class="row" *ngIf="client.thresholdInputType == 'DateRange'">
+            <div class="col-6">
+              <p-calendar name="value1"  [style]="{'width':'100%'}"  [disabled]="!client.selected" #value1="ngModel" [(ngModel)]="client.value1"
+                                      dateFormat="mm/dd/yy" dataType="date">
+                                  </p-calendar>
+            </div>
+            <div class="col-6">
+              <p-calendar name="value1"  [style]="{'width':'100%'}"  [disabled]="!client.selected" #value1="ngModel" [(ngModel)]="client.value1"
+                                      dateFormat="mm/dd/yy" dataType="date">
+                                  </p-calendar>
+            </div>
+          </div>
+          <p-calendar [disabled]="!client.selected" *ngIf="client.thresholdInputType == 'Time'" [timeOnly]="true" [(ngModel)]="client.value1" hourFormat="12" inputId="timeonly"></p-calendar>
+          <div class="row" *ngIf="client.thresholdInputType == 'TimeRange'">
+            <div class="col-6">
+              <p-calendar [disabled]="!client.selected"  [timeOnly]="true" [(ngModel)]="client.value1" hourFormat="12" inputId="timeonly"></p-calendar>
+            </div>
+            <div class="col-6">
+              <p-calendar [disabled]="!client.selected" [timeOnly]="true" [(ngModel)]="client.value2" hourFormat="12" inputId="timeonly"></p-calendar>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <button pTooltip="Change Values" (click)="editThresholdValues(client)" _ngcontent-ng-cli-universal-c160="" type="button"   class="btn btn-sm rounded-pill btn-icon btn-label-primary"><span _ngcontent-ng-cli-universal-c160="" class="{{ client.selected == true ? 'bx bx-revision' : 'bx bxs-pencil'   }}"  ></span></button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <tr>
+      <th colspan="10">
+          <div class="float-right mt-3">
+            <p-button (onClick)="saveThreshold()" type="button">Submit</p-button>
+          </div>
+      </th>
+    </tr>
+  </ng-template>
+</p-table>

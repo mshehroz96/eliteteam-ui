@@ -1,0 +1,46 @@
+<form #form="ngForm" (ngSubmit)="saveQuestion()">
+    <div class="mb-3">
+        <div class="form-group">
+            <label class="form-label d-block">Title:</label>
+            <input class="form-control" #title="ngModel" name="title"
+                [(ngModel)]="question.title" />
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="invalid-feedback">
+                <div *ngIf="title.errors?.required">
+                    Required
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="form-group">
+            <label class="form-label d-block">Answer Options:</label>
+            <p-chips [(ngModel)]="question.options" (onAdd)="addAnswerOption($event)" 
+            (onRemove)="removeAnswerOption($event)" name="options" 
+                    #options="ngModel" field="title" 
+                    styleClass="p-fluid" [allowDuplicate]="false" [addOnTab]="false">
+            </p-chips>
+        </div>
+    </div>
+    
+    <div class="mb-3">
+        <div class="form-group">
+            <label class="form-label d-block">
+                Categories:
+            </label>
+            <ng-container>
+                <p-multiSelect appendTo="body" name="questionCategories" #questionCategories="ngModel"
+                    [(ngModel)]="question.questionCategories" [style]="{'width':'100%'}" [options]="categories"
+                    optionLabel="title">
+                </p-multiSelect>
+            </ng-container>
+        </div>
+    </div>
+    <div class="flex text-center">
+        <button type="submit" [disabled]="!form.valid" class="btn btn-primary">
+            Save
+        </button>
+        <button (click)="closeModal()" type="button" class="btn btn-light-primary fw-bolder mx-2">
+            Cancel
+        </button>
+    </div>
+</form>

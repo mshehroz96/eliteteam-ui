@@ -1,0 +1,36 @@
+<div class="row mb-2 mb-md-0">
+    <div class="col-md-12 mb-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Recruiter</th>
+                    <th>Commission %</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let recruiter of recruiters">
+                    <td>
+                        <div class="d-flex justify-content-left align-items-center">
+                            <div class="avatar-wrapper">
+                                <div class="avatar avatar-sm me-3"><img src="../assets/img/avatars/13.png" alt="Avatar"
+                                        class="rounded-circle"></div>
+                            </div>
+                            <div class="d-flex flex-column"><span class="fw-semibold">{{recruiter.firstName}} {{recruiter.lastName}}</span><small
+                                    class="text-muted">{{recruiter.role}}</small></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-start align-items-center">
+                            <div class="d-flex flex-column w-100"><span class="emp_name text-truncate">{{recruiter.commission}}%<br>
+                                    <div class="progress" style="height: 6px;">
+                                        <div class="progress-bar bg-info" role="progressbar" [style.width]="recruiter.commission+'%'"></div>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

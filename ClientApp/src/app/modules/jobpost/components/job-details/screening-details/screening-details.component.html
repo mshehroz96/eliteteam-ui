@@ -1,0 +1,31 @@
+<p-card header="Screening Questions">
+    <p-panel *ngIf="requisitionRequest.screeningQuestions && requisitionRequest.screeningQuestions.length>0">
+        <ng-template pTemplate="header">
+            Selected Questions <span class="ml-2 badge bg-primary">{{requisitionRequest.screeningQuestions.length}}</span>
+        </ng-template>
+        <div class="row">
+           <div class="col-12 mt-2">
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let question of requisitionRequest.screeningQuestions">
+                        <span class="d-flex flex-row justify-content-between ml-2">
+                            <span><input class="form-check-input" [(ngModel)]="question.selected" type="checkbox" value=""><i class="bx bxs-category"></i>
+                                {{question.title}} 
+                                <a href="javascript:void(0)" (click)="editQuestion(question)" role="button"  
+                                    class="btn btn-sm btn-outline-secondary">
+                                    <i class="bx bxs-pencil"></i></a>
+                                </span>
+                            <span>
+                                <button type="button" [ngClass]="{'active': question.jpmApprovalStatus=='Approved'}" (click)="setQuestionStatus(question,'Approved')"  class="btn btn-sm btn-outline-primary mr-1"><i class="bx bx-check"></i> Approve</button>
+                                <button type="button" [ngClass]="{'active': question.jpmApprovalStatus=='Rejected'}" (click)="setQuestionStatus(question,'Rejected')" class="btn btn-sm btn-outline-primary mr-1"><i class="bx bx-x"></i> Reject</button>
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+                <div class="mt-2">
+                    <button type="button" (click)="setQuestionsStatus('Approved')" class="btn btn-sm btn-outline-primary mr-1"><i class="bx bx-check"></i> Approve Selected</button>
+                    <button type="button"(click)="setQuestionsStatus('Rejected')" class="btn btn-sm btn-outline-primary mr-1"><i class="bx bx-x"></i> Reject Selected</button>
+                </div>
+           </div>
+        </div>
+    </p-panel>
+</p-card>

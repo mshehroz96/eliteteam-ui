@@ -1,0 +1,267 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 text-right">
+        <button id="btnShareProfile" (click)="shareProfile()" class="btn btn-outline-secondary float-end"><i class="bx bx-globe"></i> Share Profile</button>
+      </div>
+    </div>
+
+    <h4>{{obj.fullName}} 
+      <!-- <a href="#"><i class="bx bxs-pencil"></i></a> -->
+     
+    </h4>
+    <!-- <h6 class="mt-5"> <span class="float-end"><a href="#"><i class="bx bxs-plus-circle"></i></a></span></h6> -->
+   
+    <div  class="accordion mb-2">
+      <div class="card  accordion-item active ">
+        <h2 class="accordion-header d-flex">
+          <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#personalDetails">
+            Personal Details
+          </button>
+        </h2>
+        <div id="personalDetails" class="accordion-collapse collapse show" >
+          <div class="accordion-body">
+            <div class="card shadow-none bg-transparent border border-primary">
+              <div class="card-body">
+                <h6> &nbsp;&nbsp;&nbsp; <span class="float-end"><a (click)="open()"><i pTooltip="Update Personal Details" tooltipPosition="left" class="bx bxs-pencil"></i></a></span></h6>
+                <hr class="mb-4">
+                  <table class="table table-sm table-bordered rounded-corners">
+                    <tbody>
+                        <tr>
+                          <td  class="small"><b >Full Name</b></td>
+                          <td  class="small">
+                              {{obj.fullName}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td  class="small"><b >Birth Date</b></td>
+                          <td class="small">
+                              {{obj.birthDate | date : 'dd/MM/yyyy'}}
+                          </td>
+                        </tr>
+                        <tr >
+                          <td  class="small"><b >Gender</b></td>
+                          <td class="small">
+                            {{ obj.gender === 'M' ? 'Male' : 'Female'}}
+                          </td>
+                        </tr>
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div  class="accordion mb-2">
+      <div class="card  accordion-item active ">
+        <h2 class="accordion-header d-flex">
+          <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#workExperience">
+            Work Experience
+          </button>
+        </h2>
+        <div id="workExperience" class="accordion-collapse collapse show" >
+          <div class="accordion-body">
+            <div class="card shadow-none bg-transparent border border-primary">
+              <div class="card-body">
+                <h6> &nbsp;&nbsp;&nbsp; <span class="float-end"><a (click)="openwe()"><i pTooltip="Add" tooltipPosition="left" class="bx bxs-plus-circle"></i></a></span></h6>
+                <hr class="mb-4">
+                <p class="mx-4" *ngFor="let item of obj.workExperience">
+                  <b>{{item?.jobTitle}} <a pTooltip="Edit" (click)="editwe(item)"><i class="bx bxs-pencil"></i></a> <a pTooltip="Delete" (click)="deletewe(item)"><i class="bx bxs-x-circle"></i></a></b><br>
+                  <span>{{item?.company}}, {{item?.location}}</span><br>
+                  <small><i class="bx bx-calendar"></i> {{item?.fromDate}} till {{item?.toDate}}</small><br>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div  class="accordion mb-2">
+      <div class="card  accordion-item active ">
+        <h2 class="accordion-header d-flex">
+          <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#education">
+            Education
+          </button>
+        </h2>
+        <div id="education" class="accordion-collapse collapse show" >
+          <div class="accordion-body">
+            <div class="card shadow-none bg-transparent border border-primary">
+              <div class="card-body">
+                <h6> &nbsp;&nbsp;&nbsp; <span class="float-end"><a (click)="openedu()"><i pTooltip="Add" tooltipPosition="left" class="bx bxs-plus-circle"></i></a></span></h6>
+                <hr class="mb-4">
+                <p class="mx-4 mb-4" *ngFor="let item of obj.educations">
+                  <b>{{item?.degree}}<a ><i  (click)="editedu(item)" pTooltip="Edit" class="bx bxs-pencil"></i></a> <a (click)="deleteedu(item)"  pTooltip="Delete"><i class="bx bxs-x-circle"></i></a></b><br>
+                  <span>{{item?.school}}, {{item?.location}}</span><br>
+                  <small><i class="bx bx-calendar"></i> {{item?.fromDate}} till {{item?.toDate}}</small><br>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div  class="accordion mb-2">
+      <div class="card  accordion-item active ">
+        <h2 class="accordion-header d-flex">
+          <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#divSkills">
+            Skills
+          </button>
+        </h2>
+        <div id="divSkills" class="accordion-collapse collapse show" >
+          <div class="accordion-body">
+            <div class="card shadow-none bg-transparent border border-primary">
+              <div class="card-body">
+                <h6> &nbsp;&nbsp;&nbsp; <span class="float-end"><a (click)="updateSkills()"><i pTooltip="Update Skills" tooltipPosition="left" class="bx bxs-check-circle"></i></a></span></h6>
+                <hr class="mb-4">
+                <p-multiSelect display="chip"[(ngModel)]="selectedSkills"  appendTo="body" [style]="{'width':'100%'}"   [options]="skills" optionLabel="displayText"  optionValue="value"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div  class="accordion mb-2">
+      <div class="card  accordion-item active ">
+        <h2 class="accordion-header d-flex">
+          <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#divLanguages">
+            Languages
+          </button>
+        </h2>
+        <div id="divLanguages" class="accordion-collapse collapse show" >
+          <div class="accordion-body">
+            <div class="card shadow-none bg-transparent border border-primary">
+              <div class="card-body">
+                <h6> &nbsp;&nbsp;&nbsp; <span class="float-end"><a (click)="updateLanguages()"><i pTooltip="Update Languages" tooltipPosition="left" class="bx bxs-check-circle"></i></a></span></h6>
+                <hr class="mb-4">
+                <p-multiSelect display="chip"[(ngModel)]="selectedLanguages"  appendTo="body" [style]="{'width':'100%'}"   [options]="languages" optionLabel="displayText"  optionValue="value"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div  class="accordion mb-2">
+      <div class="card  accordion-item active ">
+        <h2 class="accordion-header d-flex">
+          <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#divCertifications">
+            Certifications / Licenses
+          </button>
+        </h2>
+        <div id="divCertifications" class="accordion-collapse collapse show" >
+          <div class="accordion-body">
+            <div class="card shadow-none bg-transparent border border-primary">
+              <div class="card-body">
+                <h6> &nbsp;&nbsp;&nbsp; <span class="float-end"><a (click)="opencer()"><i pTooltip="Add" tooltipPosition="left" class="bx bxs-plus-circle"></i></a></span></h6>
+                <hr class="mb-4">
+                <p class="mx-4 mb-4" *ngFor="let item of obj.certifications">
+                  <b>{{item?.title}}<a ><i  (click)="editcer(item)" pTooltip="Edit" class="bx bxs-pencil"></i></a> <a (click)="deletecer(item)"  pTooltip="Delete"><i class="bx bxs-x-circle"></i></a></b><br>
+                  <span>{{item?.company}}</span><br>
+                  <small><i class="bx bx-calendar"></i> {{item?.validityFromDate}} till {{item?.validityToDate}}</small><br>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div  class="accordion mb-2">
+      <div class="card  accordion-item active ">
+        <h2 class="accordion-header d-flex">
+          <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#divAwards">
+            Awards / Recognitions
+          </button>
+        </h2>
+        <div id="divAwards" class="accordion-collapse collapse show" >
+          <div class="accordion-body">
+            <div class="card shadow-none bg-transparent border border-primary">
+              <div class="card-body">
+                <h6> &nbsp;&nbsp;&nbsp; <span class="float-end"><a (click)="openawa()"><i pTooltip="Add" tooltipPosition="left" class="bx bxs-plus-circle"></i></a></span></h6>
+                <hr class="mb-4">
+                <p class="mx-4 mb-4" *ngFor="let item of obj.awards">
+                  <b>{{item?.title}}<a ><i  (click)="editawa(item)" pTooltip="Edit" class="bx bxs-pencil"></i></a> <a (click)="deleteawa(item)"  pTooltip="Delete"><i class="bx bxs-x-circle"></i></a></b><br>
+                  <span>{{item?.dateAwarded}}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div  class="accordion mb-2">
+      <div class="card  accordion-item active ">
+        <h2 class="accordion-header d-flex">
+          <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#divPublications">
+            Publications
+          </button>
+        </h2>
+        <div id="divPublications" class="accordion-collapse collapse show" >
+          <div class="accordion-body">
+            <div class="card shadow-none bg-transparent border border-primary">
+              <div class="card-body">
+                <h6> &nbsp;&nbsp;&nbsp; <span class="float-end"><a (click)="openpub()"><i pTooltip="Add" tooltipPosition="left" class="bx bxs-plus-circle"></i></a></span></h6>
+                <hr class="mb-4">
+                <p class="mx-4 mb-4" *ngFor="let item of obj.publications">
+                  <b>{{item?.title}}<a ><i  (click)="editpub(item)" pTooltip="Edit" class="bx bxs-pencil"></i></a> <a (click)="deletepub(item)"  pTooltip="Delete"><i class="bx bxs-x-circle"></i></a></b><br>
+                  <span><a target="_blank" href="{{item?.url}}">{{item?.url}}</a></span><br>
+                  <small><i class="bx bx-calendar"></i> {{item?.datePublished}}</small><br>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div  class="accordion mb-2">
+      <div class="card  accordion-item active ">
+        <h2 class="accordion-header d-flex">
+          <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#divReferences">
+            References
+          </button>
+        </h2>
+        <div id="divReferences" class="accordion-collapse collapse show" >
+          <div class="accordion-body">
+            <div class="card shadow-none bg-transparent border border-primary">
+              <div class="card-body">
+                <h6> &nbsp;&nbsp;&nbsp; <span class="float-end"><a (click)="openref()"><i pTooltip="Add" tooltipPosition="left" class="bx bxs-plus-circle"></i></a></span></h6>
+                <hr class="mb-4">
+                <p class="mx-4 mb-4" *ngFor="let item of obj.cvReferences">
+                  <b>{{item?.name}}<a ><i  (click)="editref(item)" pTooltip="Edit" class="bx bxs-pencil"></i></a> <a (click)="deleteref(item)"  pTooltip="Delete"><i class="bx bxs-x-circle"></i></a></b><br>
+                  <span>{{item?.company}}, {{item?.jobTitle}}</span><br>
+                  <span>{{item?.email}}, {{item?.phone}}</span><br>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div  class="accordion mb-2">
+      <div class="card  accordion-item active ">
+        <h2 class="accordion-header d-flex">
+          <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#divUploadResume">
+            Upload Resume
+          </button>
+        </h2>
+        <div id="divUploadResume" class="accordion-collapse collapse show" >
+          <div class="accordion-body">
+            <div class="card shadow-none bg-transparent border border-primary">
+              <div class="card-body">
+                <input class="form-control" type="file" id="filUpload">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Share your profile" [(visible)]="isShareProfile" [style]="{width: '50vw', height:'600px;'}">
+  <app-share-profile></app-share-profile>
+</p-dialog>
+

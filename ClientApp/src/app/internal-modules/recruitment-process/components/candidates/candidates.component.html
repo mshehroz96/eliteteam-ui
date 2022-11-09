@@ -1,0 +1,13 @@
+<div class="row" *ngIf="candidates.length == 0">
+    <div class="col-md-12">
+        <div class="pb-2" >
+            <div class="alert alert-primary" role="alert">No record(s) found</div>
+        </div>
+    </div>
+</div>
+<div class="row g-2 mb-3">
+    <div class="col-md-6 col-lg-6 col-xl-4" *ngFor="let candidate of candidates">
+        <app-candidate-overview *ngIf="candidate.isCandidate" [candidate]="candidate"></app-candidate-overview>
+        <app-applicant-overview  *ngIf="!candidate.isCandidate" [candidate]="candidate"></app-applicant-overview>
+    </div>
+</div>

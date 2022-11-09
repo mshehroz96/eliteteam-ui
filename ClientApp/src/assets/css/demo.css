@@ -1,0 +1,413 @@
+/*
+* demo.css
+* File include item demo only specific css only
+******************************************************************************/
+
+.menu .app-brand.demo {
+  height: 64px;
+  margin-top: 12px;
+}
+
+.app-brand-logo.demo svg {
+  width: 22px;
+  height: 38px;
+}
+
+.app-brand-text.demo {
+  font-size: 1.75rem;
+  letter-spacing: -0.5px;
+  text-transform: lowercase;
+}
+
+/* ! For .layout-navbar-fixed added fix padding top tpo .layout-page */
+/* Detached navbar */
+.layout-navbar-fixed
+  .layout-wrapper:not(.layout-horizontal):not(.layout-without-menu)
+  .layout-page {
+  padding-top: 76px !important;
+}
+/* Default navbar */
+.layout-navbar-fixed .layout-wrapper:not(.layout-without-menu) .layout-page {
+  padding-top: 64px !important;
+}
+
+/* Navbar page z-index issue solution */
+.content-wrapper .navbar {
+  z-index: auto;
+}
+
+/*
+* Content
+******************************************************************************/
+
+.demo-blocks > * {
+  display: block !important;
+}
+
+.demo-inline-spacing > * {
+  margin: 1rem 0.375rem 0 0 !important;
+}
+
+/* ? .demo-vertical-spacing class is used to have vertical margins between elements. To remove margin-top from the first-child, use .demo-only-element class with .demo-vertical-spacing class. For example, we have used this class in forms-input-groups.html file. */
+.demo-vertical-spacing > * {
+  margin-top: 1rem !important;
+  margin-bottom: 0 !important;
+}
+.demo-vertical-spacing.demo-only-element > :first-child {
+  margin-top: 0 !important;
+}
+
+.demo-vertical-spacing-lg > * {
+  margin-top: 1.875rem !important;
+  margin-bottom: 0 !important;
+}
+.demo-vertical-spacing-lg.demo-only-element > :first-child {
+  margin-top: 0 !important;
+}
+
+.demo-vertical-spacing-xl > * {
+  margin-top: 5rem !important;
+  margin-bottom: 0 !important;
+}
+.demo-vertical-spacing-xl.demo-only-element > :first-child {
+  margin-top: 0 !important;
+}
+
+.rtl-only {
+  display: none !important;
+  text-align: left !important;
+  direction: ltr !important;
+}
+
+[dir="rtl"] .rtl-only {
+  display: block !important;
+}
+
+/*
+* Layout demo
+******************************************************************************/
+
+.layout-demo-wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+.layout-demo-placeholder img {
+  width: 900px;
+}
+.layout-demo-info {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/*
+* Chat
+******************************************************************************/
+
+.window-content-wrapper {
+  display: none;
+}
+
+.popup-bar {
+  padding: 7px;
+  border-top-left-radius: 6px;
+  cursor: pointer;
+}
+
+.profile-circle {
+  position: relative;
+}
+
+.profile-circle img {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+}
+
+.bar-text {
+  opacity: 0.7;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.online-circle {
+  width: 8px;
+  height: 8px;
+  background-color: #0f0;
+  position: absolute;
+  right: 0;
+  border-radius: 8px;
+  top: 0;
+  border: 2px solid #fff;
+}
+
+.message-circle {
+  position: relative;
+}
+
+.message-circle img {
+  width: 33px;
+  height: 33px;
+  border-radius: 33px;
+  margin-left: 9px;
+}
+
+.designation2 {
+  font-size: 13px;
+  color: #999;
+  margin-top: -5px;
+}
+
+.name-wrapper {
+  margin-left: 9px;
+}
+
+.message-bar-wrapper {
+  border-bottom: 1px solid #ebebeb;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.message-bar-wrapper:hover {
+  background-color: #f3f3f3;
+}
+
+.message-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.window-content {
+  background-color: #fff;
+  max-height: 400px;
+  overflow: auto;
+}
+
+.message-search {
+  background-color: #fff;
+  padding: 5px;
+  position: relative;
+}
+
+.input_img {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 12px;
+  height: 12px;
+}
+
+.message-search input {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  width: 100%;
+  padding: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.message-search input::placeholder {
+  color: #999;
+  font-size: 13px;
+  padding-left: 5px;
+}
+
+.new-message-noti {
+  height: 18px;
+  width: 18px;
+  border-radius: 10px;
+  background-color: #09c;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.window-main {
+  display: none;
+  width: 250px;
+  position: fixed;
+  right: 260px;
+  bottom: 0;
+}
+
+.sub-window-header {
+  background-color: #333;
+  color: #fff;
+  padding: 7px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.sub-window-body {
+  background-color: #fff;
+  max-height: 278px;
+  overflow: auto;
+}
+
+.online-circle-two {
+  width: 8px;
+  height: 8px;
+  background-color: #0f0;
+  border-radius: 8px;
+  float: left;
+  margin-top: 4px;
+  margin-right: 5px;
+}
+
+.active-now2 {
+  font-size: 12px;
+}
+
+.window-message-text {
+  margin-left: 10px;
+}
+
+.window-message-text p {
+  font-size: 13px;
+  line-height: 19px;
+  margin: 0;
+  padding: 0;
+}
+
+.window-message-text span {
+  font-size: 12px;
+}
+
+.message-bar-new {
+  padding: 5px 0;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.sub-window-textarea textarea {
+  border: 1px solid #fff;
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  font-size: 14px;
+}
+
+.bar-bottom-message {
+  padding: 7px;
+  background-color: #e0e0e0;
+}
+
+.close-window-icon {
+  cursor: pointer;
+}
+
+.chat-box-new {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+
+.accordion-button.collapsed::after {
+  background-image: url("../img/icons/plus.svg");
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: url("../img/icons/minus.svg");
+  transform: none;
+}
+
+.proxy_candidate_rating_success:hover {
+  color: #62bd31 !important;
+}
+.proxy_candidate_rating_warning:hover {
+  color: #d6bb40 !important;
+}
+.proxy_candidate_rating_danger:hover {
+  color: #d1453b !important;
+}
+
+.vert-scroll-100 {
+  overflow-y: auto;
+  max-height: 100px;
+}
+
+.vert-scroll-200 {
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+.vert-scroll-230 {
+  overflow-y: auto;
+  max-height: 230px;
+}
+
+.vert-scroll-250 {
+  overflow-y: auto;
+  max-height: 250px;
+}
+
+.vert-scroll-300 {
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.vert-scroll-400 {
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.vert-scroll-500 {
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+.vert-scroll-600 {
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+
+.vert-scroll-full {
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: var(--bs-scroll-height, 75vh);
+}
+
+.horz-scroll-200 {
+  overflow-x: auto;
+  max-width: var(--bs-scroll-width, 75vh);
+}
+
+.bg-success-light {
+  background-color: #f0ffde !important;
+}
+
+.bg-success-soft {
+  background-color: #E7F7F1 !important;
+}
+
+
+
+.bg-light-light {
+  background-color: #eeeeee !important;
+}
+
+.bg-warning-light {
+  background-color: #fffede !important;
+}
+
+.bg-info-light
+{
+  background-color: #D7E8FB !important;
+}
+
+.calendar-day {
+  height: 100px;
+}
+
+.calendar-today {
+  border: solid 2px #999 !important;
+}

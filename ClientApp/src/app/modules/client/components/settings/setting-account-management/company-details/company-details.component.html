@@ -1,0 +1,57 @@
+<div class="card mb-4" [appIsLoading]="loadingService.isLoading(this)">
+  <h4 class="card-header">Company Information</h4>
+  <!-- Account -->
+  <div class="card-body">
+    <div class="row row-bordered">
+      <div class="col-md-8 pe-4">
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="firstName" class="form-label">Company Name</label>
+            <input type="text" pInputText [(ngModel)]="companyDetails.name" class="form-control" />
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="lastName" class="form-label">Company Website</label>
+            <input type="text" pInputText [(ngModel)]="companyDetails.website" class="form-control" />
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="ddlAccountTitle" class="form-label">Industry</label>
+            <p-dropdown [options]="data.industries" [style]="{'width':'100%'}" [(ngModel)]="companyDetails.industry" optionValue="value"
+              optionLabel="displayText" [virtualScroll]="true" virtualScrollItemSize="30" ></p-dropdown>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="email" class="form-label">Address</label>
+            <input type="text" pInputText [(ngModel)]="companyDetails.address" class="form-control" />
+          </div>
+          <div class="col-md-2 mb-3">
+            <label for="zipcode" class="form-label">Zip Code</label>
+            <input type="text" pInputText [(ngModel)]="companyDetails.zipCode" class="form-control" />
+          </div>
+          <div class="col-md-4 mb-3">
+            <label class="form-label" for="ddlNoOfEmployees">No. of Employees</label>
+            <p-dropdown [options]="data.noOfEmployees" [style]="{'width':'100%'}" [(ngModel)]="companyDetails.noOfEmployees" 
+            optionValue="value"
+              optionLabel="displayText"></p-dropdown>
+          </div>
+          <div class="col-md-12 mb-3">
+            <label class="form-label" for="ddlNoOfEmployees">Company Introduction</label>
+            <textarea class="form-control" rows="5" pInputTextarea
+              [(ngModel)]="companyDetails.introduction"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 text-center">
+        <div class="d-flex flex-column align-items-center">
+          <p-image src="{{strCompanyLogoURL}}" styleClass="d-block rounded" height="200" width="200"></p-image>
+          <span class="text-muted py-2">Allowed JPG, GIF or PNG. Max size of 1 MB</span>
+          <p-fileUpload name="imgCompanyLogo" #imgCompanyLogo chooseLabel="Upload Company Logo" styleClass="p-button-sm" mode="basic"
+            chooseIcon="pi pi-image" [showUploadButton]="false" [showCancelButton]="false" [maxFileSize]="1000000"
+            [customUpload]="true" (uploadHandler)="uploadCompanyLogo()" [auto]="true" accept="image/*">
+          </p-fileUpload>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button pButton type="button" label="Update" (click)="updateCompanyDetails()" iconPos="right" [loading]="isLoading_updateCompanyDetails"></button>
+  </div>
+</div>

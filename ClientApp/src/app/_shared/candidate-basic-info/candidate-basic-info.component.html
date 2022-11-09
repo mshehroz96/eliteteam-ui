@@ -1,0 +1,37 @@
+<div class="card ">
+  <div class="card-body pb-1">
+    <div class="row">
+      <div class="col-1 p-0">
+        <br>
+
+      </div>
+      <div class="col-10">
+        <div class="mx-auto" style="vertical-align:middle;">
+          <img class="w-px-100 rounded-circle proxy_applicant_picture"
+          [src]="basicInfo.avatarFileName | avatar">
+          <span style="display:inline-block;padding-left:10px;vertical-align:middle;">
+            <span style="display:inline-block;">
+              <label style="font-size:20px;padding: 0px;margin: 0px;;">{{basicInfo.firstName}} {{basicInfo.lastName}}</label>
+              <label style="font-size:16px;padding: 0px;margin: 0px;">{{basicInfo.jobTitle}}</label>
+            </span>
+            <span style="font-size:15px;display:block;" *ngIf="basicInfo.hideAccountButton">
+              <a id="aEmail" class="btn btn-sm btn-label-secondary ">
+                Accounts
+              </a>
+              <a id="aCall" class="btn btn-sm btn-label-secondary ml-1 ">
+               Profile
+              </a>
+              <a id="aSMS" class="btn btn-sm btn-label-secondary ml-1">Share</a>
+
+            </span>
+
+          </span>
+        </div>
+        <div class="text-center text-primary mt-4">
+          <span id="spnNavigationLabel" class=""></span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

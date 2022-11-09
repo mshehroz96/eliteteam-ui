@@ -1,0 +1,77 @@
+<div [appIsLoading]="loadingService.isLoading(this)">
+  <form [appFocusInvalid]="UserForm" [formGroup]="UserForm" (ngSubmit)="saveData()">
+    <div class="row mb-1">
+      <label class="col-form-label col-sm-6">FIRST NAME</label>
+      <label class="col-form-label col-sm-6">LAST NAME</label>
+      <div class="col-sm-6">
+        <input autofocus type="text" class="form-control" [(ngModel)]="user.firstName" name="firstName" placeholder="First Name"
+          formControlName="firstName" />
+      </div>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" [(ngModel)]="user.lastName" name="lastName" placeholder="Last Name"
+          formControlName="lastName" />
+      </div>
+    </div>
+    <div class="row mb-1">
+      <!-- <label class="col-form-label col-sm-6">EMAIL</label> -->
+      <!-- <label class="col-form-label col-sm-6">STATUS</label> -->
+      <div class="col-sm-6" >
+        <label class="col-form-label">EMAIL</label>
+        <div class="row">
+          <div class="col-6 mt-0">
+            <input type="text" class="form-control" [(ngModel)]="user.email" name="email" placeholder="Email" formControlName="email" />
+          </div>
+          <div class="col-6 mt-0">
+            <span *ngIf="domain">{{domain}}</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="col-sm-6" *ngIf="currentUser != 5">
+        <label class="col-form-label">USER TYPE</label>
+        <p-dropdown name="userType" [(ngModel)]="user.userType" [readonly]="this.user.userId>0" formControlName="userType"
+          [style]="{'width':'100%'}" [options]="userTypes" optionLabel="displayText" optionValue="value"></p-dropdown>
+      </div>
+      <div class="col-sm-6">
+        <label class="col-form-label">LANGUAGE </label>
+        <p-multiSelect name="language" [(ngModel)]="user.language" appendTo="body" [style]="{'width':'100%'}"
+          [options]="languages" optionLabel="displayText" formControlName="language" optionValue="value"></p-multiSelect>
+      </div>
+      <div class="col-sm-6">
+        <label class="col-form-label">PHONE NUMBER</label>
+        <p-inputMask mask="999 999 9999" name="mobileNo" formControlName="mobileNo" [(ngModel)]="user.mobileNo" placeholder="XXX XXX XXXX"></p-inputMask>
+        <!-- <input type="text" [(ngModel)]="user.mobileNo" class="form-control" name="mobileNo" formControlName="mobileNo"
+          appAllownumbersonly /> -->
+      </div>
+      <div class="col-sm-6" *ngIf="action == 'Edit'">
+        <label class="col-form-label">STATUS</label>
+        <select class="form-select" name="userStatus" [(ngModel)]="user.userStatus" placeholder="Status"
+          formControlName="userStatus">
+          <option value="1">Active</option>
+          <option value="107">Blocked</option>
+        </select>
+      </div>
+    </div>
+    
+    
+    <!-- <div class="row mb-1" *ngIf="user.userId == 0">
+      <label class="col-form-label col-sm-6">Password</label>
+      <label class="col-form-label col-sm-6">Confirm Password</label>
+      <div class="col-sm-6">
+        <input type="password" class="form-control" [(ngModel)]="user.password" name="password" placeholder="password"
+          formControlName="password" />
+      </div>
+      <div class="col-sm-6">
+        <input type="password" class="form-control" [(ngModel)]="user.confirmPassword" name="confirmPassword"
+          placeholder="Confirm Password" formControlName="confirmPassword" />
+      </div>
+    </div> -->
+    <div class="row mt-3">
+      <div class="col-sm-12 text-center">
+        <button type="submit"  [disabled]="UserForm.invalid" class="btn btn-primary">Save</button>
+        &nbsp;&nbsp;
+        <a role="button" class="btn btn-label-secondary" (click)="Cancel()">Cancel</a>
+      </div>
+    </div>
+  </form>
+</div>

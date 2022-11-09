@@ -1,0 +1,76 @@
+<p-blockUI [blocked]="this.blocked" style="z-index: 999999">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</p-blockUI>
+
+<div class="card card-action mb-4 ">
+  <div class="card-header">
+    <div class="card-action-title">
+      <h4 class="text-info">Schedule Client Meeting <a style="cursor:pointer"
+          class="float-end align-top text-black proxy_calendar_side_panel_close" (click)="hideRightPanel()"><i class="bx bx-x bx-md"></i></a></h4>
+    </div>
+    <div class="card-action-element">
+    </div>
+  </div>
+  <div class="collapse show">
+    <div class="card-body pt-0">
+
+      <div class="">
+        <label for="txbNewEventTimeRangeFrom" class="form-label">Subject</label>
+        <div class="input-group">
+          <input type="text" pInputText style="width: 100%" [(ngModel)]="this.event.title"/>
+        </div>
+      </div>
+      <div class="mt-4">
+        <label for="txbNewEventDateRange" class="form-label">Date/Time</label>
+        <div class="input-group">
+
+          <p-calendar  style="width: 38%;" hourFormat="12" inputId="timeonly" [(ngModel)]="date"></p-calendar>
+          <p-calendar [timeOnly]="true" style="width: 26%;" hourFormat="12" (onSelect)="checkAvailablity()" [(ngModel)]="fromTime"  inputId="timeonly"></p-calendar>
+          <span *ngIf="isNoUseravailable" style="width: 34%;" id="spnNewEventDateRangeMeetClient" class="input-group-text"><i class="bx bxs-x-circle text-danger"></i> <small> I'm Unavailable</small></span>
+          <span *ngIf="isUseravailable" id="spnNewEventDateRangeMeetClient" class="input-group-text"><i class="bx bxs-check-circle text-success"></i> <small> I'm Available</small></span>
+
+        </div>
+        <!-- <div id="divClientMeetClientSuggestion" class="py-1 small">Suggestion: <button type="button" class="btn btn-xs btn-outline-primary proxy_accept_suggestion2">10:00 AM - 10:15 AM</button></div> -->
+      </div>
+      <div class="mt-4">
+        <label for="txbNewEventDateRange" class="form-label">Duration</label>
+        <div class="input-group ">
+          <span style="width: 100%">
+          <p-dropdown [options]="durations" [(ngModel)]="event.slotDuration" [style]="{'minWidth':'100%'}" placeholder="Select a Duration" optionLabel="name" [showClear]="true"></p-dropdown>
+        </span>
+        </div>
+
+      </div>
+      <div class="mt-4">
+        <label for="txbNewEventClient" class="form-label">Client</label>
+        <div class="input-group">
+          <!-- <input type="text" pInputText style="width: 70%"/> -->
+          <span style="width: 70%">
+            <p-cascadeSelect [(ngModel)]="selcetUser" (onChange)="checkClientAvailablity()" [options]="companies" optionLabel="fullName" optionGroupLabel="name"
+            [optionGroupChildren]="['companyUsers']" [style]="{'minWidth': '100%'}">
+            <ng-template pTemplate="option" let-option>
+              <div class="country-item">
+                  <img  *ngIf="option.companyUsers" [src]="option.logoProfile"  width="30px" height="30px" />
+                  <span>{{option.name || option.fullName }}</span>
+              </div>
+          </ng-template>
+          </p-cascadeSelect>
+          </span>
+          <span *ngIf="isNotClientavailable" style="width: 30%;" id="spnNewEventDateRangeMeetClient" class="input-group-text"><i class="bx bxs-x-circle text-danger"></i> <small>  Unavailable</small></span>
+          <span *ngIf="isClientavailable" style="width: 30%;" id="spnNewEventDateRangeMeetClient" class="input-group-text"><i class="bx bxs-check-circle text-success"></i> <small> Available</small></span>
+        </div>
+        <div class="mt-4">
+
+
+        </div>
+        <!-- <div id="divClientMeetClientSuggestion" class="py-1 small">Suggestion: <button type="button" class="btn btn-xs btn-outline-primary proxy_accept_suggestion2">10:00 AM - 10:15 AM</button></div> -->
+      </div>
+      <div class="pt-4">
+        <button type="button" class="btn btn-primary" (click)="createEvent()">Schedule Client
+          Meeting</button>
+        <a style="cursor:pointer" class="btn btn-secondary text-white proxy_calendar_side_panel_close"
+          style="margin-left: 20px;">Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>

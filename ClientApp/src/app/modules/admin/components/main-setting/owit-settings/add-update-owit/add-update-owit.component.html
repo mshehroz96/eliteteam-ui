@@ -1,0 +1,51 @@
+<!-- <form #form="ngForm" (ngSubmit)="saveUpdateOWIT()">
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label class="form-label d-block">Title</label>
+        <input type="text" class="form-control" #questionText="ngModel" title="title" [(ngModel)]="obj.questionText" required/>
+          <div *ngIf="questionText.invalid && (questionText.dirty || questionText.touched)"
+              class="invalid-feedback">
+              <div *ngIf="questionText.errors?.required">
+                  Required
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!form.valid"
+    >
+      Save Changes
+    </button>
+    <button (click)="closeModal()" type="button" class="btn btn-label-secondary">
+      Cancel
+    </button>
+  </div>
+</form> -->
+
+<form #form="ngForm" (ngSubmit)="saveUpdateOWIT()">
+  <div class="mb-3">
+      <div class="form-group">
+          <label class="form-label d-block">Question Text:</label>
+          <input class="form-control" #questionText="ngModel" name="questionText" [(ngModel)]="questions.questionText" />
+          <div *ngIf="questionText.invalid && (questionText.dirty || questionText.touched)" class="invalid-feedback">
+              <div *ngIf="questionText.errors?.required">
+                  Required
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="flex text-center">
+      <button type="submit" [disabled]="!form.valid" class="btn btn-primary">
+          Save
+          
+      </button> &nbsp;
+      <button (click)="closeModal()" type="button" class="btn btn-label-secondary">
+          Cancel
+      </button>
+  </div>
+</form>

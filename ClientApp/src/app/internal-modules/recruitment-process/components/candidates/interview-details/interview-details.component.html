@@ -1,0 +1,46 @@
+
+<table class="table" *ngIf="interview">
+  <tbody >
+    
+    <tr>
+      <th>Invitation</th>
+      <td>
+        <span class="badge bg-label-success"><i class="bx bxs-envelope"></i>{{interview.inviteStatus}}</span>
+        <span class="float-end pt-1"><i class="bx bxs-time"></i>{{interview.inviteDateTime |
+          customDateTime}}<span></span></span>
+      </td>
+    </tr>
+    <tr>
+      <th>{{interview.interviewType}} Interview</th>
+      <td>
+        <ng-container *ngIf="interview.interviewStatus=='Scheduled' || interview.interviewStatus=='Started'">
+         
+          <span  class="badge bg-label-success">
+            <i class="bx bxs-calendar-check"></i>{{interview.interviewStatus}}
+          </span>
+          <a *ngIf="interview.interviewStarting<=1000" class="btn btn-primary btn-sm text-white"
+            routerLink="/recruiter/live-interview/{{applicantEncryptedId}}/{{interview.eventId}}/{{interview.requisitionInterviewRequestId}}"><i
+              class="fa fa-video"></i> Join now</a>
+          <span  class="float-end pt-1"><i class="bx bxs-time"></i>{{interview.interviewDateTime | customDateTime}}<span></span></span>
+        </ng-container>
+        <span *ngIf="interview.interviewStatus=='Requested'" class="badge bg-label-warning"><i class="bx bxs-calendar-alt"></i> Waiting for applicant confirmation</span>
+        <span *ngIf="interview.interviewStatus=='Completed'" class="badge bg-label-success"><i class="bx bxs-calendar-alt"></i>{{interview.interviewStatus}}</span>
+      </td>
+    </tr>
+    <tr *ngIf="campaignType=='Video'">
+      <th>One-way Interview Deadline</th>
+      <td *ngIf="interview.owiDeadLine">{{interview.owiDeadLine | customDateTime}}</td>
+      <td *ngIf="!interview.owiDeadLine">To be conducted immediately after Zoom meeting.</td>
+      
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="!interview">
+  <div> <span class="alert-icon">
+      <i class="la la-calendar"></i>
+    </span>
+    There is no interview scheduled for this candidate
+    yet. Click the <b>Invite For Interview</b> button to
+    get started. </div>
+
+</div>

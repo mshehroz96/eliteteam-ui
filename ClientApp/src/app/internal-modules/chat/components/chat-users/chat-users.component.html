@@ -1,0 +1,51 @@
+<div>
+  <div class="input-group input-group-merge pb-2" *ngIf="requisitions.length>0">
+    <span class="input-group-text"><i class="bx bx-search"></i></span>
+    <input type="text" class="form-control" name="searchText" (keydown)="searchUser($event)" [(ngModel)]="searchText"
+      placeholder="Users Search">
+  </div>
+  
+  <div class="card vert-scroll-400">
+    <table class="table table-bordered">
+      <tbody *ngFor="let requisition of searchAbleRequisitions">
+        <tr>
+          <td colspan="1" class="bg-lighter position-relative">
+            <a href="javascript:void(0)" (click)="toggleCandidates(requisition)"
+              class="proxy_toggle_table_row text-black stretched-link"><i
+                class="bx align-middle float-end pt-1 pe-0 proxy_expand_collapse_icon {{requisition.cssClass}}"></i>
+              <i *ngIf="requisition.campaignType=='Video'" class="bx bxs-video align-middle"></i>
+              <i *ngIf="requisition.campaignType=='Resume'" class="bx bxs-detail align-middle"></i>
+              <i *ngIf="requisition.campaignType=='Interview'" class="bx bxs-calendar align-middle"></i>
+              <span class="ml-1">{{requisition.jobTitle}} 
+                <span *ngIf="requisition.unReadMessages>0" class="badge badge-center rounded-pill bg-danger" style="font-size: 10px; height:18px; width:18px;">{{requisition.unReadMessages}}</span>
+              </span>
+              <div class="flex-grow-1 text-end"></div>
+            </a>
+            <div></div>
+          </td>
+        </tr>
+        <tr *ngFor="let user of requisition.candidates" [ngClass]="{'d-none': requisition.collapsed}">
+          <td class="position-relative proxy_dynamic_options chatUser"
+            [ngClass]="{'activeUser': chatService.joinedUser.userId == user.userId && chatService.requisition.requisitionId==requisition.requisitionId}">
+            <a (click)="chatService.setJoinChat(user,requisition)"
+              class="proxy_toggle_table_data_row text-black stretched-link">
+              <div class="d-flex align-items-center">
+                <div class="avatar-wrapper">
+                  <div class="avatar avatar-sm me-3">
+                    <img *ngIf="user.avatarFileName"
+                      src="{{user.avatarFileName | avatar}}" alt="Avatar" class="rounded-circle">
+                  </div>
+                </div>
+                <div class="d-flex flex-column"><span class="fw-semibold">{{user.fullName}}
+                  </span><small class="text-muted">{{user.userType}}</small></div>
+                <div class="flex-grow-1 text-end">
+                  <span *ngIf="user.unReadMessages>0" class="badge badge-center rounded-pill bg-danger" style="font-size: 10px; height:18px; width:18px;">{{user.unReadMessages}}</span>
+                </div>
+              </div>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

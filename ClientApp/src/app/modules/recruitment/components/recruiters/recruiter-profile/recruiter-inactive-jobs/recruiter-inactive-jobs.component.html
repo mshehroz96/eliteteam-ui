@@ -1,0 +1,108 @@
+
+<div class="card">
+  <div class="card-datatable table-responsive">
+      <div id="tabInactiveJobs_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+          <div class="card-header flex-column flex-md-row">
+              <div class="head-label text-center">
+                  <h5 class="card-title mb-0">Inactive Jobs</h5>
+              </div>
+              <div class="dt-action-buttons text-end pt-3 pt-md-0">
+                  <div class="dt-buttons"><button
+                          class="dt-button buttons-collection btn btn-label-primary dropdown-toggle me-2" tabindex="0"
+                          aria-controls="tabInactiveJobs" type="button" aria-haspopup="true"
+                          aria-expanded="false"><span><i class="bx bx-export me-sm-2"></i> <span
+                                  class="d-none d-sm-inline-block">Export</span></span></button> </div>
+              </div>
+          </div>
+          <p-table #dtClient [value]="activeJobs" [lazy]="true" (onLazyLoad)="getActiveJobs($event)" responsiveLayout="scroll"
+              dataKey="jobId" styleClass="p-datatable-strip" [paginator]="true" [rows]="10" [totalRecords]="totalRecords"
+              [loading]="loading" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50,100]"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+              [globalFilterFields]="['companyID']">
+              <ng-template pTemplate="caption">
+                <div class="row">
+                  <form action="#">
+                    <span style="float: left">
+                      <label>Active Jobs</label>
+                    </span>
+                    <div style="float: right" class="dt-buttons ml-4">
+                      <select class="form-select text-capitalize" [ngModelOptions]="{ standalone: true }"  [(ngModel)]="canceledJobs" (change)="getActiveJobs({})">
+                        <option value="0">Select Status</option>
+                        <option value="1">Canceled</option>
+                      </select>
+                    </div>
+                    <label class="rightSpacing" style="float: right">
+                      <input pInputText type="text" name="globalFilter" class="form-control" [(ngModel)]="searchFilter"
+                        (ngModelChange)="getActiveJobs({})" placeholder="Search keyword" />
+                    </label>
+                  </form>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th >
+
+                  </th>
+                  <th pSortableColumn="Title">Job Title<p-sortIcon field="jobTitle"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="CompanyName">Client Name<p-sortIcon field="companyName"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="CommissionPercentage">Commission Percentage<p-sortIcon field="CommissionPercentage"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="SubmittedOn">Date Submitted<p-sortIcon field="SubmittedOn"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="DifferenceInHours">Time from submission to posting<p-sortIcon field="DifferenceInHours"></p-sortIcon>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-client>
+                <tr>
+                  <td>
+                    <button  (click)="openRequisitionDetails(client)" class="btn btn-primary btn-xs btn-circle" style="border-radius: 20px;"><i class="bx bx-plus"></i></button>
+                  </td>
+                  <td>
+                    <div class="d-flex justify-content-left align-items-center">
+                      <div class="avatar-wrapper">
+                        <div class="avatar me-2">
+                          <img src="{{client.logoFileName }}" alt="Avatar" class="rounded-circle">
+                        </div>
+                      </div>
+                      <div class="d-flex flex-column">
+                        <span class="text-truncate">
+                          <a href="#">
+                            {{client.title}}
+                          </a>
+                        </span>
+                        <small class="text-truncate text-muted">{{client.createdOn | date: 'dd/MM/yyyy' }}</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    {{client.companyName }}
+                  </td>
+                  <td>
+                    <div *ngIf="client.commissionPercentage" class="d-flex justify-content-start align-items-center">
+                      <div class="d-flex flex-column w-{{client.commissionPercentage}}">
+                        <span class="emp_name text-truncate">
+                           {{client.commissionPercentage }}%
+                          <br>
+                          <div class="progress" style="height: 6px;">
+                            <div class="progress-bar bg-primary" role="progressbar" [style]="'width:' + client.commissionPercentage +'%' ">
+                            </div>
+                          </div>
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td >
+                    {{client.createdOn | date: 'dd/MM/yyyy' }}
+                  </td>
+                  <td >
+                    {{client.differenceInHours }}
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+      </div>
+  </div>
+</div>

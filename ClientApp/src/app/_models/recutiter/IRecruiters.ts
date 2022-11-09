@@ -1,0 +1,24 @@
+export interface IRecruiters {
+    userID?:number;
+    firstName?:string;
+    lastName?:string;
+    status?:string;
+    avatarFileName?:string;
+    clientsCount?:number;
+    jobCount?:number;
+    hiredcount?:number;
+    purchaseamount?:number;
+    email?:string;
+    mobileNo?:string;
+    createdOn?:string;
+    activeJobs?:number;
+    inActiveJobs?:number;
+    assignedClients?:number;
+    sentMessages?:number;
+    unreadMessages?:number;
+    earnings?:number;
+    dailyAvgActivity?:number;
+    zoomInterviews?:number;
+    onewayInterview?:number;
+    strAvatar?:string;
+}

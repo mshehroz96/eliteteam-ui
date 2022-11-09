@@ -1,0 +1,159 @@
+<div id="divJobTitleDetails" class="row"[appIsLoading]="loadingService.isLoading(this)">
+  <div class="col-12">
+    <h5>
+      <a id="btnBackToJobTitlesList"  routerLink="/jobpost/settings" class="btn btn-secondary ms-3 me-3"><i class="fa fa-chevron-left"></i> </a>
+      <span>{{objJobTitleDetailsResponse.jobTitle}}</span>
+      <span class="float-end me-3">
+        <!-- <button class="btn btn-primary" (click)="updateJobTitle()">Update</button> -->
+
+      </span>
+    </h5>
+    <div id="accordionPopoutIcon" class="accordion mt-3 accordion-popout">
+      <div class="accordion-item card">
+        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionPopoutIconOne">
+          <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#div1">
+            <i class='bx bxs-file-doc'></i>
+            Job Description
+          </button>
+        </h2>
+        <div id="div1" class="accordion-collapse collapse" data-bs-parent="#accordionPopoutIcon">
+          <div class="accordion-body">
+            <!-- <div class="row">
+              <div class="col-12">
+                <input type="text" [(ngModel)]="objJobTitleDetailsResponse.jobTitle" class="form-control" placeholder="Job Title Name"/>
+              </div>
+            </div> -->
+            <div class="row">
+              <div class="col-12 text-end">
+                <button (click)="updateJobDescription(objJobTitleDetailsResponse.jobDescription)" class="btn btn-primary btn-sm mb-2">Update Job Description</button>
+              </div>
+            </div>
+            <div class="row pt-1">
+              <div class="col-12">
+                <p-editor [style]="{'height':'120px'}" [(ngModel)]="objJobTitleDetailsResponse.jobDescription"></p-editor>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item card">
+        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionPopoutIconTwo">
+          <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#div2">
+            <i class="bx bx-category"></i>
+            One-Way Interview Template
+          </button>
+        </h2>
+        <div id="div2" class="accordion-collapse collapse" data-bs-parent="#accordionPopoutIcon">
+          <div class="accordion-body">
+            <div class="row">
+              <div class="col-12 text-end">
+                <button (click)="changeOneWayInterviewTemplate()" class="btn btn-primary btn-sm mb-2">Change Template</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <label for="ddlInterviewTemplates" class="form-label">Template</label>
+
+                <select class="form-select text-capitalize" name="ddlLookup_OneWayInterviewTemplates"
+                  [(ngModel)]="intSelectedLookupItem_OneWayInterviewTemplate"
+                  (change)="getOneWayInterviewQuestionsByTemplateId($event)">
+                  <option value="0">Select Template</option>
+                  <option *ngFor="let item of objJobTitleDetailsResponse.oneWayInterviewTemplate" [selected]="false"
+                    [value]="item.oneWayInterviewTemplateId">{{ item.title }}</option>
+                </select>
+
+
+                <label for="xxxx" class="form-label mt-2">Template Questions</label>
+
+                <div class="vert-scroll-300">
+                  <table class='table table-striped table-bordered'>
+                    <tbody>
+                      <tr *ngFor="let item of arrOneWayInterviewTemplateQuestions">
+                        <td>
+                          <i class='fa fa-question'></i>&nbsp;{{item.questionText}}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item card">
+        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionPopoutIconThree">
+          <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#div3">
+            <i class="bx bxs-category"></i>
+            Screening Questions
+          </button>
+        </h2>
+        <div id="div3" class="accordion-collapse collapse" data-bs-parent="#accordionPopoutIcon">
+          <div class="accordion-body">
+            <button (click)="addJobTitleCategories()" class="btn btn-primary float-end">Add Category</button>
+            <div class="question-caterogies">
+              <ng-container *ngFor="let screeningQuestionCategory of screeningQuestions">
+                <button type="button" (click)="populateScreeningQuestionCategoriesQuestionsByCategoryId(screeningQuestionCategory.screeningQuestionsCategories)"
+                  class="btn btn-label-secondary mt-2 ml-1">{{screeningQuestionCategory.screeningCategoryName}}</button>
+              </ng-container>
+            </div>
+            
+            <div class="questions-list mt-2">
+              <ul class="list-group">
+                <li class="list-group-item mt-1 d-flex justify-content-between align-items-center" *ngFor="let ii of screeningQuestionsList">
+                  <span>{{ii.title}}</span>
+                </li>
+              </ul>
+            </div>
+            <!-- <div class="question-caterogies">
+              <ng-container *ngFor="let screeningQuestionCategory of objJobTitleDetailsResponse.screeningQuestionsCategories">
+                <button type="button" *ngIf="screeningQuestionCategory.isSelected==true" (click)="populateScreeningQuestionCategoriesQuestionsByCategoryId(screeningQuestionCategory.screeningCategoryId)"
+                  class="btn btn-label-secondary mt-2 ml-1">{{screeningQuestionCategory.screeningCategoryName}}</button>
+              </ng-container>
+            </div>
+
+            <div class="questions-list mt-2" *ngIf="arrScreeningQuestionCategoryQuestions.length>0">
+              <ul class="list-group">
+                <li class="list-group-item mt-1 d-flex justify-content-between align-items-center" *ngFor="let screeningQuestionCategoryQuestion of arrScreeningQuestionCategoryQuestions">
+                  <span *ngIf="screeningQuestionCategoryQuestion.screeningCategoryQuestionId>0">{{screeningQuestionCategoryQuestion.screeningCategoryQuestionTitle}}</span>
+                </li>
+              </ul>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item card">
+        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionPopoutIconThree">
+          <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#div4">
+            <i class='bx bxs-pyramid'></i>
+            Associated Jobs
+          </button>
+        </h2>
+        <div id="div4" class="accordion-collapse collapse" data-bs-parent="#accordionPopoutIcon">
+          <div class="accordion-body">
+            <div class="row">
+              <div class="col-12 text-end">
+                <button (click)="openAddAssociatedJobs()" class="btn btn-primary btn-sm mb-2">Add Associated Job</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <ul class="list-group">
+                  <li class="list-group-item mt-1 d-flex justify-content-between align-items-center" *ngFor="let associatedJob of associatedJobs">
+                    <span>
+                      {{associatedJob.jobCategoryName}}
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

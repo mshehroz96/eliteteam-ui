@@ -1,0 +1,121 @@
+<div [appIsLoading]="loadingService.isLoading(this)">
+  <div class="row mb-2 mb-md-0">
+    <div class="col-md">
+      <div class="form-check custom-option custom-option-basic">
+        <label class="form-check-label custom-option-content" for="customRadioTemp2">
+          <input name="customRadioTemp" name="schedulingOption" (change)="schedulingOption()" [(ngModel)]="invite.schedulingOption"
+            class="form-check-input" type="radio" checked="" value="Zoom" id="customRadioTemp2">
+          <span class="custom-option-header">
+            <span class="h6 mb-0">Zoom Interview</span>
+            <span></span>
+          </span>
+          <span class="custom-option-body">
+            &nbsp;
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form-check custom-option custom-option-basic">
+        <label class="form-check-label custom-option-content" for="customRadioTemp1">
+          <input name="customRadioTemp" name="schedulingOption" (change)="schedulingOption()" [(ngModel)]="invite.schedulingOption"
+            class="form-check-input" type="radio" value="In-Person" id="customRadioTemp1">
+          <span class="custom-option-header">
+            <span class="h6 mb-0"> In-Person Interview</span>
+            <span></span>
+          </span>
+          <span class="custom-option-body">
+            <input type="text" name="clientInterviewVenue" [(ngModel)]="invite.clientInterviewVenue"
+              class="form-control form-control-sm input-sm" placeholder="Venue">
+          </span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row mt-3">
+    <div class="col-md ml-3">
+      <div class="mt-2">
+        <input [checked]="invite.zoomScheduleType=='Calendar'" [(ngModel)]="invite.zoomScheduleType"
+          (ngModelChange)="zoomScheduleTypeChange()" class="form-check-input" type="radio" value="Calendar"
+          id="customRadioTemp4">
+        <label class="form-check-label custom-option-content" for="customRadioTemp4">Let candidate choose from my
+          available calendar <span *ngIf="showAvailabilityNotDefined==true" class="text-danger">Your availability is
+            not defined</span>
+        </label>
+  
+        <span class="small float-end"><a (click)="cp.toggle($event)" href="javascript:void(0)"><i
+              class="bx bx-calendar"></i>Show My Calendar</a></span>
+      </div>
+      <div class="mt-2">
+        <input [checked]="invite.zoomScheduleType=='Slots'" [(ngModel)]="invite.zoomScheduleType" class="form-check-input"
+          type="radio" value="Slots" id="customRadioTemp5">
+        <label class="form-check-label custom-option-content" for="customRadioTemp5">Let applicant choose from 3 time
+          slots</label>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3" *ngIf="invite.zoomScheduleType=='Slots'">
+    <div class="col-4 mb-3">
+      <label for="nameBasic" class="form-label">Interview Slot 1</label>
+      <p-calendar [minDate]="minDate" [defaultDate]="minDate" [stepMinute]="5" [showClear]="true" appendTo="body"
+        [(ngModel)]="invite.requesterSlot1" dataType="string" [showTime]="true" hourFormat="12" [readonlyInput]="true">
+      </p-calendar>
+    </div>
+    <div class="col-4 mb-3">
+      <label for="nameBasic" class="form-label">Interview Slot 2</label>
+      <p-calendar [minDate]="minDate" [defaultDate]="minDate" [stepMinute]="5" [showClear]="true" appendTo="body"
+        [(ngModel)]="invite.requesterSlot2" dataType="string" [showTime]="true" hourFormat="12" [readonlyInput]="true">
+      </p-calendar>
+    </div>
+    <div class="col-4 mb-3">
+      <label for="nameBasic" class="form-label">Interview Slot 3</label>
+      <p-calendar [minDate]="minDate" [defaultDate]="minDate" [stepMinute]="5" [showClear]="true" appendTo="body"
+        [(ngModel)]="invite.requesterSlot3" dataType="string" [showTime]="true" hourFormat="12" [readonlyInput]="true">
+      </p-calendar>
+    </div>
+  </div>
+  <hr />
+  <div class="row mt-2">
+    <div class="col-md-12">
+      <label for="txaShareText" class="form-label d-block">Invitation Message:</label>
+      <textarea class="form-control" [(ngModel)]="invite.inviteMessage" rows="3"></textarea>
+    </div>
+  </div>
+  <hr />
+  <div class="row mt-2">
+    <div class="col-md-12 mb-1">
+      <label for="TagifyUserList" class="form-label d-block">Additional Interviewers:</label>
+      <p-multiSelect appendTo="body" [(ngModel)]="invite.interviewers" display="chip"
+       [style]="{'width':'100%'}" [options]="users" optionValue="userId"  optionLabel="fullName">
+        <ng-template let-user pTemplate="item">
+          <div class="ui-helper-clearfix">
+            <table>
+              <tr>
+                <td style="vertical-align:top;">
+                  <img class="rounded-circle" width="50px" height="50px" [src]="user.avatarFileName | avatar" alt="Avatar" />
+                </td>
+                <td style="vertical-align:top;" class="pl-1">
+                  <b>{{user.firstName}} {{user.lastName}}</b>
+                  <p>{{user.email}}</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </ng-template>
+      </p-multiSelect>
+    </div>
+  </div>
+  <div class="float-right mt-3">
+    <button  type="button" [disabled]="!showAvailabilityNotDefined" (click)="inviteApplicant()"
+      class="btn btn-primary mr-1">Invite</button>
+    <button type="button" class="btn btn-label-secondary" (click)="closeModel()">Close</button>
+  </div>
+
+  <p-overlayPanel #cp [style]="{width: '500px'}">
+    <ng-template pTemplate>
+      <full-calendar id="fullCalendar" [style]="{width: '450px'}" [options]="calendarOptions">
+      </full-calendar>
+    </ng-template>
+  </p-overlayPanel>
+</div>

@@ -1,0 +1,59 @@
+
+<p-table #dtJobTitles [value]="jobtitles" [lazy]="true" (onLazyLoad)="getJobTitles($event)" responsiveLayout="scroll"
+  dataKey="jobTitleID" styleClass="p-datatable-strip" [paginator]="true" [rows]="10" [totalRecords]="totalRecords"
+  [loading]="loading" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50,100]"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [globalFilterFields]="['jobTitleID']">
+  <ng-template pTemplate="caption">
+    <div class="row">
+      <div class="col-10">
+        <form action="#">
+          <span style="float: left">
+            <label>Job Titles</label>
+          </span>
+          <div style="float: right" class="dt-buttons ml-4">
+            <select class="form-select text-capitalize" name="jpmStatus" [(ngModel)]="jpmStatus" (change)="getJobTitles({})">
+              <option value="0">Select Status</option>
+              <option *ngFor="let item of jpmStatuses" [value]="item.value">
+                  {{ item.displayText }}
+              </option>
+            </select>
+          </div>
+          <label class="rightSpacing" style="float: right">
+            <input pInputText type="text" name="globalFilter" class="form-control" [(ngModel)]="searchFilter"
+              (ngModelChange)="getJobTitles({})" placeholder="Search keyword" />
+          </label>
+        </form>
+      </div>
+      <div class="col-2">
+        <button (click)="openSaveJTModal()" class="dt-button create-new btn btn-primary" tabindex="0" aria-controls="tabJobTitles" type="button"><span><i class="bx bx-plus me-sm-2"></i> <span class="d-none d-sm-inline-block">New Job Title</span></span></button>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="title">Job Title<p-sortIcon field="title"></p-sortIcon>
+      </th>
+      <th pSortableColumn="screeningCategories">Screening Categories <p-sortIcon field="screeningCategories"></p-sortIcon>
+      </th>
+      <th pSortableColumn="oneWayInterviewTemplate">One Way Interview Template <p-sortIcon field="oneWayInterviewTemplate"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-jobtitle>
+    <tr>
+      <td>
+        <span class="text-primary">
+          <a href="javascript:void(0)" routerLink="settings-job-title-details/{{jobtitle.jobTitleId}}" class="menu-link">
+            <i class="fa fa-briefcase"></i>&nbsp;{{jobtitle.title}}
+          </a>
+        </span>
+      </td>
+      <td [innerHTML]="jobtitle.screeningCategoriesHTML"></td>
+      <td>
+        {{jobtitle.oneWayInterviewTemplate}}
+      </td>
+    </tr>
+  </ng-template>
+
+</p-table>

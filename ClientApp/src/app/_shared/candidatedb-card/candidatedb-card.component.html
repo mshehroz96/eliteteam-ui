@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex justify-content-between mb-2">
+      <h6 class="fw-normal">Total {{ UserOverView.totalUsers }} user</h6>
+      <ul class="list-unstyled avatar-group d-flex align-items-center mb-0">
+        <li
+          *ngFor="let userData of UserOverView.usersList.usersIDList ;index as i"
+          data-bs-toggle="tooltip"
+          data-popup="tooltip-custom"
+          data-bs-placement="top"
+          title=""
+          class="avatar avatar-sm pull-up"
+          [attr.data-bs-original-title]="UserOverView.usersList.usersNameList[i]"
+
+        >
+          <a href="{{'/' + UserOverView.usersList.usersIDList[i]}}"
+            ><img
+              class="rounded-circle"
+              alt="Avatar"
+              [src]="UserOverView.usersList.usersImageList[i] | avatar"
+          /></a>
+        </li>
+      </ul>
+    </div>
+    <div class="d-flex justify-content-between align-items-end">
+      <div class="role-heading">
+        <h4 class="mb-1">{{UserOverView.userType}}</h4>
+        <a
+          href="javascript:;"
+          data-bs-toggle="modal"
+          data-bs-target="#addRoleModal"
+          class="role-edit-modal d-none"
+          ><small>Edit Role</small></a
+        >
+      </div>
+      <a href="#" class="text-muted"><i class="bx bx-copy"></i></a>
+    </div>
+  </div>
+</div>

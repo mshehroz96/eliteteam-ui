@@ -1,0 +1,88 @@
+<div class="card mb-4" [appIsLoading]="loadingService.isLoading(this)">
+  <h4 class="card-header">Personal Details</h4>
+  <div class="card-body">
+
+    <div class="row row-bordered">
+      <div class="col-md-8 pe-4">
+        <div class="row">
+          <div class="col-md-2 mb-3">
+            <label for="ddlAccountTitle" class="form-label">Title</label>
+            <p-dropdown appendTo="body"ame="titleLiid" [options]="data.titles" [(ngModel)]="userDetails.titleLiid" optionValue="value"
+              optionLabel="displayText" [virtualScroll]="true" virtualScrollItemSize="30" ></p-dropdown>
+          </div>
+          <div class="col-md-5 mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" pInputText [(ngModel)]="userDetails.firstName" class="form-control" />
+          </div>
+          <div class="col-md-5 mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" pInputText [(ngModel)]="userDetails.lastName" class="form-control" />
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="text" placeholder="john.doe@example.com" pInputText
+              [(ngModel)]="userDetails.email" class="form-control" />
+          </div>
+          <div class="col-md-3 mb-3">
+            <label class="form-label" for="phoneNumber">Mobile Number</label>
+            <div class="input-group input-group-merge">
+              <span class="input-group-text">US (+1)</span>
+              <input type="text" placeholder="202 555 0111" pInputText
+                [(ngModel)]="userDetails.mobileNo" class="form-control" />
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label class="form-label" for="phoneNumber">Phone Number</label>
+            <div class="input-group input-group-merge">
+              <span class="input-group-text">US (+1)</span>
+              <input type="text" placeholder="202 555 0111" pInputText [(ngModel)]="userDetails.landLineNo"
+                class="form-control" />
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="zipcode" class="form-label">Extension</label>
+            <input type="text" placeholder="1234" pInputText [(ngModel)]="userDetails.extensionNo"
+              class="form-control" />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 text-center">
+        <div class="d-flex flex-column align-items-center">
+          <p-image src="{{strUserAvatarURL}}" imageClass="d-block rounded" height="100" width="100"></p-image>
+          
+          <span class="text-muted py-2">Allowed JPG, GIF or PNG. Max size of 1 MB</span>
+          <p-fileUpload name="imgUserAvatar" #imgUserAvatar chooseLabel="Upload Photo" styleClass="p-button-sm" mode="basic"
+            chooseIcon="pi pi-user" [showUploadButton]="false" [showCancelButton]="false" [maxFileSize]="1000000"
+            [customUpload]="true" (uploadHandler)="uploadUserAvatar()" [auto]="true" accept="image/*">
+          </p-fileUpload>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button pButton type="button" label="Update" (click)="updateUserDetails()" iconPos="right" [loading]="isLoading_updateUserDetails"></button>
+  </div>
+
+</div>
+
+<div class="card" *ngIf="userType == 6 || userType == 5 || userType == 7">
+  <h4 class="card-header">Delete Account</h4>
+  <div class="card-body">
+    <div class="col-12 mb-0 mb-3">
+      <div class="alert alert-warning">
+        <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete your account?</h6>
+        <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
+      </div>
+    </div>
+    <form  id="formAccountDeactivation" (ngSubmit)="deactivateUserAccount()"  class="fv-plugins-bootstrap5 fv-plugins-framework"
+      novalidate="novalidate">
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" name="deactivationCheck" (change)="checkCheckBoxValue($event)" id="deactivationCheck" >
+        <label class="form-check-label" for="deactivationCheck">I confirm my account deactivation</label>
+        <div class="fv-plugins-message-container invalid-feedback"></div>
+      </div>
+      <button type="submit" [disabled]="acCheck"  class="btn btn-danger deactivate-account">Deactivate Account</button>
+      <div></div><input type="hidden">
+    </form>
+  </div>
+</div>

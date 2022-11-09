@@ -1,0 +1,103 @@
+<div [appIsLoading]="loadingService.isLoading(this)">
+    <div class="row border-bottom border-light pb-1">
+        <div class="col-md-6">
+            <div class="btn-group mb-2 gap-1" role="group">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    data-bs-auto-close="true" aria-expanded="false">
+                    <span>
+                        <i class="bx bxs-video" *ngIf="currentRequisitionStats.campaignType=='Video'"></i>
+                        <i class="bx bxs-calendar" *ngIf="currentRequisitionStats.campaignType=='Interview'"></i>
+                        <i class="bx bxs-detail" *ngIf="currentRequisitionStats.campaignType=='Resume'"></i>
+                        {{currentRequisitionStats.jobTitle}}</span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                    <li *ngFor="let requisition of requisitionsStats">
+                        <a class="dropdown-item" href="javascript:void(0)" (click)="redirectTo('/recruiter/jobs-active/job-details/'+requisition.uuid)">
+                            <i class="bx bxs-video" *ngIf="requisition.campaignType=='Video'"></i>
+                            <i class="bx bxs-calendar" *ngIf="requisition.campaignType=='Interview'"></i>
+                            <i class="bx bxs-detail" *ngIf="requisition.campaignType=='Resume'"></i>
+                            <span class="ml-2 mr-1">{{requisition.jobTitle}}</span>
+                            <span class="badge bg-primary float-end">{{requisition.applicants}}</span>
+                        </a>
+                    </li>
+                </ul>
+                <button id="btnJobDetails" class="btn bg-label-secondary bg-white proxy_show_supplementary_data"
+                    (click)="viewRequisitionSummary()" type="button">
+                    <i class="bx bx-detail"></i> Job Details
+                </button>
+                <button id="btnSharing" class="btn bg-label-secondary bg-white" (click)="viewRequisitionRecruiters()">
+                    <i class="bx bx-user"></i> Recruiters
+                </button>
+                <a href="javascript:void(0)" routerLink="/recruiter/jobs-active" class="btn bg-label-secondary bg-white"><i
+                        class="bx bx-arrow-back"></i> Back</a>
+            </div>
+        </div>
+        <div class="col-md-6 text-end">
+        </div>
+    </div>
+    <div class="nav-align-top mb-4 mt-3">
+        <ul class="nav nav-pills mb-3" role="tablist">
+            <li class="nav-item">
+                <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" (click)="setStatus('All')">
+                    All <span class="badge badge-center bg-secondary">{{candidateStats.all_Applicants}}</span>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                    (click)="setStatus('New_Applicants')">
+                    New Applicants <span class="badge badge-center bg-secondary">{{candidateStats.new_Applicants}}</span>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                    (click)="setStatus('Pending_Applicants')">
+                    Pending Applicants <span
+                        class="badge badge-center bg-secondary">{{candidateStats.pending_Applicants}}</span>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                    (click)="setStatus('New_Candidates')">
+                    New Candidates <span class="badge badge-center bg-secondary">{{candidateStats.new_Candidates}}</span>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                    (click)="setStatus('Pending_Candidates')">
+                    Pending Candidates <span
+                        class="badge badge-center bg-secondary">{{candidateStats.pending_Candidates}}</span>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                    (click)="setStatus('Active_Candidates')">
+                    Active Candidates <span
+                        class="badge badge-center bg-secondary">{{candidateStats.active_Candidates}}</span>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                    (click)="setStatus('Hired_Candidates')">
+                    Hired Candidates <span
+                        class="badge badge-center bg-secondary">{{candidateStats.hired_Candidates}}</span>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" (click)="setStatus('Disqualified_Candidates')">
+                    Disqualified<span class="badge badge-center bg-secondary">{{candidateStats.disqualified_Candidates}}</span>
+                </button>
+            </li>
+        </ul>
+        <div class="mt-3" *ngIf="filters.length>1">
+            <p-multiSelect [options]="filters" placeholder="Filter" [style]="{'width':'25%'}" optionLabel="displayText"
+                optionValue="value" (onChange)="filterChange()" [(ngModel)]="this.request.filters">
+            </p-multiSelect>
+        </div>
+        <div class="mt-3">
+            <app-candidates [candidates]="candidates"></app-candidates>
+        </div>
+        <div class="mt-3 d-flex justify-content-center" *ngIf="totalRecords>this.request.rows">
+            <button class="btn btn-primary" (click)="pageChange(9)">Show more</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<!-- <form class="form-wrap" [formGroup]="expeertiesForm" (ngSubmit)="saveExperties()">
+  <div class="row mb-4">
+    <div class="col-md-10">
+      <div class="col-12 md:col-4">
+        <div class="p-inputgroup">
+            <p-autoComplete 
+                     [style]="{'width':'100%'}"
+                    [inputStyle]="{'width':'100%'}" [suggestions]="expertiesAutoComplete" 
+                    formControlName="experties"
+                    (completeMethod)="searchExperties($event)"
+                    
+                    field="title" [minLength]="3"></p-autoComplete>
+        </div>
+    </div>
+    </div>
+  </div>
+    <div class="flex text-center">
+      <button type="submit" [disabled]="!expeertiesForm.valid" class="btn btn-primary">
+          Save/Update
+      </button>
+      <button (click)="closeModal()" type="button" class="btn btn-light-primary fw-bolder mx-2">
+          Cancel
+      </button>
+  </div>
+</form> -->
+
+<form #form="ngForm" [appIsLoading]="loadingService.isLoading(this)">
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <p-dropdown  
+        [options]="experties"  
+        appendTo="body" 
+        styleClass="p-fluid"
+        [autoDisplayFirst]="false"
+        name="selectedArea" 
+        optionLabel="displayText" 
+        optionValue="value"   
+        [(ngModel)]="selectedArea" 
+        (onChange)="onchange($event)"
+          [filter]="true" 
+          filterBy="displayText" 
+          [showClear]="true" 
+          placeholder="--Select--" >
+        </p-dropdown>
+        <!-- <div *ngIf="selectedArea.invalid && (selectedArea.dirty || selectedArea.touched)" class="invalid-feedback">
+            <div *ngIf="selectedArea.errors?.required">
+                Required
+            </div>
+        </div> -->
+    </div>
+    </div>
+  </div>
+  <div *ngIf="showError">
+    <div class="alert alert-danger" role="alert">
+      Please select any record
+    </div>
+  </div>
+  <div class="modal-footer">
+  <button type="submit" (click)="saveUpdateExperties()" [disabled]="!enableSave" class="btn btn-primary">
+    {{action == 'Add' ? 'Save' : 'Update'}}
+  </button>
+  <button (click)="closeModal()" type="button" class="btn btn-label-secondary">
+    Cancel
+  </button>
+  </div>
+</form>
+
+

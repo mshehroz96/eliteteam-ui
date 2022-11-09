@@ -1,0 +1,74 @@
+<div class="authentication-wrapper authentication-cover">
+    <div class="authentication-inner row m-0">
+        <!-- /Left Text -->
+        <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center p-5">
+            <div class="d-flex justify-content-center w-100">
+                <img src="assets/img/illustrations/boy-with-rocket-light.png" class="img-fluid" alt="Login image"
+                    width="700" data-app-dark-img="illustrations/boy-with-rocket-dark.png"
+                    data-app-light-img="illustrations/boy-with-rocket-light.png" />
+            </div>
+        </div>
+        <!-- /Left Text -->
+
+        <!-- Login -->
+        <div class="authentication-bg bg-white d-flex col-12 col-lg-5 col-xl-4 align-items-center p-4 p-sm-5">
+            <div class="w-px-400 mx-auto">
+                <!-- Logo -->
+                <div class="app-brand mb-5">
+                    <a [routerLink]="['/auth/login']" class="app-brand-link gap-2">
+                        <span class="">
+                            <img src="assets/img/branding/logo.png" class="img-fluid" />
+                            <span class="app-brand-text demo text-body fw-bolder d-none">Elite Team</span>
+                        </span>
+                    </a>
+                </div>
+                <!-- /Logo -->
+
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" [appIsLoading]="loadingService.isLoading(this)">
+                    <h4 class="mb-2">Welcome to Elite Team</h4>
+                    <p class="mb-4">Please sign-in to your account and start your hiring adventure</p>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email </label>
+                        <input type="text" formControlName="username" class="form-control" placeholder="Email address"
+                            [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                            <div *ngIf="f.username.errors.required">Username is required</div>
+                        </div>
+                    </div>
+                    <div class="form-password-toggle mb-3">
+                        <div class="d-flex justify-content-between">
+                            <label class="form-label" for="password">Password</label>
+                            <a [routerLink]="['/auth/forgot-password']"  [queryParams]="{ email: f.username.value }">
+                                <small>Forgot Password?</small>
+                            </a>
+                        </div>
+                        <div class="input-group input-group-merge">
+                            <input [type]="isPwd ? 'password' : 'text'" formControlName="password" class="form-control"
+                                placeholder="Password" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Password is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="remember-me" />
+                            <label class="form-check-label" for="remember-me"> Remember Me </label>
+                        </div>
+                    </div>
+                    <button  class="btn btn-primary d-grid w-100" type="submit">
+                        Sign in
+                    </button>
+                    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">
+                        {{ error }}
+                    </div>
+                    <p class="text-center py-4">
+                        New on our platform? <a [routerLink]="['/auth/registration']">Create an account</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+        <!-- /Login -->
+    </div>
+</div>

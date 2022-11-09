@@ -1,0 +1,62 @@
+<div class="card mb-2">
+  <div class="card-body">
+    <h5>Interview Details</h5>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th>Interview Type</th>
+          <td>
+            {{interview.interviewType}} Interview 
+          </td>
+        </tr>
+        <tr *ngIf="interview.interviewTimeSelection=='Slots'">
+          <th>Interview Suggested Date/Time</th>
+          <td>
+            <ul>
+              <li>{{interview.requesterAvailableSlot1 | customDateTime }}</li>
+              <li>{{interview.requesterAvailableSlot1 | customDateTime }}</li>
+              <li>{{interview.requesterAvailableSlot1 | customDateTime }}</li>
+            </ul>
+
+          </td>
+        </tr>
+        <tr *ngIf="interview.interviewTimeSelection=='Calendar' && (interview.interviewStatus=='Scheduled' || interview.interviewStatus=='Started')">
+          <th>Interview Date/Time</th>
+          <td>
+            {{interview.interviewDateTime | customDateTime }}
+          </td>
+        </tr>
+        <tr *ngIf="interview.interviewType=='In-Person'">
+          <th>Interview Venue</th>
+          <td>
+            {{interview.clientInterviewVenue}}
+          </td>
+        </tr>
+        <tr>
+          <th>Interview Status</th>
+          <td>
+            {{interview.interviewStatus}}
+            <ng-container *ngIf="interview.interviewStatus=='Scheduled' || interview.interviewStatus=='Started'">
+              <a *ngIf="interview.interviewType=='Zoom' && interview.interviewStarting>0 && interview.interviewStarting<=500" class="btn btn-primary btn-sm text-white"
+                routerLink="/client/live-interview/{{applicantEncryptedId}}/{{interview.eventId}}/{{interview.requisitionInterviewRequestId}}"><i
+                  class="fa fa-video"></i> Join now</a>
+              <a *ngIf="interview.interviewType=='In-Person'"
+                class="btn btn-primary btn-sm text-white"
+                routerLink="/client/inperson-interview/{{applicantEncryptedId}}/{{interview.eventId}}/{{interview.requisitionInterviewRequestId}}"><i
+                  class="fa fa-video"></i> Meet now</a>
+            </ng-container>
+          </td>
+        </tr>
+        <tr class="d-none">
+          <th>Invited Interviewers</th>
+          <td>
+            <i class="la la-user"></i>
+            a.Jobs@elite.com<br>
+            <i class="la la-user"></i>
+            j.mark@elite.com
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

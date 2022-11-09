@@ -1,0 +1,157 @@
+<table cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+      <p style="margin:0px" *ngIf="!isRedacted('PersonalDetails','FullName')">
+        <strong>{{resumeDetails.fullName}}</strong>
+      </p>
+      <p style="margin:0px" *ngIf="!isRedacted('PersonalDetails','Email')">
+        <a href="mailto:{{resumeDetails.email}}">{{resumeDetails.email}}</a>
+      </p>
+      <p style="margin:0px" *ngIf="resumeDetails.mobile && !isRedacted('PersonalDetails','MobileNo')" >
+        {{resumeDetails.mobile}}
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <ng-container *ngIf="resumeDetails.workExperiences.length>0">
+    <tr>
+      <td>
+        <strong style="margin:0px">Work Experience</strong>
+        <hr>
+      </td>
+    </tr>
+
+    <tr *ngFor="let we of resumeDetails.workExperiences">
+      <td>
+        <strong style="margin:0px" *ngIf="!isRedacted('WorkExperiences','Title')">{{we.title}}</strong>
+        <p style="margin:0px" *ngIf="!isRedacted('WorkExperiences','Company')"> {{we.company}}</p>
+        <p style="margin:0px" *ngIf="!isRedacted('WorkExperiences','Location')"> {{we.location}}</p>
+        <p style="margin:0px" *ngIf="!isRedacted('WorkExperiences','Dates')">{{we.fromDate}} to {{we.toDate}}</p>
+        <p style="text-align:justify;margin:0px" *ngIf="!isRedacted('WorkExperiences','Description')">
+          {{we.description}}
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+  </ng-container>
+
+
+  <ng-container *ngIf="resumeDetails.educations.length>0">
+    <tr>
+      <td>
+        <strong style="margin:0px">Eduction</strong>
+        <hr>
+      </td>
+    </tr>
+
+    <tr *ngFor="let we of resumeDetails.educations">
+      <td>
+        <strong style="margin:0px" *ngIf="!isRedacted('Educations','Degree')">{{we.degree}} in {{we.field}}</strong>
+        <p style="margin:0px" *ngIf="!isRedacted('Educations','School')">{{we.school}}</p>
+        <p style="margin:0px" *ngIf="!isRedacted('Educations','Location')">{{we.location}}</p>
+        <p style="margin:0px" *ngIf="!isRedacted('Educations','Dates')">{{we.fromDate}} to {{we.toDate}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+  </ng-container>
+
+  <ng-container *ngIf="resumeDetails.certifications.length>0">
+    <tr>
+      <td>
+        <strong style="margin:0px">Certifications</strong>
+        <hr>
+      </td>
+    </tr>
+
+    <tr *ngFor="let we of resumeDetails.certifications">
+      <td>
+        <strong style="margin:0px" *ngIf="!isRedacted('Certifications','Title')">{{we.title}} in {{we.field}}</strong>
+        <p style="margin:0px" *ngIf="!isRedacted('Certifications','Company')">{{we.company}}</p>
+        <p style="margin:0px"*ngIf="!isRedacted('Certifications','Dates')">{{we.fromDate}} to {{we.toDate}}</p>
+        <p style="text-align:justify" *ngIf="!isRedacted('Certifications','Description')">
+           {{we.description}}
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+  </ng-container>
+
+  <ng-container *ngIf="resumeDetails.awards.length>0">
+    <tr>
+      <td style="margin:0px">
+        <strong style="margin:0px">Awards</strong>
+        <hr>
+      </td>
+    </tr>
+
+    <tr *ngFor="let we of resumeDetails.awards">
+      <td>
+        <strong style="margin:0px" *ngIf="!isRedacted('Awards','Title')">{{we.title}} {{we.dateAwarded}}</strong>
+        <p style="margin:0px" *ngIf="!isRedacted('Awards','Description')">{{we.description}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+  </ng-container>
+
+
+  <ng-container *ngIf="resumeDetails.publications.length>0">
+    <tr>
+      <td style="margin:0px">
+        <strong style="margin:0px">Publications</strong>
+        <hr>
+      </td>
+    </tr>
+
+    <tr *ngFor="let we of resumeDetails.publications">
+      <td>
+        <strong style="margin:0px" *ngIf="!isRedacted('Publications','Title')">{{we.title}} {{we.datePublished}}</strong>
+        <p style="margin:0px" *ngIf="!isRedacted('Publications','Description')">{{we.description}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+  </ng-container>
+
+  <ng-container *ngIf="resumeDetails.links.length>0">
+    <tr>
+      <td>
+        <strong style="margin:0px">Links</strong>
+        <hr>
+      </td>
+    </tr>
+
+    <tr *ngFor="let we of resumeDetails.links">
+      <td>
+        <p style="margin:0px"> <a href="javascript:void(0)" *ngIf="!isRedacted('Links','URL')">{{we.url}}</a></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+  </ng-container>
+</table>

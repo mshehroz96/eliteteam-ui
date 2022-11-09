@@ -1,0 +1,157 @@
+
+<p-blockUI [blocked]="this.blocked">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem"></i>
+</p-blockUI>
+<div class="layout-wrapper layout-navbar-full layout-horizontal layout-without-menu">
+  <div class="layout-container">
+
+          <!-- Navbar -->
+    <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
+      <div class="container-xxl">
+        <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">
+          <a href="" class="app-brand-link gap-2">
+            <span class="app-brand-logo demo">
+              <img src="../assets/img/branding/logo.png" style="height:50px; width:auto;">
+            </span>
+            <span class="app-brand-text demo menu-text fw-bolder"></span>
+          </a>
+
+          <a href="javascript:void(0);" class="layout-menu-toggle menu-link d-xl-none text-large ms-auto">
+            <i class="bx bx-chevron-left bx-sm align-middle"></i>
+          </a>
+        </div>
+
+        <div class="layout-menu-toggle navbar-nav d-xl-none align-items-xl-center me-3 me-xl-0">
+          <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+            <i class="bx bx-menu bx-sm"></i>
+          </a>
+        </div>
+
+        <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+          <ul class="navbar-nav flex-row align-items-center ms-auto">
+
+            <!-- Style Switcher -->
+            <li class="nav-item me-2 me-xl-0">
+              <a class="btn btn-sm btn-outline-secondary" href="#">
+              Login
+              </a>
+            </li>
+            <!--/ Style Switcher -->
+
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+    <!-- / Navbar -->
+    <!-- Layout container -->
+    <div class="layout-page">
+      <!-- Content wrapper -->
+      <div class="content-wrapper">
+
+
+        <!-- Content -->
+        <div class="container-xxl flex-grow-1 container-p-y">
+
+          <div class="row mb-2">
+            <div class="col-md-6">
+              <h4><span class="fw-light"><span id="spnJobName"><i class="fa fa-id-card"></i> {{showcaseTitle}}</span></span>
+
+                <a href="javascript:history.back(1);" class="btn btn-label-primary btn-sm"><i class="bx bx-arrow-back"></i></a>
+              </h4>
+            </div>
+            <div class="col-md-6 text-end">
+              <a routerLink="/auth/registration" class="btn btn-label-secondary" data-bs-toggle="modal" data-bs-target="#divModalUnlockProfile"><i class="fa fa-lock"></i> Schedule
+                Interview</a>
+              <!-- <a routerLink="/auth/registration" class="btn btn-label-primary d-none" data-bs-toggle="modal" data-bs-target=""><i class="fa fa-unlock"></i> Invite
+                Interviewer(s)</a> -->
+              <a routerLink="/auth/registration" class="btn btn-label-secondary" data-bs-toggle="modal" data-bs-target="#divModalUnlockProfile"><i class="fa fa-lock"></i> Send Offer</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-5">
+              <div class="card">
+                <div class="card-body">
+                  <div class="Xmx-auto Xmb-3" style="vertical-align:middle;">
+
+                     <img id="imgCandidatePicture" [src]="this.user.user.avatarFileName | avatar" alt="Candidate Picture" class="w-px-100 rounded-circle">
+                     <span style="display:inline-block;padding-left:10px;vertical-align:middle;"> <span style="font-size:25px;display:inline-block;"><span id="spnCandidateName">{{this.user.user.fullName}}</span></span>
+                      <span style="font-size:15px;display:block;"> <a href="javascript:;" class="btn btn-label-secondary btn-icon btn-sm"><i class="fa fa-share"></i></a> </span>
+                    </span> </div>
+                </div>
+              </div>
+
+              <div id="divQuestionMain" class="card mt-2">
+                <div class="card-body">
+                  <h5>One Way Interview Questions</h5>
+                  <div id="divQuestions" class="list-group">
+                    <div *ngFor="let item of this.user.oneWayInterViewAnswerList">
+                    <a (click)="createVideoUrl(item)" class="list-group-item list-group-item-action">
+                      {{item.questionText}}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+            <div class="col-7">
+              <div class="card" id="divOnewayInterview" *ngIf="this.user.oneWayInterViewAnswerList.length > 0">
+                <div class="card-body">
+                  <h5 id="spnInterviewQuestionText">{{this.questionText}}</h5>
+                  <video controls="" style="width:100%;" id="source">
+                    <source src="{{this.videUrl}}" type="video/webm;codecs=&quot;vp8, vorbis&quot;">
+                  </video>
+                </div>
+              </div>
+              <div id="divAccordianViewResume" class="card accordion-item mb-3" *ngIf="this.lockedResumeFileName">
+                <h2 class="accordion-header" id="headingOne">
+                  <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#divAccordian1"
+                    aria-expanded="false">
+                    <i class="fa fa-file-pdf"></i> &nbsp;View Resume
+                  </button>
+                </h2>
+                      <!-- <app-locked-resume [resumeFileName]="candidateInfo.lockedResumeFileName" ></app-locked-resume> -->
+                      <div id="divAccordian1" class="accordion-collapse collapse" data-bs-parent="#divAccordian">
+                        <div class="accordion-body">
+                            <div class="container" style="height: 600px;">
+                              <ng2-pdfjs-viewer #pdfViewer  [viewBookmark]="false" pagemode="none" zoom="80"></ng2-pdfjs-viewer>
+                            </div>
+                        </div>
+                      </div>
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+        <!--/ Content -->
+
+        <!-- Footer -->
+        <footer class="content-footer footer bg-footer-theme">
+  <div class="container-xxl d-flex flex-column flex-md-row flex-wrap justify-content-between py-2">
+    <div class="mb-2 mb-md-0">
+      ©
+      <script>
+        document.write(new Date().getFullYear());
+      </script>2022
+      <a href="https://theeliteteam.com/" target="_blank" class="footer-link fw-bolder">Elite Team</a>. All
+      rights reserved
+    </div>
+  </div>
+</footer>          <!-- / Footer -->
+
+        <div class="content-backdrop fade"></div>
+                </div>
+      <!--/ Content wrapper -->
+
+    </div>
+
+    <!--/ Layout container -->
+  </div>
+</div>

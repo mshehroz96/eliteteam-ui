@@ -1,0 +1,224 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "job_name": "Database Administrator",
+      "dept": "Technology",
+      "assosiate_title": "Database Administrators",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "IT Related",
+      "screening_categories": ["Availability", "Education", "Workplace type"]
+    },
+    {
+      "id": 2,
+      "job_name": "Interpreter/Translator",
+      "dept": "Community & Human Services",
+      "assosiate_title": "Language Interpreters",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": true,
+      "oneway_interview_template_name": "HR Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Sales", "Workplace type"]
+    },
+    {
+      "id": 3,
+      "job_name": "Interpreter/Translator",
+      "dept": "Media, Arts & Design",
+      "assosiate_title": "Language Translators",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": true,
+      "oneway_interview_template_name": "HR Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Sales", "Workplace type"]
+    },
+    {
+      "id": 4,
+      "job_name": "Sales Representative",
+      "dept": "Sales, Retail & Customer Support",
+      "assosiate_title": "Route Sales Representatives",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "Personality",
+      "screening_categories": ["Availability", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 5,
+      "job_name": "Sales Representative",
+      "dept": "Sales, Retail & Customer Support",
+      "assosiate_title": "Insurance Sales Representatives",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "Personality",
+      "screening_categories": ["Availability", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 6,
+      "job_name": "Sales Representative",
+      "dept": "Sales, Retail & Customer Support",
+      "assosiate_title": "Sales Occupations",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "Personality",
+      "screening_categories": ["Availability", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 7,
+      "job_name": "Sales Representative",
+      "dept": "Sales, Retail & Customer Support",
+      "assosiate_title": "Sales Lead Generators & Telemarketers",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "Personality",
+      "screening_categories": ["Availability", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 8,
+      "job_name": "Office Manager",
+      "dept": "Administrative & Business Operations",
+      "assosiate_title": "Administrative Assistants & Receptionists",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "HR Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 9,
+      "job_name": "Office Manager",
+      "dept": "Healthcare",
+      "assosiate_title": "Practice Managers & Administrators",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "HR Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 10,
+      "job_name": "Office Manager",
+      "dept": "Administrative & Business Operations",
+      "assosiate_title": "Office Managers",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "HR Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 11,
+      "job_name": "Accountant",
+      "dept": "Finance & Accounting",
+      "assosiate_title": "Accounting Support Occupations",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "HR Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 10,
+      "job_name": "Accountant",
+      "dept": "Finance & Accounting",
+      "assosiate_title": "Accounts Payable Specialists",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "HR Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 10,
+      "job_name": "Accountant",
+      "dept": "Finance & Accounting",
+      "assosiate_title": "Accountants",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "HR Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 10,
+      "job_name": "Accountant",
+      "dept": "Finance & Accounting",
+      "assosiate_title": "Cost Accountants",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "HR Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 10,
+      "job_name": "Accountant",
+      "dept": "Finance & Accounting",
+      "assosiate_title": "Controllers",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "HR Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 10,
+      "job_name": "Document Specialist",
+      "dept": "Administrative & Business Operations",
+      "assosiate_title": "Data Entry Specialists",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "HR Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 10,
+      "job_name": "Document Specialist",
+      "dept": "Administrative & Business Operations",
+      "assosiate_title": "Document Controllers",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "HR Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 10,
+      "job_name": "Researcher",
+      "dept": "Science & Research",
+      "assosiate_title": "Health & Medical Researchers",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": true,
+      "oneway_interview_template_name": "HR Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 10,
+      "job_name": "Researcher",
+      "dept": "Marketing, Advertising & Public Relations",
+      "assosiate_title": "Market Analysts & Researchers",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": true,
+      "oneway_interview_template_name": "HR Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 10,
+      "job_name": "Researcher",
+      "dept": "Science & Research",
+      "assosiate_title": "Public Health & Health Policy Researchers",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": true,
+      "oneway_interview_template_name": "HR Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 12,
+      "job_name": "Network Engineer",
+      "dept": "Technology",
+      "assosiate_title": "Network Engineers & Analysts",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": false,
+      "oneway_interview_template_name": "IT Related",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Workplace type"]
+    },
+    {
+      "id": 13,
+      "job_name": "Recruitment Manager",
+      "dept": "Administrative & Business Operations",
+      "assosiate_title": "Recruiters & Staffing Coordinators",
+      "description": "<h6>Responsibilities</h6><ol><li>Take care of day to day activities</li><li>Ensure there is daily backup taken</li></ol><h6>Skills</h6><ol><li>Proven skill in handling day to day jobs</li><li>Solid communication and interpersonal skills</li><li>Ability to handle pressure</li></ol>",
+      "interview_question_template_available": true,
+      "oneway_interview_template_name": "Leadership",
+      "screening_categories": ["Availability", "Education", "Skills & knowledge", "Workplace type"]
+    }
+  ]
+}

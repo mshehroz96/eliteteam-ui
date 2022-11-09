@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="pb-2" *ngIf="nodataMessage">
+      <div class="alert alert-primary" role="alert">No jobs yet open</div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <app-chat-users (usersLoaded)="usersLoaded($event)"></app-chat-users>
+  </div>
+  <div class="col-md-6">
+    <div class="card" *ngIf="joined">
+      <div class="card-body">
+        <app-chat-messages current="app-chat"></app-chat-messages>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3" *ngIf="joined">
+    <div id="divClient" class="card mb-2">
+      <div class="card-body position-relative">
+        <div class="" style="vertical-align:middle;">
+          <img src="{{chatService.requisition.companyLogo}}" alt="Client Logo" class="w-px-50 rounded-circle">
+          <span style="display:inline-block;padding-left:10px;vertical-align:middle;">
+            <span style="font-size:14px;display:inline-block;"
+              class="small">{{chatService.requisition.companyName}}</span>
+            <span style="font-size:14px;display:block;" class="">New York</span>
+          </span>
+          <a href="#" target="_blank" class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-2" *ngIf="joined">
+      <div class="card-body position-relative">
+        <div class="" style="vertical-align:middle;">
+          <i></i>
+          <span style="display:inline-block;padding-left:10px;vertical-align:middle;">
+            <span style="font-size:14px;display:inline-block;"
+              class="proxy_job_name">{{chatService.requisition.jobTitle}}</span>
+            <span style="font-size:14px;display:block;" class="proxy_job_type"> </span>
+          </span>
+          <a href="javascript:void(0)" target="_blank" class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+    <div class="card" *ngIf="joined">
+      <div class="card-body position-relative">
+        <div class="" style="vertical-align:middle;">
+          <img *ngIf="chatService.joinedUser.avatarFileName" onerror="this.src='https://placeimg.com/140/140/any';"
+            src="{{chatService.joinedUser.avatarFileName | avatar }}"
+            class="w-px-50 rounded-circle proxy_applicant_picture">
+          <span style="display:inline-block;padding-left:10px;vertical-align:middle;">
+            <span style="font-size:14px;display:inline-block; font-weight: bold;"
+              class="proxy_applicant_name small">{{chatService.joinedUser.fullName}}</span>
+            <span style="font-size:14px;display:block;" class="proxy_applicant_type"> {{chatService.joinedUser.userType}}
+            </span>
+            <span style="font-size:14px;display:block;"><span class="badge proxy_application_status"></span></span>
+          </span>
+          <a href="#" target="_blank" class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

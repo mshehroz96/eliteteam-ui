@@ -1,0 +1,64 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "full_name": "Norman Ingham",
+      "role": "HR Manager",
+      "username": "hredmore1",
+      "email": "ningham@mycompany.com",
+      "current_plan": "Team",
+      "billing": "Manual - Paypal",
+      "status": 3,
+      "recruiter_manager_id": 0,
+      "avatar": "11.png"
+    },
+    {
+      "id": 3,
+      "full_name": "Kimberly Smith",
+      "role": "HR Assistant",
+      "username": "msicely2",
+      "email": "ksmith@mycompany.com",
+      "current_plan": "Enterprise",
+      "billing": "Auto Debit",
+      "status": 2,
+      "recruiter_manager_id": 0,
+      "avatar": "4.png"
+    },
+    {
+      "id": 4,
+      "full_name": "Nigel Hawthorne",
+      "role": "Recruitment Assistant",
+      "username": "crisby3",
+      "email": "nhawthorne@mycompany.com",
+      "current_plan": "Team",
+      "billing": "Manual - Credit Card",
+      "status": 3,
+      "recruiter_manager_id": 0,
+      "avatar": "6.png"
+    },
+    {
+      "id": 5,
+      "full_name": "Daniel Newfound",
+      "role": "Admin Assistant",
+      "username": "crisby3",
+      "email": "dnewfound@mycompany.com",
+      "current_plan": "Team",
+      "billing": "Manual - Credit Card",
+      "status": 1,
+      "recruiter_manager_id": 0,
+      "avatar": "7.png"
+    },
+    {
+      "id": 5,
+      "full_name": "Julie Newfound",
+      "role": "Recruitment Manager - Sales",
+      "username": "crisby3",
+      "email": "jnewfound@mycompany.com",
+      "current_plan": "Team",
+      "billing": "Manual - Credit Card",
+      "status": 1,
+      "recruiter_manager_id": 0,
+      "avatar": "10.png"
+    }
+  ]
+}

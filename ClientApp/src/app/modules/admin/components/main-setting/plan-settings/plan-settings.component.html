@@ -1,0 +1,68 @@
+<p-table #dtJobTitles [value]="plans" [lazy]="true" (onLazyLoad)="getAllPlans($event)" responsiveLayout="scroll"
+  dataKey="planID" styleClass="p-datatable-strip" [paginator]="true" [rows]="10" [totalRecords]="totalRecords"
+  [loading]="loading" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50,100]"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [globalFilterFields]="['planID']">
+  <ng-template pTemplate="caption">
+    <div class="row">
+      <div class="col-9">
+        <form action="#">
+          <label class="rightSpacing" style="float: right">
+            <input pInputText type="text" name="globalFilter" class="form-control" [(ngModel)]="searchFilter"
+              (ngModelChange)="getAllPlans({})" placeholder="Search keyword" />
+          </label>
+        </form>
+      </div>
+      <div class="col-3">
+        <button (click)="openSaveUpdatePlanModal()" class="dt-button create-new btn btn-primary" tabindex="0" aria-controls="tabJobTitles" type="button"><span><i class="bx bx-plus me-sm-2"></i> <span class="d-none d-sm-inline-block">Add New Plan</span></span></button>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="name">Plan Name<p-sortIcon field="name"></p-sortIcon>
+      </th>
+      <th pSortableColumn="startDate">Start Date <p-sortIcon field="startDate"></p-sortIcon>
+      </th>
+      <th pSortableColumn="endTime">End Date<p-sortIcon field="endTime"></p-sortIcon>
+      </th>
+      <th>Status
+      </th>
+      <th>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-item>
+    <tr>
+      <td>
+        {{item.name}}
+      </td>
+      <td >
+        {{item.startDate |  date : 'dd/MM/yyyy'}}
+      </td>
+      <td>
+        {{item.endTime |  date : 'dd/MM/yyyy'}}
+      </td>
+      <td>
+        <span *ngIf="item.recordStatusLIID == 1" class="badge bg-label-success">{{
+          item.recordStatusLIID | recordStatus
+          }}
+        </span>
+        <span *ngIf="item.recordStatusLIID != 1" class="badge bg-label-danger">{{
+          item.recordStatusLIID | recordStatus
+          }}</span>
+      </td>
+      <td>
+        <span  class="float-end ng-star-inserted">
+          <button (click)="editPlan(item)"  ptooltip="Edit Plan"  type="button" class="p-element btn btn-sm rounded-pill btn-icon btn-label-secondary" >
+            <span  class="bx bxs-pencil"></span>
+          </button>&nbsp; 
+            <button  (click)="deletePlan(item)" ptooltip="Delete Plan"  type="button" class="p-element btn btn-sm rounded-pill btn-icon btn-label-danger proxy_delete_question" >
+              <span class="bx bx-x"></span>
+            </button>
+        </span>
+      </td>
+    </tr>
+  </ng-template>
+
+</p-table>

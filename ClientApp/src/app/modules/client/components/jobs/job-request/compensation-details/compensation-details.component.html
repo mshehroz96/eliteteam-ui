@@ -1,0 +1,59 @@
+<p-card>
+    <div class="mb-3">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="txbMinimum" class="">Minimum</label>
+                <input type="number" [(ngModel)]="requisitionRequest.salaryMinimum"class="form-control" placeholder="$" />
+            </div>
+            <div class="col-md-4">
+                <label for="txbMaximum" class="">Maximum</label>
+                <input type="number" [(ngModel)]="requisitionRequest.salaryMaximum" class="form-control" placeholder="$" />
+            </div>
+            <div class="col-md-4">
+                <label for="txbMaximum" class="">Frequency</label>
+                <p-dropdown [options]="salaryFrequencies" [style]="{'width':'100%'}" 
+                optionLabel="displayText"[(ngModel)]="requisitionRequest.payFrequency">
+                </p-dropdown>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        Are there any forms of supplemental pay offered?
+        <p-multiSelect [options]="supplementPays" display="chip" [style]="{'width':'100%'}" 
+        optionLabel="displayText"  [(ngModel)]="requisitionRequest.supplementPay">
+        </p-multiSelect>
+    </div>
+    <div class="mb-3" *ngIf="isOtherSupplement()">
+        <label>
+            Tell us more about the supplemental pay offered
+        </label>
+        <textarea class="form-control" [(ngModel)]="this.requisitionRequest.supplementalPayMoreInfo"></textarea>
+    </div>
+    <div class="mb-3">
+        What benefits do you offer?
+    <p-multiSelect [options]="benefits" display="chip" [style]="{'width':'100%'}" optionLabel="displayText" 
+    [(ngModel)]="requisitionRequest.benefits">
+    </p-multiSelect>
+    </div>
+    <div  class="mb-3" >
+        <label for="ddlBenefitsGracePeriod">
+            What's the grace period to qualify for benefits?
+        </label>
+        <p-dropdown [options]="gracePeriods" [style]="{'width':'100%'}" 
+        optionLabel="displayText" [(ngModel)]="requisitionRequest.gracePeriod">
+        </p-dropdown>
+    </div>
+    <ng-template pTemplate="footer">
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-primary btn-prev" (click)="prevPage()">
+                <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
+                <span class="d-none d-sm-inline-block align-middle">Previous</span>
+            </button>
+            <button class="btn btn-primary btn-next" (click)="nextPage()">
+                <span class="d-none d-sm-inline-block align-middle me-sm-1">Next</span>
+                <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
+            </button>
+        </div>
+    </ng-template>
+</p-card>

@@ -1,0 +1,62 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "project_img": "offer_company_logo.png",
+      "project_leader": "My Company",
+      "project_name": "Registered Nurse",
+      "team": [
+        "1.png",
+        "3.png",
+        "4.png"
+      ],
+      "date": "09 Feb 2021",
+      "status": "89%",
+      
+      "date_submitted": "03/15/2022",
+      "date_posted": "03/17/2022",
+      "client_jobs_count": 2,
+      "candidates_purchased_from_other_jobs": 2,
+      "candidates_presented_from_other_jobs": 4,
+      "job_status": "In Progress",
+      "time_from_post_to_live": 54,
+      "applicant_count": 2,
+      "candidate_count": 4,
+      "candidates_presented_count": 4,
+      "purchase_count": 3,
+      "recruiter_name": "Jack Fellon",
+      "client_is_paid": "Yes",
+      "plan": "Platinum",      
+      "amount_spent": 2000,
+      "x_time_from_submission": 44,
+      "x_applicant_count_old": 3,
+      "x_candidate_count_old": 3      
+    },
+    {
+      "id": 2,
+      "project_img": "offer_company_logo.png",
+      "project_leader": "My Company",
+      "project_name": "Network Engineer",
+      "team": [
+        "2.png",
+        "6.png",
+        "5.png",
+        "3.png"
+      ],
+      "date": "20 Mar 2021",
+      "status": "72%"
+    },
+    {
+      "id": 3,
+      "project_img": "company2_logo.jpg",
+      "project_leader": "ACME Corp",
+      "project_name": "Systems Analyst",
+      "team": [
+        "11.png",
+        "10.png"
+      ],
+      "date": "03 Jan 2021",
+      "status": "45%"
+    }   
+  ]
+}

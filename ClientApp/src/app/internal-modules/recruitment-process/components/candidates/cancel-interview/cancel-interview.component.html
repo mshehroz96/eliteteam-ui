@@ -1,0 +1,9 @@
+<div class="mb-3">
+<label>Reason for cancellation:</label>
+<textarea class="form-control" [(ngModel)]="reason"></textarea>
+</div>
+<div class="float-right">
+  <button  type="button" (click)="cancelInterView()"
+    class="btn btn-primary mr-1">Cancel Interview</button>
+  <button type="button" class="btn btn-label-secondary" (click)="closeModel()">Close</button>
+</div>

@@ -1,0 +1,6 @@
+<p-card header="One-way Interview">
+    <div *ngIf="defaultTemplate.oneWayInterviewTemplateId>0" class="alert alert-primary" role="alert"><i class="bx bxs-info-square"></i> The <b>{{defaultTemplate.title}}</b> video interview template is already selected because it's linked with the current job title
+        <b>{{this.requisitionRequestService.requisitionRequest.jobTitle.title}}</b>.
+    </div>
+   <app-one-way-interview-templates (templateChanged)="templateChanged($event)" [defaultTemplateId]="this.requisitionRequestService.requisitionRequest.jobTitle.oneWayInterviewTemplateId" [enableQuestionSetting]="true" [templates]="this.templates"></app-one-way-interview-templates>
+</p-card>

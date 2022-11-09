@@ -1,0 +1,65 @@
+<div class="modal-body" [appIsLoading]="loadingService.isLoading(this)">
+  <div class="row gy-3 mx-0">
+  <p class="mb-4">
+    Please review the amount that will be deducted from the default payment method configured by your company's account manager.
+  </p>
+  <div class="border-primary d-flex border rounded p-2" *ngFor="let item of this.services">
+    <div class="avatar flex-shrink-0 me-3">
+      <img src="../assets/img/icons/unicons/briefcase.png" alt="User" class="rounded">
+    </div>
+    <div class="gap-2 d-flex flex-wrap justify-content-between align-items-center w-100">
+      <div class="me-2">
+        <p class="mb-0">{{item.title}}</p>
+        <span id="spnPayDetails" class="small">{{item.description}}</span>
+      </div>
+      <div class="user-progress">
+        <div class="d-flex justify-content-center">
+          <sup class="mt-3 me-1 mb-0">$</sup>
+          <h5 id="h3PayAmount" class="fw-bold mb-0">{{item.amount}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="border-primary d-flex">
+    <div class="gap-2 d-flex flex-wrap justify-content-between align-items-center w-100">
+      <div class="me-2">
+        &nbsp;
+      </div>
+      <div class="user-progress">
+        <div class="d-flex justify-content-center">
+          <h5 id="h3PayAmount" class="fw-bold mb-0">Total Amount:</h5>
+            <h5 id="h3PayAmount" class="fw-bold mb-0">&nbsp; $ {{ this.totalAmount }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="mb-4 text-danger" *ngIf="this.paymentMethodMessage">{{paymentMethodMessage}}</h4>
+
+  <h6 class="mb-4" *ngIf="!this.paymentMethodMessage">Payment Details</h6>
+  <div class="d-flex mb-4" *ngIf="this.paymentMethod != undefined">
+    <div class="me-3">
+      <img src="../assets/img/icons/payments/{{paymentMethod.cardType}}.png" alt="Visa" height="30" data-app-light-img="icons/payments/visa-light.png" data-app-dark-img="icons/payments/visa-dark.png">
+    </div>
+    <div class="gap-2 d-flex flex-wrap justify-content-between w-100">
+      <div class="d-flex flex-column">
+        <h6 class="mb-0">{{this.paymentMethod.name}}</h6>
+        <small class="text-muted">xxxx xxxx xxxx {{this.paymentMethod.cardNo}}</small>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 text-center" *ngIf="!this.paymentMethodMessage">
+    <button id="btnPay1" type="submit" class="btn btn-primary d-grid w-100" (click)="checkOut()">Pay</button>
+    <p class="mt-1">
+      <i class='bx bx-info-circle'></i> Credit card is only charged upon successfull interview scheduling
+    </p>
+  </div>
+
+
+
+
+
+
+</div>
+<div class="modal-footer">
+</div>

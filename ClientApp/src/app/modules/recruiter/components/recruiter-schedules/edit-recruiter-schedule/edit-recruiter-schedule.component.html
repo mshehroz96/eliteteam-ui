@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="text-nowrap">
+            From Date
+          </th>
+          <th class="text-nowrap">
+            To Date
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-nowrap">
+            <p-calendar  [disabled]="disableAll" [timeOnly]="true"  style="width: 44%;" hourFormat="12" inputId="timeonly"></p-calendar>
+          </td>
+          <td class="text-nowrap">
+            <p-calendar [disabled]="disableAll" [timeOnly]="true"  style="width: 44%;" hourFormat="12" inputId="timeonly"></p-calendar>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <button type="button" (click)="enableEditing()" class="btn btn-secondary">Change</button>
+    &nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-primary">Update</button>
+  </div>
+</div>

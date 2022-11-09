@@ -1,0 +1,62 @@
+<form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+    <div class="row mb-2 mb-md-0">
+        <div class="col-md-12 mb-4">
+
+            <label class="form-label d-block">
+                How would you rate your overall experience?</label>
+            <p-rating formControlName="rating" [cancel]="false"></p-rating>
+
+        </div>
+    </div>
+
+    <div class="row mb-2 mb-md-0">
+        <div class="col-md-12 mb-4">
+            <label class="form-label d-block">How many candidates did you hire?</label>
+            <select class="form-control" formControlName="noofHires">
+                <option value="0" selected>None</option>
+                <option value="1">1 Candidate</option>
+                <option value="2">2 Candidates</option>
+                <option value="3">3 Candidates</option>
+                <option value="4">4 Candidates</option>
+                <option value="5">5 Candidates</option>
+            </select>
+            <div *ngIf="submitted && f.successfullyCompleted.errors" class="invalid-feedback">
+                <div *ngIf="f.successfullyCompleted.errors.required">Required</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-2 mb-md-0">
+        <div class="col-md-12 mb-4">
+            <label class="form-label d-block">Do you consider this job as successfully
+                completed?</label>
+            <select class="form-control" formControlName="successfullyCompleted">
+                <option value="1" selected>Yes</option>
+                <option value="0">No</option>
+            </select>
+            <div *ngIf="submitted && f.successfullyCompleted.errors" class="invalid-feedback">
+                <div *ngIf="f.successfullyCompleted.errors.required">Required</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-2 mb-md-0">
+        <div class="col-md-12 mb-4">
+            <label class="form-label d-block">Remarks</label>
+            <textarea formControlName="remarks" class="form-control" formControlName="remarks"
+             rows="3"
+                placeholder="Any additional comments you want to mention related to your experience for this job."></textarea>
+            <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
+                <div *ngIf="f.remarks.errors.required">Remarks is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="flex text-center">
+        <button type="submit" [disabled]="!feedbackForm.valid" class="btn btn-primary">
+            Save
+        </button>
+        <button (click)="closeModal()" type="button" class="btn btn-light-primary fw-bolder mx-2">
+            Cancel
+        </button>
+    </div>
+</form>

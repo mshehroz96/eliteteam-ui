@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "job_title": "Database Administrator",
+      "client_name": "My Company",
+      "client_logo": "offer_company_logo.png",
+      "date_posted": "03/20/2022",
+      "date_submitted": "03/15/2022",
+      "time_pending": "7 days, 15 hours",
+      "time_css": "danger",
+      "client_jobs_count": 2,
+      "candidates_purchased_from_other_jobs": 2,
+      "candidates_presented_from_other_jobs": 4,
+      "job_status": "Cancelled",
+      "time_from_post_to_live": 54,
+      "applicant_count": 12,
+      "candidate_count": 8,
+      "candidates_presented_count": 4,
+      "purchase_count": 3,
+      "recruiter_name": "Jack Fellon",
+      "plan": "Platinum",
+      "post_type": "Interview",
+      "interview_slots_purchased": 10,
+      "recruiter_commission": 100
+    }
+  ]
+}

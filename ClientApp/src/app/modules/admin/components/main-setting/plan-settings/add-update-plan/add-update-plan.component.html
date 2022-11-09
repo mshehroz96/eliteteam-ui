@@ -1,0 +1,57 @@
+
+<form #form="ngForm" (ngSubmit)="addUpdatePlan()">
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label class="form-label d-block">Plan Name</label>
+        <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="plan.name" required/>
+          <div *ngIf="name.invalid && (name.dirty || name.touched)"
+              class="invalid-feedback">
+              <div *ngIf="name.errors?.required">
+                  Required
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label class="form-label d-block">Start Date</label>
+        <p-calendar appendTo="body" name="startDate" [style]="{'width':'100%'}" [required]="true" #startDate="ngModel" [(ngModel)]="plan.startDate"
+                              dateFormat="mm/dd/yy" dataType="date">
+          </p-calendar>
+          <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)"
+              class="invalid-feedback">
+              <div *ngIf="startDate.errors?.required">
+                  Required
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label class="form-label d-block">End Date</label>
+        <p-calendar appendTo="body" name="endTime" [style]="{'width':'100%'}" [required]="true" #endTime="ngModel" [(ngModel)]="plan.endTime"
+                              dateFormat="mm/dd/yy" dataType="date">
+          </p-calendar>
+          <div *ngIf="endTime.invalid && (endTime.dirty || endTime.touched)"
+              class="invalid-feedback">
+              <div *ngIf="endTime.errors?.required">
+                  Required
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!form.valid"
+    >
+      Save Changes
+    </button>
+    <button (click)="closeModal()" type="button" class="btn btn-label-secondary">
+      Cancel
+    </button>
+  </div>
+</form>
