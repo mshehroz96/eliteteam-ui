@@ -66,6 +66,7 @@ import { DefaultOWIAnswersComponent } from './default-owi-answers/default-owi-an
 import { LockedResumeComponent } from './locked-resume/locked-resume.component';
 import { UnlockedResumeComponent } from './unlocked-resume/unlocked-resume.component';
 import { PaymentComponent } from './payment/payment.component';
+import { SharedSettingsPersonal2Component } from './shared-settings-personal2/shared-settings-personal2.component';
 
 
 @NgModule({
@@ -103,7 +104,8 @@ import { PaymentComponent } from './payment/payment.component';
     DefaultOWIAnswersComponent,
     LockedResumeComponent,
     UnlockedResumeComponent,
-    PaymentComponent
+    PaymentComponent,
+    SharedSettingsPersonal2Component
   ],
   imports: [
     CommonModule,
@@ -165,7 +167,8 @@ import { PaymentComponent } from './payment/payment.component';
     DefaultOWIAnswersComponent,
     LockedResumeComponent,
     UnlockedResumeComponent,
-    PaymentComponent
+    PaymentComponent,
+    SharedSettingsPersonal2Component
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })

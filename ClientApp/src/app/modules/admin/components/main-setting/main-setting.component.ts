@@ -34,6 +34,13 @@ export class MainSettingComponent implements OnInit {
       RouteName: 'account',
       Icon: 'bx bx-lock-alt me-1',
     });
+    this.menuList.push(
+      {
+          Name: 'Account2',
+          RouteName : 'account2',
+          Icon: 'bx bx-lock-alt me-1',
+      }
+    );
     this.menuList.push({
       Name: 'Security',
       RouteName: 'security',
@@ -53,6 +60,11 @@ export class MainSettingComponent implements OnInit {
       Name: 'Lists',
       RouteName: 'lists',
       Icon: 'bx bx-list-ul me-1',
+    });
+    this.menuList.push({
+      Name: 'list2', 
+      RouteName: 'list2',
+      Icon: 'bx bx-cog me-1',
     });
     this.menuList.push({
       Name: 'Thresholds',

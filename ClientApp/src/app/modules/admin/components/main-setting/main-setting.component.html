@@ -15,6 +15,8 @@
   </ul>
   <div>
     <shared-settings-personal *ngIf="tabType == 'account'"></shared-settings-personal>
+    <shared-settings-personal2 *ngIf="tabType == 'account2'"></shared-settings-personal2>
+    <!-- <shared-settings-personal2 *ngIf = "tabType = 'account2'" ></shared-settings-personal2> -->
     <app-security *ngIf="tabType == 'security'"></app-security>
     <app-notification-manage
       [SelfSetting]="selfSetting"
@@ -23,6 +25,7 @@
     ></app-notification-manage>
     <app-pricing *ngIf="tabType == 'pricing'"></app-pricing>
     <lists *ngIf="tabType == 'lists'"></lists>
+    <list2 *ngIf = "tabType == 'list2'" ></list2>
     <app-threshold-settings *ngIf="tabType == 'threshod-settings'"></app-threshold-settings>
     <app-communication-templates *ngIf="tabType == 'communication-templates'"></app-communication-templates>
     <app-plan-settings *ngIf="tabType == 'plans'"></app-plan-settings>

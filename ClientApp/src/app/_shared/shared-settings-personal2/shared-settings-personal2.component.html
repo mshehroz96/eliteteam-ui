@@ -1,0 +1,59 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Personal Details</h3>
+                </div>
+                <div class="card-body">
+                    <!-- <form #myForm="ngForm" > -->
+                        <!-- {{this.userInfo|json}} -->
+                        <!-- <div class="form-group">
+                            <select name="title" id="title">
+                                <option [value]="item.value" *ngFor="let item in titles">{{item.displayText}}</option>
+                            </select>
+                        </div> -->
+                        <!-- <select name="title" id="title" [(ngModel)]="userInfo.title">
+                            <option *ngFor="let item of titles" [value]="item.value">{{ item.displayText }}</option>
+                          </select> -->
+                          
+                          <p-dropdown 
+                          [options]="titles" 
+                          [(ngModel)]="userInfo.titleLIID" 
+                          optionLabel="displayText"
+                          optionValue="value" 
+                          placeholder="Select a Title"></p-dropdown>
+                          
+
+
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text"  [(ngModel)] = "userInfo.firstName" name = "" class="form-control"  id="firstName" placeholder="Enter your first name">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" [(ngModel)] = "userInfo.lastName" class="form-control"  id="lastName" placeholder="Enter your last name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" [(ngModel)] = "userInfo.email" class="form-control"  id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" [(ngModel)] = "userInfo.landLineNo" class="form-control"  id="phone" placeholder="Enter your phone number">
+                        </div> 
+                        <div class="form-group">
+                            <label for="phone">Mobile No</label>
+                            <input type="text" [(ngModel)] = "userInfo.mobileNo" class="form-control"  id="mobileNo" placeholder="Enter your mobile number">
+                        </div>  
+                        <div class="form-group">
+                            <label for="phone">Extension</label>
+                            <input type="text" [(ngModel)] = "userInfo.extensionNo" class="form-control"  id="extention" placeholder="Enter your ex number">
+                        </div>
+                        <button (click) = 'saveUserDetail()'  class="btn btn-primary">Save Changes</button>
+                    <!-- </form> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

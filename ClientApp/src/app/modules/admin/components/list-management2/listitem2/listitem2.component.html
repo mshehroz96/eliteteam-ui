@@ -1,0 +1,16 @@
+<div>List Item component</div>
+<div class="col-md-9">
+    <div class="card">
+      <div class="card-body">
+        <!-- <h5>{{listItems.length}} Items for {{selectedList.title}}</h5> -->
+        <div class="scrollable-container" style="max-height: 200px; overflow-y: auto;">
+          <div *ngFor="let item of listItems">
+            {{item.listItemId}} - {{item.title}} <button (click)="onAddEdit(item)" >Edit</button> <button (click)="onDelete(item)" >Delete</button>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary" (click)="onAddEdit(null)">Add Item</button> 
+      </div>
+    </div>
+  </div>

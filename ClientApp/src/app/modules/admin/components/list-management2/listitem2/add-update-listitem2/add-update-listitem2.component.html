@@ -1,0 +1,30 @@
+
+    <div class="content">
+        <div class="header">
+            <h2>{{action}} List Item</h2>
+        </div>
+        <div class="body">
+            <form>
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" [(ngModel)] = "listItem.title" name="title" >
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" [(ngModel)] = "listItem.description" name="description">
+                </div>
+                <div class="form-group">
+                    <label for="orderNo">Order No:</label>
+                    <input type="text" id="orderNo" [(ngModel)] = "listItem.orderNo" name="orderNo">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" (click) = "addListItem()">Save</button>
+                    <button type="button" class="btn btn-secondary" (click) = "onCancel()" >Cancel</button>
+                </div>
+            </form>
+        </div>
+
+
+
+
+

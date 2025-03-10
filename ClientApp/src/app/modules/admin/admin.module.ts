@@ -38,6 +38,11 @@ import { AddUpdateOwitComponent } from './components/main-setting/owit-settings/
 import { OfferLetterTemplatesSettingsComponent } from './components/main-setting/offer-letter-templates-settings/offer-letter-templates-settings.component';
 import { AddUpdateOfferLetterTemplateComponent } from './components/main-setting/offer-letter-templates-settings/add-update-offer-letter-template/add-update-offer-letter-template.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { SharedSettingsPersonal2Component } from 'src/app/_shared/shared-settings-personal2/shared-settings-personal2.component';
+import { List2Component } from './components/list-management2/list2/list2.component';
+import { Listitem2Component } from './components/list-management2/listitem2/listitem2.component';
+import { AddUpdateList2Component } from './components/list-management2/list2/add-update-list2/add-update-list2.component';
+import { AddUpdateListitem2Component } from './components/list-management2/listitem2/add-update-listitem2/add-update-listitem2.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +66,11 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     OwitSettingsComponent,
     AddUpdateOwitComponent,
     OfferLetterTemplatesSettingsComponent,
-    AddUpdateOfferLetterTemplateComponent
+    AddUpdateOfferLetterTemplateComponent,
+    List2Component,
+    Listitem2Component,
+    AddUpdateList2Component,
+    AddUpdateListitem2Component
   ],
   imports: [
     CommonModule,
@@ -82,6 +91,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     DropdownModule,
 		ListboxModule,
     AutoCompleteModule
+    // SharedSettingsPersonal2Component
   ],
 
 })
