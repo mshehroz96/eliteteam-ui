@@ -1,5 +1,5 @@
 export const environment = {
    production: true,
-   webApiUrl:'https://instaployapi-gateway.azurewebsites.net/',
-   chatApiUrl: 'https://instaployapi-communication.azurewebsites.net/',
+   webApiUrl:'https://tracker-evolution-ron-name.trycloudflare.com/',
+   chatApiUrl: 'https://researcher-mature-motorcycles-affiliated.trycloudflare.com/',
 };
