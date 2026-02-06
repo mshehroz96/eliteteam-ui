@@ -13,6 +13,8 @@ import { RecruiterShowcaseComponent } from './components/recruiter-showcase/recr
 import { RecruiterShowcaseViewComponent } from './components/recruiter-showcase-view/recruiter-showcase-view.component';
 import { CandidateProfileComponent } from './components/candidatesdb/components/candidate-profile/candidate-profile.component';
 import { JoinLiveInterviewComponent } from './components/join-live-interview/join-live-interview.component';
+import { JobsActive2Component } from './components/jobs-active2/jobs-active2.component';
+import { JobDetails2Component } from './components/jobs-active2/job-details2/job-details2.component';
 const routes: Routes = [
   {
     path: '',
@@ -59,9 +61,19 @@ const routes: Routes = [
         pathMatch: "full"
       },
       {
+        path : 'jobs-active2',
+        component : JobsActive2Component,
+        pathMatch : 'full'
+      },
+      {
         path: 'jobs-active/job-details/:id',
         component: JobDetailsComponent,
         pathMatch: "full"
+      },
+      {
+         path : 'job-details2/:id',
+         component : JobDetails2Component,
+        pathMatch : 'full'
       },
       {
         path: 'messages',

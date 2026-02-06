@@ -1,59 +1,66 @@
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Personal Details</h3>
-                </div>
-                <div class="card-body">
-                    <!-- <form #myForm="ngForm" > -->
-                        <!-- {{this.userInfo|json}} -->
-                        <!-- <div class="form-group">
-                            <select name="title" id="title">
-                                <option [value]="item.value" *ngFor="let item in titles">{{item.displayText}}</option>
-                            </select>
-                        </div> -->
-                        <!-- <select name="title" id="title" [(ngModel)]="userInfo.title">
-                            <option *ngFor="let item of titles" [value]="item.value">{{ item.displayText }}</option>
-                          </select> -->
-                          
-                          <p-dropdown 
-                          [options]="titles" 
-                          [(ngModel)]="userInfo.titleLIID" 
-                          optionLabel="displayText"
-                          optionValue="value" 
-                          placeholder="Select a Title"></p-dropdown>
-                          
-
-
+<div class="card">
+     <div class="card-header">
+        <h4 class="card-title">Personal Details</h4>  
+     </div>
+     <div class="card-body">
+        <div class="row row-bordered">
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-md-2">
                         <div class="form-group">
-                            <label for="firstName">First Name</label>
-                            <input type="text"  [(ngModel)] = "userInfo.firstName" name = "" class="form-control"  id="firstName" placeholder="Enter your first name">
+                            <label for="" class="form-label">Title</label>
+                            <p-dropdown appendTo = "body" [options]="titles" [(ngModel)]="selectedTitle" optionLabel="displayText"></p-dropdown>
                         </div>
+                    </div>
+                    <!-- <div class="col-md-2 mb-3">
+                        <label for="ddlAccountTitle" class="form-label">Title</label>
+                        <p-dropdown appendTo="body"  [options]="titles" [(ngModel)]="selectedTitle" optionValue="value"
+                          optionLabel="displayText" [virtualScroll]="true" virtualScrollItemSize="30" ></p-dropdown>
+                      </div> -->
+                    <div class="col-md-5">
                         <div class="form-group">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" [(ngModel)] = "userInfo.lastName" class="form-control"  id="lastName" placeholder="Enter your last name">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" pInputText [(ngModel)]="userInfo.firstName" class="form-control" name="firstName" id="firstName" placeholder="Enter your first name">
                         </div>
+                    </div>
+                    <div class="col-md-5">
                         <div class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" [(ngModel)] = "userInfo.email" class="form-control"  id="email" placeholder="Enter your email">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" pInputText [(ngModel)]="userInfo.lastName" class="form-control" name="lastName" id="lastName" placeholder="Enter your last name">
                         </div>
+                    </div> 
+                    <div class="col-3">
                         <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="text" [(ngModel)] = "userInfo.landLineNo" class="form-control"  id="phone" placeholder="Enter your phone number">
-                        </div> 
-                        <div class="form-group">
-                            <label for="phone">Mobile No</label>
-                            <input type="text" [(ngModel)] = "userInfo.mobileNo" class="form-control"  id="mobileNo" placeholder="Enter your mobile number">
-                        </div>  
-                        <div class="form-group">
-                            <label for="phone">Extension</label>
-                            <input type="text" [(ngModel)] = "userInfo.extensionNo" class="form-control"  id="extention" placeholder="Enter your ex number">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" pInputText [(ngModel)]="userInfo.email" class="form-control" name="email" id="email" placeholder="email address">
                         </div>
-                        <button (click) = 'saveUserDetail()'  class="btn btn-primary">Save Changes</button>
-                    <!-- </form> -->
+                    </div>
+                     <div class="col-3">
+                        <div class="form-group">
+                            <label for="mobileNo" class="form-label">Mobile Number</label>
+                            <input type="text" pInputText [(ngModel)]="userInfo.landLineNo" class="form-control" name="mobile" id="mobile" placeholder="email address">
+                        </div>
+                    </div> 
+                     <div class="col-3">
+                        <div class="form-group">
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <input type="text" pInputText [(ngModel)]="userInfo.mobileNo" class="form-control" name="phoneNumber" id="mobile" placeholder="Phone Number">
+                        </div>
+                    </div>  
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="phoneNumber" class="form-label">Extension</label>
+                            <input type="text" pInputText [(ngModel)]="userInfo.extensionNo" class="form-control" name="extention" id="extention" placeholder="1234">
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="col-4">
+                    <button>Upload Photo</button>
+            </div>
         </div>
-    </div>
+     </div>
+     <div class="card-footer">
+        <button class="btn btn-primary" (click) = 'saveUserDetail()'>Update</button>
+     </div>
 </div>

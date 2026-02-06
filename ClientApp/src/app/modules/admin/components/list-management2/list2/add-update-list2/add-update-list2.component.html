@@ -1,4 +1,43 @@
-<div class="container-fluid">
+<form [formGroup] = "listFrm" (ngSubmit) = 'addUpdateList()'>
+<div class="row">
+  <div class="col-12">
+      <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName = 'isSystemManaged' id="systemManaged">
+            <label class="form-check-label" for="">System Managed</label>
+      </div>
+  </div>
+
+     <div class="col-6"> 
+        <div class="form-group">
+          <label class="form-label d-block">OrderNo:</label>
+          <input type="number" class="form-control" formControlName = 'orderNo' id="ordering">
+        </div>
+     </div>
+
+     <div class="col-6">
+        <div class="form-group">
+          <label for="">TITLE:</label>
+          <input type="text" formControlName = 'title' class="form-control" id="title">
+        </div>
+     </div>
+
+     <div class="col-6">
+        <div class="form-group">
+          <label for="">KEY CODE:</label>
+          <input type="text" formControlName = 'keyCode' class="form-control" id="keyCode">
+        </div>
+     </div>
+
+     <div class="col-12">
+        <div class="form-group">
+          <label for="">DESCRIPTION:</label>
+          <textarea class="custom-textarea" pInputTextarea autoResize="autoResize" formControlName = 'description' rows="4"></textarea>
+        </div>
+     </div>
+</div>
+</form>
+
+<!-- <div class="container-fluid">
   <div class="card">
     <div class="card-header">
       <h5 class="card-title">Add List</h5>
@@ -39,4 +78,4 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->

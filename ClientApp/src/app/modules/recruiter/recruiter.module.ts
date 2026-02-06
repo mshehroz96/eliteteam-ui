@@ -29,6 +29,7 @@ import {BlockUIModule} from 'primeng/blockui';
 import {PaginatorModule} from 'primeng/paginator';
 import { CandidatesDBComponent } from './components/candidatesdb/candidatesdb.component';
 import {DialogModule} from 'primeng/dialog';
+import {DropdownModule} from 'primeng/dropdown';
 import {MultiSelectModule} from 'primeng/multiselect';
 import { JobsActiveComponent } from './components/jobs-active/jobs-active.component';
 import { LayoutModule } from 'src/app/_layout/layout.module';
@@ -53,6 +54,9 @@ import { ZoomMeetingModule } from 'src/app/internal-modules/zoom-meeting/zoom-me
 import { AddUpdateRecruiterSchedulesComponent } from './components/recruiter-schedules/add-update-recruiter-schedules/add-update-recruiter-schedules.component';
 import { JoinLiveInterviewComponent } from './components/join-live-interview/join-live-interview.component';
 import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
+import { JobsActive2Component } from './components/jobs-active2/jobs-active2.component';
+import { JobDetails2Component } from './components/jobs-active2/job-details2/job-details2.component';
+import { CandidateModule } from '../candidate/candidate.module';
 
 FullCalendarModule.registerPlugins([
   // register FullCalendar plugins
@@ -77,7 +81,9 @@ FullCalendarModule.registerPlugins([
     RecruiterShowcaseViewComponent,
     CandidateProfileComponent,
     JoinLiveInterviewComponent,
-    AddUpdateRecruiterSchedulesComponent
+    AddUpdateRecruiterSchedulesComponent,
+    JobsActive2Component,
+    JobDetails2Component
   ],
   imports: [
     CommonModule,
@@ -115,7 +121,9 @@ FullCalendarModule.registerPlugins([
     TreeSelectModule,
     ChipsModule,
     ZoomMeetingModule,
-    PdfJsViewerModule
+    PdfJsViewerModule,
+    DropdownModule,
+    CandidateModule
   ],
 })
 export class RecruiterModule {}

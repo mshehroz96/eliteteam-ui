@@ -7,7 +7,7 @@
 </div>
 <div class="row g-2 mb-3">
     <div class="col-md-6 col-lg-6 col-xl-4" *ngFor="let candidate of candidates">
-        <app-candidate-overview *ngIf="candidate.isCandidate" [candidate]="candidate"></app-candidate-overview>
-        <app-applicant-overview  *ngIf="!candidate.isCandidate" [candidate]="candidate"></app-applicant-overview>
+        <app-candidate-overview [candidate]="candidate"></app-candidate-overview>
+        <!-- <app-applicant-overview  *ngIf="!candidate.isCandidate" [candidate]="candidate"></app-applicant-overview> -->
     </div>
 </div>

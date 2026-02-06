@@ -19,6 +19,7 @@ import { AppConfigDirective } from './directive/app-configuration/app-config.dir
 import { CompanyLogoPipe } from './pipe/company-logo/company-logo.pipe';
 import { JobAttachmentPipe } from './pipe/requisition-attachment/job-attachment.pipe';
 import { RecordStatusPipe } from './pipe/recordStatus/recordStatus.pipe';
+import { CampaignTypePipe } from './pipe/campaign-type/campaign-type.pipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { RecordStatusPipe } from './pipe/recordStatus/recordStatus.pipe';
     JobAttachmentPipe,
     RecordStatusPipe,
     ResumeLockedPipe,
-    ResumeUnLockedPipe
+    ResumeUnLockedPipe,
+    CampaignTypePipe
   ],
   imports: [
     CommonModule
@@ -68,7 +70,8 @@ import { RecordStatusPipe } from './pipe/recordStatus/recordStatus.pipe';
     JobAttachmentPipe,
     RecordStatusPipe,
     ResumeLockedPipe,
-    ResumeUnLockedPipe
+    ResumeUnLockedPipe,
+    CampaignTypePipe
   ]
 })
 export class CoreModule { }

@@ -1,0 +1,65 @@
+<div class="row border-bottom py-3">
+    <div class="col-6">
+        <div class="btn-group gap-2">
+            <button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                <i [ngClass]="currentJob.campaignType | campaignType"></i>
+                {{currentJob.jobTitle}}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                <li *ngFor="let job of jobs">
+                    <a class="dropdown-item">
+                        <i [ngClass]="job.campaignType | campaignType" class="mr-2"></i> {{job.jobTitle}}
+                        <span class="float-end badge bg-primary"> {{job.applicants}}</span>
+                    </a>
+                </li>
+            </ul>
+            <button class="btn bg-label-secondary">
+                Job Details
+                <i class="bx bx-detail"></i>
+            </button>
+
+            <button class="btn bg-label-secondary">
+                Recruiters
+                <i class="bx bx-user"></i>
+            </button>
+
+            <button class="btn bg-label-secondary">
+                Back
+                <i class="bx bx-arrow-back"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-12">
+        <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" role="tab" data-bs-toggle="tab" >All <span class="badge bg-primary ms-1">44</span></a></li>
+            <li class="nav-item">
+                <a class="nav-link"  role="tab" data-bs-toggle="tab"  role="tab" data-bs-toggle="tab" >New Applicants <span class="badge bg-secondary ms-1">10</span></a></li>
+            <li class="nav-item">
+                <a class="nav-link"  role="tab" data-bs-toggle="tab" role="tab"  >Pending Applicants <span class="badge bg-secondary ms-1">22</span></a></li>
+            <li class="nav-item">
+                <a class="nav-link"  role="tab" data-bs-toggle="tab" >New Candidates <span class="badge bg-secondary ms-1">7</span></a></li>
+            <li class="nav-item">
+                <a class="nav-link"  role="tab" data-bs-toggle="tab" >Pending Candidates <span class="badge bg-secondary ms-1">2</span></a></li>
+            <li class="nav-item">
+                <a class="nav-link"  role="tab" data-bs-toggle="tab" >Active Candidates <span class="badge bg-secondary ms-1">1</span></a></li>
+            <li class="nav-item">
+                <a class="nav-link"  role="tab" data-bs-toggle="tab" >Hired Candidates <span class="badge bg-secondary ms-1">0</span></a></li>
+            <li class="nav-item">
+                <a class="nav-link"  role="tab" data-bs-toggle="tab" >Disqualified <span class="badge bg-secondary ms-1">2</span></a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="div">
+ <ul>
+    <li>
+        <div class="card">
+            <app-candidates-listing [candidates] = "this.candiates"></app-candidates-listing>
+        </div>
+    </li>
+ </ul>
+</div>

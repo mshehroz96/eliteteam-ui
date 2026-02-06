@@ -8,7 +8,7 @@ import { List2Service } from 'src/app/_services/list2/list2.service';
   styleUrls: ['./add-update-listitem2.component.css']
 })
 export class AddUpdateListitem2Component implements OnInit, OnChanges {
-  @Input() selectedListId: number;
+  @Input() selectedListId: number = 0;
 
   listItem: any = {};
   action : string = 'Add';

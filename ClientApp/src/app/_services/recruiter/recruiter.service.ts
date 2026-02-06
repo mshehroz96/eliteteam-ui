@@ -88,4 +88,20 @@ export class RecruiterService {
   public getUserSchedules(params: any): Observable<Response> {
     return this.http.post<Response>(`${environment.webApiUrl}Recruiter/GetUserSchedules`, params, this.httpOptions);
   }
+
+  public getActiveJobs(obj:any) : Observable<Response>
+  {
+    return this.http.post<Response>(`${environment.webApiUrl}Requisition/GetRequisitionsRecruiterActive`,obj, this.httpOptions);
+  } 
+
+  public getClients() : Observable<Response>
+  {
+    return this.http.get<Response>(`${environment.webApiUrl}Common/GetClientsByRecruiter/6`, this.httpOptions);
+  }
+
+  public getJobDetails(requestObj : any) : Observable<Response>
+  {
+     return this.http.post<Response>(`${environment.webApiUrl}Recruitment/GetRequisitionCombinedDataRM`,requestObj, this.httpOptions); 
+  }
+  
 }

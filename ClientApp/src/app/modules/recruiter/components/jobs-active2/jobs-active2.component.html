@@ -1,0 +1,84 @@
+<!-- {{jobs[0].jobTitle}} -->
+
+<p-table
+[paginator]="true"
+[rows]="5"
+[rowsPerPageOptions]="[5, 10, 20]"
+[value]="jobs" [tableStyle]="{'min-width': '60rem'}">
+    <ng-template pTemplate="caption">
+        <div class="">
+               <label class = "form-label">Active jobs</label>
+               <div class= "d-flex flex-row-reverse">
+                <p-dropdown
+                [options]="clients"
+                optionLabel="companyName"
+                optionValue="companyId"
+                [(ngModel)]="selectedClient"
+                [style]="{'width': '200px'}"></p-dropdown>
+                <input
+                    class = "mr-2"
+                    pInputText
+                    type="text"
+                    placeholder="Search keyword"
+                />
+               </div>
+                <!-- <p-dropdown appendTo = "body" [options]="titles" [(ngModel)]="selectedTitle" optionLabel="displayText"></p-dropdown> -->
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="code" style="width:20%">Job Title <p-sortIcon field="code"></p-sortIcon></th>
+            <th pSortableColumn="code" style="width:20%">Client Name<p-sortIcon field="code"></p-sortIcon></th>
+            <th pSortableColumn="code" style="width:20%">Date Submitted<p-sortIcon field="code"></p-sortIcon></th>
+            <th pSortableColumn="code" style="width:20%">Elapsed Time<p-sortIcon field="code"></p-sortIcon></th>
+            <th pSortableColumn="code" style="width:20%">Profiles<p-sortIcon field="code"></p-sortIcon></th>
+            <th pSortableColumn="code" style="width:20%">Recruites<p-sortIcon field="code"></p-sortIcon></th>
+            <th pSortableColumn="code" style="width:20%">Status<p-sortIcon field="code"></p-sortIcon></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-job>
+        <tr>
+            <td>
+                <span class="text-primary">
+                    <a>
+                    <i routerLink="/recruiter/job-details2/{{job.uuid}}" [ngClass]="job.campaignType | campaignType"></i>
+                    &nbsp;{{ job.jobTitle }}
+                   </a>
+                </span>
+            </td>
+            <td>
+                <div class = "d-flex flex-column">
+                <label class = "d-block">
+                    {{ job.companyName }}
+                </label>
+                <label class = "d-block">
+                 <small>{{job.jobsSubmittedByClient}} jobs</small>  
+                </label>
+               </div>
+            
+            </td>
+            <td>
+                {{ job.submittedOn | date:'MM/dd/yyyy' }} 
+            </td>
+            <td> </td>
+            <td>
+                <div class = "d-flex flex-column">
+                    <small>
+                        Submitted: {{ job.jobsSubmittedByClient }}
+                   </small>
+                    <small>
+                        Presented: {{ job.candidatesPresentedToClient }}
+                   </small>
+                </div>
+            </td>
+            <td>   
+            <div class = "small">
+                    Submitted: {{ job.jobsSubmittedByClient }} <br>
+                    Presented: {{ job.candidatesPresentedToClient }}
+            </div>
+        </td>
+
+            <td>Not Found</td>
+        </tr>
+    </ng-template>
+</p-table> 

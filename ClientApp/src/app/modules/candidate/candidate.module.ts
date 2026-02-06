@@ -46,6 +46,8 @@ import { AddUpdateEducationComponent } from './component/myprofile/cv/add-update
 import { AddUpdateCertificationsComponent } from './component/myprofile/cv/add-update-certifications/add-update-certifications.component';
 import { AddUpdatePublicationsComponent } from './component/myprofile/cv/add-update-publications/add-update-publications.component';
 import { AddUpdateReferencesComponent } from './component/myprofile/cv/add-update-references/add-update-references.component';
+import { CandidateOverview2Component } from './component/candidate-overview2/candidate-overview2.component';
+import { CandidatesListingComponent } from './component/candidates-listing/candidates-listing.component';
 
 
 @NgModule({
@@ -71,7 +73,9 @@ import { AddUpdateReferencesComponent } from './component/myprofile/cv/add-updat
     AddUpdateEducationComponent,
     AddUpdateCertificationsComponent,
     AddUpdatePublicationsComponent,
-    AddUpdateReferencesComponent
+    AddUpdateReferencesComponent,
+    CandidateOverview2Component,
+    CandidatesListingComponent
   ],
   imports: [
     CommonModule,
@@ -132,7 +136,9 @@ import { AddUpdateReferencesComponent } from './component/myprofile/cv/add-updat
     ReviewOfferComponent,
     ShareProfileComponent,
     VideoInterviewComponent,
-    AddUpdatePersonalDetailsComponent
+    AddUpdatePersonalDetailsComponent,
+    CandidateOverview2Component,
+    CandidatesListingComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })

@@ -43,6 +43,7 @@ import { List2Component } from './components/list-management2/list2/list2.compon
 import { Listitem2Component } from './components/list-management2/listitem2/listitem2.component';
 import { AddUpdateList2Component } from './components/list-management2/list2/add-update-list2/add-update-list2.component';
 import { AddUpdateListitem2Component } from './components/list-management2/listitem2/add-update-listitem2/add-update-listitem2.component';
+import { User2Component } from './components/user2/user2.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { AddUpdateListitem2Component } from './components/list-management2/listi
     List2Component,
     Listitem2Component,
     AddUpdateList2Component,
-    AddUpdateListitem2Component
+    AddUpdateListitem2Component,
+    User2Component
   ],
   imports: [
     CommonModule,

@@ -45,6 +45,7 @@ export class AsideMenuComponent implements OnInit {
     } else if (this.user.userTypeStr == "Administrator") {
       this.menuList.push({Name:'Dashboard', RouteName:'/admin/dashboard', Icon: 'bx bx-pie-chart-alt-2'});
       this.menuList.push({Name:'Users', RouteName:'/admin/users', Icon: 'bx bx-user'});
+      this.menuList.push({Name:'Users2', RouteName:'/admin/users2', Icon: 'bx bx-user'});
       this.menuList.push({Name:'Settings', RouteName:'/admin/main-setting', Icon: 'bx bx-cog'});
     } else if (this.user.userTypeStr == "RecruiterManager") {
       this.menuList.push({Name:'Dashboard', RouteName:'/recruitment/dashboard', Icon: 'bx bx-pie-chart-alt-2'});
@@ -56,6 +57,7 @@ export class AsideMenuComponent implements OnInit {
       this.menuList.push({ Name: 'Messages', RouteName:'/recruiter/messages', Icon: 'bx bxs-chat'} );
       this.menuList.push({Name:'Showcase', RouteName:'/recruiter/recruiter-showcase', Icon: 'bx bxs-id-card'});
       this.menuList.push({Name:'Active Jobs', RouteName:'/recruiter/jobs-active', Icon: 'bx bx-play'} );
+      this.menuList.push({Name : 'Active Jobs2', RouteName : '/recruiter/jobs-active2', Icon : 'bx bx-play'} );
       this.menuList.push({Name:'Interview Calendar', RouteName:'/recruiter/calendar', Icon: 'bx bx-calendar'} );
       this.menuList.push({Name:'Candidates', RouteName:'/recruiter/candidates', Icon: 'bx bxs-user'});
       this.menuList.push({Name:'Settings', RouteName:'/recruiter/main-setting', Icon: 'bx bx-cog'});

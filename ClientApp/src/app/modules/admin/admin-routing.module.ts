@@ -7,6 +7,7 @@ import { MainSettingComponent } from './components/main-setting/main-setting.com
 import { PlanSettingsComponent } from './components/main-setting/plan-settings/plan-settings.component';
 import { UserDetailComponent } from './components/users/user-detail/user-detail.component';
 import { UsersComponent } from './components/users/users.component';
+import { User2Component } from './components/user2/user2.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
       {
         path: 'users',
         component: UsersComponent,
+        pathMatch: "full",
+      },  
+      {
+        path: 'users2',
+        component: User2Component,
         pathMatch: "full",
       },
       {

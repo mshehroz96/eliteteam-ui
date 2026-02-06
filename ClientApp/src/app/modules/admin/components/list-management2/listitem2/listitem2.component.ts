@@ -11,7 +11,7 @@ import { AddUpdateListitem2Component } from './add-update-listitem2/add-update-l
 export class Listitem2Component implements OnInit {
   listItems: any[] = [];
   ref!: DynamicDialogRef;
-  @Input() selectedList: number = 0;
+  @Input() selectedList: any = 0;
   constructor(private listService: List2Service, private dialog: DialogService) { }
 
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class Listitem2Component implements OnInit {
   }
 
   getListItems() {
-    this.listService.getListItems(this.selectedList).subscribe((res) => {
+    this.listService.getListItems(this.selectedList.listId).subscribe((res) => {
       if (res?.success) {
         this.listItems = res.data;
       }
@@ -46,7 +46,7 @@ export class Listitem2Component implements OnInit {
       },
       header: 'Edit List Item',
       width: '50%',
-      height: '100%'
+      height: '200px%'
     });
 
     this.ref.onClose.subscribe((res: any) => {

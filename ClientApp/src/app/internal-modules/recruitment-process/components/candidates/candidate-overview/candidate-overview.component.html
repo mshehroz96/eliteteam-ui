@@ -5,60 +5,36 @@
                 alt="Candidate Picture" class="w-px-100 rounded-circle"> <span
                 style="display:inline-block;padding-left:10px;vertical-align:middle;"> <span
                     style="font-size:18px;display:inline-block;">{{candidate.firstName}} {{candidate.lastName}}</span>
-                <span style="font-size:15px;display:block;"> <a href="javascript:void(0)" [routerLink]="candidate.profileUrl" class="btn btn-primary btn-sm"><i
-                            class="fa fa-video"></i> Watch</a> <a href="javascript:void(0)" [routerLink]="candidate.resumeFileName"
+                <span style="font-size:15px;display:block;"> <a href="javascript:void(0)"
+                        [routerLink]="candidate.profileUrl" class="btn btn-primary btn-sm"><i class="fa fa-video"></i>
+                        Watch</a> <a href="javascript:void(0)" [routerLink]="candidate.resumeFileName"
                         class="btn btn-label-secondary btn-icon btn-sm proxy_view_resume ml-1"><i
-                            class="fa fa-file-pdf"></i></a> 
-                                <span *ngIf="!candidate.isUnlocked"
-                            class="badge bg-label-danger text-end ml-1"><i class="bx bx-time bx-spin"></i>{{candidate.unlockTimeLeft}} Hours
-                            Left</span></span> </span> </div>
-        <div class="pt-2">
-            <div class="row p-0 m-0">
-                <div class="col-md-3 pl-2 py-0 text-right" style="text-align: right; font-size:13px;">Job:</div>
-                <div class="col-md-9 pl-2 py-0 text-left" style="text-align: left; font-size:13px;">
-                    {{candidate.jobTitle}}</div>
-            </div>
-            <div class="row p-0 m-0">
-                <div class="col-md-3 pl-2 py-0 text-right" style="text-align: right; font-size:13px;">Status:
-                </div>
-                <div class="col-md-9 pl-2 py-0 text-left" [ngClass]="{'text-danger':candidate.status=='Disqualified'}" style="text-align: left; font-size:13px;">{{candidate.status}}
-                </div>
-            </div>
-            <div class="row p-0 m-0">
-                <div class="col-md-3 pl-2 py-0 text-right" style="text-align: right; font-size:13px;">Scheduled:
-                </div>
-                <div class="col-md-9 pl-2 py-0 text-left" style="text-align: left; font-size:13px;">{{candidate.scheduledDate | customDateTime}}</div>
-            </div>
-            <div class="row p-0 m-0">
-                <div class="col-md-3 pl-2 py-0 text-right" style="text-align: right; font-size:13px;">Completed:
-                </div>
-                <div class="col-md-9 pl-2 py-0 text-left" style="text-align: left; font-size:13px;"> {{candidate.completedDate | customDateTime}} </div>
-            </div>
-            <div class="row p-0 m-0">
-                <div class="col-md-3 pl-2 py-0 text-right" style="text-align: right; font-size:13px;">Result:
-                </div>
-                <div class="col-md-9 pl-2 py-0 text-left" style="text-align: left; font-size:13px;">{{candidate.result }}</div>
-            </div>
-            <div class="row p-0 m-0">
-                <div class="col-md-3 pl-2 py-0 text-right" style="text-align: right; font-size:13px;">Rating:
-                </div>
-                <div class="col-md-6 pl-2 py-0 text-left">
-                    <p-rating [readonly]="true" [cancel]="false" [(ngModel)]="candidate.recruiterRating"></p-rating>
-                </div>
-            </div>
-            <div class="row p-0 m-0">
-                <div class="col-md-3 pl-2 py-0 text-right" style="text-align: right; font-size:13px;">Campaign:
-                </div>
-                <div class="col-md-6 pl-2 py-0 text-left" style="text-align: left; font-size:13px;">
-                    <i *ngIf="candidate.campaignType=='Video'" class="bx bxs-video"></i>
-                    <i *ngIf="candidate.campaignType=='Resume'" class="bx bxs-detail"></i>
-                    <i *ngIf="candidate.campaignType=='Interview'"
-                        class="bx bxs-calendar"></i>{{candidate.campaignType}}
-                </div>
-                <div *ngIf="!candidate.isUnlocked" class="col-md-3 pl-2 py-0 text-right" style="text-align: right; font-size:13px;"><a
-                        href="javascript:;" class=""><i class="bx bx-lock bx-sm text-danger me-1"></i></a></div>
-                <a href="javascript:void(0)" [routerLink]="candidate.profileUrl" class="stretched-link"></a>
-            </div>
-        </div>
+                            class="fa fa-file-pdf"></i></a>
+                    <span *ngIf="!candidate.isUnlocked" class="badge bg-label-danger text-end ml-1"><i
+                            class="bx bx-time bx-spin"></i>{{candidate.unlockTimeLeft}} Hours
+                        Left</span></span> </span> </div>
     </div>
 </div>
+
+
+<!-- <div class="card" [class.border-danger]="!candidate.isUnlocked">
+  <div class="card-body position-relative">
+    <div class="d-flex align-items-center mb-3">
+      <img [src]="candidate.avatarFileName | avatar" alt="Candidate" class="rounded-circle me-3" width="100">
+      <div>
+        <div class="fw-bold fs-5">{{candidate.firstName}} {{candidate.lastName}}</div>
+        <div class="mt-1">
+          <a [routerLink]="candidate.profileUrl" class="btn btn-primary btn-sm me-1">
+            <i class="fa fa-video"></i> Watch
+          </a>
+          <a [routerLink]="candidate.resumeFileName" class="btn btn-secondary btn-sm me-1">
+            <i class="fa fa-file-pdf"></i>
+          </a>
+          <span *ngIf="!candidate.isUnlocked" class="badge bg-danger">
+            <i class="bx bx-time bx-spin"></i> {{candidate.unlockTimeLeft}} Hours Left
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

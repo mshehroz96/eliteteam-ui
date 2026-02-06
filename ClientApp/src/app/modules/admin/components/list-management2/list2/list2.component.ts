@@ -11,10 +11,12 @@ import { AddUpdateList2Component } from './add-update-list2/add-update-list2.com
 })
 export class List2Component implements OnInit {
 
-  lists: any[] = [];
+  gridList: any[] = [];
+  dropdownList: any[] = [];
   searchText : string = '';
 
   selectedList: any;
+  activeIndex: number = 0;  
   ref: DynamicDialogRef | undefined;
   constructor(private list2Service: List2Service, private dialogService: DialogService) {
    }
@@ -25,23 +27,33 @@ export class List2Component implements OnInit {
 
   getLists() {
     this.list2Service.getLists().subscribe((res) => {
-      this.lists = res.data;
+      this.gridList = res.data;
     });
   }
 
-  selectList(list: any) {
-    this.selectedList = list.listId;
+  selectList(list : any = null) {
+    if(list) // grid
+    {
+      this.selectedList = this.gridList.find(x=> x.listId == list.listId);
+      this.activeIndex = this.selectedList?.listId;
+    }
+    else //dropdown
+    {
+      this.gridList = this.gridList.filter(x => x.listId == this.selectedList.listId);
+      this.activeIndex = this.gridList[0].listId;
+    }
   }
 
-  searchList(){
-
+  searchList(event: any) {
+    this.searchText = event.query;
+    if(this.searchText && this.searchText.length > 0) {
      this.list2Service.searchList(this.searchText).subscribe((res:any)=> {
         if(res?.success)
         {
-            this.lists = res.data;
+            this.dropdownList = res.data;
         }
-     })
-
+     });
+    }
   }
 
   // addList() {
@@ -82,11 +94,11 @@ export class List2Component implements OnInit {
     this.ref = this.dialogService.open(AddUpdateList2Component, {
       data: {
         action: 'update',
-        obj: this.lists.find(x => x.listId === this.selectedList)
+        obj: this.gridList.find(x => x.listId === this.selectedList.listId)
       },
       header: 'Update List',
       width: '50%',
-      height: '100%'
+      height: '500px'
     });
 
     debugger;
@@ -100,7 +112,7 @@ export class List2Component implements OnInit {
 
   deleteList()
   {
-    let obj = JSON.stringify(this.lists.find(x=> x.listId == this.selectedList));
+    let obj = JSON.stringify(this.gridList.find(x=> x.listId == this.selectedList));
     this.list2Service.deleteList(obj).subscribe((res:any)=>{
       if(res?.success)
       {
